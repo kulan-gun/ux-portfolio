@@ -1,0 +1,703 @@
+"use client"
+
+import type React from "react"
+
+import { useState, useEffect } from "react"
+import Link from "next/link"
+import ScrollProgressIndicator from "@/components/scroll-progress-indicator"
+import AnimateOnScroll from "@/components/animate-on-scroll"
+import Footer from "@/components/footer"
+import TopNavigation from "@/components/top-navigation"
+import BackToTopButton from "@/components/back-to-top-button"
+import SummaryCard from "@/components/summary-card"
+import QuoteCard from "@/components/quote-card"
+
+// Define the sections for this case study
+const sections = [
+  { id: "overview", title: "Overview" },
+  { id: "problem", title: "Problem" },
+  { id: "process", title: "Process" },
+  { id: "solution", title: "Solution" },
+  { id: "results", title: "Results" },
+  { id: "conclusion", title: "Conclusion" },
+]
+
+export default function CRMCaseStudyPage() {
+  const [sidebarOpen, setSidebarOpen] = useState(false)
+  const [isMobile, setIsMobile] = useState(false)
+  const [activeSection, setActiveSection] = useState<string>(sections[0]?.id || "")
+
+  // Force scroll to top on page load
+  useEffect(() => {
+    window.scrollTo(0, 0)
+  }, [])
+
+  // Check if we're on mobile when component mounts and when window resizes
+  useEffect(() => {
+    const checkIfMobile = () => {
+      setIsMobile(window.innerWidth < 768)
+    }
+
+    // Initial check
+    checkIfMobile()
+
+    // Add event listener for window resize
+    window.addEventListener("resize", checkIfMobile)
+
+    // Cleanup
+    return () => window.removeEventListener("resize", checkIfMobile)
+  }, [])
+
+  // Handle scroll spy for navigation
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollPosition = window.scrollY + 100
+
+      // Find the section that is currently in view
+      const currentSection = sections.find((section) => {
+        const element = document.getElementById(section.id)
+        if (!element) return false
+
+        const rect = element.getBoundingClientRect()
+        return rect.top <= 200 && rect.bottom >= 200
+      })
+
+      if (currentSection) {
+        setActiveSection(currentSection.id)
+      }
+    }
+
+    // Add scroll event listener
+    window.addEventListener("scroll", handleScroll)
+
+    // Initial check
+    handleScroll()
+
+    // Clean up event listener on component unmount
+    return () => window.removeEventListener("scroll", handleScroll)
+  }, [])
+
+  // Handle keyboard navigation for the mobile menu
+  const handleMenuKeyDown = (e: React.KeyboardEvent) => {
+    if (e.key === "Enter" || e.key === " ") {
+      e.preventDefault()
+      setSidebarOpen(!sidebarOpen)
+    }
+  }
+
+  // Handle closing the sidebar with Escape key
+  useEffect(() => {
+    const handleEscapeKey = (e: KeyboardEvent) => {
+      if (e.key === "Escape" && sidebarOpen) {
+        setSidebarOpen(false)
+      }
+    }
+
+    document.addEventListener("keydown", handleEscapeKey)
+    return () => document.removeEventListener("keydown", handleEscapeKey)
+  }, [sidebarOpen])
+
+  // Scroll to section function
+  const scrollToSection = (id: string) => {
+    const element = document.getElementById(id)
+    if (element) {
+      window.scrollTo({
+        top: element.offsetTop - 100,
+        behavior: "smooth",
+      })
+    }
+  }
+
+  return (
+    <div className="min-h-screen text-white font-sans" style={{ backgroundColor: "#121212" }}>
+      <ScrollProgressIndicator />
+
+      {/* Navigation - Static on mobile, sticky on desktop */}
+      <TopNavigation onMobileMenuToggle={(isOpen) => setSidebarOpen(isOpen)} />
+
+      {/* Left Navigation - Fixed on desktop, slide-in on mobile */}
+      {!isMobile && (
+        <div
+          id="mobile-menu"
+          className="w-64 md:fixed md:top-16 md:bottom-0 md:pt-16 relative"
+          style={{ backgroundColor: "#121212" }}
+          role="navigation"
+          aria-label="Section navigation"
+        >
+          <div className="pl-8 mb-6 pt-8">
+            <Link
+              href="/"
+              className="inline-flex items-center px-4 pr-5 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white rounded-full transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+              aria-label="Go back to home page"
+            >
+              <svg
+                width="16"
+                height="16"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2"
+                className="mr-1.5"
+                aria-hidden="true"
+              >
+                <path d="M19 12H5M12 19l-7-7 7-7" />
+              </svg>
+              <span>Back</span>
+            </Link>
+          </div>
+
+          {/* Navigation links */}
+          <nav className="space-y-6 text-gray-400 pl-8" aria-label="Table of contents">
+            <ul className="space-y-6">
+              {sections.map((section) => (
+                <li key={section.id}>
+                  <button
+                    className="flex items-center cursor-pointer group w-full text-left focus:outline-none focus:ring-2 focus:ring-dark-purple focus:ring-opacity-50 rounded-sm"
+                    onClick={() => scrollToSection(section.id)}
+                    aria-current={activeSection === section.id ? "location" : undefined}
+                  >
+                    <div
+                      className={`w-1 h-6 mr-4 rounded transition-colors duration-300 ${
+                        activeSection === section.id ? "bg-white" : "bg-transparent group-hover:bg-white/50"
+                      }`}
+                      aria-hidden="true"
+                    />
+                    <span
+                      className={`text-sm font-light transition-colors duration-300 ${
+                        activeSection === section.id ? "text-white" : "text-gray-400 group-hover:text-gray-300"
+                      }`}
+                    >
+                      {section.title}
+                    </span>
+                  </button>
+                </li>
+              ))}
+            </ul>
+          </nav>
+        </div>
+      )}
+
+      {/* Main Content - With left margin on desktop, full width on mobile */}
+      <main className={`flex-1 px-4 sm:px-8 py-12 ${isMobile ? "w-full" : "md:ml-64 md:max-w-[calc(100%-64px)]"}`}>
+        <div className="max-w-6xl mx-auto">
+          {/* Case Study Title and Tags */}
+          <div>
+            <div className="flex flex-wrap gap-2 sm:gap-4 pt-8 mb-6" aria-label="Project tags">
+              <div className="inline-flex rounded-full bg-zinc-800/50 px-3 py-1 sm:px-4 sm:py-1.5">
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-medium text-gray-300 tracking-wide uppercase">Product Designer</span>
+                </div>
+              </div>
+              <div className="inline-flex rounded-full bg-zinc-800/50 px-3 py-1 sm:px-4 sm:py-1.5">
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-medium text-gray-300 tracking-wide uppercase">2023</span>
+                </div>
+              </div>
+              <div className="inline-flex rounded-full bg-zinc-800/50 px-3 py-1 sm:px-4 sm:py-1.5">
+                <div className="flex items-center gap-2">
+                  <span className="text-xs font-medium text-gray-300 tracking-wide uppercase">Enterprise Client</span>
+                </div>
+              </div>
+              <div className="inline-flex rounded-full bg-zinc-800/50 px-3 py-1 sm:px-4 sm:py-1.5">
+                <div className="flex items-center gap-2">
+                  <div className="h-2 w-2 rounded-full bg-green-500" />
+                  <span className="text-xs font-medium text-gray-300 tracking-wide uppercase">Shipped</span>
+                </div>
+              </div>
+            </div>
+            <h1 id="case-study-title" className="text-3xl sm:text-4xl md:text-5xl font-display mb-8 sm:mb-12">
+              Transforming customer relationship management
+            </h1>
+
+            {/* Hero image */}
+            <div className="mb-12 sm:mb-16">
+              <img
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/anglian3-min-Gg1yQETIOPvQr9fySm8O1i5tRZYm3U.jpeg"
+                alt="Project hero image showing the CRM interface"
+                className="w-full rounded-lg"
+              />
+            </div>
+          </div>
+
+          {/* Overview Section */}
+          <section id="overview" className="min-h-screen py-8 sm:py-12" aria-labelledby="overview-heading">
+            <AnimateOnScroll animation="bounce-up">
+              <h2 id="overview-heading" className="mb-6 sm:mb-8 text-2xl sm:text-3xl md:text-4xl font-display">
+                Overview
+              </h2>
+            </AnimateOnScroll>
+
+            <AnimateOnScroll animation="fade-up" delay={200}>
+              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">
+                Anglian Water needed a modernised internal customer relationship management (CRM) system to monitor
+                customer payments, streamline workflows, and improve data accuracy.
+                <br />
+                <br />
+                As the lead UX designer, I guided the design, and prototyping process to create a more intuitive and
+                scalable solution for their internal teams.
+              </p>
+            </AnimateOnScroll>
+
+            <AnimateOnScroll animation="fade-up" delay={400}>
+              <div className="mt-8 mb-8">
+                <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3" role="group" aria-label="Key metrics">
+                  <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
+                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">1 mo</div>
+                    <div className="text-xs sm:text-sm md:text-base text-gray-400">
+                      delivered project within 1 month
+                    </div>
+                  </div>
+                  <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
+                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">
+                      5 to 10
+                    </div>
+                    <div className="text-xs sm:text-sm md:text-base text-gray-400">fewer estimated clicks per task</div>
+                  </div>
+                  <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
+                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">-40%</div>
+                    <div className="text-xs sm:text-sm md:text-base text-gray-400">
+                      estimated reduction in task time
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </AnimateOnScroll>
+
+            <AnimateOnScroll animation="fade-up" delay={600}>
+              <div className="mt-12 mb-12">
+                <SummaryCard
+                  sections={[
+                    {
+                      title: "Key Facts",
+                      items: [
+                        "Project duration: 1 month",
+                        "Team size: 3 members",
+                        "My role: Lead UX Engineer",
+                        "Primary focus: Migrating a legacy CRM to a new design system",
+                      ],
+                    },
+                    {
+                      title: "Challenges",
+                      items: ["Complex legacy system", "Technical feasibility", "Time pressure"],
+                    },
+                    {
+                      title: "Approach",
+                      items: ["User-centred design", "Agile development", "Continuous user testing"],
+                    },
+                  ]}
+                />
+              </div>
+            </AnimateOnScroll>
+          </section>
+
+          {/* Problem Section */}
+          <section id="problem" className="min-h-screen py-8 sm:py-12" aria-labelledby="problem-heading">
+            <AnimateOnScroll animation="bounce-up">
+              <h2 id="problem-heading" className="mb-6 sm:mb-8 text-2xl sm:text-3xl md:text-4xl font-display">
+                Problem
+              </h2>
+            </AnimateOnScroll>
+
+            <AnimateOnScroll animation="fade-up" delay={200}>
+              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">
+                The legacy CRM system was inefficient, leading to slow task completion, data entry errors, and
+                frustration among users.
+                <br />
+                <br />
+                The interface was outdated, lacked consistency, and required excessive navigation, increasing cognitive
+                load. Agents struggled to complete routine processes quickly, affecting productivity.
+              </p>
+            </AnimateOnScroll>
+
+            <AnimateOnScroll animation="fade-up" delay={300}>
+              <div className="mt-8 mb-12">
+                <SummaryCard
+                  sections={[
+                    {
+                      title: "User pain points",
+                      items: [
+                        "Slow task completion",
+                        "The interface was outdated and inconsistent, increasing cognitive load",
+                        "Hard to complete routine processes quickly, affecting productivity",
+                        "Difficult to track customer interactions",
+                      ],
+                    },
+                    {
+                      title: "Business challenges",
+                      items: ["Data input errors cause downstream issues", "High training costs", "Data silos"],
+                    },
+                    {
+                      title: "Opportunities",
+                      items: [
+                        "Redesign core workflows",
+                        "Implement a unified design system",
+                        "Enhance data visualisation",
+                        "Improve cross-team collaboration",
+                      ],
+                    },
+                  ]}
+                />
+              </div>
+            </AnimateOnScroll>
+
+            <AnimateOnScroll animation="fade-up" delay={400}>
+              <div className="mt-12 mb-12">
+                <div className="rounded-3xl bg-zinc-900/50 p-8 md:p-12 backdrop-blur-sm">
+                  <div className="flex flex-col items-center justify-center">
+                    {/* User Journey Map */}
+                    <div className="mb-12">
+                      <div className="flex items-center gap-4 mb-6">
+                        <div
+                          className="w-16 h-16 bg-white rounded-full overflow-hidden flex items-center justify-center"
+                          aria-hidden="true"
+                        >
+                          <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path
+                              d="M12 13C14.2091 13 16 11.2091 16 9C16 6.79086 14.2091 5 12 5C9.79086 5 8 6.79086 8 9C8 11.2091 9.79086 13 12 13Z"
+                              stroke="black"
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                            <path
+                              d="M5 20C5 17.2386 8.13401 15 12 15C15.866 15 19 17.2386 19 20"
+                              stroke="black"
+                              strokeWidth="1.5"
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                            />
+                          </svg>
+                        </div>
+                        <div>
+                          <h3 className="text-2xl font-normal text-white">Persona</h3>
+                          <p className="text-gray-400">
+                            Meet Sarah, a customer service agent at Anglian Water. She handles 40+ customer inquiries
+                            daily using their legacy CRM system. She needs to quickly access and update customer
+                            information while maintaining high service quality standards.
+                          </p>
+                        </div>
+                      </div>
+                    </div>
+
+                    {/* Journey Stages */}
+                    <div className="grid grid-cols-4 gap-4 mb-8" role="region" aria-label="User journey stages">
+                      <div className="text-center">
+                        <h4 className="text-xl font-normal text-white mb-4">Customer Contact</h4>
+                        <p className="text-sm text-gray-400">
+                          Sarah receives a customer call about their billing inquiry and needs to access their account.
+                        </p>
+                      </div>
+                      <div className="text-center">
+                        <h4 className="text-xl font-normal text-white mb-4">Information Lookup</h4>
+                        <p className="text-sm text-gray-400">
+                          Navigates through multiple screens to find the customer's account details and payment history.
+                        </p>
+                      </div>
+                      <div className="text-center">
+                        <h4 className="text-xl font-normal text-white mb-4">Process Request</h4>
+                        <p className="text-sm text-gray-400">
+                          Updates account information or processes payment arrangements while dealing with system lag.
+                        </p>
+                      </div>
+                      <div className="text-center">
+                        <h4 className="text-xl font-normal text-white mb-4">Resolution</h4>
+                        <p className="text-sm text-gray-400">
+                          Completes the transaction and documents the interaction, often needing to use multiple systems
+                          to finish.
+                        </p>
+                      </div>
+                    </div>
+
+                    {/* Emotion Line */}
+                    <div
+                      className="relative h-40 mb-8"
+                      aria-label="User emotion journey graph showing fluctuating satisfaction levels"
+                    >
+                      <svg
+                        className="w-full h-full"
+                        viewBox="0 0 800 100"
+                        fill="none"
+                        xmlns="http://www.w3.org/2000/svg"
+                        role="img"
+                        aria-hidden="true"
+                      >
+                        <path
+                          d="M0,20 Q100,0 200,60 T400,80 T600,40 T800,90"
+                          stroke="white"
+                          strokeWidth="3"
+                          fill="none"
+                        />
+                        <circle cx="0" cy="20" r="8" fill="#2DD4BF" />
+                        <circle cx="200" cy="60" r="8" fill="#2DD4BF" />
+                        <circle cx="400" cy="80" r="8" fill="#2DD4BF" />
+                        <circle cx="800" cy="90" r="8" fill="#2DD4BF" />
+                      </svg>
+                    </div>
+
+                    {/* Quotes */}
+                    <div className="grid grid-cols-4 gap-4" aria-label="User quotes at different journey stages">
+                      <div className="text-center">
+                        <p className="text-sm text-gray-400">"Let me try to find your account..."</p>
+                      </div>
+                      <div className="text-center">
+                        <p className="text-sm text-gray-400">"The system is running slow today."</p>
+                      </div>
+                      <div className="text-center">
+                        <p className="text-sm text-gray-400">"I'll need to open another application for this."</p>
+                      </div>
+                      <div className="text-center">
+                        <p className="text-sm text-gray-400">"Thanks for your patience with our system."</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </AnimateOnScroll>
+          </section>
+
+          {/* Process Section */}
+          <section id="process" className="min-h-screen py-8 sm:py-12" aria-labelledby="process-heading">
+            <AnimateOnScroll animation="bounce-up">
+              <h2 id="process-heading" className="mb-6 sm:mb-8 text-2xl sm:text-3xl md:text-4xl font-display">
+                Process
+              </h2>
+            </AnimateOnScroll>
+
+            <AnimateOnScroll animation="fade-up" delay={200}>
+              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">
+                We used Figma as our primary design tool, and MS Teams for remote user interviews. Our user-centred
+                design process was as follows:
+              </p>
+            </AnimateOnScroll>
+
+            <AnimateOnScroll animation="fade-up" delay={300}>
+              <div className="mt-8 mb-12">
+                <div className="rounded-3xl bg-zinc-900/50 p-8 md:p-12 backdrop-blur-sm">
+                  <div className="grid grid-cols-1 md:grid-cols-5 gap-12 md:gap-6">
+                    <div className="flex flex-col items-center text-center">
+                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
+                        <span className="text-xl md:text-2xl font-medium text-white">1</span>
+                      </div>
+                      <h3 className="text-lg md:text-xl font-normal text-white mb-4">User research</h3>
+                      <ul className="space-y-3 text-left w-full">
+                        <li className="text-gray-400 text-sm md:text-base text-center">
+                          Conducted interviews and observations with CRM agents to understand pain points and
+                          inefficiencies.
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div className="flex flex-col items-center text-center">
+                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
+                        <span className="text-xl md:text-2xl font-medium text-white">2</span>
+                      </div>
+                      <h3 className="text-lg md:text-xl font-normal text-white mb-4">Wireframing & prototyping</h3>
+                      <ul className="space-y-3 text-left w-full">
+                        <li className="text-gray-400 text-sm md:text-base text-center">
+                          Developed low-fidelity wireframes and iterated based on feedback before moving to
+                          high-fidelity designs.
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div className="flex flex-col items-center text-center">
+                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
+                        <span className="text-xl md:text-2xl font-medium text-white">3</span>
+                      </div>
+                      <h3 className="text-lg md:text-xl font-normal text-white mb-4">User testing</h3>
+                      <ul className="space-y-3 text-left w-full">
+                        <li className="text-gray-400 text-sm md:text-base text-center">
+                          Conducted usability testing with agents to refine interactions, ensuring accessibility and
+                          ease of use.
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div className="flex flex-col items-center text-center">
+                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
+                        <span className="text-xl md:text-2xl font-medium text-white">4</span>
+                      </div>
+                      <h3 className="text-lg md:text-xl font-normal text-white mb-4">Present</h3>
+                      <ul className="space-y-3 text-left w-full">
+                        <li className="text-gray-400 text-sm md:text-base text-center">
+                          Presented the design to client leadership and developers for feedback.
+                        </li>
+                      </ul>
+                    </div>
+
+                    <div className="flex flex-col items-center text-center">
+                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
+                        <span className="text-xl md:text-2xl font-medium text-white">5</span>
+                      </div>
+                      <h3 className="text-lg md:text-xl font-normal text-white mb-4">Handoff</h3>
+                      <ul className="space-y-3 text-left w-full">
+                        <li className="text-gray-400 text-sm md:text-base text-center">
+                          Worked closely with developers to enhance the design based on technical feasibility,
+                          eventually handing the design over.
+                        </li>
+                      </ul>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </AnimateOnScroll>
+
+            <AnimateOnScroll animation="fade-in" delay={600}>
+              <div className="mt-8">
+                <img
+                  src="/placeholder.svg?height=150&width=800"
+                  alt="Design process workflow showing research, ideation, prototyping, and testing phases"
+                  className="w-full rounded-lg"
+                />
+              </div>
+            </AnimateOnScroll>
+          </section>
+
+          {/* Solution Section */}
+          <section id="solution" className="min-h-screen py-8 sm:py-12" aria-labelledby="solution-heading">
+            <AnimateOnScroll animation="bounce-up">
+              <h2 id="solution-heading" className="mb-6 sm:mb-8 text-2xl sm:text-3xl md:text-4xl font-display">
+                Solution
+              </h2>
+            </AnimateOnScroll>
+
+            <AnimateOnScroll animation="fade-up" delay={200}>
+              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">
+                We designed a high-fidelity prototype that restructured workflows, improved information hierarchy, and
+                enhanced usability.
+                <br />
+                <br />
+                We collaborated with developers from Experian who were responsible for the build phase, to assess for
+                technical feasibility of the designs.
+              </p>
+            </AnimateOnScroll>
+
+            <AnimateOnScroll animation="fade-up" delay={300}>
+              <div className="mb-8 max-w-3xl">
+                <h3 className="text-xl font-medium text-white mb-4">Key features include:</h3>
+                <ul className="space-y-2 text-sm sm:text-base md:text-lg text-gray-400 list-disc pl-5">
+                  <li>Streamlined navigation with fewer clicks to complete common tasks</li>
+                  <li>Improved data visualization for better decision-making</li>
+                  <li>Consistent UI components following Experian's design system</li>
+                  <li>Responsive design for use across different devices</li>
+                </ul>
+              </div>
+            </AnimateOnScroll>
+
+            <AnimateOnScroll animation="fade-in" delay={600}>
+              <div className="mt-8">
+                <img
+                  src="/placeholder.svg?height=150&width=800"
+                  alt="Solution design mockup showing the redesigned CRM interface"
+                  className="w-full rounded-lg"
+                />
+              </div>
+            </AnimateOnScroll>
+          </section>
+
+          {/* Results Section */}
+          <section id="results" className="min-h-screen py-8 sm:py-12" aria-labelledby="results-heading">
+            <AnimateOnScroll animation="bounce-up">
+              <h2 id="results-heading" className="mb-6 sm:mb-8 text-2xl sm:text-3xl md:text-4xl font-display">
+                Results
+              </h2>
+            </AnimateOnScroll>
+
+            <AnimateOnScroll animation="fade-up" delay={200}>
+              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">
+                Won leadership approval and facilitated a seamless developer handover, ensuring a smooth transition from
+                prototype to implementation.
+                <br />
+                <br />
+                By leveraging Experian's design system, we ensured scalability and consistency across the system. The
+                new interface minimised cognitive load and reduced errors, improving task efficiency.
+              </p>
+            </AnimateOnScroll>
+
+            <AnimateOnScroll animation="fade-up" delay={400}>
+              <div className="mt-8">
+                <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3" role="group" aria-label="Key metrics">
+                  <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
+                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">1 mo</div>
+                    <div className="text-xs sm:text-sm md:text-base text-gray-400">
+                      delivered project within 1 month
+                    </div>
+                  </div>
+                  <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
+                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">
+                      5 to 10
+                    </div>
+                    <div className="text-xs sm:text-sm md:text-base text-gray-400">fewer estimated clicks per task</div>
+                  </div>
+                  <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
+                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">-40%</div>
+                    <div className="text-xs sm:text-sm md:text-base text-gray-400">
+                      estimated reduction in task time
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </AnimateOnScroll>
+
+            <AnimateOnScroll animation="fade-up" delay={600}>
+              <div className="mt-12 mb-12">
+                <QuoteCard
+                  quote="You delivered on the brief, and my team and I are really impressed with the prototypes, along with your considerations for the build now and in the future."
+                  author="Client Lead"
+                  organization="Anglian Water"
+                />
+              </div>
+            </AnimateOnScroll>
+          </section>
+
+          {/* Conclusion Section */}
+          <section id="conclusion" className="min-h-screen py-8 sm:py-12" aria-labelledby="conclusion-heading">
+            <AnimateOnScroll animation="bounce-up">
+              <h2 id="conclusion-heading" className="mb-6 sm:mb-8 text-2xl sm:text-3xl md:text-4xl font-display">
+                Conclusion
+              </h2>
+            </AnimateOnScroll>
+
+            <AnimateOnScroll animation="fade-up" delay={200}>
+              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">
+                The redesigned CRM system addressed critical usability issues, improved data handling, and enhanced the
+                user experience for internal teams.
+                <br />
+                <br />
+                By focusing on efficiency, accessibility, and intuitive navigation, we created a system that better
+                supported Anglian Water's operational needs.
+              </p>
+            </AnimateOnScroll>
+
+            <AnimateOnScroll animation="fade-up" delay={300}>
+              <div className="mb-8 max-w-3xl">
+                <h3 className="text-xl font-medium text-white mb-4">Key takeaways:</h3>
+                <ul className="space-y-2 text-sm sm:text-base md:text-lg text-gray-400 list-disc pl-5">
+                  <li>Involving end-users throughout the design process leads to more effective solutions</li>
+                  <li>Collaboration with developers early in the process ensures technical feasibility</li>
+                  <li>Leveraging existing design systems accelerates development and ensures consistency</li>
+                  <li>Focusing on core user workflows yields the highest impact improvements</li>
+                </ul>
+              </div>
+            </AnimateOnScroll>
+
+            <AnimateOnScroll animation="fade-in" delay={600}>
+              <div className="mt-8">
+                <img
+                  src="/placeholder.svg?height=150&width=800"
+                  alt="Project conclusion summary showing key learnings and future opportunities"
+                  className="w-full rounded-lg"
+                />
+              </div>
+            </AnimateOnScroll>
+          </section>
+        </div>
+        <BackToTopButton />
+      </main>
+
+      {/* Add the Footer component */}
+      <Footer />
+    </div>
+  )
+}
+
