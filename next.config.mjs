@@ -1,15 +1,15 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export", // Ensures a static build for GitHub Pages
-  trailingSlash: true, // Prevents GitHub Pages 404 issues
+  output: "export", // Enables static export for GitHub Pages
+  trailingSlash: true, // Fixes routing issues
+  images: {
+    unoptimized: true, // Ensures images work correctly
+  },
   eslint: {
     ignoreDuringBuilds: true,
   },
   typescript: {
-    ignoreBuildErrors: true,
-  },
-  images: {
-    unoptimized: true, // Required for static sites
+    ignoreBuildErrors: true, // Prevents build failures due to TS errors
   },
 };
 

@@ -140,7 +140,7 @@ export default function CaseStudyTemplate({
     }
 
     document.addEventListener("keydown", handleEscapeKey)
-    return () => document.removeEventListener("resize", handleEscapeKey)
+    return () => document.removeEventListener("keydown", handleEscapeKey)
   }, [sidebarOpen])
 
   return (
