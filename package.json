@@ -1,7 +1,6 @@
 {
   "name": "ux-portfolio",
   "version": "0.1.0",
-  "private": true,
   "homepage": "https://kulangun.com",
   "scripts": {
     "dev": "next dev",
