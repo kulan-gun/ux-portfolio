@@ -335,16 +335,7 @@ export default function ContactlessTravelCaseStudyPage() {
                 <br />
                 <br />
                 For one workstream, users needed a seamless way to prove their immigration status digitally, replacing
-                traditional physical documents. However, key challenges included:
-                <br />
-                <br />
-                Users with limited digital skills struggled with verification, inaccessible content due to complex
-                terminology and acronyms, technology failures leaving users unable to prove their status, and users
-                without identity documents facing barriers to account setup.
-                <br />
-                <br />
-                Additionally, the service needed to respond rapidly to policy shifts, such as certain physical documents
-                expiring in 2024, while ensuring compliance with accessibility standards.
+                traditional physical documents that were expiring at the end of 2024.
                 <br />
                 <br />
                 Workstream 2: Biometric self-enrolment trials
@@ -787,7 +778,7 @@ export default function ContactlessTravelCaseStudyPage() {
 
             <AnimateOnScroll animation="fade-up" delay={300}>
               <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">
-                Through dedicated efforts on both digital identity management and biometric enrolment trials, we have significantly advanced migration service design.This work highlights the balance between security, usability, and accessibility, setting new benchmarks in digital public service transformation.
+                Through dedicated efforts on both digital identity management and biometric enrolment trials, we have significantly advanced migration service design. This work highlights the balance between security, usability, and accessibility, setting new benchmarks in digital public service transformation.
               </p>
             </AnimateOnScroll>
 
