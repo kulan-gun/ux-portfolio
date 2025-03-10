@@ -213,7 +213,7 @@ export default function ContactlessTravelCaseStudyPage() {
             {/* Hero image */}
             <div className="mb-12 sm:mb-16">
               <img
-                src="/placeholder.svg?height=200&width=1200"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/trials2-min-152wrS8iv0dqCjFwiwsHTR5R7Mhdk7.jpeg"
                 alt="Project hero image showing the contactless travel interface"
                 className="w-full rounded-lg"
               />
@@ -751,16 +751,25 @@ export default function ContactlessTravelCaseStudyPage() {
               </div>
             </AnimateOnScroll>
 
-            <AnimateOnScroll animation="fade-in" delay={600}>
-              <div className="mt-8">
-                <img
-                  src="/placeholder.svg?height=150&width=800"
-                  alt="Results graph illustrating the positive impact of the contactless travel system"
-                  className="w-full rounded-lg"
-                />
-              </div>
-            </AnimateOnScroll>
+
+            <div className="mt-8 rounded-3xl bg-zinc-900/50 p-8 backdrop-blur-sm">
+                  <div className="flex flex-col space-y-4">
+                    <blockquote className="relative">
+                      <div className="absolute -top-4 -left-4 text-4xl text-gray-600" aria-hidden="true">
+                        "
+                      </div>
+                      <p className="text-xl italic text-gray-300 pl-6 pr-6">This will make things so much easier. I won't have to travel for 2 hours to an application centre to enrol my fingerprints anymore. I can just do it at home.</p>
+                      <footer className="mt-4 text-sm text-gray-400 pl-6">— Participant in the biometric trials</footer>
+                      <div className="absolute -bottom-4 -right-4 text-4xl text-gray-600" aria-hidden="true">
+                        "
+                      </div>
+                    </blockquote>
+                  </div>
+                </div>
+
           </section>
+
+          
 
           {/* Conclusion Section */}
           <section id="conclusion" className="min-h-screen py-8 sm:py-12" aria-labelledby="conclusion-heading">
@@ -881,6 +890,7 @@ export default function ContactlessTravelCaseStudyPage() {
                 />
               </div>
             </AnimateOnScroll>
+
           </section>
         </div>
       </main>

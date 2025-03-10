@@ -213,7 +213,7 @@ export default function BenefitsCaseStudyPage() {
             {/* Hero image */}
             <div className="mb-12 sm:mb-16">
               <img
-                src="/placeholder.svg?height=200&width=1200"
+                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/dwp-work1-YBcOjNYGrLjyFctNlf12YOF2Jeftgh.png"
                 alt="Project hero image showing the benefits application interface"
                 className="w-full rounded-lg"
               />
@@ -679,7 +679,7 @@ export default function BenefitsCaseStudyPage() {
               </div>
             </AnimateOnScroll>
 
-            <AnimateOnScroll animation="fade-up" delay={800}>
+            <AnimateOnScroll animation="fade-up" delay={500}>
               <div className="mt-12 mb-12">
                 <h3 className="text-xl font-medium text-white mb-6">Research Findings - Round 2</h3>
                 <SummaryCard
@@ -865,8 +865,7 @@ export default function BenefitsCaseStudyPage() {
                     <p className="text-gray-400 leading-relaxed">
                       In live projects, using quantitative data for Reach, Impact, Confidence, and Effort (RICE) scoring
                       helps prioritise design changes effectively, focusing on areas with the greatest impact. A/B
-                      testing confirms these changes, showing clear evidence of how design improvements benefit the
-                      service.
+                      testing can validate how our design changes are benefiting the service.
                     </p>
                   </div>
                 </div>
@@ -902,8 +901,7 @@ export default function BenefitsCaseStudyPage() {
                     </div>
                     <h3 className="text-xl font-normal text-white">Digital inclusion</h3>
                     <p className="text-gray-400 leading-relaxed">
-                      Users were advised to take a screenshot but one user thought a 'screenshot' meant photographing
-                      their screen with a smartphone. This revealed a bias in assuming all users understand technical
+                      Users were told to take a screenshot of their fit note, but one user this meant taking a photo of a screen. This revealed a bias in assuming all users understand technical
                       terms, highlighting the need for simpler language to support those with lower digital literacy.
                     </p>
                   </div>
@@ -948,6 +946,7 @@ export default function BenefitsCaseStudyPage() {
                 </div>
               </div>
             </AnimateOnScroll>
+            
           </section>
         </div>
         <BackToTopButton />

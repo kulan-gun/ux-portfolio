@@ -11,6 +11,7 @@ import TopNavigation from "@/components/top-navigation"
 import BackToTopButton from "@/components/back-to-top-button"
 import SummaryCard from "@/components/summary-card"
 import QuoteCard from "@/components/quote-card"
+import UXLessonsCard from "@/components/ux-lessons-card"
 
 // Define the sections for this case study
 const sections = [
@@ -640,14 +641,22 @@ export default function CRMCaseStudyPage() {
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={600}>
-              <div className="mt-12 mb-12">
-                <QuoteCard
-                  quote="You delivered on the brief, and my team and I are really impressed with the prototypes, along with your considerations for the build now and in the future."
-                  author="Client Lead"
-                  organization="Anglian Water"
-                />
-              </div>
-            </AnimateOnScroll>
+            <div className="mt-8 rounded-3xl bg-zinc-900/50 p-8 backdrop-blur-sm">
+                  <div className="flex flex-col space-y-4">
+                    <blockquote className="relative">
+                      <div className="absolute -top-4 -left-4 text-4xl text-gray-600" aria-hidden="true">
+                        "
+                      </div>
+                      <p className="text-xl italic text-gray-300 pl-6 pr-6">You delivered on the brief, and my team and I are really impressed with the prototypes, along with your considerations for the build now and in the future.</p>
+                      <footer className="mt-4 text-sm text-gray-400 pl-6">— Anglian Water Client</footer>
+                      <div className="absolute -bottom-4 -right-4 text-4xl text-gray-600" aria-hidden="true">
+                        "
+                      </div>
+                    </blockquote>
+                  </div>
+                </div>
+                </AnimateOnScroll>
+
           </section>
 
           {/* Conclusion Section */}
@@ -690,6 +699,107 @@ export default function CRMCaseStudyPage() {
                 />
               </div>
             </AnimateOnScroll>
+
+              {/* UX Lessons Learned Section */}
+                        <AnimateOnScroll animation="fade-up" delay={400}>
+                          <div className="mt-12 mb-12 grid gap-6">
+                            <UXLessonsCard
+                              icon={
+                                <svg
+                                  className="w-6 h-6 text-gray-400"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  aria-hidden="true"
+                                >
+                                  <path
+                                    d="M12 22C17.5228 22 22 17.5228 22 12C22 6.47715 17.5228 2 12 2C6.47715 2 2 6.47715 2 12C2 17.5228 6.47715 22 12 22Z"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                  />
+                                  <path
+                                    d="M12 16V12"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                  />
+                                  <path
+                                    d="M12 8H12.01"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                  />
+                                </svg>
+                              }
+                              title="Co-design is key"
+                              description="Collaborative design involving end-users throughout the  process leads to more effective solutions. Working with developers early in the process ensures technical feasibility."
+                            />
+                            <UXLessonsCard
+                              icon={
+                                <svg
+                                  className="w-6 h-6 text-gray-400"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  aria-hidden="true"
+                                >
+                                  <path
+                                    d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                  />
+                                  <path
+                                    d="M19.4 15C19.1277 15.8031 19.2583 16.6718 19.7601 17.37C20.2619 18.0281 21.0755 18.4186 21.9 18.42C21.9726 18.42 22.0451 18.42 22.1177 18.42C22.1177 18.42 22.2 18.42 22.2 18.42C22.2 17.5955 21.8095 16.7819 21.1514 16.2801C20.4932 15.7783 19.6245 15.6477 18.8214 15.92"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                  />
+                                  <path
+                                    d="M2 12C2 14.6522 3.05357 17.1957 4.92893 19.0711C6.8043 20.9464 9.34784 22 12 22C14.6522 22 17.1957 20.9464 19.0711 19.0711C20.9464 17.1957 22 14.6522 22 12C22 9.34784 20.9464 6.8043 19.0711 4.92893C17.1957 3.05357 14.6522 2 12 2C9.34784 2 6.8043 3.05357 4.92893 4.92893C3.05357 6.8043 2 9.34784 2 12Z"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                  />
+                                </svg>
+                              }
+                              title="Design systems prove their return on investment"
+                              description="Leveraging existing design systems accelerates development and ensures consistency. In this case, using Experian's design system helped us focus more on addressing user pain points and goals, without having to worry about design inconsistencies."
+                            />
+                            <UXLessonsCard
+                              icon={
+                                <svg
+                                  className="w-6 h-6 text-gray-400"
+                                  viewBox="0 0 24 24"
+                                  fill="none"
+                                  xmlns="http://www.w3.org/2000/svg"
+                                  aria-hidden="true"
+                                >
+                                  <path
+                                    d="M9 11L12 14L22 4"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                  />
+                                  <path
+                                    d="M21 12V19C21 19.5304 20.7893 20.0391 20.4142 20.4142C20.0391 20.7893 19.5304 21 19 21H5C4.46957 21 3.96086 20.7893 3.58579 20.4142C3.21071 20.0391 3 19.5304 3 19V5C3 4.46957 3.21071 3.96086 3.58579 3.58579C3.96086 3.21071 4.46957 3 5 3H16"
+                                    stroke="currentColor"
+                                    strokeWidth="2"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                  />
+                                </svg>
+                              }
+                              title="Figma was excellent for collaboration"
+                              description="Figma's real-time collaboration, automatic design history, and robust version control streamlined team alignment throughout the project. Its intuitive commenting feature facilitated clear, contextual feedback. This helped us get the job done."
+                            />
+                          </div>
+                        </AnimateOnScroll>
+
           </section>
         </div>
         <BackToTopButton />
