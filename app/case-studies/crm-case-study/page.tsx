@@ -678,18 +678,6 @@ export default function CRMCaseStudyPage() {
               </p>
             </AnimateOnScroll>
 
-            <AnimateOnScroll animation="fade-up" delay={300}>
-              <div className="mb-8 max-w-3xl">
-                <h3 className="text-xl font-medium text-white mb-4">Key takeaways:</h3>
-                <ul className="space-y-2 text-sm sm:text-base md:text-lg text-gray-400 list-disc pl-5">
-                  <li>Involving end-users throughout the design process leads to more effective solutions</li>
-                  <li>Collaboration with developers early in the process ensures technical feasibility</li>
-                  <li>Leveraging existing design systems accelerates development and ensures consistency</li>
-                  <li>Focusing on core user workflows yields the highest impact improvements</li>
-                </ul>
-              </div>
-            </AnimateOnScroll>
-
             <AnimateOnScroll animation="fade-in" delay={600}>
               <div className="mt-8">
                 <img
