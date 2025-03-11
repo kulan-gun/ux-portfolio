@@ -697,7 +697,6 @@ export default function BenefitsCaseStudyPage() {
                       items: [
                         "Collaborating with the Content Designer, we created relatable copy describing the data matrix as a 'black and white square'",
                         "This resonated well in subsequent testing rounds, as the fit note contains only one square",
-                        `I co-authored a Medium article going into more detail about tackling this example of bias in design: https://medium.com/...`
                       ],                      
                     },
                   ]}

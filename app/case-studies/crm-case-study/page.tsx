@@ -546,12 +546,33 @@ export default function CRMCaseStudyPage() {
             <AnimateOnScroll animation="fade-in" delay={600}>
               <div className="mt-8">
                 <img
-                  src="/placeholder.svg?height=150&width=800"
-                  alt="Design process workflow showing research, ideation, prototyping, and testing phases"
+                  src="/anglian/current-state.png"
+                  alt="Early stage screens that we inherited from the client"
                   className="w-full rounded-lg"
                 />
               </div>
             </AnimateOnScroll>
+
+            <AnimateOnScroll animation="fade-in" delay={600}>
+              <div className="mt-8">
+                <img
+                  src="/anglian/future-state.png"
+                  alt="Our initial redesigns of the as-is interface"
+                  className="w-full rounded-lg"
+                />
+              </div>
+            </AnimateOnScroll>
+
+            <AnimateOnScroll animation="fade-in" delay={600}>
+              <div className="mt-8">
+                <img
+                  src="/anglian/iterations.png"
+                  alt="Our initial redesigns of the as-is interface"
+                  className="w-full rounded-lg"
+                />
+              </div>
+            </AnimateOnScroll>
+
           </section>
 
           {/* Solution Section */}
@@ -578,7 +599,7 @@ export default function CRMCaseStudyPage() {
                 <h3 className="text-xl font-medium text-white mb-4">Key features include:</h3>
                 <ul className="space-y-2 text-sm sm:text-base md:text-lg text-gray-400 list-disc pl-5">
                   <li>Streamlined navigation with fewer clicks to complete common tasks</li>
-                  <li>Improved data visualization for better decision-making</li>
+                  <li>Improved data visualisation for better decision-making</li>
                   <li>Consistent UI components following Experian's design system</li>
                   <li>Responsive design for use across different devices</li>
                 </ul>
@@ -588,7 +609,7 @@ export default function CRMCaseStudyPage() {
             <AnimateOnScroll animation="fade-in" delay={600}>
               <div className="mt-8">
                 <img
-                  src="/placeholder.svg?height=150&width=800"
+                  src="/anglian/tallyman-proto.png"
                   alt="Solution design mockup showing the redesigned CRM interface"
                   className="w-full rounded-lg"
                 />
@@ -681,7 +702,7 @@ export default function CRMCaseStudyPage() {
             <AnimateOnScroll animation="fade-in" delay={600}>
               <div className="mt-8">
                 <img
-                  src="/placeholder.svg?height=150&width=800"
+                  src="/anglian/dashboard_alerts.jpg"
                   alt="Project conclusion summary showing key learnings and future opportunities"
                   className="w-full rounded-lg"
                 />
