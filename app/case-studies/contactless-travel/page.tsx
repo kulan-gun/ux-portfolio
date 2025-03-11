@@ -440,15 +440,7 @@ export default function ContactlessTravelCaseStudyPage() {
               </div>
             </AnimateOnScroll>
 
-            <AnimateOnScroll animation="fade-in" delay={600}>
-              <div className="mt-8">
-                <img
-                  src="/placeholder.svg?height=150&width=800"
-                  alt="Problem definition diagram illustrating the challenges in traditional ticketing systems"
-                  className="w-full rounded-lg"
-                />
-              </div>
-            </AnimateOnScroll>
+
           </section>
 
           {/* Process Section - Workstream 1 */}
@@ -528,7 +520,7 @@ export default function ContactlessTravelCaseStudyPage() {
             <AnimateOnScroll animation="fade-in" delay={600}>
               <div className="mt-8">
                 <img
-                  src="/placeholder.svg?height=150&width=800"
+                  src="/contactless/process1.png"
                   alt="Process diagram showing the design approach for the digital immigration status service"
                   className="w-full rounded-lg"
                 />
@@ -614,7 +606,7 @@ export default function ContactlessTravelCaseStudyPage() {
             <AnimateOnScroll animation="fade-in" delay={600}>
               <div className="mt-8">
                 <img
-                  src="/placeholder.svg?height=150&width=800"
+                  src="/contactless/process2.png"
                   alt="Process diagram showing the design approach for the biometric self-enrolment trials"
                   className="w-full rounded-lg"
                 />
@@ -694,8 +686,8 @@ export default function ContactlessTravelCaseStudyPage() {
             <AnimateOnScroll animation="fade-in" delay={600}>
               <div className="mt-8">
                 <img
-                  src="/placeholder.svg?height=150&width=800"
-                  alt="Solution architecture diagram illustrating the key components of the contactless travel system"
+                  src="/contactless/app.gif"
+                  alt="User journey diagram illustrating the key components of the contactless travel system"
                   className="w-full rounded-lg"
                 />
               </div>
@@ -758,7 +750,7 @@ export default function ContactlessTravelCaseStudyPage() {
                       <div className="absolute -top-4 -left-4 text-4xl text-gray-600" aria-hidden="true">
                         "
                       </div>
-                      <p className="text-xl italic text-gray-300 pl-6 pr-6">This will make things so much easier. I won't have to travel for 2 hours to an application centre to enrol my fingerprints anymore. I can just do it at home.</p>
+                      <p className="text-xl italic text-gray-300 pl-6 pr-6">This will make things so much easier. I won't have to travel for 2 hours to do this - I can just do it at home.</p>
                       <footer className="mt-4 text-sm text-gray-400 pl-6">— Participant in the biometric trials</footer>
                       <div className="absolute -bottom-4 -right-4 text-4xl text-gray-600" aria-hidden="true">
                         "

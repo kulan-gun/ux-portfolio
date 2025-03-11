@@ -156,15 +156,13 @@ export default function BenefitsCaseStudyPage() {
                     aria-current={activeSection === section.id ? "location" : undefined}
                   >
                     <div
-                      className={`w-1 h-6 mr-4 rounded transition-colors duration-300 ${
-                        activeSection === section.id ? "bg-white" : "bg-transparent group-hover:bg-white/50"
-                      }`}
+                      className={`w-1 h-6 mr-4 rounded transition-colors duration-300 ${activeSection === section.id ? "bg-white" : "bg-transparent group-hover:bg-white/50"
+                        }`}
                       aria-hidden="true"
                     />
                     <span
-                      className={`text-sm font-light transition-colors duration-300 ${
-                        activeSection === section.id ? "text-white" : "text-gray-400 group-hover:text-gray-300"
-                      }`}
+                      className={`text-sm font-light transition-colors duration-300 ${activeSection === section.id ? "text-white" : "text-gray-400 group-hover:text-gray-300"
+                        }`}
                     >
                       {section.title}
                     </span>
@@ -330,6 +328,17 @@ export default function BenefitsCaseStudyPage() {
                 </div>
               </div>
             </AnimateOnScroll>
+
+            <AnimateOnScroll animation="fade-in" delay={600}>
+              <div className="mt-8">
+                <img
+                  src="/syfn/flowchart_syfn.png"
+                  alt="Problem definition diagram illustrating the challenges in the benefits application process"
+                  className="w-full rounded-lg"
+                />
+              </div>
+            </AnimateOnScroll>
+
           </section>
 
           {/* Problem Section */}
@@ -538,15 +547,6 @@ export default function BenefitsCaseStudyPage() {
               </div>
             </AnimateOnScroll>
 
-            <AnimateOnScroll animation="fade-in" delay={600}>
-              <div className="mt-8">
-                <img
-                  src="/placeholder.svg?height=150&width=800"
-                  alt="Problem definition diagram illustrating the challenges in the benefits application process"
-                  className="w-full rounded-lg"
-                />
-              </div>
-            </AnimateOnScroll>
           </section>
 
           {/* Process Section */}
@@ -672,13 +672,13 @@ export default function BenefitsCaseStudyPage() {
               <div className="mt-8">
                 <h3 className="text-xl font-medium text-white mb-6">Iterations</h3>
                 <img
-                  src="/placeholder.svg?height=150&width=800"
+                  src="/syfn/iterations1.png"
                   alt="Design process workflow showing research, ideation, prototyping, and testing phases"
                   className="w-full rounded-lg"
                 />
               </div>
             </AnimateOnScroll>
-
+         
             <AnimateOnScroll animation="fade-up" delay={500}>
               <div className="mt-12 mb-12">
                 <h3 className="text-xl font-medium text-white mb-6">Research Findings - Round 2</h3>
@@ -697,7 +697,7 @@ export default function BenefitsCaseStudyPage() {
                       items: [
                         "Collaborating with the Content Designer, we created relatable copy describing the data matrix as a 'black and white square'",
                         "This resonated well in subsequent testing rounds, as the fit note contains only one square",
-                      ],                      
+                      ],
                     },
                   ]}
                 />
@@ -716,6 +716,27 @@ export default function BenefitsCaseStudyPage() {
                     </blockquote>
                   </div>
                 </div>
+
+                <AnimateOnScroll animation="fade-in" delay={600}>
+              <div className="mt-8">
+              <h3 className="text-xl font-medium text-white mb-6">Iterations</h3>
+                <img
+                  src="/syfn/iterations2.png"
+                  alt="Design process workflow showing research, ideation, prototyping, and testing phases"
+                  className="w-full rounded-lg"
+                />
+              </div>
+            </AnimateOnScroll>
+            <AnimateOnScroll animation="fade-in" delay={600}>
+              <div className="mt-8">
+                <img
+                  src="/syfn/iterations3.png"
+                  alt="Design process workflow showing research, ideation, prototyping, and testing phases"
+                  className="w-full rounded-lg"
+                />
+              </div>
+            </AnimateOnScroll>
+
               </div>
             </AnimateOnScroll>
 
@@ -750,7 +771,7 @@ export default function BenefitsCaseStudyPage() {
             <AnimateOnScroll animation="fade-in" delay={600}>
               <div className="mt-8">
                 <img
-                  src="/placeholder.svg?height=150&width=800"
+                  src="/syfn/solution_syfn.png"
                   alt="Solution design mockup showing the redesigned benefits application interface"
                   className="w-full rounded-lg"
                 />
@@ -799,8 +820,8 @@ export default function BenefitsCaseStudyPage() {
             <AnimateOnScroll animation="fade-in" delay={600}>
               <div className="mt-8">
                 <img
-                  src="/placeholder.svg?height=150&width=800"
-                  alt="Results dashboard showing key performance metrics and improvements"
+                  src="/syfn/happy.png"
+                  alt="Cartoon image showing a happy user after successfully submitting their fit note"
                   className="w-full rounded-lg"
                 />
               </div>
@@ -945,7 +966,7 @@ export default function BenefitsCaseStudyPage() {
                 </div>
               </div>
             </AnimateOnScroll>
-            
+
           </section>
         </div>
         <BackToTopButton />
