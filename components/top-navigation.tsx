@@ -75,14 +75,7 @@ export default function TopNavigation({ onMobileMenuToggle }: TopNavigationProps
           </a>
         </nav>
 
-        {/* Example button to toggle menu */}
-        <button
-          className="md:hidden text-white"
-          onClick={() => onMobileMenuToggle?.(!isMobile)}
-          aria-label="Toggle mobile menu"
-        >
-          ☰
-        </button>
+      
       </div>
     </header>
   );
