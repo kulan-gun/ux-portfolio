@@ -688,7 +688,7 @@ export default function BenefitsCaseStudyPage() {
                       title: "New insights",
                       items: [
                         "Some fit notes have data matrices or 'QR codes' on them",
-                        "These need to be prominently displayed in the photo, so the service can automatically read the fit note's contents",
+                        "These need to be clearly visible in the photo, so the service can automatically extract the fit note's data",
                         "User research sessions revealed that 'data matrix' was a confusing term for users, as was 'QR code', especially for those with lower digital literacy",
                       ],
                     },

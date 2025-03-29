@@ -334,16 +334,14 @@ export default function ContactlessTravelCaseStudyPage() {
                 Workstream 1: Digital immigration status service
                 <br />
                 <br />
-                For one workstream, users needed a seamless way to prove their immigration status digitally, replacing
-                traditional physical documents that were expiring at the end of 2024.
+                For the first workstream, users needed a way to prove their immigration status online, as
+                certain physical identity documents expired at the end of 2024.
                 <br />
                 <br />
                 Workstream 2: Biometric self-enrolment trials
                 <br />
                 <br />
-                For the second workstream, the challenges were addressing user trust and security concerns related to
-                biometric data collection and storage, and integrating secure biometric authentication processes within
-                wider account creation and management user journeys.
+                The second workstream focused on building user trust around biometric data and securely enrolling fingerprints into a government database.
               </p>
             </AnimateOnScroll>
 
@@ -680,7 +678,7 @@ export default function ContactlessTravelCaseStudyPage() {
                     </div>
                   </div>
                 </div>
-                </div>
+              </div>
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-in" delay={600}>
@@ -745,23 +743,23 @@ export default function ContactlessTravelCaseStudyPage() {
 
 
             <div className="mt-8 rounded-3xl bg-zinc-900/50 p-8 backdrop-blur-sm">
-                  <div className="flex flex-col space-y-4">
-                    <blockquote className="relative">
-                      <div className="absolute -top-4 -left-4 text-4xl text-gray-600" aria-hidden="true">
-                        "
-                      </div>
-                      <p className="text-xl italic text-gray-300 pl-6 pr-6">This will make things so much easier. I won't have to travel for 2 hours to do this - I can just do it at home.</p>
-                      <footer className="mt-4 text-sm text-gray-400 pl-6">— Participant in the biometric trials</footer>
-                      <div className="absolute -bottom-4 -right-4 text-4xl text-gray-600" aria-hidden="true">
-                        "
-                      </div>
-                    </blockquote>
+              <div className="flex flex-col space-y-4">
+                <blockquote className="relative">
+                  <div className="absolute -top-4 -left-4 text-4xl text-gray-600" aria-hidden="true">
+                    "
                   </div>
-                </div>
+                  <p className="text-xl italic text-gray-300 pl-6 pr-6">This will make things so much easier. I won't have to travel for 2 hours to do this - I can just do it at home.</p>
+                  <footer className="mt-4 text-sm text-gray-400 pl-6">— Participant in the biometric trials</footer>
+                  <div className="absolute -bottom-4 -right-4 text-4xl text-gray-600" aria-hidden="true">
+                    "
+                  </div>
+                </blockquote>
+              </div>
+            </div>
 
           </section>
 
-          
+
 
           {/* Conclusion Section */}
           <section id="conclusion" className="min-h-screen py-8 sm:py-12" aria-labelledby="conclusion-heading">
@@ -769,18 +767,6 @@ export default function ContactlessTravelCaseStudyPage() {
               <h2 id="conclusion-heading" className="mb-6 sm:mb-8 text-2xl sm:text-3xl md:text-4xl font-display">
                 Conclusion
               </h2>
-            </AnimateOnScroll>
-
-            <AnimateOnScroll animation="fade-up" delay={200}>
-              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">
-                By adopting a user-centred, omni-channel design approach, we successfully improved the digital immigration status service, ensuring it works for all users, regardless of digital ability or device access. My hybrid Figma and GOV.UK prototyping method allowed rapid iteration, enabling the team to respond swiftly to policy shifts and real-world challenges.
-              </p>
-            </AnimateOnScroll>
-
-            <AnimateOnScroll animation="fade-up" delay={300}>
-              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">
-                Through dedicated efforts on both digital identity management and biometric enrolment trials, we have significantly advanced migration service design. This work highlights the balance between security, usability, and accessibility, setting new benchmarks in digital public service transformation.
-              </p>
             </AnimateOnScroll>
 
             {/* UX Lessons Learned Section */}
@@ -818,9 +804,11 @@ export default function ContactlessTravelCaseStudyPage() {
                       />
                     </svg>
                   }
-                  title="Inclusive design is essential"
-                  description="Designing for the extremes of user ability benefits everyone. By focusing on accessibility for users with disabilities, we created a more intuitive system that all travelers found easier to use, regardless of their technical proficiency or physical capabilities."
+                  title="Balance technology with human needs"
+                  description="While implementing cutting-edge technology was important, we learned that the most successful aspects of the solution were those that addressed fundamental human needs. 
+                  Features that reduced anxiety, saved time, and provided clear information were more valued than technically impressive but less practical capabilities."
                 />
+
                 <UXLessonsCard
                   icon={
                     <svg
@@ -849,9 +837,12 @@ export default function ContactlessTravelCaseStudyPage() {
                       />
                     </svg>
                   }
-                  title="Balance technology with human needs"
-                  description="While implementing cutting-edge technology was important, we learned that the most successful aspects of the solution were those that addressed fundamental human needs. Features that reduced anxiety, saved time, and provided clear information were more valued than technically impressive but less practical capabilities."
+                  title="Inclusive design is essential"
+                  description="Designing for the extremes of user ability benefits everyone. By focusing on accessibility for users with disabilities, we created a more intuitive system that all travelers found easier to use, regardless of their digital literacy or physical capabilities. 
+                  By adopting an omni-channel design approach, we ensured the service works for users regardless of device access."
                 />
+
+     
                 <UXLessonsCard
                   icon={
                     <svg
@@ -878,7 +869,8 @@ export default function ContactlessTravelCaseStudyPage() {
                     </svg>
                   }
                   title="In-person testing offers special insights"
-                  description="Our most valuable insights came from continuous testing with real users in physical environments. By observing how people interacted with the system in person, we identified and resolved human factors issues that would not have been apparent in remote user testing."
+                  description="Our most valuable insights came from in-person testing, where observing real users with fingerprint scanning apps revealed human factors issues missed in remote testing.
+                  For example, we learned that 'thumb' is not a word recognised by people in some countries - it may be called 'big finger'. Additionally, we learned suppliers should design flows that let users without some of their fingers skip certain steps."
                 />
               </div>
             </AnimateOnScroll>

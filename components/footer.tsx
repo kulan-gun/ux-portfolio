@@ -21,14 +21,14 @@ export default function Footer() {
                   Work
                 </Link>
               </li>
-              <li>
+              {/* <li>
                 <Link
                   href="/info"
                   className="text-sm text-gray-300 hover:text-white transition-colors focus:outline-none focus:underline"
                 >
                   Info
                 </Link>
-              </li>
+              </li> */}
             </ul>
           </div>
 

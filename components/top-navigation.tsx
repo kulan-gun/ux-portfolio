@@ -46,6 +46,7 @@ export default function TopNavigation({ onMobileMenuToggle }: TopNavigationProps
           <Link href="/" className="text-sm font-normal hover:text-gray-300 focus:outline-none focus:underline">
             Work
           </Link>
+
           <a
             href="https://www.credly.com/users/kulan-gunawardena"
             target="_blank"
@@ -54,7 +55,20 @@ export default function TopNavigation({ onMobileMenuToggle }: TopNavigationProps
             aria-label="Credentials (opens in new tab)"
           >
             Credentials
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              className="ml-1 transition-transform duration-300 group-hover:translate-x-[2px] group-hover:-translate-y-[2px]"
+              aria-hidden="true"
+            >
+              <path d="M7 17L17 7M17 7H7M17 7V17" />
+            </svg>
           </a>
+
           <a
             href="https://www.linkedin.com/in/kulan-gun/"
             target="_blank"
@@ -63,7 +77,20 @@ export default function TopNavigation({ onMobileMenuToggle }: TopNavigationProps
             aria-label="LinkedIn (opens in new tab)"
           >
             LinkedIn
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              className="ml-1 transition-transform duration-300 group-hover:translate-x-[2px] group-hover:-translate-y-[2px]"
+              aria-hidden="true"
+            >
+              <path d="M7 17L17 7M17 7H7M17 7V17" />
+            </svg>
           </a>
+
           <a
             href="https://read.cv/kulan.gun"
             target="_blank"
@@ -72,10 +99,23 @@ export default function TopNavigation({ onMobileMenuToggle }: TopNavigationProps
             aria-label="CV (opens in new tab)"
           >
             CV
+            <svg
+              width="12"
+              height="12"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+              className="ml-1 transition-transform duration-300 group-hover:translate-x-[2px] group-hover:-translate-y-[2px]"
+              aria-hidden="true"
+            >
+              <path d="M7 17L17 7M17 7H7M17 7V17" />
+            </svg>
           </a>
         </nav>
 
-      
+
+
       </div>
     </header>
   );
