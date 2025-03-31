@@ -10,6 +10,7 @@ import Footer from "@/components/footer"
 import TopNavigation from "@/components/top-navigation"
 import BackToTopButton from "@/components/back-to-top-button"
 import SummaryCard from "@/components/summary-card"
+import FeedbackAnalysis from "@/components/feedback-analysis"
 
 // Define the sections for this case study
 const sections = [
@@ -226,7 +227,7 @@ export default function BenefitsCaseStudyPage() {
               </h2>
             </AnimateOnScroll>
 
-            <AnimateOnScroll animation="fade-up" delay={200}>
+            <AnimateOnScroll animation="fade-up" delay={400}>
               <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">
                 This case study highlights my work on a UK government benefits service, enabling 500,000 - 700,000
                 citizens each year to submit fit notes and access financial support.
@@ -254,13 +255,13 @@ export default function BenefitsCaseStudyPage() {
               </div>
             </AnimateOnScroll>
 
-            <AnimateOnScroll animation="fade-up" delay={600}>
+            <AnimateOnScroll animation="fade-up" delay={400}>
               <div className="mt-12 mb-12">
                 <div className="rounded-3xl bg-zinc-900/50 p-8 md:p-12 backdrop-blur-sm">
                   <div className="space-y-12">
                     <div className="flex items-start gap-8 md:gap-16">
                       <div className="w-32 md:w-40">
-                        <h3 className="text-xl md:text-2xl font-normal text-white">Key Facts</h3>
+                        <h3 className="text-2xl font-normal text-white mb-6">Key Facts</h3>
                       </div>
                       <div className="flex-1">
                         <div className="h-0.5 w-12 bg-white mb-6 opacity-70"></div>
@@ -277,16 +278,12 @@ export default function BenefitsCaseStudyPage() {
                             <span className="text-white">•</span>
                             <span>My role: Lead UX Designer</span>
                           </li>
-                          <li className="flex gap-3">
-                            <span className="text-white">•</span>
-                            <span>Primary focus: Improving user experience</span>
-                          </li>
                         </ul>
                       </div>
                     </div>
                     <div className="flex items-start gap-8 md:gap-16">
                       <div className="w-32 md:w-40">
-                        <h3 className="text-xl md:text-2xl font-normal text-white">Challenges</h3>
+                        <h3 className="text-2xl font-normal text-white mb-6">Challenges</h3>
                       </div>
                       <div className="flex-1">
                         <div className="h-0.5 w-12 bg-white mb-6 opacity-70"></div>
@@ -304,22 +301,22 @@ export default function BenefitsCaseStudyPage() {
                     </div>
                     <div className="flex items-start gap-8 md:gap-16">
                       <div className="w-32 md:w-40">
-                        <h3 className="text-xl md:text-2xl font-normal text-white">Approach</h3>
+                        <h3 className="text-2xl font-normal text-white mb-6">Approach</h3>
                       </div>
                       <div className="flex-1">
                         <div className="h-0.5 w-12 bg-white mb-6 opacity-70"></div>
                         <ul className="space-y-4 text-gray-300">
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
-                            <span>Design thinking and systems thinking</span>
+                            <span>Applied design and systems thinking to map upstream issues to downstream impacts.</span>
                           </li>
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
-                            <span>Iterative testing and refinement</span>
+                            <span>Iterated on research and prototypes to reduce upload errors and drop-offs.</span>
                           </li>
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
-                            <span>Cross-functional collaboration</span>
+                            <span>Worked cross-functionally to align improvements across tech, policy, and ops.</span>
                           </li>
                         </ul>
                       </div>
@@ -329,10 +326,10 @@ export default function BenefitsCaseStudyPage() {
               </div>
             </AnimateOnScroll>
 
-            <AnimateOnScroll animation="fade-in" delay={600}>
+            <AnimateOnScroll animation="fade-in" delay={400}>
               <div className="mt-8">
                 <img
-                  src="/syfn/flowchart_syfn.png"
+                  src="/syfn/flowchart.png"
                   alt="Problem definition diagram illustrating the challenges in the benefits application process"
                   className="w-full rounded-lg"
                 />
@@ -349,15 +346,15 @@ export default function BenefitsCaseStudyPage() {
               </h2>
             </AnimateOnScroll>
 
-            <AnimateOnScroll animation="fade-up" delay={200}>
+            <AnimateOnScroll animation="fade-up" delay={400}>
               <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">
-                Citizens were facing significant delays and complications when applying for and receiving their
-                benefits. Through research, we identified that primary users are likely to submit their fit note several
+                Citizens need to submit fit notes as evidence for their benefit claim, but were facing big difficulties when doing this.
+                Through research, we found that primary users are likely to submit their fit note several
                 times due to a recurring health condition.
               </p>
             </AnimateOnScroll>
 
-            <AnimateOnScroll animation="fade-up" delay={300}>
+            <AnimateOnScroll animation="fade-up" delay={400}>
               <div className="mt-8 mb-12">
                 <div className="rounded-3xl bg-zinc-900/50 p-8 md:p-12 backdrop-blur-sm">
                   <div className="space-y-12">
@@ -370,22 +367,23 @@ export default function BenefitsCaseStudyPage() {
                         <ul className="space-y-4 text-gray-300">
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
-                            <span>Guidance is confusing and hard to interpret</span>
+                            <span>As a citizen, I find the guidance confusing and difficult to follow.</span>
                           </li>
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
-                            <span>Facing technical issues when uploading fit notes</span>
+                            <span>As a citizen, I encounter technical issues when trying to upload my fit note.</span>
                           </li>
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
-                            <span>Incompatible file format for file upload</span>
+                            <span>As a citizen, I cannot upload my fit note because the file format is not supported.</span>
                           </li>
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
-                            <span>High abandonment rate during submission</span>
+                            <span>As a citizen, I often give up because the upload process is frustrating or unclear.</span>
                           </li>
                         </ul>
                       </div>
+
                     </div>
                     <div className="flex items-start gap-8 md:gap-16">
                       <div className="w-32 md:w-40">
@@ -396,15 +394,20 @@ export default function BenefitsCaseStudyPage() {
                         <ul className="space-y-4 text-gray-300">
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
-                            <span>High support call volume</span>
+                            <span>As an agent, I deal with a high volume of support calls from struggling users.</span>
                           </li>
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
-                            <span>Manual processing overhead</span>
+                            <span>As an agent, I spend a lot of time manually reprocessing incorrectly uploaded fit notes.</span>
+                          </li>
+                          <li className="flex gap-3">
+                            <span className="text-white">•</span>
+                            <span>As an agent, I see delays to benefit processing when fit notes are rejected.</span>
                           </li>
                         </ul>
                       </div>
                     </div>
+
                     <div className="flex items-start gap-8 md:gap-16">
                       <div className="w-32 md:w-40">
                         <h3 className="text-xl md:text-2xl font-normal text-white">Opportunities</h3>
@@ -414,15 +417,15 @@ export default function BenefitsCaseStudyPage() {
                         <ul className="space-y-4 text-gray-300">
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
-                            <span>Streamline the submission process</span>
+                            <span>Explore ways to simplify the submission journey for users.</span>
                           </li>
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
-                            <span>Improve clarity of instructions</span>
+                            <span>Investigate how users interpret and act on existing guidance.</span>
                           </li>
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
-                            <span>Reduce call support needs through better design</span>
+                            <span>Understand user behaviours that lead to support calls.</span>
                           </li>
                         </ul>
                       </div>
@@ -557,14 +560,15 @@ export default function BenefitsCaseStudyPage() {
               </h2>
             </AnimateOnScroll>
 
-            <AnimateOnScroll animation="fade-up" delay={200}>
+            <AnimateOnScroll animation="fade-up" delay={400}>
               <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">
                 My primary tools were Figma and the GOV.UK prototyping kit, which uses HTML, CSS and JavaScript. Our
                 team's user-centred design approach was as follows:
               </p>
             </AnimateOnScroll>
 
-            <AnimateOnScroll animation="fade-up" delay={300}>
+            <AnimateOnScroll animation="fade-up" delay={400}>
+              <h3 className="text-2xl font-normal text-white">Activities</h3>
               <div className="mt-8 mb-12">
                 <div className="rounded-3xl bg-zinc-900/50 p-8 md:p-12 backdrop-blur-sm">
                   <div className="grid grid-cols-1 md:grid-cols-5 gap-12 md:gap-6">
@@ -575,13 +579,12 @@ export default function BenefitsCaseStudyPage() {
                       </div>
 
                       {/* Step Title */}
-                      <h3 className="text-lg md:text-xl font-normal text-white mb-4">User research</h3>
+                      <h4 className="text-xl font-normal text-white mb-4">User research</h4>
 
                       {/* Tasks List */}
                       <ul className="space-y-3 text-left w-full">
                         <li className="text-gray-400 text-sm md:text-base text-center">
-                          Conducted interviews, surveys, and usability testing with citizens and staff to uncover
-                          actionable insights.
+                          Reviewed feedback inbox and conducted user and staff interviews and usability testing to reveal insights.
                         </li>
                       </ul>
                     </div>
@@ -590,7 +593,7 @@ export default function BenefitsCaseStudyPage() {
                       <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
                         <span className="text-xl md:text-2xl font-medium text-white">2</span>
                       </div>
-                      <h3 className="text-lg md:text-xl font-normal text-white mb-4">Analysis and ideation</h3>
+                      <h4 className="text-lg md:text-xl font-normal text-white mb-4">Analysis and ideation</h4>
                       <ul className="space-y-3 text-left w-full">
                         <li className="text-gray-400 text-sm md:text-base text-center">
                           Assessed back-end performance and user flows, identified bottlenecks, and drew inspiration
@@ -603,7 +606,7 @@ export default function BenefitsCaseStudyPage() {
                       <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
                         <span className="text-xl md:text-2xl font-medium text-white">3</span>
                       </div>
-                      <h3 className="text-lg md:text-xl font-normal text-white mb-4">Prototyping and testing</h3>
+                      <h4 className="text-lg md:text-xl font-normal text-white mb-4">Prototyping and testing</h4>
                       <ul className="space-y-3 text-left w-full">
                         <li className="text-gray-400 text-sm md:text-base text-center">
                           Designed low- and high-fidelity prototypes, iteratively tested with users, and refined based
@@ -616,7 +619,7 @@ export default function BenefitsCaseStudyPage() {
                       <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
                         <span className="text-xl md:text-2xl font-medium text-white">4</span>
                       </div>
-                      <h3 className="text-lg md:text-xl font-normal text-white mb-4">Collaboration and alignment</h3>
+                      <h4 className="text-lg md:text-xl font-normal text-white mb-4">Collaboration and alignment</h4>
                       <ul className="space-y-3 text-left w-full">
                         <li className="text-gray-400 text-sm md:text-base text-center">
                           Worked with UX writers, researchers, developers, and policy teams to ensure feasibility and
@@ -629,7 +632,7 @@ export default function BenefitsCaseStudyPage() {
                       <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
                         <span className="text-xl md:text-2xl font-medium text-white">5</span>
                       </div>
-                      <h3 className="text-lg md:text-xl font-normal text-white mb-4">Implementation</h3>
+                      <h4 className="text-lg md:text-xl font-normal text-white mb-4">Implementation</h4>
                       <ul className="space-y-3 text-left w-full">
                         <li className="text-gray-400 text-sm md:text-base text-center">
                           Partnered with developers to roll out changes, preserving the design intent and improving the
@@ -642,101 +645,151 @@ export default function BenefitsCaseStudyPage() {
               </div>
             </AnimateOnScroll>
 
-            <AnimateOnScroll animation="fade-up" delay={800}>
+            <AnimateOnScroll animation="fade-up" delay={400}>
               <div className="mt-12 mb-12">
-                <h3 className="text-xl font-medium text-white mb-6">Research Findings - Round 1</h3>
-                <SummaryCard
-                  sections={[
-                    {
-                      title: "User insights",
-                      items: [
-                        "Users may have limited digital literacy",
-                        "Users are highly likely to have accessibility needs",
-                        "Users may rely on their phones to access the service if they do not own a computer",
-                      ],
-                    },
-                    {
-                      title: "Analytics",
-                      items: [
-                        "3 = average no. of attempts to upload a fit note",
-                        "37% = drop-off rate",
-                        "63% = monthly completion rate",
-                      ],
-                    },
-                  ]}
-                />
+                <FeedbackAnalysis />
               </div>
             </AnimateOnScroll>
 
-            <AnimateOnScroll animation="fade-in" delay={600}>
+            <AnimateOnScroll animation="fade-up" delay={400}>
+              <div className="mt-12 mb-12">
+                <h3 className="text-2xl font-normal text-white mb-6">Research Findings - Round 1</h3>
+                <ul className="space-y-2 text-sm sm:text-base md:text-lg text-gray-400 list-disc pl-5">
+                  <li>In addition to analysing the inbox, we conducted user interviews with citizens and agents.</li>
+                  <li>We used affinity mapping and synthesised our key findings.</li>
+                </ul>
+              </div>
+            </AnimateOnScroll>
+
+            <AnimateOnScroll animation="fade-in" delay={400}>
+              <SummaryCard
+                sections={[
+                  {
+                    title: "Feedback inbox insights",
+                    items: [
+                      "Negative themes include communication issues, upload difficulties, and missing fit notes.",
+                      "Issues around payments were out of our scope, so we escalated them to policy teams and agents.",
+                      "Payment-related complaints are common among low satisfaction scores (demoters).",
+                      "The most requested feature was the ability to upload multiple fit notes in one session.",
+                    ],
+                  },
+                  {
+                    title: "User interview insights",
+                    items: [
+                      "Users may have limited digital literacy",
+                      "Users are highly likely to have accessibility needs",
+                      "Users may rely on their phones to access the service if they do not own a computer",
+                    ],
+                  },
+                  {
+                    title: "Analytics",
+                    items: [
+                      "3 = average no. of attempts to upload a fit note",
+                      "37% = drop-off rate",
+                      "63% = monthly completion rate",
+                    ],
+                  },
+                ]}
+              />
+            </AnimateOnScroll>
+
+            <AnimateOnScroll animation="fade-in" delay={400}>
+              <h3 className="text-2xl font-normal text-white mb-6">Iterations</h3>
+              <ul className="space-y-2 text-sm sm:text-base md:text-lg text-gray-400 list-disc pl-5">
+                <li>I worked with the Content Designer to improve the guidance page copy.</li>
+                <li>I designed variants to help users understand how to take clearer, more acceptable photos.</li>
+              </ul>
               <div className="mt-8">
-                <h3 className="text-xl font-medium text-white mb-6">Iterations</h3>
                 <img
-                  src="/syfn/iterations1.png"
+                  src="/syfn/iterations.png"
+                  alt="Design process workflow showing research, ideation, prototyping, and testing phases"
+                  className="w-full rounded-lg"
+                />
+              </div>
+
+              <div className="mt-8">
+                <img
+                  src="/syfn/iterations-test.png"
                   alt="Design process workflow showing research, ideation, prototyping, and testing phases"
                   className="w-full rounded-lg"
                 />
               </div>
             </AnimateOnScroll>
-         
-            <AnimateOnScroll animation="fade-up" delay={500}>
+
+            <AnimateOnScroll animation="fade-up" delay={400}>
               <div className="mt-12 mb-12">
-                <h3 className="text-xl font-medium text-white mb-6">Research Findings - Round 2</h3>
-                <SummaryCard
-                  sections={[
-                    {
-                      title: "New insights",
-                      items: [
-                        "Some fit notes have data matrices or 'QR codes' on them",
-                        "These need to be clearly visible in the photo, so the service can automatically extract the fit note's data",
-                        "User research sessions revealed that 'data matrix' was a confusing term for users, as was 'QR code', especially for those with lower digital literacy",
-                      ],
-                    },
-                    {
-                      title: "Suggested improvement",
-                      items: [
-                        "Collaborating with the Content Designer, we created relatable copy describing the data matrix as a 'black and white square'",
-                        "This resonated well in subsequent testing rounds, as the fit note contains only one square",
-                      ],
-                    },
-                  ]}
-                />
+                <h3 className="text-2xl font-normal text-white mb-6">Research Findings - Round 2</h3>
+                <ul className="space-y-2 text-sm sm:text-base md:text-lg text-gray-400 list-disc pl-5">
+                  <li>I took my design to critiques and had them heuristically evaluated.</li>
+                  <li>The team conducted several rounds of usability tested to unveil new insights.</li>
+                </ul>
+              </div>
+            </AnimateOnScroll>
 
-                <div className="mt-8 rounded-3xl bg-zinc-900/50 p-8 backdrop-blur-sm">
-                  <div className="flex flex-col space-y-4">
-                    <blockquote className="relative">
-                      <div className="absolute -top-4 -left-4 text-4xl text-gray-600" aria-hidden="true">
-                        "
-                      </div>
-                      <p className="text-xl italic text-gray-300 pl-6 pr-6">My mum wouldn't know what a QR code is.</p>
-                      <footer className="mt-4 text-sm text-gray-400 pl-6">— User of the benefits service</footer>
-                      <div className="absolute -bottom-4 -right-4 text-4xl text-gray-600" aria-hidden="true">
-                        "
-                      </div>
-                    </blockquote>
-                  </div>
+            <AnimateOnScroll animation="fade-up" delay={400}>
+              <SummaryCard
+                sections={[
+                  {
+                    title: "New insights",
+                    items: [
+                      "Users responded best to the version with crosshairs around the fit note image.",
+                      "Some fit notes have data matrices or 'QR codes' on them. These must be clearly visible in the user's uploaded photo, so the service can automatically extract the fit note's data.",
+                      "User research sessions revealed that 'data matrix' was a confusing term for users, as was 'QR code', especially for those with lower digital literacy.",
+                    ],
+                  },
+                  {
+                    title: "Suggested improvements",
+                    items: [
+                      "Collaborating with the Content Designer, we created relatable copy describing the data matrix as a 'black and white square'.",
+                      "This content resonated well in the next rounds, as the fit note contains only one square.",
+                    ],
+                  },
+                ]}
+              />
+            </AnimateOnScroll>
+
+            <AnimateOnScroll animation="fade-up" delay={400}>
+              <div className="mt-8 rounded-3xl bg-zinc-900/50 p-8 backdrop-blur-sm">
+                <div className="flex flex-col space-y-4">
+                  <blockquote className="relative">
+                    <div className="absolute -top-4 -left-4 text-4xl text-gray-600" aria-hidden="true">
+                      "
+                    </div>
+                    <p className="text-xl italic text-gray-300 pl-6 pr-6">My mum wouldn't know what a QR code is.</p>
+                    <footer className="mt-4 text-sm text-gray-400 pl-6">— User of the benefits service</footer>
+                    <div className="absolute -bottom-4 -right-4 text-4xl text-gray-600" aria-hidden="true">
+                      "
+                    </div>
+                  </blockquote>
                 </div>
+              </div>
+            </AnimateOnScroll>
 
-                <AnimateOnScroll animation="fade-in" delay={600}>
+            <AnimateOnScroll animation="fade-in" delay={400}>
               <div className="mt-8">
-              <h3 className="text-xl font-medium text-white mb-6">Iterations</h3>
+                <h3 className="text-2xl font-normal text-white mb-6">Further Iterations</h3>
+                <ul className="space-y-2 text-sm sm:text-base md:text-lg text-gray-400 list-disc pl-5">
+                  <li>I also designed and prototyped new error messages and 'multiple fit note' upload flows.</li>
+                  <li>I explored ways to convey contextual error messages, and playback the user's uploaded fit note.</li>
+                  <li>Due to limited developer capacity, these were placed in the backlog.</li>
+                </ul>
+              </div>
+            </AnimateOnScroll>
+
+            <AnimateOnScroll animation="fade-in" delay={400}>
+              <div className="mt-8">
                 <img
                   src="/syfn/iterations2.png"
-                  alt="Design process workflow showing research, ideation, prototyping, and testing phases"
+                  alt="Further iterations - with a focus on the upload process"
                   className="w-full rounded-lg"
                 />
               </div>
-            </AnimateOnScroll>
-            <AnimateOnScroll animation="fade-in" delay={600}>
               <div className="mt-8">
                 <img
-                  src="/syfn/iterations3.png"
-                  alt="Design process workflow showing research, ideation, prototyping, and testing phases"
+                  src="/syfn/multiple-uploads.png"
+                  alt="Further iterations - with a focus on multiple file uploads"
                   className="w-full rounded-lg"
                 />
-              </div>
-            </AnimateOnScroll>
-
               </div>
             </AnimateOnScroll>
 
@@ -750,29 +803,30 @@ export default function BenefitsCaseStudyPage() {
               </h2>
             </AnimateOnScroll>
 
-            <AnimateOnScroll animation="fade-up" delay={200}>
+            <AnimateOnScroll animation="fade-up" delay={400}>
               <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">
                 After several testing rounds and iterations, we finalised the new guidance content and concepts for
                 'upload' pages to improve users' understanding of what's needed.
               </p>
 
-              <AnimateOnScroll animation="fade-up" delay={300}>
+              <AnimateOnScroll animation="fade-up" delay={400}>
                 <div className="mb-8 max-w-3xl">
-                  <h3 className="text-xl font-medium text-white mb-4">Key features include:</h3>
+                  <h3 className="text-2xl font-normal text-white mb-6">Key features include:</h3>
                   <ul className="space-y-2 text-sm sm:text-base md:text-lg text-gray-400 list-disc pl-5">
                     <li>Clearer and more helpful guidance content and error messages</li>
-                    <li>Better examples of good and bad images of fit notes</li>
-                    <li>Enhanced back-end capabilities to automate fit note scanning</li>
+                    <li>Provided better examples of good and bad images of fit notes</li>
+                    <li>Brought the primary and secondary buttons closer together on the upload page</li>
+                    <li>Worked in tandem with developers to enable HEIC and HEIF files to be accepted</li>
                   </ul>
                 </div>
               </AnimateOnScroll>
             </AnimateOnScroll>
 
-            <AnimateOnScroll animation="fade-in" delay={600}>
+            <AnimateOnScroll animation="fade-in" delay={400}>
               <div className="mt-8">
                 <img
-                  src="/syfn/solution_syfn.png"
-                  alt="Solution design mockup showing the redesigned benefits application interface"
+                  src="/syfn/improvements.png"
+                  alt="Example improvements that were made to the design"
                   className="w-full rounded-lg"
                 />
               </div>
@@ -787,10 +841,10 @@ export default function BenefitsCaseStudyPage() {
               </h2>
             </AnimateOnScroll>
 
-            <AnimateOnScroll animation="fade-up" delay={200}>
+            <AnimateOnScroll animation="fade-up" delay={400}>
               <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">
-                My design changes delivered significant results in under six months. This demonstrates the effectiveness
-                of my solution and the value it provided.
+                My design changes delivered significant results in under six months, demonstrating the effectiveness
+                of my solutions and the value they provided.
               </p>
             </AnimateOnScroll>
 
@@ -817,11 +871,11 @@ export default function BenefitsCaseStudyPage() {
               </div>
             </AnimateOnScroll>
 
-            <AnimateOnScroll animation="fade-in" delay={600}>
+            <AnimateOnScroll animation="fade-in" delay={400}>
               <div className="mt-8">
                 <img
-                  src="/syfn/happy.png"
-                  alt="Cartoon image showing a happy user after successfully submitting their fit note"
+                  src="/syfn/solution.png"
+                  alt="Example improvements that were made to the design"
                   className="w-full rounded-lg"
                 />
               </div>
@@ -836,7 +890,7 @@ export default function BenefitsCaseStudyPage() {
               </h2>
             </AnimateOnScroll>
 
-            <AnimateOnScroll animation="fade-up" delay={200}>
+            <AnimateOnScroll animation="fade-up" delay={400}>
               <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">
                 Through accessible and thoughtful design, we empowered users to navigate the service more confidently,
                 transforming lives and demonstrating the profound impact design can have on public services.
@@ -881,7 +935,7 @@ export default function BenefitsCaseStudyPage() {
                         />
                       </svg>
                     </div>
-                    <h3 className="text-xl font-normal text-white">Data-driven design</h3>
+                    <h3 className="text-2xl font-normal text-white mb-6">Data-driven design</h3>
                     <p className="text-gray-400 leading-relaxed">
                       In live projects, using quantitative data for Reach, Impact, Confidence, and Effort (RICE) scoring
                       helps prioritise design changes effectively, focusing on areas with the greatest impact. A/B
@@ -919,7 +973,7 @@ export default function BenefitsCaseStudyPage() {
                         />
                       </svg>
                     </div>
-                    <h3 className="text-xl font-normal text-white">Digital inclusion</h3>
+                    <h3 className="text-2xl font-normal text-white mb-6">Digital inclusion</h3>
                     <p className="text-gray-400 leading-relaxed">
                       Users were told to take a screenshot of their fit note, but one user this meant taking a photo of a screen. This revealed a bias in assuming all users understand technical
                       terms, highlighting the need for simpler language to support those with lower digital literacy.
@@ -956,12 +1010,11 @@ export default function BenefitsCaseStudyPage() {
                         />
                       </svg>
                     </div>
-                    <h3 className="text-xl font-normal text-white">Content can't solve it all</h3>
+                    <h3 className="text-2xl font-normal text-white mb-6">Content can't solve it all</h3>
                     <p className="text-gray-400 leading-relaxed">
-                      Not all service issues can be resolved with front-end changes like content updates or redesigns
-                      alone. Often, more significant back-end improvements are required to automate processes, reduce
-                      manual tasks for users, and substantially enhance the overall user experience.
+                      Not all issues can be fixed with front-end changes. To reduce failed uploads and improve processing accuracy, we introduced key back-end enhancements — including a HEIC file converter to support iPhone image uploads, and improvements to the scanning capabilities. These changes led to fewer errors, less manual rework, and a further 6%+ uplift in user satisfaction.
                     </p>
+
                   </div>
                 </div>
               </div>
