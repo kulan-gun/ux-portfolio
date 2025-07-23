@@ -43,7 +43,7 @@ export default function TopNavigation({ onMobileMenuToggle }: TopNavigationProps
         </div>
 
         <nav className="flex items-center space-x-6" aria-label="Main navigation">
-          <Link href="/" className="text-sm font-normal hover:text-gray-300 focus:outline-none focus:underline">
+          <Link href="https://kulangun.com" className="text-sm font-normal hover:text-gray-300 focus:outline-none focus:underline">
             Work
           </Link>
 
@@ -92,7 +92,7 @@ export default function TopNavigation({ onMobileMenuToggle }: TopNavigationProps
           </a>
 
           <a
-            href="https://read.cv/kulan.gun"
+            href="ttps://www.linkedin.com/in/kulan-gun/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm font-normal hover:text-gray-300 focus:outline-none focus:underline flex items-center group"
