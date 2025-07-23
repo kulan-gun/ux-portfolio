@@ -92,7 +92,7 @@ export default function TopNavigation({ onMobileMenuToggle }: TopNavigationProps
           </a>
 
           <a
-            href="ttps://www.linkedin.com/in/kulan-gun/"
+            href="https://www.linkedin.com/in/kulan-gun/"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm font-normal hover:text-gray-300 focus:outline-none focus:underline flex items-center group"
