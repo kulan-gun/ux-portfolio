@@ -61,7 +61,7 @@ export default function Footer() {
               </li>
               <li>
                 <a
-                  href="https://read.cv/kulan.gun"
+                  href="https://www.linkedin.com/in/kulan-gun/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="text-sm text-gray-300 hover:text-white transition-colors flex items-center group focus:outline-none focus:underline"
@@ -89,7 +89,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="pt-8 border-t border-gray-800">
           <p className="text-sm text-gray-400">
-            © 2025 Kulan Gunawardena. All rights reserved. Built using React.js and TypeScript.
+            © 2025 Kulan Gunawardena. Built with React & TypeScript. Always a work in progress.
           </p>
         </div>
       </div>

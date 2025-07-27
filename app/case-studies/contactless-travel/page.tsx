@@ -420,7 +420,7 @@ export default function ContactlessTravelCaseStudyPage() {
                           </li>
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
-                            <span>Simplify complex processes through user-centered design</span>
+                            <span>Simplify complex processes through user-centred design</span>
                           </li>
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
@@ -451,7 +451,7 @@ export default function ContactlessTravelCaseStudyPage() {
 
             <AnimateOnScroll animation="fade-up" delay={200}>
               <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">
-                For the digital immigration status service, we followed a user-centered design approach to ensure the
+                For the digital immigration status service, we followed a user-centred design approach to ensure the
                 service was accessible and met the needs of diverse users.
               </p>
             </AnimateOnScroll>

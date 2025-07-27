@@ -129,42 +129,40 @@ export default function HomePage() {
       {/* Header */}
       <TopNavigation />
 
-      {/* HERO SECTION — full width */}
-    <section
-  className="relative bg-cover bg-center bg-no-repeat min-h-screen flex items-start px-4 pt-56 sm:pt-48 md:pt-56 lg:pt-56"
-  style={{ backgroundImage: "url('/hero-bg.png')" }}
-  ref={heroRef}
->
-
-        <div className="max-w-6xl mx-auto w-full text-left space-y-4 z-10">
-          <h1 className="text-[36px] sm:text-[48px] md:text-[56px] lg:text-[64px] font-display font-semibold text-white opacity-0 animate-bounce-up">
-            Welcome! I'm Kulan
-          </h1>
-          <p
-            className={`text-xl sm:text-2xl font-mono text-gray-300 ${showTyping ? "animate-fade-in" : "opacity-0"}`}
-            aria-hidden="true"
-          >
-            {displayText}
-            <span className={`inline-block w-0.5 h-5 ml-0.5 bg-current align-middle ${showCursor ? "opacity-100" : "opacity-0"}`}></span>
-          </p>
-          <p className="sr-only">I'm a Product Designer, UX Lead and Innovator.</p>
-        </div>
-        <div className="absolute inset-0 bg-black bg-opacity-50 z-0" />
-      </section>
-
-
       {/* Main Content */}
-      <main className="px-4 sm:px-8 py-12 md:py-16">
+      <main className="px-4 sm:px-8 py-12 md:py-24">
         <div className="max-w-6xl mx-auto">
+          {/* Hero Section */}
+          <section className="py-16 md:py-24" ref={heroRef}>
+            <div className="space-y-4">
+              <h1 className="text-[36px] sm:text-[48px] md:text-[56px] lg:text-[64px] font-display font-semibold opacity-0 animate-bounce-up">
+                Hi, I'm Kulan{" "}
+                <span id="waving-hand" aria-hidden="true">
+                  👋🏽
+                </span>
+              </h1>
+              <p
+                className={`text-xl sm:text-2xl font-mono text-gray-300 ${showTyping ? "animate-fade-in" : "opacity-0"}`}
+                aria-hidden="true"
+              >
+                {displayText}
+                <span
+                  className={`inline-block w-0.5 h-5 ml-0.5 bg-current align-middle ${showCursor ? "opacity-100" : "opacity-0"}`}
+                ></span>
+              </p>
+              {/* Hidden text for screen readers */}
+              <p className="sr-only">I'm a Product Designer, UX Lead, and Innovator.</p>
+            </div>
+          </section>
 
           {/* Work Section */}
-          <section id="work" className="py-12">
+          <section id="work" className="py-16">
             <div className="space-y-2 mb-12">
               <h2 className="text-base text-gray-300 tracking-[0.1em] uppercase opacity-0 animate-bounce-up">
-                MY WORK
+                EXPERIENCE
               </h2>
               <h3 className="text-[27px] sm:text-[36px] font-display font-semibold opacity-0 animate-bounce-up">
-                The story so far
+                My Work
               </h3>
             </div>
 
@@ -177,16 +175,6 @@ export default function HomePage() {
                   href="/case-studies/contactless-travel"
                   imageSrc="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/trials2-min-152wrS8iv0dqCjFwiwsHTR5R7Mhdk7.jpeg"
                   status={{ label: "Shipped", color: "bg-green-500" }}
-                />
-              </div>
-              <div className="opacity-0 animate-bounce-up">
-                <CaseStudyPreview
-                  date="2024"
-                  client="Capgemini Invent"
-                  title="Leading human-centred design, empowered by AI"
-                  href="/case-studies/ai-design"
-                  imageSrc="/ai-design/aura_min.jpeg" // ✅ from public folder
-                  status={{ label: "Concept", color: "bg-pink-500" }}
                 />
               </div>
               <div className="opacity-0 animate-bounce-up">
