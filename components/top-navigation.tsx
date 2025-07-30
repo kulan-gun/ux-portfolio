@@ -92,13 +92,13 @@ export default function TopNavigation({ onMobileMenuToggle }: TopNavigationProps
           </a>
 
           <a
-            href="https://www.linkedin.com/in/kulan-gun/"
+            href="https://medium.com/@kulan.gun"
             target="_blank"
             rel="noopener noreferrer"
             className="text-sm font-normal hover:text-gray-300 focus:outline-none focus:underline flex items-center group"
-            aria-label="CV (opens in new tab)"
+            aria-label="Articles (opens in new tab)"
           >
-            CV
+            Articles
             <svg
               width="12"
               height="12"

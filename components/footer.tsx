@@ -21,6 +21,29 @@ export default function Footer() {
                   Work
                 </Link>
               </li>
+              <li>
+                <a
+                  href="https://medium.com/@kulan.gun"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-sm text-gray-300 hover:text-white transition-colors flex items-center group focus:outline-none focus:underline"
+                  aria-label="Articles (opens in new tab)"
+                >
+                  Articles
+                  <svg
+                    width="12"
+                    height="12"
+                    viewBox="0 0 24 24"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2"
+                    className="ml-1 transition-transform duration-300 group-hover:translate-x-[2px] group-hover:-translate-y-[2px]"
+                    aria-hidden="true"
+                  >
+                    <path d="M7 17L17 7M17 7H7M17 7V17" />
+                  </svg>
+                </a>
+              </li>
               {/* <li>
                 <Link
                   href="/info"
@@ -45,29 +68,6 @@ export default function Footer() {
                   aria-label="LinkedIn (opens in new tab)"
                 >
                   LinkedIn
-                  <svg
-                    width="12"
-                    height="12"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    className="ml-1 transition-transform duration-300 group-hover:translate-x-[2px] group-hover:-translate-y-[2px]"
-                    aria-hidden="true"
-                  >
-                    <path d="M7 17L17 7M17 7H7M17 7V17" />
-                  </svg>
-                </a>
-              </li>
-              <li>
-                <a
-                  href="https://www.linkedin.com/in/kulan-gun/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-gray-300 hover:text-white transition-colors flex items-center group focus:outline-none focus:underline"
-                  aria-label="CV (opens in new tab)"
-                >
-                  CV
                   <svg
                     width="12"
                     height="12"

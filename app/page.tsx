@@ -130,11 +130,11 @@ export default function HomePage() {
       <TopNavigation />
 
       {/* HERO SECTION — full width */}
-    <section
-  className="relative bg-cover bg-center bg-no-repeat min-h-screen flex items-start px-4 pt-56 sm:pt-48 md:pt-56 lg:pt-56"
-  style={{ backgroundImage: "url('/hero-bg.png')" }}
-  ref={heroRef}
->
+      <section
+        className="relative bg-cover bg-center bg-no-repeat min-h-screen flex items-start px-4 pt-56 sm:pt-48 md:pt-56 lg:pt-56"
+        style={{ backgroundImage: "url('/hero-bg.png')" }}
+        ref={heroRef}
+      >
 
         <div className="max-w-6xl mx-auto w-full text-left space-y-4 z-10">
           <h1 className="text-[36px] sm:text-[48px] md:text-[56px] lg:text-[64px] font-display font-semibold text-white opacity-0 animate-bounce-up">
@@ -164,7 +164,7 @@ export default function HomePage() {
                 MY WORK
               </h2>
               <h3 className="text-[27px] sm:text-[36px] font-display font-semibold opacity-0 animate-bounce-up">
-                The story so far
+                Stories that matter
               </h3>
             </div>
 
