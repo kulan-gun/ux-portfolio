@@ -12,7 +12,7 @@ export default function HomePage() {
   const [loopNum, setLoopNum] = useState(0)
   const [typingSpeed, setTypingSpeed] = useState(105) // Increased typing speed by 30%
   const [showTyping, setShowTyping] = useState(false)
-  const phrases = ["I'm a Product Designer...", "I'm a UX Lead...", "I'm an Innovator..."]
+  const phrases = ["I'm a Product Designer...", "I'm a UX Lead...", "I'm an Engineer...", "I'm an Innovator..."]
   const currentPhraseIndex = loopNum % phrases.length
   const currentPhrase = phrases[currentPhraseIndex]
   const heroRef = useRef<HTMLDivElement>(null)
