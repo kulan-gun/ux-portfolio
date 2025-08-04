@@ -181,7 +181,7 @@ export default function HomePage() {
               </div>
               <div className="opacity-0 animate-bounce-up">
                 <CaseStudyPreview
-                  date="2024"
+                  date="2024/25"
                   client="Capgemini Invent"
                   title="Leading human-centred design, empowered by AI"
                   href="/case-studies/ai-design"

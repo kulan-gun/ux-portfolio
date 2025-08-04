@@ -189,7 +189,7 @@ export default function CRMCaseStudyPage() {
               </div>
               <div className="inline-flex rounded-full bg-zinc-800/50 px-3 py-1 sm:px-4 sm:py-1.5">
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-medium text-gray-300 tracking-wide uppercase">2024</span>
+                  <span className="text-xs font-medium text-gray-300 tracking-wide uppercase">2024/25</span>
                 </div>
               </div>
               <div className="inline-flex rounded-full bg-zinc-800/50 px-3 py-1 sm:px-4 sm:py-1.5">
@@ -228,13 +228,23 @@ export default function CRMCaseStudyPage() {
 
             <AnimateOnScroll animation="fade-up" delay={200}>
               <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">
-                As Design Manager for Capgemini’s Innovation Lab, I led our exploration into how generative AI can empower human-centred design.
+                As Design Manager for Capgemini Invent's Innovation Lab, I led our exploration into how generative AI can empower human-centred design.
                 <br /><br />
-                We developed three AI-powered prototypes — AURA, CARA, and MOSAiC/NEXUS — each addressing different client types: keystone, growth, and target. These tools used Retrieval-Augmented Generation (RAG) to support users in navigating complex design, healthcare, and government service challenges.
+                We developed three AI-powered prototypes — AURA, CARA, and MOSAiC/NEXUS — each addressing different client types: keystone, growth, and target. These tools used Retrieval-Augmented Generation (RAG) to support users in navigating complex challenges.
                 <br /><br />
-                Alongside product innovation, I launched a Designathon to upskill 20+ consultants, enabling safe, hands-on experimentation with AI tooling. I also authored a thought leadership article introducing the concept of Agentic AI — autonomous AI systems designed to act responsibly toward human goals.
+                Alongside product innovation, I launched a Designathon to upskill 40+ designers, enabling safe, hands-on experimentation with AI tooling. I also authored a
+                <a
+                  href="https://www.capgemini.com/gb-en/insights/research-library/think-big-start-small/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-400 hover:text-blue-300 underline mx-1"
+                >
+                  thought leadership article
+                </a>
+                introducing the concept of Agentic AI — autonomous AI systems designed to act responsibly toward human goals.
               </p>
             </AnimateOnScroll>
+
 
             <AnimateOnScroll animation="fade-up" delay={400}>
               <div className="mt-8 mb-8">
@@ -272,7 +282,7 @@ export default function CRMCaseStudyPage() {
                         "Project duration: 1.5 years",
                         "Team size: 8 designers and researchers",
                         "My role: Design Manager, AI Innovation",
-                        "Primary focus: Delivering GenAI PoCs and thought leadership",
+                        "Primary focus: Delivering GenAI PoCs, hackathons and thought leadership",
                       ],
                     },
                     {
@@ -459,7 +469,7 @@ export default function CRMCaseStudyPage() {
               <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">
                 We followed a 3-stream delivery approach. While prototyping the AURA, CARA and MOSAiC/NEXUS tools, I ran a parallel Designathon to upskill colleagues, and authored a thought leadership piece introducing Agentic AI.
                 <br /><br />
-                This ecosystem allowed designers to learn through play, while also delivering credible outcomes for clients. The prototypes were built using Figma, RAG techniques, and OpenAI APIs. The Designathon encouraged hands-on experimentation and safe failure.
+                This ecosystem allowed designers to learn through play, while also delivering credible outcomes for clients. The prototypes were built using Figma, RAG techniques, and AI APIs. The Designathon encouraged hands-on experimentation and safe failure.
               </p>
             </AnimateOnScroll>
 
@@ -489,7 +499,7 @@ export default function CRMCaseStudyPage() {
                       <h3 className="text-lg md:text-xl font-normal text-white mb-4">Prototyping</h3>
                       <ul className="space-y-3 text-left w-full">
                         <li className="text-gray-400 text-sm md:text-base text-center">
-                          Designed and tested RAG-based tools (AURA, CARA, MOSAiC/NEXUS) using Figma and OpenAI APIs.
+                          Designed and tested RAG-based tools (AURA, CARA, MOSAiC/NEXUS) using Figma and AI APIs.
                         </li>
                       </ul>
                     </div>
@@ -501,7 +511,7 @@ export default function CRMCaseStudyPage() {
                       <h3 className="text-lg md:text-xl font-normal text-white mb-4">Designathon</h3>
                       <ul className="space-y-3 text-left w-full">
                         <li className="text-gray-400 text-sm md:text-base text-center">
-                          Hosted a 2-day AI Designathon with 40+ consultants, enabling hands-on learning and safe experimentation.
+                          Hosted a AI Designathons with 40+ consultants, enabling hands-on learning and safe experimentation.
                         </li>
                       </ul>
                     </div>
@@ -535,36 +545,55 @@ export default function CRMCaseStudyPage() {
               </div>
             </AnimateOnScroll>
 
-
-            {/* <AnimateOnScroll animation="fade-in" delay={600}>
+            <AnimateOnScroll animation="fade-in" delay={600}>
               <div className="mt-8">
                 <img
-                  src="/anglian/current-state.png"
-                  alt="Early stage screens that we inherited from the client"
+                  src="/ai-design/aura_architecture.png"
+                  alt="Animated demonstration of the Aura generate feature"
                   className="w-full rounded-lg"
                 />
               </div>
-            </AnimateOnScroll> */}
+            </AnimateOnScroll>
 
-            {/* <AnimateOnScroll animation="fade-in" delay={600}>
+            <AnimateOnScroll animation="fade-in" delay={600}>
               <div className="mt-8">
                 <img
-                  src="/anglian/future-state.png"
-                  alt="Our initial redesigns of the as-is interface"
+                  src="/ai-design/early_stage_concepts.png"
+                  alt="Early concepts of AURA's features"
                   className="w-full rounded-lg"
                 />
               </div>
-            </AnimateOnScroll> */}
+            </AnimateOnScroll>
 
-            {/* <AnimateOnScroll animation="fade-in" delay={600}>
+              <AnimateOnScroll animation="fade-in" delay={600}>
               <div className="mt-8">
                 <img
-                  src="/anglian/iterations.png"
-                  alt="Our initial redesigns of the as-is interface"
+                  src="/ai-design/aura_design_crit.png"
+                  alt="A design crit held to improve early concepts of AURA's features"
                   className="w-full rounded-lg"
                 />
               </div>
-            </AnimateOnScroll> */}
+            </AnimateOnScroll>
+
+              <AnimateOnScroll animation="fade-in" delay={600}>
+              <div className="mt-8">
+                <img
+                  src="/ai-design/aura_ur.png"
+                  alt="A user research round held to improve early concepts of AURA's features"
+                  className="w-full rounded-lg"
+                />
+              </div>
+            </AnimateOnScroll>
+
+            <AnimateOnScroll animation="fade-in" delay={600}>
+              <div className="mt-8">
+                <img
+                  src="/ai-design/aura_generate.gif"
+                  alt="Animated demonstration of the Aura generate feature"
+                  className="w-full rounded-lg"
+                />
+              </div>
+            </AnimateOnScroll>
 
           </section>
 
@@ -581,18 +610,42 @@ export default function CRMCaseStudyPage() {
                 I created a multi-pronged solution: (1) Deliver RAG-powered AI PoCs tailored to real user needs (AURA, CARA, MOSAiC/NEXUS); (2) Run AI Designathons to support learning and experimentation; (3) Publish a forward-looking article to shape the conversation on autonomous AI.
                 <br /><br />
                 These streams reinforced each other — tools like AURA showed what was possible; the Designathon helped consultants gain hands-on experience; and the Agentic AI article signalled our thought leadership.
+                <br /><br />
+                <a
+                  href="https://www.capgemini.com/gb-en/insights/research-library/think-big-start-small/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-400 hover:text-blue-300 underline"
+                >
+                  Read the Agentic AI article here
+                </a>
               </p>
             </AnimateOnScroll>
 
-            {/* <AnimateOnScroll animation="fade-in" delay={600}>
+            <AnimateOnScroll animation="fade-in" delay={600}>
               <div className="mt-8">
                 <img
-                  src="/anglian/tallyman-proto.png"
-                  alt="Solution design mockup showing the redesigned CRM interface"
+                  src="/ai-design/aura_mvp.gif"
+                  alt="Animated demonstration of the Aura MVP with some features remove, to help with releasing earlier"
                   className="w-full rounded-lg"
                 />
               </div>
-            </AnimateOnScroll> */}
+            </AnimateOnScroll>
+
+
+            <AnimateOnScroll animation="fade-in" delay={600}>
+              <div className="mt-8 aspect-video w-full rounded-lg overflow-hidden">
+                <iframe
+                  className="w-full h-full"
+                  src="https://www.youtube.com/embed/LHQqpg1krqw"
+                  title="AI Designathon – Figma Screen Recording"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </AnimateOnScroll>
+
 
           </section>
 
@@ -606,9 +659,9 @@ export default function CRMCaseStudyPage() {
 
             <AnimateOnScroll animation="fade-up" delay={200}>
               <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">
-                The AI initiative resulted in three functional PoCs (AURA, CARA, MOSAiC/NEXUS) that helped drive client interest and internal capability building. The designathon fostered a learning culture across 20+ consultants, while the Agentic AI article influenced conversations on responsible AI in the public sector.
+                The AI initiative resulted in three functional PoCs (AURA, CARA, MOSAiC/NEXUS) that helped drive client interest and internal capability building. The designathon fostered a learning culture across 40+ designers, while the Agentic AI article influenced conversations on responsible AI in the public sector.
                 <br /><br />
-                These outputs improved our maturity in AI tooling and positioned us as thought leaders in human-centred AI design.
+                These outputs improved our maturity in AI tooling and positioned us as thought leaders in human-centred AI design. The assets generated from my work contributed to the development of a go-to-market (GTM) offering, which led to £1m+ in sales for AI projects.
               </p>
             </AnimateOnScroll>
 
@@ -620,13 +673,63 @@ export default function CRMCaseStudyPage() {
                       "
                     </div>
                     <p className="text-lg sm:text-xl italic text-gray-300 px-6">
-                      We were really impressed by the Designathon event. Thank you for hosting!
+                      Thank you so much to our friends at Capgemini for organising and running the AI Designathon yesterday! I hope everyone found it as helpful and insightful as I did."
                     </p>
-                    <footer className="mt-2 text-sm text-gray-400 px-6">— Public Sector Client</footer>
+                    <footer className="mt-2 text-sm text-gray-400 px-6">— Principal Interaction Designer, UK Civil Service</footer>
                     <div className="absolute -bottom-4 -right-4 text-4xl text-gray-600" aria-hidden="true">
                       "
                     </div>
                   </blockquote>
+                </div>
+              </div>
+            </AnimateOnScroll>
+
+              <AnimateOnScroll animation="fade-up" delay={400}>
+              <div className="mt-8 mb-8">
+                <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3" role="group" aria-label="Key metrics">
+                  <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
+                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">40 - 50%</div>
+                    <div className="text-xs sm:text-sm md:text-base text-gray-400">
+                      faster prototyping with AI
+                    </div>
+                  </div>
+                  <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
+                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">4×</div>
+                    <div className="text-xs sm:text-sm md:text-base text-gray-400">
+                      more ideas generated with AI
+                    </div>
+                  </div>
+                  <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
+                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">30+</div>
+                    <div className="text-xs sm:text-sm md:text-base text-gray-400">
+                      civil servants participated
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </AnimateOnScroll>
+
+            <AnimateOnScroll animation="fade-up" delay={400}>
+              <div className="mt-8 mb-8">
+                <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3" role="group" aria-label="Key metrics">
+                  <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
+                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">£1m+</div>
+                    <div className="text-xs sm:text-sm md:text-base text-gray-400">
+                      generated in sales from this AI work
+                    </div>
+                  </div>
+                  <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
+                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">60+</div>
+                    <div className="text-xs sm:text-sm md:text-base text-gray-400">
+                      people trained in prompt engineering
+                    </div>
+                  </div>
+                  <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
+                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">6+</div>
+                    <div className="text-xs sm:text-sm md:text-base text-gray-400">
+                      Designathons run between 2024 - 2025
+                    </div>
+                  </div>
                 </div>
               </div>
             </AnimateOnScroll>
@@ -694,8 +797,8 @@ export default function CRMCaseStudyPage() {
                       />
                     </svg>
                   }
-                  title="Designathons unlock curiosity"
-                  description="Running AI Designathons helped our designers experiment safely, share learnings, and embed AI into real workflows."
+                  title="AI as an ideation partner"
+                  description="AI is great for generating and challenging ideas, especially through socractic methods. It's like another member of the team. That said, it can produce so many ideas to the point where we must avoid overwhelm and options paralysis. Moreover, relying solely on AI to solve our issues can cause us to feel disconnected to the problem space and solutions. To combat these, we can implement prompt refinement sessions to review the outputs of AI in the ideation phase. I also recommend people give problem-solving a go first, before turning to AI for help." 
                 />
                 <UXLessonsCard
                   icon={
@@ -725,8 +828,8 @@ export default function CRMCaseStudyPage() {
                       />
                     </svg>
                   }
-                  title="Designing for autonomy requires rigour"
-                  description="Agentic AI interfaces must be accountable. I led discussions on ethical guardrails, goals, and fail-safes when prototyping autonomous assistants."
+                  title="AI democratises design"
+                  description="AI tools like v0 and Lovable make design more accessible to a wider range of people. Gone are the days where you need to be an expert in Figma or coding to make a prototype. This is great for empowering non-designers to contribute to the design process, but it also means we need to be careful about how we ensure quality. I recommend setting clear guidelines and providing training on how to use these tools effectively, while also maintaining a human-centred approach. It also means that with AI, the emphasis shifts from mastery of specific tools to proficiency in the language of design."
                 />
                 <UXLessonsCard
                   icon={
@@ -753,8 +856,8 @@ export default function CRMCaseStudyPage() {
                       />
                     </svg>
                   }
-                  title="Rapid prototyping accelerates value"
-                  description="By shipping early versions of AURA, CARA and MOSAiC, we unlocked faster feedback loops and clearer buy-in for AI in UCD."
+                  title="Preserve the 'human-in-the-loop'"
+                  description="Only human beings can be legally accountable for the actions of AI. I led discussions on ethical guardrails, goals, and fail-safes when prototyping autonomous assistants to gather ideas, and the general consensus is that AI should be used to augment human decision-making, not replace it. This is especially true in the public sector, where accountability is paramount. User interface components that support this notion include notifications, audit trails, change logs, decision gate diagrams and more."
                 />
               </div>
             </AnimateOnScroll>
