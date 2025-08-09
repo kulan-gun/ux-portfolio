@@ -12,8 +12,6 @@ import BackToTopButton from "@/components/back-to-top-button"
 import SummaryCard from "@/components/summary-card"
 import QuoteCard from "@/components/quote-card"
 import UXLessonsCard from "@/components/ux-lessons-card"
-import ImageModal from "@/components/ImageModal"
-
 
 // Define the sections for this case study
 const sections = [
@@ -369,8 +367,7 @@ export default function CRMCaseStudyPage() {
               <div className="mt-12 mb-12">
                 <div className="rounded-3xl bg-zinc-900/50 p-8 md:p-12 backdrop-blur-sm">
                   <div className="flex flex-col items-center justify-center">
-
-                    {/* User Persona */}
+                    {/* User Journey Map */}
                     <div className="mb-12">
                       <div className="flex items-center gap-4 mb-6">
                         <div
@@ -395,9 +392,9 @@ export default function CRMCaseStudyPage() {
                           </svg>
                         </div>
                         <div>
-                          <h3 className="text-xl sm:text-2xl font-medium text-white mb-4">Persona: Rani – the Change Management Consultant</h3>
+                          <h3 className="text-xl sm:text-2xl font-medium text-white mb-4">Persona: Rani – the Curious Consultant</h3>
                           <p className="text-gray-300 text-sm sm:text-base md:text-lg">
-                            Rani supports public and private sector clients through organisational change. She regularly works with lengthy HR policies, compliance documents, and workplace guidelines, but needs to turn them into concise, engaging formats such as emails, intranet posts, and posters. She wants a tool that speeds up this process while maintaining accuracy and audience relevance.
+                            Rani is a mid-level service designer who wants to experiment with AI tools but feels overwhelmed by choice. She wants examples that are relevant to government and healthcare clients, and needs a space to try things out safely, without needing to code.
                           </p>
                         </div>
                       </div>
@@ -407,19 +404,19 @@ export default function CRMCaseStudyPage() {
                     <div className="grid grid-cols-4 gap-4 mt-12" role="region" aria-label="User journey stages">
                       <div className="text-center">
                         <h4 className="text-xl font-normal text-white mb-4">Awareness</h4>
-                        <p className="text-sm text-gray-300">Rani learns about AURA as a way to transform complex workplace policies into audience-friendly summaries for both public and private clients.</p>
+                        <p className="text-sm text-gray-300">Rani hears about GenAI through internal channels and client projects but is unsure where to start.</p>
                       </div>
                       <div className="text-center">
                         <h4 className="text-xl font-normal text-white mb-4">Motivation</h4>
-                        <p className="text-sm text-gray-300">She wants to save hours of manual rewriting while keeping content accurate, compliant, and engaging.</p>
+                        <p className="text-sm text-gray-300">She wants to learn AI but finds tutorials too generic or irrelevant to her domain.</p>
                       </div>
                       <div className="text-center">
                         <h4 className="text-xl font-normal text-white mb-4">Exploration</h4>
-                        <p className="text-sm text-gray-300">Rani tries AURA, adjusting tone, length, and format to fit different audiences and channels.</p>
+                        <p className="text-sm text-gray-300">Rani attends the Designathon, using Figma plugins and prompt libraries to create design concepts.</p>
                       </div>
                       <div className="text-center">
                         <h4 className="text-xl font-normal text-white mb-4">Application</h4>
-                        <p className="text-sm text-gray-300">She uses AURA across multiple projects, delivering consistent, high-impact communications in a fraction of the time.</p>
+                        <p className="text-sm text-gray-300">She reuses Designathon prompts on her next project, embedding AI into research and ideation.</p>
                       </div>
                     </div>
 
@@ -452,29 +449,26 @@ export default function CRMCaseStudyPage() {
                     {/* Quotes */}
                     <div className="grid grid-cols-4 gap-4 mt-8" aria-label="User quotes at different journey stages">
                       <div className="text-center">
-                        <p className="text-sm text-gray-300">"These policies are too long for busy employees to digest."</p>
+                        <p className="text-sm text-gray-300">"I want to try this, but I do not know where to begin."</p>
                       </div>
                       <div className="text-center">
-                        <p className="text-sm text-gray-300">"I need summaries that are both accurate and engaging."</p>
+                        <p className="text-sm text-gray-300">"Is this even safe for government clients?"</p>
                       </div>
                       <div className="text-center">
-                        <p className="text-sm text-gray-300">"AURA makes tailoring content for different audiences effortless."</p>
+                        <p className="text-sm text-gray-300">"Oh! This plugin actually makes sense for our workflow."</p>
                       </div>
                       <div className="text-center">
-                        <p className="text-sm text-gray-300">"I cut my comms prep time in half across two client projects."</p>
+                        <p className="text-sm text-gray-300">"I reused this approach on my NHS project last week."</p>
                       </div>
                     </div>
-
                   </div>
                 </div>
               </div>
             </AnimateOnScroll>
-
           </section>
 
           {/* Process Section */}
           <section id="process" className="min-h-screen py-8 sm:py-12" aria-labelledby="process-heading">
-
             <AnimateOnScroll animation="bounce-up">
               <h2 id="process-heading" className="mb-6 sm:mb-8 text-2xl sm:text-3xl md:text-4xl font-display">
                 Process
@@ -483,15 +477,13 @@ export default function CRMCaseStudyPage() {
 
             <AnimateOnScroll animation="fade-up" delay={200}>
               <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
-                The AURA prototype was developed through an iterative, evidence-based approach.
+                We followed a 3-stream delivery approach. While prototyping the AURA, CARA and MOSAiC/NEXUS tools, I ran a parallel Designathon to upskill colleagues, and authored a thought leadership piece introducing Agentic AI.
                 <br /><br />
-                We began with model selection, testing Claude Sonnet against alternative LLMs using parameters such as context length, summarisation accuracy, tone control, and processing speed. This ensured we chose the most reliable model for distilling lengthy HR and policy documents into clear, engaging formats.
-                <br /><br />
-                Next, we primed the model with sample documents and applied a carefully crafted system prompt to maintain accuracy, avoid hallucinations, and tailor outputs to channels such as emails, posts, and posters.
-                <br /><br />
-                We then explored two interface concepts: a chat-style interface for conversational refinement and an agentic design with a document viewing pane for side-by-side reading, annotation, and summary generation. Rapid Figma prototypes and AI API integrations allowed us to test both paradigms quickly and make evidence-based design decisions.
+                This ecosystem allowed designers to learn through play, while also delivering credible outcomes for clients. The prototypes were built using Figma, RAG techniques, and AI APIs. The Designathon encouraged hands-on experimentation and safe failure.
               </p>
             </AnimateOnScroll>
+
+
 
             <AnimateOnScroll animation="fade-up" delay={300}>
               <div className="mt-8 mb-12">
@@ -502,10 +494,10 @@ export default function CRMCaseStudyPage() {
                       <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
                         <span className="text-xl md:text-2xl font-medium text-white">1</span>
                       </div>
-                      <h3 className="text-lg md:text-xl font-normal text-white mb-4">Scoping & research</h3>
+                      <h3 className="text-lg md:text-xl font-normal text-white mb-4">Research & scoping</h3>
                       <ul className="space-y-3 text-left w-full">
                         <li className="text-gray-300 text-sm md:text-base text-center">
-                          Mapped challenges faced by consultants in summarising lengthy HR and policy documents through interviews and workflow analysis.
+                          Identified public sector use-cases for AI using desk research, internal strategy docs, and expert interviews.
                         </li>
                       </ul>
                     </div>
@@ -514,10 +506,10 @@ export default function CRMCaseStudyPage() {
                       <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
                         <span className="text-xl md:text-2xl font-medium text-white">2</span>
                       </div>
-                      <h3 className="text-lg md:text-xl font-normal text-white mb-4">Model evaluation</h3>
+                      <h3 className="text-lg md:text-xl font-normal text-white mb-4">Prototyping</h3>
                       <ul className="space-y-3 text-left w-full">
                         <li className="text-gray-300 text-sm md:text-base text-center">
-                          Tested Claude Sonnet and alternative LLMs using parameters such as summarisation accuracy, tone control, and processing speed.
+                          Designed and tested RAG-based tools (AURA, CARA, MOSAiC/NEXUS) using Figma and AI APIs.
                         </li>
                       </ul>
                     </div>
@@ -526,10 +518,10 @@ export default function CRMCaseStudyPage() {
                       <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
                         <span className="text-xl md:text-2xl font-medium text-white">3</span>
                       </div>
-                      <h3 className="text-lg md:text-xl font-normal text-white mb-4">Prompt & data design</h3>
+                      <h3 className="text-lg md:text-xl font-normal text-white mb-4">Designathon</h3>
                       <ul className="space-y-3 text-left w-full">
                         <li className="text-gray-300 text-sm md:text-base text-center">
-                          Primed the model with sample documents and a tailored system prompt to ensure accuracy, avoid hallucinations, and adapt tone to different formats.
+                          Hosted a AI Designathons with 40+ consultants, enabling hands-on learning and safe experimentation.
                         </li>
                       </ul>
                     </div>
@@ -538,10 +530,10 @@ export default function CRMCaseStudyPage() {
                       <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
                         <span className="text-xl md:text-2xl font-medium text-white">4</span>
                       </div>
-                      <h3 className="text-lg md:text-xl font-normal text-white mb-4">Interface prototyping</h3>
+                      <h3 className="text-lg md:text-xl font-normal text-white mb-4">Feedback loops</h3>
                       <ul className="space-y-3 text-left w-full">
                         <li className="text-gray-300 text-sm md:text-base text-center">
-                          Explored both chat-style and agentic document-pane interfaces using Figma and API integrations to assess usability and efficiency.
+                          Gathered insights from design, engineering, and client stakeholders to iterate on usability and ethics.
                         </li>
                       </ul>
                     </div>
@@ -550,10 +542,10 @@ export default function CRMCaseStudyPage() {
                       <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
                         <span className="text-xl md:text-2xl font-medium text-white">5</span>
                       </div>
-                      <h3 className="text-lg md:text-xl font-normal text-white mb-4">Testing & iteration</h3>
+                      <h3 className="text-lg md:text-xl font-normal text-white mb-4">Thought leadership</h3>
                       <ul className="space-y-3 text-left w-full">
                         <li className="text-gray-300 text-sm md:text-base text-center">
-                          Gathered feedback from consultants and clients, refining UI, tone handling, and summarisation quality for real-world adoption.
+                          Published a widely read article introducing Agentic AI to help define responsible autonomy in design.
                         </li>
                       </ul>
                     </div>
@@ -565,31 +557,51 @@ export default function CRMCaseStudyPage() {
 
             <AnimateOnScroll animation="fade-in" delay={600}>
               <div className="mt-8">
-                <ImageModal src="/ai-design/aura_architecture.png" alt="AURA architecture diagram" />
+                <img
+                  src="/ai-design/aura_architecture.png"
+                  alt="Animated demonstration of the Aura generate feature"
+                  className="w-full rounded-lg"
+                />
               </div>
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-in" delay={600}>
               <div className="mt-8">
-                <ImageModal src="/ai-design/early_stage_concepts.png" alt="Early concepts of AURA" />
+                <img
+                  src="/ai-design/early_stage_concepts.png"
+                  alt="Early concepts of AURA's features"
+                  className="w-full rounded-lg"
+                />
               </div>
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-in" delay={600}>
               <div className="mt-8">
-                <ImageModal src="/ai-design/aura_design_crit.png" alt="Design critique findings for AURA" />
+                <img
+                  src="/ai-design/aura_design_crit.png"
+                  alt="A design crit held to improve early concepts of AURA's features"
+                  className="w-full rounded-lg"
+                />
               </div>
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-in" delay={600}>
               <div className="mt-8">
-                <ImageModal src="/ai-design/aura_ur.png" alt="User research session findings for AURA" />
+                <img
+                  src="/ai-design/aura_ur.png"
+                  alt="A user research round held to improve early concepts of AURA's features"
+                  className="w-full rounded-lg"
+                />
               </div>
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-in" delay={600}>
               <div className="mt-8">
-                <ImageModal src="/ai-design/aura_generate.gif" alt="Animated demonstration of the AURA generate feature" />
+                <img
+                  src="/ai-design/aura_generate.gif"
+                  alt="Animated demonstration of the Aura generate feature"
+                  className="w-full rounded-lg"
+                />
               </div>
             </AnimateOnScroll>
 
@@ -605,22 +617,45 @@ export default function CRMCaseStudyPage() {
 
             <AnimateOnScroll animation="fade-up" delay={200}>
               <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
-                Solution: ship a focused MVP that proves value without UI complexity. We selected Claude Sonnet for its long context window and reliable summarisation, primed it with representative HR and policy documents, and used a targeted system prompt to control tone and format.
+                I created a multi-pronged solution: (1) Deliver RAG-powered AI PoCs tailored to real user needs (AURA, CARA, MOSAiC/NEXUS); (2) Run AI Designathons to support learning and experimentation; (3) Publish a forward-looking article to shape the conversation on autonomous AI.
                 <br /><br />
-                The document viewing pane and chat interface were removed from scope due to technical complexity and time. Summarisation ran behind the scenes, and users simply downloaded channel-ready outputs such as one-pagers, intranet posts, or poster copy. Fine-tuning or in-app editing was not included in the MVP.
+                These streams reinforced each other — tools like AURA showed what was possible; the Designathon helped consultants gain hands-on experience; and the Agentic AI article signalled our thought leadership.
                 <br /><br />
-                This validated the core outcome fast: accurate, consistent summaries that reduced manual effort and improved clarity, ready for future iterations that can add a viewer, highlights, and conversational refinement.
+                <a
+                  href="https://www.capgemini.com/gb-en/insights/research-library/think-big-start-small/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-blue-400 hover:text-blue-300 underline"
+                >
+                  Read the Agentic AI article here
+                </a>
               </p>
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-in" delay={600}>
               <div className="mt-8">
-                <ImageModal
+                <img
                   src="/ai-design/aura_mvp.gif"
-                  alt="Animated demonstration of the Aura MVP with some features removed, to help with releasing earlier"
+                  alt="Animated demonstration of the Aura MVP with some features remove, to help with releasing earlier"
+                  className="w-full rounded-lg"
                 />
               </div>
             </AnimateOnScroll>
+
+
+            <AnimateOnScroll animation="fade-in" delay={600}>
+              <div className="mt-8 aspect-video w-full rounded-lg overflow-hidden">
+                <iframe
+                  className="w-full h-full"
+                  src="https://www.youtube.com/embed/LHQqpg1krqw"
+                  title="AI Designathon – Figma Screen Recording"
+                  frameBorder="0"
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                ></iframe>
+              </div>
+            </AnimateOnScroll>
+
 
           </section>
 
@@ -634,42 +669,80 @@ export default function CRMCaseStudyPage() {
 
             <AnimateOnScroll animation="fade-up" delay={200}>
               <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
-                The AURA proof of concept explored how RAG-powered AI could automatically summarise lengthy documents for public and private sector users.
-                Through research, prototyping, and stakeholder testing, we validated the core value: AI could deliver accurate summaries behind the scenes, removing the need for a complex in-app viewer or editing tools at MVP stage.
+                The AI initiative resulted in three functional PoCs (AURA, CARA, MOSAiC/NEXUS) that helped drive client interest and internal capability building. The designathon fostered a learning culture across 40+ designers, while the Agentic AI article influenced conversations on responsible AI in the public sector.
                 <br /><br />
-                While the project was paused before launch due to shifting priorities, it delivered clear learning on technical feasibility, user expectations, and MVP scoping. These insights have since informed other AI initiatives and strengthened our approach to designing responsible, human-centred AI tools.
+                These outputs improved our maturity in AI tooling and positioned us as thought leaders in human-centred AI design. The assets generated from my work contributed to the development of a go-to-market (GTM) offering, which led to £1m+ in sales for AI projects.
               </p>
             </AnimateOnScroll>
 
-            <AnimateOnScroll animation="fade-up" delay={400}>
-              <div className="mt-8 mb-8">
-                <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3" role="group" aria-label="AURA proof of concept outcomes">
-
-                  <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">3</div>
-                    <div className="text-xs sm:text-sm md:text-base text-gray-300">
-                      interface concepts explored before narrowing scope
+            <AnimateOnScroll animation="fade-up" delay={600}>
+              <div className="mt-4 rounded-3xl bg-zinc-900/50 p-6 sm:p-8 backdrop-blur-sm">
+                <div className="flex flex-col space-y-4">
+                  <blockquote className="relative">
+                    <div className="absolute -top-4 -left-4 text-4xl text-gray-600" aria-hidden="true">
+                      "
                     </div>
-                  </div>
-
-                  <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">60%+</div>
-                    <div className="text-xs sm:text-sm md:text-base text-gray-300">
-                      estimated time saved in document summarisation during testing
+                    <p className="text-lg sm:text-xl italic text-gray-300 px-6">
+                      Thank you so much to our friends at Capgemini for organising and running the AI Designathon yesterday! I hope everyone found it as helpful and insightful as I did."
+                    </p>
+                    <footer className="mt-2 text-sm text-gray-300 px-6">— Principal Interaction Designer, UK Civil Service</footer>
+                    <div className="absolute -bottom-4 -right-4 text-4xl text-gray-600" aria-hidden="true">
+                      "
                     </div>
-                  </div>
-
-                  <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">MVP</div>
-                    <div className="text-xs sm:text-sm md:text-base text-gray-300">
-                      simplified to automated behind-the-scenes summarisation due to technical constraints
-                    </div>
-                  </div>
-
+                  </blockquote>
                 </div>
               </div>
             </AnimateOnScroll>
 
+            <AnimateOnScroll animation="fade-up" delay={400}>
+              <div className="mt-8 mb-8">
+                <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3" role="group" aria-label="Key metrics">
+                  <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
+                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">40 - 50%</div>
+                    <div className="text-xs sm:text-sm md:text-base text-gray-300">
+                      faster prototyping with AI
+                    </div>
+                  </div>
+                  <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
+                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">4×</div>
+                    <div className="text-xs sm:text-sm md:text-base text-gray-300">
+                      more ideas generated with AI
+                    </div>
+                  </div>
+                  <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
+                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">30+</div>
+                    <div className="text-xs sm:text-sm md:text-base text-gray-300">
+                      civil servants participated
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </AnimateOnScroll>
+
+            <AnimateOnScroll animation="fade-up" delay={400}>
+              <div className="mt-8 mb-8">
+                <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3" role="group" aria-label="Key metrics">
+                  <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
+                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">£1m+</div>
+                    <div className="text-xs sm:text-sm md:text-base text-gray-300">
+                      generated in sales from this AI work
+                    </div>
+                  </div>
+                  <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
+                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">60+</div>
+                    <div className="text-xs sm:text-sm md:text-base text-gray-300">
+                      people trained in prompt engineering
+                    </div>
+                  </div>
+                  <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
+                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">6+</div>
+                    <div className="text-xs sm:text-sm md:text-base text-gray-300">
+                      Designathons run between 2024 - 2025
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </AnimateOnScroll>
 
           </section>
 
@@ -683,11 +756,21 @@ export default function CRMCaseStudyPage() {
 
             <AnimateOnScroll animation="fade-up" delay={200}>
               <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
-                From concept to proof-of-concept, AURA showed how Retrieval-Augmented Generation could transform dense HR and policy documents into concise, engaging formats.
+                From speculative idea to functional proof-of-concept, we empowered teams to understand, apply, and challenge the role of AI in design.
                 <br /><br />
-                While the MVP was simplified and never shipped, the process delivered valuable internal learnings, reusable design patterns, and a clearer view of the technical and ethical considerations for deploying AI in client contexts.
+                The AURA, CARA and MOSAiC/NEXUS PoCs provided valuable internal learning, reusable front-end patterns, and client-facing propositions. The Designathon fostered capability and confidence, while the Agentic AI article seeded the next wave of discussion.
               </p>
             </AnimateOnScroll>
+
+            {/* <AnimateOnScroll animation="fade-in" delay={600}>
+              <div className="mt-8">
+                <img
+                  src="/anglian/dashboard_alerts.jpg"
+                  alt="Project conclusion summary showing key learnings and future opportunities"
+                  className="w-full rounded-lg"
+                />
+              </div>
+            </AnimateOnScroll> */}
 
             {/* UX Lessons Learned Section */}
             <AnimateOnScroll animation="fade-up" delay={400}>
