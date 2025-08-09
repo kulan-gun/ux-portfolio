@@ -54,7 +54,7 @@ export default function ScrollSpyNavigation({ sections }: ScrollSpyNavigationPro
   }
 
   return (
-    <nav className="space-y-6 text-gray-400 pl-8" aria-label="Table of contents">
+    <nav className="space-y-6 text-gray-300 pl-8" aria-label="Table of contents">
       <ul className="space-y-6">
         {sections.map((section) => (
           <li key={section.id}>
@@ -73,7 +73,7 @@ export default function ScrollSpyNavigation({ sections }: ScrollSpyNavigationPro
               <span
                 className={cn(
                   "text-sm font-light transition-colors duration-300",
-                  activeSection === section.id ? "text-white" : "text-gray-400 group-hover:text-gray-300",
+                  activeSection === section.id ? "text-white" : "text-gray-300 group-hover:text-gray-300",
                 )}
               >
                 {section.title}

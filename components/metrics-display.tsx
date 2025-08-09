@@ -7,7 +7,7 @@ function MetricCard({ value, label }: MetricCardProps) {
   return (
     <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
       <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">{value}</div>
-      <div className="text-xs sm:text-sm md:text-base text-gray-400">{label}</div>
+      <div className="text-xs sm:text-sm md:text-base text-gray-300">{label}</div>
     </div>
   )
 }

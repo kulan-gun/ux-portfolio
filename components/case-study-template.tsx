@@ -217,7 +217,7 @@ export default function CaseStudyTemplate({
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={200}>
-              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">
+              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
                 {overviewDescription ||
                   "A brief introduction to the case study, highlighting the key challenges, approach, and outcomes. This section provides context and sets expectations for what the reader will learn from this case study."}
               </p>
@@ -255,7 +255,7 @@ export default function CaseStudyTemplate({
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={200}>
-              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">
+              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
                 {problemDescription ||
                   "Citizens were facing significant delays and complications when applying for and receiving their benefits."}
               </p>
@@ -303,7 +303,7 @@ export default function CaseStudyTemplate({
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={200}>
-              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">
+              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
                 {processDescription ||
                   "We used Figma as our primary design tool, and MS Teams for remote user interviews. Our process was as follows:"}
               </p>
@@ -335,7 +335,7 @@ export default function CaseStudyTemplate({
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={200}>
-              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">
+              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
                 {solutionDescription ||
                   "An overview of the solution that was designed and implemented to address the identified problems. This section showcases the final product, key features, and how they solve the user and business needs."}
               </p>
@@ -361,7 +361,7 @@ export default function CaseStudyTemplate({
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={200}>
-              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">
+              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
                 {resultsDescription ||
                   "My design changes delivered significant results in under six months. This demonstrates the effectiveness of my solution and the value it provided."}
               </p>
@@ -399,7 +399,7 @@ export default function CaseStudyTemplate({
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={200}>
-              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">
+              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
                 {conclusionDescription ||
                   "Through accessible and thoughtful design, we empowered users to navigate the service more confidently, transforming lives and demonstrating the profound impact design can have on public services."}
               </p>
@@ -416,7 +416,7 @@ export default function CaseStudyTemplate({
                     <UXLessonsCard
                       icon={
                         <svg
-                          className="w-6 h-6 text-gray-400"
+                          className="w-6 h-6 text-gray-300"
                           viewBox="0 0 24 24"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
@@ -451,7 +451,7 @@ export default function CaseStudyTemplate({
                     <UXLessonsCard
                       icon={
                         <svg
-                          className="w-6 h-6 text-gray-400"
+                          className="w-6 h-6 text-gray-300"
                           viewBox="0 0 24 24"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
@@ -479,7 +479,7 @@ export default function CaseStudyTemplate({
                     <UXLessonsCard
                       icon={
                         <svg
-                          className="w-6 h-6 text-gray-400"
+                          className="w-6 h-6 text-gray-300"
                           viewBox="0 0 24 24"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"

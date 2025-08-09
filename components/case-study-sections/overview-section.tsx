@@ -24,7 +24,7 @@ export default function OverviewSection({
       </AnimateOnScroll>
 
       <AnimateOnScroll animation="fade-up" delay={200}>
-        <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">{description}</p>
+        <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">{description}</p>
       </AnimateOnScroll>
 
       <AnimateOnScroll animation="fade-up" delay={400}>

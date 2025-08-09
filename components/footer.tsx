@@ -11,7 +11,7 @@ export default function Footer() {
         <div className="grid grid-cols-2 gap-8 md:gap-16 mb-12">
           {/* Main Links */}
           <div>
-            <h3 className="text-sm font-medium text-gray-400 mb-4">MAIN</h3>
+            <h3 className="text-sm font-medium text-white mb-4 mb-4">MAIN</h3>
             <ul className="space-y-3">
               <li>
                 <Link
@@ -47,7 +47,7 @@ export default function Footer() {
               {/* <li>
                 <Link
                   href="/info"
-                  className="text-sm text-gray-300 hover:text-white transition-colors focus:outline-none focus:underline"
+                  className="text-sm text-gray-400 hover:text-white transition-colors focus:outline-none focus:underline"
                 >
                   Info
                 </Link>
@@ -57,7 +57,7 @@ export default function Footer() {
 
           {/* Contact Links */}
           <div>
-            <h3 className="text-sm font-medium text-gray-400 mb-4">CONTACT</h3>
+            <h3 className="text-sm font-medium text-white mb-4">CONTACT</h3>
             <ul className="space-y-3">
               <li>
                 <a
@@ -88,7 +88,7 @@ export default function Footer() {
 
         {/* Copyright */}
         <div className="pt-8 border-t border-gray-800">
-          <p className="text-sm text-gray-400">
+          <p className="text-sm text-white mb-4">
             © 2025 Kulan Gunawardena. Built with React & TypeScript. Always a work in progress.
           </p>
         </div>

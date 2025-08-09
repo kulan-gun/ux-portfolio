@@ -148,7 +148,7 @@ export default function CRMCaseStudyPage() {
           </div>
 
           {/* Navigation links */}
-          <nav className="space-y-6 text-gray-400 pl-8" aria-label="Table of contents">
+          <nav className="space-y-6 text-gray-300 pl-8" aria-label="Table of contents">
             <ul className="space-y-6">
               {sections.map((section) => (
                 <li key={section.id}>
@@ -165,7 +165,7 @@ export default function CRMCaseStudyPage() {
                     />
                     <span
                       className={`text-sm font-light transition-colors duration-300 ${
-                        activeSection === section.id ? "text-white" : "text-gray-400 group-hover:text-gray-300"
+                        activeSection === section.id ? "text-white" : "text-gray-300 group-hover:text-gray-300"
                       }`}
                     >
                       {section.title}
@@ -196,7 +196,7 @@ export default function CRMCaseStudyPage() {
               </div>
               <div className="inline-flex rounded-full bg-zinc-800/50 px-3 py-1 sm:px-4 sm:py-1.5">
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-medium text-gray-300 tracking-wide uppercase">Enterprise Client</span>
+                  <span className="text-xs font-medium text-gray-300 tracking-wide uppercase">Anglian Water</span>
                 </div>
               </div>
               <div className="inline-flex rounded-full bg-zinc-800/50 px-3 py-1 sm:px-4 sm:py-1.5">
@@ -229,13 +229,12 @@ export default function CRMCaseStudyPage() {
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={200}>
-              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">
+              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
                 Anglian Water needed a modernised internal customer relationship management (CRM) system to monitor
                 customer payments, streamline workflows, and improve data accuracy.
                 <br />
                 <br />
-                As the lead UX designer, I guided the design, and prototyping process to create a more intuitive and
-                scalable solution for their internal teams.
+                As the lead UX designer, I directed the design and prototyping process. This aimed to create a more intuitive and scalable solution for the internal teams.
               </p>
             </AnimateOnScroll>
 
@@ -244,7 +243,7 @@ export default function CRMCaseStudyPage() {
                 <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3" role="group" aria-label="Key metrics">
                   <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
                     <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">1 mo</div>
-                    <div className="text-xs sm:text-sm md:text-base text-gray-400">
+                    <div className="text-xs sm:text-sm md:text-base text-gray-300">
                       delivered project within 1 month
                     </div>
                   </div>
@@ -252,11 +251,11 @@ export default function CRMCaseStudyPage() {
                     <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">
                       5 to 10
                     </div>
-                    <div className="text-xs sm:text-sm md:text-base text-gray-400">fewer estimated clicks per task</div>
+                    <div className="text-xs sm:text-sm md:text-base text-gray-300">fewer estimated clicks per task</div>
                   </div>
                   <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
                     <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">-40%</div>
-                    <div className="text-xs sm:text-sm md:text-base text-gray-400">
+                    <div className="text-xs sm:text-sm md:text-base text-gray-300">
                       estimated reduction in task time
                     </div>
                   </div>
@@ -272,18 +271,17 @@ export default function CRMCaseStudyPage() {
                       title: "Key Facts",
                       items: [
                         "Project duration: 1 month",
-                        "Team size: 3 members",
-                        "My role: Lead UX Engineer",
-                        "Primary focus: Migrating a legacy CRM to a new design system",
+                        "Team size: 3 members (2x UX Designers, 1x User Researcher)",
+                        "My role: Lead UX Designer",
                       ],
                     },
                     {
                       title: "Challenges",
-                      items: ["Complex legacy system", "Technical feasibility", "Time pressure"],
+                      items: ["Understanding the workflows of a complex legacy system", "Migrating a CRM to a Experian's new design system using Figma", "Pressure to deliver quickly for the client"],
                     },
                     {
                       title: "Approach",
-                      items: ["User-centred design", "Agile development", "Continuous user testing"],
+                      items: ["Iterative user-centred design", "Engage developers early and often", "Collaborative working in Figma"],
                     },
                   ]}
                 />
@@ -300,13 +298,8 @@ export default function CRMCaseStudyPage() {
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={200}>
-              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">
-                The legacy CRM system was inefficient, leading to slow task completion, data entry errors, and
-                frustration among users.
-                <br />
-                <br />
-                The interface was outdated, lacked consistency, and required excessive navigation, increasing cognitive
-                load. Agents struggled to complete routine processes quickly, affecting productivity.
+              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
+                The legacy CRM was frustrating and slow. Its outdated interface led to frequent errors and made tasks take longer. This also hurt agent productivity.
               </p>
             </AnimateOnScroll>
 
@@ -317,23 +310,21 @@ export default function CRMCaseStudyPage() {
                     {
                       title: "User pain points",
                       items: [
-                        "Slow task completion",
                         "The interface was outdated and inconsistent, increasing cognitive load",
                         "Hard to complete routine processes quickly, affecting productivity",
-                        "Difficult to track customer interactions",
+                        "Difficult to track customer interactions due to tricky navigation",
                       ],
                     },
                     {
                       title: "Business challenges",
-                      items: ["Data input errors cause downstream issues", "High training costs", "Data silos"],
+                      items: ["Data input errors cause downstream issues", "High training costs"],
                     },
                     {
                       title: "Opportunities",
                       items: [
-                        "Redesign core workflows",
+                        "Redesign core workflows and improve cross-team collaboration",
                         "Implement a unified design system",
                         "Enhance data visualisation",
-                        "Improve cross-team collaboration",
                       ],
                     },
                   ]}
@@ -371,7 +362,7 @@ export default function CRMCaseStudyPage() {
                         </div>
                         <div>
                           <h3 className="text-2xl font-normal text-white">Persona</h3>
-                          <p className="text-gray-400">
+                          <p className="text-gray-300">
                             Meet Sarah, a customer service agent at Anglian Water. She handles 40+ customer inquiries
                             daily using their legacy CRM system. She needs to quickly access and update customer
                             information while maintaining high service quality standards.
@@ -384,27 +375,26 @@ export default function CRMCaseStudyPage() {
                     <div className="grid grid-cols-4 gap-4 mb-8" role="region" aria-label="User journey stages">
                       <div className="text-center">
                         <h4 className="text-xl font-normal text-white mb-4">Customer Contact</h4>
-                        <p className="text-sm text-gray-400">
+                        <p className="text-sm text-gray-300">
                           Sarah receives a customer call about their billing inquiry and needs to access their account.
                         </p>
                       </div>
                       <div className="text-center">
                         <h4 className="text-xl font-normal text-white mb-4">Information Lookup</h4>
-                        <p className="text-sm text-gray-400">
+                        <p className="text-sm text-gray-300">
                           Navigates through multiple screens to find the customer's account details and payment history.
                         </p>
                       </div>
                       <div className="text-center">
                         <h4 className="text-xl font-normal text-white mb-4">Process Request</h4>
-                        <p className="text-sm text-gray-400">
+                        <p className="text-sm text-gray-300">
                           Updates account information or processes payment arrangements while dealing with system lag.
                         </p>
                       </div>
                       <div className="text-center">
                         <h4 className="text-xl font-normal text-white mb-4">Resolution</h4>
-                        <p className="text-sm text-gray-400">
-                          Completes the transaction and documents the interaction, often needing to use multiple systems
-                          to finish.
+                        <p className="text-sm text-gray-300">
+                          Finishes the transaction and records the interaction, often using several systems to complete it.
                         </p>
                       </div>
                     </div>
@@ -438,16 +428,16 @@ export default function CRMCaseStudyPage() {
                     {/* Quotes */}
                     <div className="grid grid-cols-4 gap-4" aria-label="User quotes at different journey stages">
                       <div className="text-center">
-                        <p className="text-sm text-gray-400">"Let me try to find your account..."</p>
+                        <p className="text-sm text-gray-300">"Let me try to find your account..."</p>
                       </div>
                       <div className="text-center">
-                        <p className="text-sm text-gray-400">"The system is running slow today."</p>
+                        <p className="text-sm text-gray-300">"The system is running slow today."</p>
                       </div>
                       <div className="text-center">
-                        <p className="text-sm text-gray-400">"I'll need to open another application for this."</p>
+                        <p className="text-sm text-gray-300">"I'll need to open another application for this."</p>
                       </div>
                       <div className="text-center">
-                        <p className="text-sm text-gray-400">"Thanks for your patience with our system."</p>
+                        <p className="text-sm text-gray-300">"Thanks for your patience with our system."</p>
                       </div>
                     </div>
                   </div>
@@ -465,8 +455,8 @@ export default function CRMCaseStudyPage() {
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={200}>
-              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">
-                We used Figma as our primary design tool, and MS Teams for remote user interviews. Our user-centred
+              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
+                We used Figma as our primary design tool, and MS Teams for conducting remote user interviews. Our user-centred
                 design process was as follows:
               </p>
             </AnimateOnScroll>
@@ -481,7 +471,7 @@ export default function CRMCaseStudyPage() {
                       </div>
                       <h3 className="text-lg md:text-xl font-normal text-white mb-4">User research</h3>
                       <ul className="space-y-3 text-left w-full">
-                        <li className="text-gray-400 text-sm md:text-base text-center">
+                        <li className="text-gray-300 text-sm md:text-base text-center">
                           Conducted interviews and observations with CRM agents to understand pain points and
                           inefficiencies.
                         </li>
@@ -492,9 +482,9 @@ export default function CRMCaseStudyPage() {
                       <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
                         <span className="text-xl md:text-2xl font-medium text-white">2</span>
                       </div>
-                      <h3 className="text-lg md:text-xl font-normal text-white mb-4">Wireframing & prototyping</h3>
+                      <h3 className="text-lg md:text-xl font-normal text-white mb-4">Prototyping</h3>
                       <ul className="space-y-3 text-left w-full">
-                        <li className="text-gray-400 text-sm md:text-base text-center">
+                        <li className="text-gray-300 text-sm md:text-base text-center">
                           Developed low-fidelity wireframes and iterated based on feedback before moving to
                           high-fidelity designs.
                         </li>
@@ -507,7 +497,7 @@ export default function CRMCaseStudyPage() {
                       </div>
                       <h3 className="text-lg md:text-xl font-normal text-white mb-4">User testing</h3>
                       <ul className="space-y-3 text-left w-full">
-                        <li className="text-gray-400 text-sm md:text-base text-center">
+                        <li className="text-gray-300 text-sm md:text-base text-center">
                           Conducted usability testing with agents to refine interactions, ensuring accessibility and
                           ease of use.
                         </li>
@@ -518,10 +508,10 @@ export default function CRMCaseStudyPage() {
                       <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
                         <span className="text-xl md:text-2xl font-medium text-white">4</span>
                       </div>
-                      <h3 className="text-lg md:text-xl font-normal text-white mb-4">Present</h3>
+                      <h3 className="text-lg md:text-xl font-normal text-white mb-4">Presenting</h3>
                       <ul className="space-y-3 text-left w-full">
-                        <li className="text-gray-400 text-sm md:text-base text-center">
-                          Presented the design to client leadership and developers for feedback.
+                        <li className="text-gray-300 text-sm md:text-base text-center">
+                          Presented the design to client leadership and developers for feedback. Made minor changes.
                         </li>
                       </ul>
                     </div>
@@ -532,9 +522,8 @@ export default function CRMCaseStudyPage() {
                       </div>
                       <h3 className="text-lg md:text-xl font-normal text-white mb-4">Handoff</h3>
                       <ul className="space-y-3 text-left w-full">
-                        <li className="text-gray-400 text-sm md:text-base text-center">
-                          Worked closely with developers to enhance the design based on technical feasibility,
-                          eventually handing the design over.
+                        <li className="text-gray-300 text-sm md:text-base text-center">
+                          Worked with developers to enhance the design based on technical feasibility, then handed it over to them.
                         </li>
                       </ul>
                     </div>
@@ -584,20 +573,18 @@ export default function CRMCaseStudyPage() {
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={200}>
-              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">
-                We designed a high-fidelity prototype that restructured workflows, improved information hierarchy, and
-                enhanced usability.
+              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
+                 We teamed up with developers from Experian before the build phase. This helped us make sure the designs could be developed. We then finalised the high-fidelity prototype. 
                 <br />
                 <br />
-                We collaborated with developers from Experian who were responsible for the build phase, to assess for
-                technical feasibility of the designs.
+                Our design reimagined workflows, improved information architecture, and enhanced the usability of the CRM for agents.
               </p>
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={300}>
               <div className="mb-8 max-w-3xl">
                 <h3 className="text-xl font-medium text-white mb-4">Key features include:</h3>
-                <ul className="space-y-2 text-sm sm:text-base md:text-lg text-gray-400 list-disc pl-5">
+                <ul className="space-y-2 text-sm sm:text-base md:text-lg text-gray-300 list-disc pl-5">
                   <li>Streamlined navigation with fewer clicks to complete common tasks</li>
                   <li>Improved data visualisation for better decision-making</li>
                   <li>Consistent UI components following Experian's design system</li>
@@ -626,13 +613,11 @@ export default function CRMCaseStudyPage() {
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={200}>
-              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">
-                Won leadership approval and facilitated a seamless developer handover, ensuring a smooth transition from
-                prototype to implementation.
+              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
+                We gained leadership approval and made the developer handover easy. This ensured a smooth shift from prototype to implementation.
                 <br />
-                <br />
-                By leveraging Experian's design system, we ensured scalability and consistency across the system. The
-                new interface minimised cognitive load and reduced errors, improving task efficiency.
+                 <br />
+                Moving to a design system ensured component scalability and visual consistency. The new interface aims to cut cognitive load and lower errors, which boosts task efficiency.
               </p>
             </AnimateOnScroll>
 
@@ -641,7 +626,7 @@ export default function CRMCaseStudyPage() {
                 <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3" role="group" aria-label="Key metrics">
                   <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
                     <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">1 mo</div>
-                    <div className="text-xs sm:text-sm md:text-base text-gray-400">
+                    <div className="text-xs sm:text-sm md:text-base text-gray-300">
                       delivered project within 1 month
                     </div>
                   </div>
@@ -649,11 +634,11 @@ export default function CRMCaseStudyPage() {
                     <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">
                       5 to 10
                     </div>
-                    <div className="text-xs sm:text-sm md:text-base text-gray-400">fewer estimated clicks per task</div>
+                    <div className="text-xs sm:text-sm md:text-base text-gray-300">fewer estimated clicks per task</div>
                   </div>
                   <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
                     <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">-40%</div>
-                    <div className="text-xs sm:text-sm md:text-base text-gray-400">
+                    <div className="text-xs sm:text-sm md:text-base text-gray-300">
                       estimated reduction in task time
                     </div>
                   </div>
@@ -669,7 +654,7 @@ export default function CRMCaseStudyPage() {
                         "
                       </div>
                       <p className="text-xl italic text-gray-300 pl-6 pr-6">You delivered on the brief, and my team and I are really impressed with the prototypes, along with your considerations for the build now and in the future.</p>
-                      <footer className="mt-4 text-sm text-gray-400 pl-6">— Anglian Water Client</footer>
+                      <footer className="mt-4 text-sm text-gray-300 pl-6">— Anglian Water Client</footer>
                       <div className="absolute -bottom-4 -right-4 text-4xl text-gray-600" aria-hidden="true">
                         "
                       </div>
@@ -689,13 +674,8 @@ export default function CRMCaseStudyPage() {
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={200}>
-              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">
-                The redesigned CRM system addressed critical usability issues, improved data handling, and enhanced the
-                user experience for internal teams.
-                <br />
-                <br />
-                By focusing on efficiency, accessibility, and intuitive navigation, we created a system that better
-                supported Anglian Water's operational needs.
+              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
+                We focused on efficiency, cognitive load, and easier navigation. This helped us create a system that better suits Anglian Water's needs.
               </p>
             </AnimateOnScroll>
 
@@ -715,7 +695,7 @@ export default function CRMCaseStudyPage() {
                             <UXLessonsCard
                               icon={
                                 <svg
-                                  className="w-6 h-6 text-gray-400"
+                                  className="w-6 h-6 text-gray-300"
                                   viewBox="0 0 24 24"
                                   fill="none"
                                   xmlns="http://www.w3.org/2000/svg"
@@ -750,7 +730,7 @@ export default function CRMCaseStudyPage() {
                             <UXLessonsCard
                               icon={
                                 <svg
-                                  className="w-6 h-6 text-gray-400"
+                                  className="w-6 h-6 text-gray-300"
                                   viewBox="0 0 24 24"
                                   fill="none"
                                   xmlns="http://www.w3.org/2000/svg"
@@ -781,7 +761,7 @@ export default function CRMCaseStudyPage() {
                             <UXLessonsCard
                               icon={
                                 <svg
-                                  className="w-6 h-6 text-gray-400"
+                                  className="w-6 h-6 text-gray-300"
                                   viewBox="0 0 24 24"
                                   fill="none"
                                   xmlns="http://www.w3.org/2000/svg"

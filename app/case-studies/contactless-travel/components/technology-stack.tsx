@@ -12,7 +12,7 @@ export default function TechnologyStack() {
             </svg>
           </div>
           <h3 className="text-xl font-normal text-white mb-2">Frontend</h3>
-          <ul className="text-gray-400 space-y-2">
+          <ul className="text-gray-300 space-y-2">
             <li>React Native</li>
             <li>TypeScript</li>
             <li>Redux</li>
@@ -27,7 +27,7 @@ export default function TechnologyStack() {
             </svg>
           </div>
           <h3 className="text-xl font-normal text-white mb-2">Backend</h3>
-          <ul className="text-gray-400 space-y-2">
+          <ul className="text-gray-300 space-y-2">
             <li>Node.js</li>
             <li>Express</li>
             <li>GraphQL</li>
@@ -66,7 +66,7 @@ export default function TechnologyStack() {
             </svg>
           </div>
           <h3 className="text-xl font-normal text-white mb-2">DevOps</h3>
-          <ul className="text-gray-400 space-y-2">
+          <ul className="text-gray-300 space-y-2">
             <li>Docker</li>
             <li>Kubernetes</li>
             <li>AWS</li>

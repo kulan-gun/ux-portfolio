@@ -13,7 +13,7 @@ export default function UXLessonsCard({ icon, title, description }: UXLessonsCar
           {icon}
         </div>
         <h3 className="text-xl font-normal text-white">{title}</h3>
-        <p className="text-gray-400 leading-relaxed">{description}</p>
+        <p className="text-gray-300 leading-relaxed">{description}</p>
       </div>
     </div>
   )

@@ -121,7 +121,7 @@ export default function BarChart({ title, description, data, height = 400, yAxis
   return (
     <div className="rounded-3xl bg-zinc-900/50 p-6 md:p-8 backdrop-blur-sm">
       {title && <h3 className="text-xl md:text-2xl font-normal text-white mb-4">{title}</h3>}
-      {description && <p className="text-gray-400 mb-6">{description}</p>}
+      {description && <p className="text-gray-300 mb-6">{description}</p>}
 
       <div className="w-full">
         <canvas
@@ -137,7 +137,7 @@ export default function BarChart({ title, description, data, height = 400, yAxis
             {data.categories.map((category, index) => (
               <div key={index} className="flex items-center">
                 <span className="w-3 h-3 inline-block mr-2 bg-blue-500"></span>
-                <span className="text-sm text-gray-400">{category}</span>
+                <span className="text-sm text-gray-300">{category}</span>
               </div>
             ))}
           </div>

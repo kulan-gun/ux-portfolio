@@ -16,7 +16,7 @@ export default function QuoteCard({ quote, author, role, organization }: QuoteCa
 
         <p className="text-xl md:text-2xl text-gray-300 leading-relaxed relative">{quote}</p>
 
-        <figcaption className="mt-6 text-gray-400">
+        <figcaption className="mt-6 text-gray-300">
           <span className="font-medium text-white">{author}</span>
           {(role || organization) && (
             <>

@@ -18,7 +18,7 @@ interface DataTableProps {
     return (
       <div className="rounded-3xl bg-zinc-900/50 p-6 md:p-8 backdrop-blur-sm">
         {title && <h4 className="text-lg md:text-xl font-normal text-white mb-4">{title}</h4>}
-        {description && <p className="text-gray-400 mb-6">{description}</p>}
+        {description && <p className="text-gray-300 mb-6">{description}</p>}
   
         <div className="overflow-x-auto">
           <table className="w-full border-collapse">

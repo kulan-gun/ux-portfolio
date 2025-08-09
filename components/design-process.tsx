@@ -25,7 +25,7 @@ export default function DesignProcess({ steps }: DesignProcessProps) {
             {/* Tasks List */}
             <ul className="space-y-3 text-left w-full">
               {step.tasks.map((task, index) => (
-                <li key={index} className="text-gray-400 text-sm md:text-base text-center">
+                <li key={index} className="text-gray-300 text-sm md:text-base text-center">
                   {task}
                 </li>
               ))}

@@ -193,7 +193,7 @@ export default function HomePage() {
                 <CaseStudyPreview
                   date="2024"
                   client="GOV.UK CLIENT"
-                  title="Helping citizens get their benefits faster"
+                  title="Helping citizens navigate the UK benefits system"
                   href="/case-studies/benefits-case-study"
                   imageSrc="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/dwp-work1-YBcOjNYGrLjyFctNlf12YOF2Jeftgh.png"
                   status={{ label: "Shipped", color: "bg-green-500" }}
@@ -202,7 +202,7 @@ export default function HomePage() {
               <div className="opacity-0 animate-bounce-up">
                 <CaseStudyPreview
                   date="2023"
-                  client="ENTERPRISE CLIENT"
+                  client="ANGLIAN WATER"
                   title="Transforming customer relationship management"
                   href="/case-studies/crm-case-study"
                   imageSrc="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/anglian3-min-Gg1yQETIOPvQr9fySm8O1i5tRZYm3U.jpeg"

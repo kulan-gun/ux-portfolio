@@ -148,7 +148,7 @@ export default function ContactlessTravelCaseStudyPage() {
           </div>
 
           {/* Navigation links */}
-          <nav className="space-y-6 text-gray-400 pl-8" aria-label="Table of contents">
+          <nav className="space-y-6 text-gray-300 pl-8" aria-label="Table of contents">
             <ul className="space-y-6">
               {sections.map((section) => (
                 <li key={section.id}>
@@ -163,7 +163,7 @@ export default function ContactlessTravelCaseStudyPage() {
                       aria-hidden="true"
                     />
                     <span
-                      className={`text-sm font-light transition-colors duration-300 ${activeSection === section.id ? "text-white" : "text-gray-400 group-hover:text-gray-300"
+                      className={`text-sm font-light transition-colors duration-300 ${activeSection === section.id ? "text-white" : "text-gray-300 group-hover:text-gray-300"
                         }`}
                     >
                       {section.title}
@@ -229,7 +229,7 @@ export default function ContactlessTravelCaseStudyPage() {
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={200}>
-              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">
+              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
                 I supported a government organisation in modernising travel and migration through two distinct
                 workstreams. I worked closely with three user researchers, one content designer and multiple business
                 analysts and developers.
@@ -241,15 +241,15 @@ export default function ContactlessTravelCaseStudyPage() {
                 <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3" role="group" aria-label="Key metrics">
                   <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
                     <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">5m+</div>
-                    <div className="text-xs sm:text-sm md:text-base text-gray-400">global users</div>
+                    <div className="text-xs sm:text-sm md:text-base text-gray-300">global users</div>
                   </div>
                   <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
                     <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">2m+</div>
-                    <div className="text-xs sm:text-sm md:text-base text-gray-400">new users onboarded</div>
+                    <div className="text-xs sm:text-sm md:text-base text-gray-300">new users onboarded</div>
                   </div>
                   <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
                     <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">1st</div>
-                    <div className="text-xs sm:text-sm md:text-base text-gray-400">first-time GDS assessment pass</div>
+                    <div className="text-xs sm:text-sm md:text-base text-gray-300">first-time GDS assessment pass</div>
                   </div>
                 </div>
               </div>
@@ -330,7 +330,7 @@ export default function ContactlessTravelCaseStudyPage() {
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={200}>
-              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">
+              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
                 Workstream 1: Digital immigration status service
                 <br />
                 <br />
@@ -450,7 +450,7 @@ export default function ContactlessTravelCaseStudyPage() {
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={200}>
-              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">
+              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
                 For the digital immigration status service, we followed a user-centred design approach to ensure the
                 service was accessible and met the needs of diverse users.
               </p>
@@ -466,7 +466,7 @@ export default function ContactlessTravelCaseStudyPage() {
                       </div>
                       <h3 className="text-lg md:text-xl font-normal text-white mb-4">User research</h3>
                       <ul className="space-y-3 text-left w-full">
-                        <li className="text-gray-400 text-sm md:text-base text-center">
+                        <li className="text-gray-300 text-sm md:text-base text-center">
                           Conducted usability tests with diverse user groups to identify pain points and improve digital
                           service accessibility.
                         </li>
@@ -479,7 +479,7 @@ export default function ContactlessTravelCaseStudyPage() {
                       </div>
                       <h3 className="text-lg md:text-xl font-normal text-white mb-4">Prototyping</h3>
                       <ul className="space-y-3 text-left w-full">
-                        <li className="text-gray-400 text-sm md:text-base text-center">
+                        <li className="text-gray-300 text-sm md:text-base text-center">
                           Developed iterative prototypes, refining workflows based on continuous feedback from
                           stakeholders and users.
                         </li>
@@ -492,7 +492,7 @@ export default function ContactlessTravelCaseStudyPage() {
                       </div>
                       <h3 className="text-lg md:text-xl font-normal text-white mb-4">Accessibility compliance</h3>
                       <ul className="space-y-3 text-left w-full">
-                        <li className="text-gray-400 text-sm md:text-base text-center">
+                        <li className="text-gray-300 text-sm md:text-base text-center">
                           Ensured compliance with WCAG standards and best practices for digital inclusion.
                         </li>
                       </ul>
@@ -504,7 +504,7 @@ export default function ContactlessTravelCaseStudyPage() {
                       </div>
                       <h3 className="text-lg md:text-xl font-normal text-white mb-4">Collaboration</h3>
                       <ul className="space-y-3 text-left w-full">
-                        <li className="text-gray-400 text-sm md:text-base text-center">
+                        <li className="text-gray-300 text-sm md:text-base text-center">
                           Worked closely with policy makers, product managers, and development teams to align design
                           solutions with business goals.
                         </li>
@@ -535,7 +535,7 @@ export default function ContactlessTravelCaseStudyPage() {
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={200}>
-              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">
+              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
                 For the biometric self-enrolment trials, we focused on building user trust while ensuring robust
                 security measures for handling sensitive biometric data.
               </p>
@@ -551,7 +551,7 @@ export default function ContactlessTravelCaseStudyPage() {
                       </div>
                       <h3 className="text-lg md:text-xl font-normal text-white mb-4">User research</h3>
                       <ul className="space-y-3 text-left w-full">
-                        <li className="text-gray-400 text-sm md:text-base text-center">
+                        <li className="text-gray-300 text-sm md:text-base text-center">
                           Engaged participants in biometric trials to understand attitudes towards fingerprint and
                           facial recognition for identity verification.
                         </li>
@@ -564,7 +564,7 @@ export default function ContactlessTravelCaseStudyPage() {
                       </div>
                       <h3 className="text-lg md:text-xl font-normal text-white mb-4">Prototyping</h3>
                       <ul className="space-y-3 text-left w-full">
-                        <li className="text-gray-400 text-sm md:text-base text-center">
+                        <li className="text-gray-300 text-sm md:text-base text-center">
                           Created custom UI components for biometric enrolment, iterating based on real-world testing
                           results.
                         </li>
@@ -577,7 +577,7 @@ export default function ContactlessTravelCaseStudyPage() {
                       </div>
                       <h3 className="text-lg md:text-xl font-normal text-white mb-4">Security & trust</h3>
                       <ul className="space-y-3 text-left w-full">
-                        <li className="text-gray-400 text-sm md:text-base text-center">
+                        <li className="text-gray-300 text-sm md:text-base text-center">
                           Focused on user trust through transparent communication about biometric data handling and
                           privacy measures.
                         </li>
@@ -590,7 +590,7 @@ export default function ContactlessTravelCaseStudyPage() {
                       </div>
                       <h3 className="text-lg md:text-xl font-normal text-white mb-4">Cross-functional collaboration</h3>
                       <ul className="space-y-3 text-left w-full">
-                        <li className="text-gray-400 text-sm md:text-base text-center">
+                        <li className="text-gray-300 text-sm md:text-base text-center">
                           Partnered with security experts, data protection officers, and service designers to ensure
                           robust, future-ready solutions.
                         </li>
@@ -621,7 +621,7 @@ export default function ContactlessTravelCaseStudyPage() {
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={200}>
-              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">
+              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
                 Our approach combined rapid prototyping, usability testing, and policy stakeholder collaboration.
               </p>
             </AnimateOnScroll>
@@ -749,7 +749,7 @@ export default function ContactlessTravelCaseStudyPage() {
                     "
                   </div>
                   <p className="text-xl italic text-gray-300 pl-6 pr-6">This will make things so much easier. I won't have to travel for 2 hours to do this - I can just do it at home.</p>
-                  <footer className="mt-4 text-sm text-gray-400 pl-6">— Participant in the biometric trials</footer>
+                  <footer className="mt-4 text-sm text-gray-300 pl-6">— Participant in the biometric trials</footer>
                   <div className="absolute -bottom-4 -right-4 text-4xl text-gray-600" aria-hidden="true">
                     "
                   </div>
@@ -775,7 +775,7 @@ export default function ContactlessTravelCaseStudyPage() {
                 <UXLessonsCard
                   icon={
                     <svg
-                      className="w-6 h-6 text-gray-400"
+                      className="w-6 h-6 text-gray-300"
                       viewBox="0 0 24 24"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
@@ -812,7 +812,7 @@ export default function ContactlessTravelCaseStudyPage() {
                 <UXLessonsCard
                   icon={
                     <svg
-                      className="w-6 h-6 text-gray-400"
+                      className="w-6 h-6 text-gray-300"
                       viewBox="0 0 24 24"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
@@ -846,7 +846,7 @@ export default function ContactlessTravelCaseStudyPage() {
                 <UXLessonsCard
                   icon={
                     <svg
-                      className="w-6 h-6 text-gray-400"
+                      className="w-6 h-6 text-gray-300"
                       viewBox="0 0 24 24"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"

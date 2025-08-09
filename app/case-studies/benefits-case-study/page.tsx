@@ -147,7 +147,7 @@ export default function BenefitsCaseStudyPage() {
           </div>
 
           {/* Navigation links */}
-          <nav className="space-y-6 text-gray-400 pl-8" aria-label="Table of contents">
+          <nav className="space-y-6 text-gray-300 pl-8" aria-label="Table of contents">
             <ul className="space-y-6">
               {sections.map((section) => (
                 <li key={section.id}>
@@ -162,7 +162,7 @@ export default function BenefitsCaseStudyPage() {
                       aria-hidden="true"
                     />
                     <span
-                      className={`text-sm font-light transition-colors duration-300 ${activeSection === section.id ? "text-white" : "text-gray-400 group-hover:text-gray-300"
+                      className={`text-sm font-light transition-colors duration-300 ${activeSection === section.id ? "text-white" : "text-gray-300 group-hover:text-gray-300"
                         }`}
                     >
                       {section.title}
@@ -206,7 +206,7 @@ export default function BenefitsCaseStudyPage() {
               </div>
             </div>
             <h1 id="case-study-title" className="text-3xl sm:text-4xl md:text-5xl font-display mb-8 sm:mb-12">
-              Helping citizens get their benefits faster
+              Helping citizens navigate the UK benefits system
             </h1>
 
             {/* Hero image */}
@@ -228,7 +228,7 @@ export default function BenefitsCaseStudyPage() {
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={400}>
-              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">
+              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
                 This case study highlights my work on a UK government benefits service, enabling 500,000 - 700,000
                 citizens each year to submit fit notes and access financial support.
               </p>
@@ -239,17 +239,17 @@ export default function BenefitsCaseStudyPage() {
                 <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3" role="group" aria-label="Key metrics">
                   <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
                     <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">46K</div>
-                    <div className="text-xs sm:text-sm md:text-base text-gray-400">monthly sessions</div>
+                    <div className="text-xs sm:text-sm md:text-base text-gray-300">monthly sessions</div>
                   </div>
                   <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
                     <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">+10%</div>
-                    <div className="text-xs sm:text-sm md:text-base text-gray-400">
+                    <div className="text-xs sm:text-sm md:text-base text-gray-300">
                       points increase in digital uptake
                     </div>
                   </div>
                   <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
                     <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">+5%</div>
-                    <div className="text-xs sm:text-sm md:text-base text-gray-400">points increase in CSAT</div>
+                    <div className="text-xs sm:text-sm md:text-base text-gray-300">points increase in CSAT</div>
                   </div>
                 </div>
               </div>
@@ -347,7 +347,7 @@ export default function BenefitsCaseStudyPage() {
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={400}>
-              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">
+              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
                 Citizens need to submit fit notes as evidence for their benefit claim, but were facing big difficulties when doing this.
                 Through research, we found that primary users are likely to submit their fit note several
                 times due to a recurring health condition.
@@ -465,7 +465,7 @@ export default function BenefitsCaseStudyPage() {
                         </div>
                         <div>
                           <h3 className="text-2xl font-normal text-white">Persona</h3>
-                          <p className="text-gray-400">
+                          <p className="text-gray-300">
                             Andy, who has chronic health conditions, relies on government support to manage his living
                             expenses. He wants to ensure he receives the benefits he needs to maintain his financial
                             stability.
@@ -478,26 +478,26 @@ export default function BenefitsCaseStudyPage() {
                     <div className="grid grid-cols-4 gap-4 mb-8" role="region" aria-label="User journey stages">
                       <div className="text-center">
                         <h4 className="text-xl font-normal text-white mb-4">Consider</h4>
-                        <p className="text-sm text-gray-400">
+                        <p className="text-sm text-gray-300">
                           Begins benefits claim and obtains a fit note from the doctor.
                         </p>
                       </div>
                       <div className="text-center">
                         <h4 className="text-xl font-normal text-white mb-4">Explore</h4>
-                        <p className="text-sm text-gray-400">
+                        <p className="text-sm text-gray-300">
                           Reads instructions. Selects either paper or digital fit note. Follows guidance.
                         </p>
                       </div>
                       <div className="text-center">
                         <h4 className="text-xl font-normal text-white mb-4">Upload</h4>
-                        <p className="text-sm text-gray-400">
+                        <p className="text-sm text-gray-300">
                           Selects the correct format. Uploads the fit note. Asks for help from friends or family if
                           needed.
                         </p>
                       </div>
                       <div className="text-center">
                         <h4 className="text-xl font-normal text-white mb-4">Accept</h4>
-                        <p className="text-sm text-gray-400">
+                        <p className="text-sm text-gray-300">
                           If successful, Andy gets a text notification, and the fit note is sent for processing.
                           Otherwise, he must post it manually.
                         </p>
@@ -533,16 +533,16 @@ export default function BenefitsCaseStudyPage() {
                     {/* Quotes */}
                     <div className="grid grid-cols-4 gap-4" aria-label="User quotes at different journey stages">
                       <div className="text-center">
-                        <p className="text-sm text-gray-400">"What do I need to do here?"</p>
+                        <p className="text-sm text-gray-300">"What do I need to do here?"</p>
                       </div>
                       <div className="text-center">
-                        <p className="text-sm text-gray-400">"Seems clear enough"</p>
+                        <p className="text-sm text-gray-300">"Seems clear enough"</p>
                       </div>
                       <div className="text-center">
-                        <p className="text-sm text-gray-400">"Wait, this was meant to be simple!"</p>
+                        <p className="text-sm text-gray-300">"Wait, this was meant to be simple!"</p>
                       </div>
                       <div className="text-center">
-                        <p className="text-sm text-gray-400">"That took far too long"</p>
+                        <p className="text-sm text-gray-300">"That took far too long"</p>
                       </div>
                     </div>
                   </div>
@@ -561,7 +561,7 @@ export default function BenefitsCaseStudyPage() {
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={400}>
-              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">
+              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
                 My primary tools were Figma and the GOV.UK prototyping kit, which uses HTML, CSS and JavaScript. Our
                 team's user-centred design approach was as follows:
               </p>
@@ -583,7 +583,7 @@ export default function BenefitsCaseStudyPage() {
 
                       {/* Tasks List */}
                       <ul className="space-y-3 text-left w-full">
-                        <li className="text-gray-400 text-sm md:text-base text-center">
+                        <li className="text-gray-300 text-sm md:text-base text-center">
                           Reviewed feedback inbox and conducted user and staff interviews and usability testing to reveal insights.
                         </li>
                       </ul>
@@ -595,7 +595,7 @@ export default function BenefitsCaseStudyPage() {
                       </div>
                       <h4 className="text-lg md:text-xl font-normal text-white mb-4">Analysis and ideation</h4>
                       <ul className="space-y-3 text-left w-full">
-                        <li className="text-gray-400 text-sm md:text-base text-center">
+                        <li className="text-gray-300 text-sm md:text-base text-center">
                           Assessed back-end performance and user flows, identified bottlenecks, and drew inspiration
                           from similar services.
                         </li>
@@ -608,7 +608,7 @@ export default function BenefitsCaseStudyPage() {
                       </div>
                       <h4 className="text-lg md:text-xl font-normal text-white mb-4">Prototyping and testing</h4>
                       <ul className="space-y-3 text-left w-full">
-                        <li className="text-gray-400 text-sm md:text-base text-center">
+                        <li className="text-gray-300 text-sm md:text-base text-center">
                           Designed low- and high-fidelity prototypes, iteratively tested with users, and refined based
                           on feedback.
                         </li>
@@ -621,7 +621,7 @@ export default function BenefitsCaseStudyPage() {
                       </div>
                       <h4 className="text-lg md:text-xl font-normal text-white mb-4">Collaboration and alignment</h4>
                       <ul className="space-y-3 text-left w-full">
-                        <li className="text-gray-400 text-sm md:text-base text-center">
+                        <li className="text-gray-300 text-sm md:text-base text-center">
                           Worked with UX writers, researchers, developers, and policy teams to ensure feasibility and
                           secure sign-off.
                         </li>
@@ -634,7 +634,7 @@ export default function BenefitsCaseStudyPage() {
                       </div>
                       <h4 className="text-lg md:text-xl font-normal text-white mb-4">Implementation</h4>
                       <ul className="space-y-3 text-left w-full">
-                        <li className="text-gray-400 text-sm md:text-base text-center">
+                        <li className="text-gray-300 text-sm md:text-base text-center">
                           Partnered with developers to roll out changes, preserving the design intent and improving the
                           user experience.
                         </li>
@@ -654,7 +654,7 @@ export default function BenefitsCaseStudyPage() {
             <AnimateOnScroll animation="fade-up" delay={400}>
               <div className="mt-12 mb-12">
                 <h3 className="text-2xl font-normal text-white mb-6">Research Findings - Round 1</h3>
-                <ul className="space-y-2 text-sm sm:text-base md:text-lg text-gray-400 list-disc pl-5">
+                <ul className="space-y-2 text-sm sm:text-base md:text-lg text-gray-300 list-disc pl-5">
                   <li>In addition to analysing the inbox, we conducted user interviews with citizens and agents.</li>
                   <li>We used affinity mapping and synthesised our key findings.</li>
                 </ul>
@@ -695,7 +695,7 @@ export default function BenefitsCaseStudyPage() {
 
             <AnimateOnScroll animation="fade-in" delay={400}>
               <h3 className="text-2xl font-normal text-white mb-6">Iterations</h3>
-              <ul className="space-y-2 text-sm sm:text-base md:text-lg text-gray-400 list-disc pl-5">
+              <ul className="space-y-2 text-sm sm:text-base md:text-lg text-gray-300 list-disc pl-5">
                 <li>I worked with the Content Designer to improve the guidance page copy.</li>
                 <li>I designed variants to help users understand how to take clearer, more acceptable photos.</li>
               </ul>
@@ -719,7 +719,7 @@ export default function BenefitsCaseStudyPage() {
             <AnimateOnScroll animation="fade-up" delay={400}>
               <div className="mt-12 mb-12">
                 <h3 className="text-2xl font-normal text-white mb-6">Research Findings - Round 2</h3>
-                <ul className="space-y-2 text-sm sm:text-base md:text-lg text-gray-400 list-disc pl-5">
+                <ul className="space-y-2 text-sm sm:text-base md:text-lg text-gray-300 list-disc pl-5">
                   <li>I took my design to critiques and had them heuristically evaluated.</li>
                   <li>The team conducted several rounds of usability tested to unveil new insights.</li>
                 </ul>
@@ -756,7 +756,7 @@ export default function BenefitsCaseStudyPage() {
                       "
                     </div>
                     <p className="text-xl italic text-gray-300 pl-6 pr-6">My mum wouldn't know what a QR code is.</p>
-                    <footer className="mt-4 text-sm text-gray-400 pl-6">— User of the benefits service</footer>
+                    <footer className="mt-4 text-sm text-gray-300 pl-6">— User of the benefits service</footer>
                     <div className="absolute -bottom-4 -right-4 text-4xl text-gray-600" aria-hidden="true">
                       "
                     </div>
@@ -768,7 +768,7 @@ export default function BenefitsCaseStudyPage() {
             <AnimateOnScroll animation="fade-in" delay={400}>
               <div className="mt-8">
                 <h3 className="text-2xl font-normal text-white mb-6">Further Iterations</h3>
-                <ul className="space-y-2 text-sm sm:text-base md:text-lg text-gray-400 list-disc pl-5">
+                <ul className="space-y-2 text-sm sm:text-base md:text-lg text-gray-300 list-disc pl-5">
                   <li>I also designed and prototyped new error messages and 'multiple fit note' upload flows.</li>
                   <li>I explored ways to convey contextual error messages, and playback the user's uploaded fit note.</li>
                   <li>Due to limited developer capacity, these were placed in the backlog.</li>
@@ -804,7 +804,7 @@ export default function BenefitsCaseStudyPage() {
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={400}>
-              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">
+              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
                 After several testing rounds and iterations, we finalised the new guidance content and concepts for
                 'upload' pages to improve users' understanding of what's needed.
               </p>
@@ -812,7 +812,7 @@ export default function BenefitsCaseStudyPage() {
               <AnimateOnScroll animation="fade-up" delay={400}>
                 <div className="mb-8 max-w-3xl">
                   <h3 className="text-2xl font-normal text-white mb-6">Key features include:</h3>
-                  <ul className="space-y-2 text-sm sm:text-base md:text-lg text-gray-400 list-disc pl-5">
+                  <ul className="space-y-2 text-sm sm:text-base md:text-lg text-gray-300 list-disc pl-5">
                     <li>Clearer and more helpful guidance content and error messages</li>
                     <li>Provided better examples of good and bad images of fit notes</li>
                     <li>Brought the primary and secondary buttons closer together on the upload page</li>
@@ -842,7 +842,7 @@ export default function BenefitsCaseStudyPage() {
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={400}>
-              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">
+              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
                 My design changes delivered significant results in under six months, demonstrating the effectiveness
                 of my solutions and the value they provided.
               </p>
@@ -853,19 +853,19 @@ export default function BenefitsCaseStudyPage() {
                 <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3" role="group" aria-label="Key metrics">
                   <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
                     <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">+3%</div>
-                    <div className="text-xs sm:text-sm md:text-base text-gray-400">
+                    <div className="text-xs sm:text-sm md:text-base text-gray-300">
                       points increase in completion rate
                     </div>
                   </div>
                   <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
                     <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">+10%</div>
-                    <div className="text-xs sm:text-sm md:text-base text-gray-400">
+                    <div className="text-xs sm:text-sm md:text-base text-gray-300">
                       points increase in digital uptake
                     </div>
                   </div>
                   <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
                     <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">+5%</div>
-                    <div className="text-xs sm:text-sm md:text-base text-gray-400">points increase in CSAT</div>
+                    <div className="text-xs sm:text-sm md:text-base text-gray-300">points increase in CSAT</div>
                   </div>
                 </div>
               </div>
@@ -891,7 +891,7 @@ export default function BenefitsCaseStudyPage() {
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={400}>
-              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-400">
+              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
                 Through accessible and thoughtful design, we empowered users to navigate the service more confidently,
                 transforming lives and demonstrating the profound impact design can have on public services.
               </p>
@@ -906,7 +906,7 @@ export default function BenefitsCaseStudyPage() {
                       aria-hidden="true"
                     >
                       <svg
-                        className="w-6 h-6 text-gray-400"
+                        className="w-6 h-6 text-gray-300"
                         viewBox="0 0 24 24"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -936,7 +936,7 @@ export default function BenefitsCaseStudyPage() {
                       </svg>
                     </div>
                     <h3 className="text-2xl font-normal text-white mb-6">Data-driven design</h3>
-                    <p className="text-gray-400 leading-relaxed">
+                    <p className="text-gray-300 leading-relaxed">
                       In live projects, using quantitative data for Reach, Impact, Confidence, and Effort (RICE) scoring
                       helps prioritise design changes effectively, focusing on areas with the greatest impact. A/B
                       testing can validate how our design changes are benefiting the service.
@@ -951,7 +951,7 @@ export default function BenefitsCaseStudyPage() {
                       aria-hidden="true"
                     >
                       <svg
-                        className="w-6 h-6 text-gray-400"
+                        className="w-6 h-6 text-gray-300"
                         viewBox="0 0 24 24"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -974,7 +974,7 @@ export default function BenefitsCaseStudyPage() {
                       </svg>
                     </div>
                     <h3 className="text-2xl font-normal text-white mb-6">Digital inclusion</h3>
-                    <p className="text-gray-400 leading-relaxed">
+                    <p className="text-gray-300 leading-relaxed">
                       Users were told to take a screenshot of their fit note, but one user this meant taking a photo of a screen. This revealed a bias in assuming all users understand technical
                       terms, highlighting the need for simpler language to support those with lower digital literacy.
                     </p>
@@ -988,7 +988,7 @@ export default function BenefitsCaseStudyPage() {
                       aria-hidden="true"
                     >
                       <svg
-                        className="w-6 h-6 text-gray-400"
+                        className="w-6 h-6 text-gray-300"
                         viewBox="0 0 24 24"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -1011,7 +1011,7 @@ export default function BenefitsCaseStudyPage() {
                       </svg>
                     </div>
                     <h3 className="text-2xl font-normal text-white mb-6">Content can't solve it all</h3>
-                    <p className="text-gray-400 leading-relaxed">
+                    <p className="text-gray-300 leading-relaxed">
                       Not all issues can be fixed with front-end changes. To reduce failed uploads and improve processing accuracy, we introduced key back-end enhancements — including a HEIC file converter to support iPhone image uploads, and improvements to the scanning capabilities. These changes led to fewer errors, less manual rework, and a further 6%+ uplift in user satisfaction.
                     </p>
 
