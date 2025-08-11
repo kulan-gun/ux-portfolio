@@ -89,7 +89,7 @@ export default function Footer() {
         {/* Copyright */}
         <div className="pt-8 border-t border-gray-800">
           <p className="text-sm text-white mb-4">
-            © 2025 Kulan Gunawardena. Built with React & TypeScript. Always a work in progress.
+            © 2025 Kulan Gunawardena. Built with Next.js, React & TypeScript. Always a work in progress.
           </p>
         </div>
       </div>
