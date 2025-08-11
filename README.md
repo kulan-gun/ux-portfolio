@@ -1,8 +1,8 @@
 ## Typography
 
 ### Font Family
-- **Default sans-serif font**: `Inter`, with fallbacks to `system-ui` and then `sans-serif`.
-- **Display font family**: Same as default — `Inter`, `system-ui`, `sans-serif`.
+- **Default sans-serif font**: `Onest`, with fallbacks to `system-ui` and then `sans-serif`.
+- **Display font family**: Same as default — `Onest`, `system-ui`, `sans-serif`.
 
 ### Typescale
 
@@ -26,5 +26,5 @@
 | sm:heading-s    | 19px  | 25px        | 700    | —              |
 
 ### Default Font
-Your Tailwind `sans` font family is set to **Inter** by default.
+Your Tailwind `sans` font family is set to **Onest** by default.
 

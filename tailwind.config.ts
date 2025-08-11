@@ -1,28 +1,35 @@
 import type { Config } from "tailwindcss"
 
 const config: Config = {
-  darkMode: ["class"],
+  darkMode: ["class"], // Enables dark mode via a 'class' instead of media query
   content: [
-    "./pages/**/*.{js,ts,jsx,tsx,mdx}",
-    "./components/**/*.{js,ts,jsx,tsx,mdx}",
-    "./app/**/*.{js,ts,jsx,tsx,mdx}",
-    "*.{js,ts,jsx,tsx,mdx}",
+    "./pages/**/*.{js,ts,jsx,tsx,mdx}", // Scan all files in /pages for class names
+    "./components/**/*.{js,ts,jsx,tsx,mdx}", // Scan all files in /components
+    "./app/**/*.{js,ts,jsx,tsx,mdx}", // Scan all files in /app
+    "*.{js,ts,jsx,tsx,mdx}", // Scan root files
   ],
   theme: {
     extend: {
+      // ---------- FONTS ----------
       fontFamily: {
-        sans: ["Inter", "system-ui", "sans-serif"],
-        display: ["Inter", "system-ui", "sans-serif"],
+        // Body text font
+        sans: ["Onest", "system-ui", "sans-serif"], // Onest is the primary sans-serif font
+        // Headings font (currently the same as body)
+        display: ["Onest", "system-ui", "sans-serif"], 
+        // Monospace font for typing animation or code blocks - "JetBrains Mono", "monospace"
+        mono: ["Recursive", "Ubuntu Mono", "monospace"], 
       },
+
+      // ---------- TYPE SCALE ----------
       fontSize: {
         // Large screens (>640px)
         "display-xl": ["48px", { lineHeight: "50px", fontWeight: "700", letterSpacing: "-0.02em" }],
         "display-l": ["36px", { lineHeight: "40px", fontWeight: "700", letterSpacing: "-0.02em" }],
         "heading-m": ["24px", { lineHeight: "30px", fontWeight: "700" }],
         "heading-s": ["19px", { lineHeight: "25px", fontWeight: "700" }],
-        "body-l": ["19px", { lineHeight: "25px" }],
-        "body-m": ["16px", { lineHeight: "20px" }],
-        "body-s": ["14px", { lineHeight: "20px" }],
+        "body-l": ["19px", { lineHeight: "25px" }], // Paragraphs (large)
+        "body-m": ["16px", { lineHeight: "20px" }], // Paragraphs (medium)
+        "body-s": ["14px", { lineHeight: "20px" }], // Small UI text
 
         // Small screens (<640px)
         "sm:display-xl": ["32px", { lineHeight: "35px", fontWeight: "700", letterSpacing: "-0.02em" }],
@@ -30,6 +37,8 @@ const config: Config = {
         "sm:heading-m": ["21px", { lineHeight: "25px", fontWeight: "700" }],
         "sm:heading-s": ["19px", { lineHeight: "25px", fontWeight: "700" }],
       },
+
+      // ---------- COLOURS ----------
       colors: {
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
@@ -81,33 +90,31 @@ const config: Config = {
           border: "hsl(var(--sidebar-border))",
           ring: "hsl(var(--sidebar-ring))",
         },
-        "dark-purple": "#5D3FD3",
+        "dark-purple": "#5D3FD3", // Example of a fixed hex colour
       },
+
+      // ---------- BORDER RADII ----------
       borderRadius: {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
       },
+
+      // ---------- BACKGROUND GRADIENTS ----------
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic": "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+
+      // ---------- KEYFRAMES & ANIMATIONS ----------
       keyframes: {
         "accordion-down": {
-          from: {
-            height: "0",
-          },
-          to: {
-            height: "var(--radix-accordion-content-height)",
-          },
+          from: { height: "0" },
+          to: { height: "var(--radix-accordion-content-height)" },
         },
         "accordion-up": {
-          from: {
-            height: "var(--radix-accordion-content-height)",
-          },
-          to: {
-            height: "0",
-          },
+          from: { height: "var(--radix-accordion-content-height)" },
+          to: { height: "0" },
         },
       },
       animation: {
@@ -118,5 +125,5 @@ const config: Config = {
   },
   plugins: [],
 }
-export default config
 
+export default config

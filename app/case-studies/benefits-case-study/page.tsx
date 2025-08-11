@@ -206,7 +206,7 @@ export default function BenefitsCaseStudyPage() {
               </div>
             </div>
             <h1 id="case-study-title" className="text-3xl sm:text-4xl md:text-5xl font-display mb-8 sm:mb-12">
-              Helping citizens navigate the UK benefits system
+              Improving access to benefits for citizens in medical need
             </h1>
 
             {/* Hero image */}

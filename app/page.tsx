@@ -193,7 +193,7 @@ export default function HomePage() {
                 <CaseStudyPreview
                   date="2024"
                   client="GOV.UK CLIENT"
-                  title="Helping citizens navigate the UK benefits system"
+                  title="Improving access to benefits for citizens in medical need"
                   href="/case-studies/benefits-case-study"
                   imageSrc="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/dwp-work1-YBcOjNYGrLjyFctNlf12YOF2Jeftgh.png"
                   status={{ label: "Shipped", color: "bg-green-500" }}
