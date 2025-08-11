@@ -1,35 +1,30 @@
-Font family
+## Typography
 
-Default sans-serif font: Inter, with fallbacks to system-ui and then sans-serif
+### Font Family
+- **Default sans-serif font**: `Inter`, with fallbacks to `system-ui` and then `sans-serif`.
+- **Display font family**: Same as default — `Inter`, `system-ui`, `sans-serif`.
 
-display font family is the same: Inter, system-ui, sans-serif
+### Typescale
 
-Typescale (custom font sizes and line heights)
-Large screens (>640px):
+#### Large screens (>640px)
+| Token        | Size  | Line Height | Weight | Letter Spacing |
+|--------------|-------|-------------|--------|----------------|
+| display-xl   | 48px  | 50px        | 700    | -0.02em        |
+| display-l    | 36px  | 40px        | 700    | -0.02em        |
+| heading-m    | 24px  | 30px        | 700    | —              |
+| heading-s    | 19px  | 25px        | 700    | —              |
+| body-l       | 19px  | 25px        | —      | —              |
+| body-m       | 16px  | 20px        | —      | —              |
+| body-s       | 14px  | 20px        | —      | —              |
 
-display-xl: 48px, line-height 50px, weight 700, letter-spacing -0.02em
+#### Small screens (<640px)
+| Token           | Size  | Line Height | Weight | Letter Spacing |
+|-----------------|-------|-------------|--------|----------------|
+| sm:display-xl   | 32px  | 35px        | 700    | -0.02em        |
+| sm:display-l    | 27px  | 30px        | 700    | -0.02em        |
+| sm:heading-m    | 21px  | 25px        | 700    | —              |
+| sm:heading-s    | 19px  | 25px        | 700    | —              |
 
-display-l: 36px, line-height 40px, weight 700, letter-spacing -0.02em
+### Default Font
+Your Tailwind `sans` font family is set to **Inter** by default.
 
-heading-m: 24px, line-height 30px, weight 700
-
-heading-s: 19px, line-height 25px, weight 700
-
-body-l: 19px, line-height 25px
-
-body-m: 16px, line-height 20px
-
-body-s: 14px, line-height 20px
-
-Small screens (<640px):
-
-sm:display-xl: 32px, line-height 35px, weight 700, letter-spacing -0.02em
-
-sm:display-l: 27px, line-height 30px, weight 700, letter-spacing -0.02em
-
-sm:heading-m: 21px, line-height 25px, weight 700
-
-sm:heading-s: 19px, line-height 25px, weight 700
-
-Default font
-Your Tailwind sans font family is set to Inter by default.
