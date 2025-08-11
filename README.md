@@ -92,12 +92,12 @@ The Tailwind `sans` font family is set to **Onest** by default.
    `.tsx` files are used for React components with type support — basically React + TypeScript in harmony.
 
 3. **Tailwind CSS**  
-   Styling is powered by Tailwind — a utility-first CSS framework. Rather than writing custom CSS, classes are applied classes like `text-xl`, `font-sans`, `px-4` directly in your JSX to style elements quickly and consistently.
+   Styling is powered by Tailwind — a utility-first CSS framework. Rather than writing custom CSS, classes are applied classes like `text-xl`, `font-sans`, `px-4` directly in the JSX to style elements quickly and consistently.
 
 4. **Web Fonts & Font Stacks**  
-   Fonts such as Onest, Recursive, and Ubuntu Mono are loaded via `<link>` in `layout.tsx`.  
-  
-  In the Tailwind configuration, `fontFamily` defines which font is used for body, headings, and code. The browser falls back through the list if a font fails to load.
+   Fonts such as Onest, Recursive, and Ubuntu Mono are loaded via `<link>` in `layout.tsx`.
+   
+   In the Tailwind configuration, `fontFamily` defines which font is used for body, headings, and code. The browser falls back through the list if a font fails to load.
 
 5. **Animations & Typing Effects**  
    All that charming cursor-typing effect? That’s hand-coded with React state and `useEffect` to handle typing, deleting, blinking cursor, and text loops.
