@@ -327,7 +327,7 @@ export default function CRMCaseStudyPage() {
 
             <AnimateOnScroll animation="fade-up" delay={200}>
               <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
-                Change management consultants needed a faster, more engaging way to communicate complex HR policies.
+                This case study focuses on AURA. Change management consultants needed a faster, more engaging way to communicate complex HR policies. AURA sought to do just that.
               </p>
             </AnimateOnScroll>
 
@@ -724,8 +724,8 @@ export default function CRMCaseStudyPage() {
                       />
                     </svg>
                   }
-                  title="AI as an ideation partner"
-                  description="AI is great for generating and challenging ideas, especially through socractic methods. It's like another member of the team. That said, it can produce so many ideas to the point where we must avoid overwhelm and options paralysis. Moreover, relying solely on AI to solve our issues can cause us to feel disconnected to the problem space and solutions. To combat these, we can implement prompt refinement sessions to review the outputs of AI in the ideation phase. I also recommend people give problem-solving a go first, before turning to AI for help."
+                  title="Choosing the right model for the job"
+                  description="AURA began with a broad exploration of LLMs and embeddings, testing both open-source and proprietary models for accuracy, speed, and cost. We learned that model selection must be driven not just by technical benchmarks, but by the complexity of the documents, the domain language, and the required factual precision. This is equally relevant in a manufacturing or 'Design & Make' context, where the assistant may need to interpret lengthy technical manuals, engineering specs, or safety standards without losing nuance."
                 />
                 <UXLessonsCard
                   icon={
@@ -755,8 +755,8 @@ export default function CRMCaseStudyPage() {
                       />
                     </svg>
                   }
-                  title="AI democratises design"
-                  description="AI tools like v0 and Lovable make design more accessible to a wider range of people. Gone are the days where you need to be an expert in Figma or coding to make a prototype. This is great for empowering non-designers to contribute to the design process, but it also means we need to be careful about how we ensure quality. I recommend setting clear guidelines and providing training on how to use these tools effectively, while also maintaining a human-centred approach. It also means that with AI, the emphasis shifts from mastery of specific tools to proficiency in the language of design."
+                  title="Designing components for AI-powered experiences"
+                  description="Unlike conventional products where content is static, AI outputs are probabilistic. This meant designing for uncertainty — with clear loading states, confidence indicators, and mechanisms for users to refine queries. In AURA, this took the form of persistent query history, expandable answer sections, and inline citations. These patterns are directly applicable to manufacturing-focused tools like Autodesk Assistant, where iterative questioning and quick validation of source material are essential."
                 />
                 <UXLessonsCard
                   icon={
@@ -783,8 +783,8 @@ export default function CRMCaseStudyPage() {
                       />
                     </svg>
                   }
-                  title="Preserve the 'human-in-the-loop'"
-                  description="Only human beings can be legally accountable for the actions of AI. I led discussions on ethical guardrails, goals, and fail-safes when prototyping autonomous assistants to gather ideas, and the general consensus is that AI should be used to augment human decision-making, not replace it. This is especially true in the public sector, where accountability is paramount. User interface components that support this notion include notifications, audit trails, change logs, decision gate diagrams and more."
+                  title="Balancing automation with human oversight"
+                  description="In designing AURA, we found that AI is most valuable when it accelerates human decision-making, not replaces it. For summarising complex policy or technical documentation, we built in transparency features like source linking, full-document context views, and export options so users could verify outputs. The same principle applies in manufacturing workflows — whether checking compliance data or interpreting CAD-related standards, the human-in-the-loop remains essential for quality and accountability."
                 />
               </div>
             </AnimateOnScroll>

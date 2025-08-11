@@ -12,7 +12,7 @@ export default function HomePage() {
   const [loopNum, setLoopNum] = useState(0)
   const [typingSpeed, setTypingSpeed] = useState(105) // Increased typing speed by 30%
   const [showTyping, setShowTyping] = useState(false)
-  const phrases = ["I'm a Product Designer...", "I'm a UX Lead...", "I'm an Engineer...", "I'm an Innovator..."]
+  const phrases = ["I'm a Product Designer...", "I'm a UX Lead...", "I'm an Engineer...", "I'm an AI Innovator..."]
   const currentPhraseIndex = loopNum % phrases.length
   const currentPhrase = phrases[currentPhraseIndex]
   const heroRef = useRef<HTMLDivElement>(null)
@@ -26,7 +26,7 @@ export default function HomePage() {
       // Remove the animation class after 4 seconds
       setTimeout(() => {
         hand.classList.remove("waving")
-      }, 4000)
+      }, 4000) // 4 seconds to match the CSS animation duration 
     }
   }, [])
 
@@ -124,6 +124,7 @@ export default function HomePage() {
         .animate-fade-in {
           animation: fadeIn 0.5s ease-out forwards;
         }
+
       `}</style>
 
       {/* Header */}
@@ -138,8 +139,10 @@ export default function HomePage() {
 
         <div className="max-w-6xl mx-auto w-full text-left space-y-4 z-10">
           <h1 className="text-[36px] sm:text-[48px] md:text-[56px] lg:text-[64px] font-display font-semibold text-white opacity-0 animate-bounce-up">
-            Welcome! I'm Kulan
+            Welcome! I'm Kulan{" "}
+            <span id="waving-hand" aria-hidden="true">👋🏽</span>
           </h1>
+
           <p
             className={`text-xl sm:text-2xl font-mono text-gray-300 ${showTyping ? "animate-fade-in" : "opacity-0"}`}
             aria-hidden="true"
@@ -164,7 +167,7 @@ export default function HomePage() {
                 MY WORK
               </h2>
               <h3 className="text-[27px] sm:text-[36px] font-display font-semibold opacity-0 animate-bounce-up">
-                Stories that matter
+                <span aria-hidden="true">📚</span> Stories that matter
               </h3>
             </div>
 
