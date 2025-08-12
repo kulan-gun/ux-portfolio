@@ -11,6 +11,7 @@ import TopNavigation from "@/components/top-navigation"
 import BackToTopButton from "@/components/back-to-top-button"
 import SummaryCard from "@/components/summary-card"
 import FeedbackAnalysis from "@/components/feedback-analysis"
+import ImageModal from "@/components/ImageModal"
 
 // Define the sections for this case study
 const sections = [
