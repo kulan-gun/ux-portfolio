@@ -19,16 +19,20 @@ export default function HomePage() {
 
   // Waving hand animation
   useEffect(() => {
-    const hand = document.getElementById("waving-hand")
+    const hand = document.getElementById("waving-hand");
     if (hand) {
-      hand.classList.add("waving")
+      // Start waving
+      hand.classList.add("waving");
 
-      // Remove the animation class after 4 seconds
+      // Start fade after waving
       setTimeout(() => {
-        hand.classList.remove("waving")
-      }, 4000) // 4 seconds to match the CSS animation duration 
+        hand.classList.add("fade-out");
+        setTimeout(() => {
+          hand.style.display = "none"; // Hide after fade
+        }, 500); // Matches fade-out duration
+      }, 4000); // Match your CSS waving duration
     }
-  }, [])
+  }, []);
 
   // Delay showing the typing animation until after the bounce animations
   useEffect(() => {
