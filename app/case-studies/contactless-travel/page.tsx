@@ -279,35 +279,30 @@ export default function ContactlessTravelCaseStudyPage() {
               <div className="mt-8 mb-8">
                 <div className="rounded-3xl bg-zinc-900/50 p-8 md:p-12 backdrop-blur-sm">
                   <div className="space-y-12">
-                    <div className="flex items-start gap-8 md:gap-16">
-                      <div className="w-32 md:w-40">
-                        <h3 className="text-xl md:text-2xl font-normal text-white">Workstreams</h3>
-                      </div>
-                      <div className="flex-1">
-                        <div className="h-0.5 w-12 bg-white mb-6 opacity-70"></div>
-                        <p className="text-gray-300">
-                          One workstream seeks to enhance the current digital immigration status service for millions of global
-                          users, while the other workstream explores the use of biometric technology for seamless,
-                          "passport-less" identity verification in the long-term.
-                        </p>
-                      </div>
-                    </div>
+
                     <div className="flex items-start gap-8 md:gap-16">
                       <div className="w-32 md:w-40">
                         <h3 className="text-xl md:text-2xl font-normal text-white">In a nutshell</h3>
                       </div>
                       <div className="flex-1">
                         <div className="h-0.5 w-12 bg-white mb-6 opacity-70"></div>
-                        <p className="text-gray-300">
-                          I used a user-centred design (UCD) and systems thinking approach. This connected a Figma mobile prototype to a GOV.UK prototype. The GOV.UK prototype was built with HTML, CSS, and JavaScript.</p>
-
-                        <p className="text-gray-300 mt-4">This approach meant we could test an 'omni-channel' user experience. It also enabled usability testing for different groups. This included people with various digital skills, devices, ages, and nationalities.</p>
-
-                        <p className="text-gray-300 mt-4">
-                          In workstream one, we achieved a first-time pass on the GDS assessment. This allowed the service to move to public Beta, reaching over 7 million users worldwide.
-                        </p>
+                        <ul className="space-y-4 text-gray-300">
+                          <li className="flex gap-3">
+                            <span className="text-white">•</span>
+                            <span>Improved the digital immigration status service for millions of users worldwide. Also looked into biometric technology for easy, long-term “passport-less” identity verification.</span>
+                          </li>
+                          <li className="flex gap-3">
+                            <span className="text-white">•</span>
+                            <span>Applied a user-centred, systems thinking approach. Linked a Figma mobile prototype to a coded prototype. This enabled realistic omni-channel testing across diverse users, devices, and nationalities.</span>
+                          </li>
+                          <li className="flex gap-3">
+                            <span className="text-white">•</span>
+                            <span>Made important usability and accessibility upgrades to the public-facing service and internal tools. This made them clearer and more inclusive by design.</span>
+                          </li>
+                        </ul>
                       </div>
                     </div>
+
                     <div className="flex items-start gap-8 md:gap-16">
                       <div className="w-32 md:w-40">
                         <h3 className="text-xl md:text-2xl font-normal text-white">Challenges</h3>
@@ -317,22 +312,24 @@ export default function ContactlessTravelCaseStudyPage() {
                         <ul className="space-y-4 text-gray-300">
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
-                            <span>Rigid architecture that restricts redesign opportunities</span>
+                            <span>Rigid architecture that restricts redesign opportunities.</span>
                           </li>
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
-                            <span>Diverse user needs and cultural nuances, due to global use</span>
+                            <span>Diverse user needs and cultural nuances, due to global use.</span>
                           </li>
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
-                            <span>Security requirements for identity authentication</span>
+                            <span>Security requirements for identity authentication.</span>
                           </li>
                         </ul>
                       </div>
                     </div>
+
                   </div>
                 </div>
               </div>
+
 
               <figure className="mt-8">
                 <ImageModal
@@ -380,19 +377,19 @@ export default function ContactlessTravelCaseStudyPage() {
                         <ul className="space-y-4 text-gray-300">
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
-                            <span>Users needed a way to display their immigration status online. This mattered because some identity documents would run out by the end of 2024</span>
+                            <span>Users needed a way to display their immigration status online. This mattered because some identity documents would run out by the end of 2024.</span>
                           </li>
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
-                            <span>Users without identity documents, but who have valid reasons, faced barriers to setting up accounts</span>
+                            <span>Users without identity documents, but who have valid reasons, faced barriers to setting up accounts.</span>
                           </li>
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
-                            <span>Users with limited digital skills struggled with identity verification online</span>
+                            <span>Users with limited digital skills struggled with identity verification online.</span>
                           </li>
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
-                            <span>The service had some inaccessible content due to complex terminology and acronyms</span>
+                            <span>The service had some inaccessible content due to complex terminology and acronyms.</span>
                           </li>
                         </ul>
                       </div>
@@ -406,19 +403,19 @@ export default function ContactlessTravelCaseStudyPage() {
                         <ul className="space-y-4 text-gray-300">
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
-                            <span>Building trust around users sharing their biometric data with the UK government</span>
+                            <span>Building trust around users sharing their biometric data with the UK government.</span>
                           </li>
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
-                            <span>Balancing strict security requirements with having a positive user experience</span>
+                            <span>Balancing strict security requirements with having a positive user experience.</span>
                           </li>
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
-                            <span>Ensuring secure biometric data collection and storage</span>
+                            <span>Ensuring secure biometric data collection and storage.</span>
                           </li>
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
-                            <span>Integrating biometric authentication within wider account journeys</span>
+                            <span>Integrating biometric authentication within wider account journeys.</span>
                           </li>
                         </ul>
                       </div>
@@ -432,19 +429,19 @@ export default function ContactlessTravelCaseStudyPage() {
                         <ul className="space-y-4 text-gray-300">
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
-                            <span>Create more accessible digital services for diverse user groups</span>
+                            <span>Create more accessible digital services for diverse user groups.</span>
                           </li>
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
-                            <span>Focus on the 1% of users with the most complex needs, and the other 99% benefit as a result</span>
+                            <span>Focus on the 1% of users with the most complex needs, and the other 99% benefit as a result.</span>
                           </li>
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
-                            <span>Develop innovative solutions for secure identity verification</span>
+                            <span>Develop innovative solutions for secure identity verification.</span>
                           </li>
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
-                            <span>Understand user trust and sentiments towards government digital services</span>
+                            <span>Understand user trust and sentiments towards government digital services.</span>
                           </li>
                         </ul>
                       </div>
@@ -580,9 +577,6 @@ export default function ContactlessTravelCaseStudyPage() {
                   <ImageModal
                     src="/contactless/process1.png"
                     alt="Mural board filled with sticky notes capturing findings from two intensive rounds of user testing with eVisa applicants"
-                  /* If ImageModal forwards props to <img>, you can add:
-                     aria-describedby="process1-caption"
-                  */
                   />
                   <figcaption
                     id="process1-caption"
@@ -591,9 +585,8 @@ export default function ContactlessTravelCaseStudyPage() {
                     Mural board from two intensive rounds of user testing with eVisa applicants, capturing key insights and pain points.
                   </figcaption>
                 </figure>
-
                 <p className="max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
-                  We ran usability tests with different user groups. This helped us spot issues and make our digital service more accessible. I developed iterative prototypes, refining user journeys based on continuous feedback from stakeholders and users.
+                  Usability testing with diverse users revealed pain points in accessibility, usability, and clarity. I iterated prototypes to address these, refining journeys through ongoing user and stakeholder feedback. Key fixes are outlined in the ‘Solutions’ section.
                 </p>
               </div>
             </AnimateOnScroll>
@@ -734,15 +727,15 @@ export default function ContactlessTravelCaseStudyPage() {
                         <ul className="space-y-4 text-gray-300">
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
-                            <span>Creating a seamless desktop-to-mobile handoff to reflect the real-world identity verification process</span>
-                          </li>
-                          <li className="flex gap-3">
-                            <span className="text-white">•</span>
                             <span>Refining complex service steps into clear, accessible interactions for users with varied technical skills</span>
                           </li>
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
                             <span>Validating the flow through usability testing, ensuring inclusivity and reliability across devices</span>
+                          </li>
+                           <li className="flex gap-3">
+                            <span className="text-white">•</span>
+                            <span>Co-designed an automated online account recovery journey to enhance self-service recovery</span>
                           </li>
                         </ul>
                       </div>
@@ -754,7 +747,7 @@ export default function ContactlessTravelCaseStudyPage() {
                       <div className="flex-1">
                         <div className="h-0.5 w-12 bg-white mb-6 opacity-70"></div>
                         <p className="text-gray-300 mb-4">
-                          For the biometric self-enrolment trials, we assessed the feasibility of capturing fingerprints remotely using apps:
+                          For the biometric self-enrolment trials, we assessed the feasibility of capturing fingerprints remotely using mobile apps:
                         </p>
                         <ul className="space-y-4 text-gray-300">
                           <li className="flex gap-3">
@@ -822,9 +815,8 @@ export default function ContactlessTravelCaseStudyPage() {
                     Inline warning placed where the decision happens. Images are blurred deliberately to protect sensitive information.
                   </figcaption>
                 </figure>
-
                 <p className="max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
-                  We needed to flag when a face scan was missing for valid reasons (e.g. religious coverings) without adding another easily ignored blue alert. Placing the message near the radio group for recording the decision made it more visible and reduced errors.
+                  I created a way to show when a face scan is missing for valid reasons on the case working platform. I added a warning next to the decision options. This improved visibility and reduced errors without adding another easily ignored blue alert.
                 </p>
               </div>
             </AnimateOnScroll>
@@ -842,12 +834,12 @@ export default function ContactlessTravelCaseStudyPage() {
                     id="img-caption-two-page"
                     className="mt-3 text-center text-xs sm:text-sm text-gray-400"
                   >
-                    Two page flow clusters options with helpful hints. Images are blurred deliberately to protect sensitive information.
+                    Two-page flow clusters together options with helpful hints. Images are blurred deliberately to protect sensitive information.
                   </figcaption>
                 </figure>
 
                 <p className="max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
-                  Research showed too many options on one page caused overwhelm and limited scalability. Splitting the flow into two themed pages with short hints reduced cognitive load and helped users decide faster with fewer errors.
+                  Research showed too many options on one page caused overwhelm and limited design scalability. I split the flow into two pages with short hints. This reduced cognitive load and helped users decide faster with fewer errors.
                 </p>
               </div>
             </AnimateOnScroll>

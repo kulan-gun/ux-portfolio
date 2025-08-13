@@ -328,14 +328,23 @@ export default function BenefitsCaseStudyPage() {
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-in" delay={400}>
-              <div className="mt-8">
-                <img
-                  src="/syfn/flowchart.png"
-                  alt="Problem definition diagram illustrating the challenges in the benefits application process"
-                  className="w-full rounded-lg"
-                />
+              <div className="mt-8 space-y-6 sm:space-y-8">
+                <figure className="m-0">
+                  <ImageModal
+                    src="/syfn/flowchart.png"
+                    alt="Process flow diagram illustrating the user's journey in the benefits application process"
+                    aria-describedby="img-caption-syfn-flowchart"
+                  />
+                  <figcaption
+                    id="img-caption-syfn-flowchart"
+                    className="mt-3 text-center text-xs sm:text-sm text-gray-400"
+                  >
+                    Process flow diagram illustrating the user's journey in the benefits application process.
+                  </figcaption>
+                </figure>
               </div>
             </AnimateOnScroll>
+
 
           </section>
 
@@ -700,20 +709,43 @@ export default function BenefitsCaseStudyPage() {
                 <li>I worked with the Content Designer to improve the guidance page copy.</li>
                 <li>I designed variants to help users understand how to take clearer, more acceptable photos.</li>
               </ul>
-              <div className="mt-8">
-                <img
-                  src="/syfn/iterations.png"
-                  alt="Design process workflow showing research, ideation, prototyping, and testing phases"
-                  className="w-full rounded-lg"
-                />
+
+              <div className="mt-8 space-y-6 sm:space-y-8">
+                <figure className="m-0">
+                  <ImageModal
+                    src="/syfn/iterations-test.png"
+                    alt="Variant designs tested for helping users take clearer photos"
+                    aria-describedby="img-caption-iterations-test"
+                  />
+                  <figcaption
+                    id="img-caption-iterations-test"
+                    className="mt-3 text-center text-xs sm:text-sm text-gray-400"
+                  >
+                    Variant layouts tested to improve users’ ability to take acceptable photos.
+                  </figcaption>
+                </figure>
+                <p className="max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
+                  The first iteration reworded the guidance to make it simpler to follow, using plain language and clearer structure so critical information was easier to find. We took it to design critique, where feedback highlighted the need to make the page shorter.
+                </p>
               </div>
 
-              <div className="mt-8">
-                <img
-                  src="/syfn/iterations-test.png"
-                  alt="Design process workflow showing research, ideation, prototyping, and testing phases"
-                  className="w-full rounded-lg"
-                />
+              <div className="mt-8 space-y-6 sm:space-y-8">
+                <figure className="m-0">
+                  <ImageModal
+                    src="/syfn/iterations.png"
+                    alt="Guidance page redesign with improved copy and clearer photography instructions"
+                    aria-describedby="img-caption-iterations"
+                  />
+                  <figcaption
+                    id="img-caption-iterations"
+                    className="mt-3 text-center text-xs sm:text-sm text-gray-400"
+                  >
+                    Revised guidance page layout with improved copy for better user clarity.
+                  </figcaption>
+                </figure>
+                <p className="max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
+                  I then explored visual variants that used imagery and step-by-step prompts to guide users towards taking photos that met system requirements, while also making the page shorter. These variants tested much better in user research.
+                </p>
               </div>
             </AnimateOnScroll>
 
@@ -768,7 +800,7 @@ export default function BenefitsCaseStudyPage() {
 
             <AnimateOnScroll animation="fade-in" delay={400}>
               <div className="mt-8">
-                <h3 className="text-2xl font-normal text-white mb-6">Further Iterations</h3>
+                <h3 className="text-2xl font-normal text-white mb-6">Further iterations</h3>
                 <ul className="space-y-2 text-sm sm:text-base md:text-lg text-gray-300 list-disc pl-5">
                   <li>I also designed and prototyped new error messages and 'multiple fit note' upload flows.</li>
                   <li>I explored ways to convey contextual error messages, and playback the user's uploaded fit note.</li>
@@ -778,21 +810,47 @@ export default function BenefitsCaseStudyPage() {
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-in" delay={400}>
-              <div className="mt-8">
-                <img
-                  src="/syfn/iterations2.png"
-                  alt="Further iterations - with a focus on the upload process"
-                  className="w-full rounded-lg"
-                />
-              </div>
-              <div className="mt-8">
-                <img
-                  src="/syfn/multiple-uploads.png"
-                  alt="Further iterations - with a focus on multiple file uploads"
-                  className="w-full rounded-lg"
-                />
+              <div className="mt-8 space-y-6 sm:space-y-8">
+
+                <figure className="m-0">
+                  <ImageModal
+                    src="/syfn/iterations2.png"
+                    alt="Further iterations focused on improving the upload process for clarity and ease of use"
+                    aria-describedby="img-caption-iterations2"
+                  />
+                  <figcaption
+                    id="img-caption-iterations2"
+                    className="mt-3 text-center text-xs sm:text-sm text-gray-400"
+                  >
+                    Iteration exploring a clearer, more intuitive upload process.
+                  </figcaption>
+                </figure>
+
+                <p className="max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
+                  These iterations streamlined the upload experience, ensuring clearer instructions and more predictable system responses to reduce user confusion and failed submissions.
+                </p>
+
+                <figure className="m-0">
+                  <ImageModal
+                    src="/syfn/multiple-uploads.png"
+                    alt="Further iterations focused on enabling and simplifying multiple file uploads"
+                    aria-describedby="img-caption-multiple-uploads"
+                  />
+                  <figcaption
+                    id="img-caption-multiple-uploads"
+                    className="mt-3 text-center text-xs sm:text-sm text-gray-400"
+                  >
+                    Iteration exploring a simplified process for multiple file uploads.
+                  </figcaption>
+                </figure>
+
+                <p className="max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
+                  I also explored designs for handling multiple file uploads, making it easier for users to attach all of them in one go and reducing the need for repeat submissions.
+                </p>
+
               </div>
             </AnimateOnScroll>
+
 
           </section>
 
@@ -824,14 +882,27 @@ export default function BenefitsCaseStudyPage() {
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-in" delay={400}>
-              <div className="mt-8">
-                <img
-                  src="/syfn/improvements.png"
-                  alt="Example improvements that were made to the design"
-                  className="w-full rounded-lg"
-                />
+              <div className="mt-8 space-y-6 sm:space-y-8">
+
+                <figure className="m-0">
+                  <ImageModal
+                    src="/syfn/improvements.png"
+                    alt="Example improvements made to the design"
+                    aria-describedby="img-caption-improvements"
+                  />
+                  <figcaption
+                    id="img-caption-improvements"
+                    className="mt-3 text-center text-xs sm:text-sm text-gray-400"
+                  >
+                    Key design improvements implemented to simplify the process and improve clarity.
+                  </figcaption>
+                </figure>
+                <p className="max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
+                  These refinements addressed user pain points by simplifying the layout, improving the visibility of critical instructions, and ensuring the process could be completed with fewer steps and less scrolling.
+                </p>
               </div>
             </AnimateOnScroll>
+
           </section>
 
           {/* Results Section */}
@@ -873,14 +944,29 @@ export default function BenefitsCaseStudyPage() {
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-in" delay={400}>
-              <div className="mt-8">
-                <img
-                  src="/syfn/solution.png"
-                  alt="Example improvements that were made to the design"
-                  className="w-full rounded-lg"
-                />
+              <div className="mt-8 space-y-6 sm:space-y-8">
+
+                <figure className="m-0">
+                  <ImageModal
+                    src="/syfn/solution.png"
+                    alt="Finalised solution layout for the improved process"
+                    aria-describedby="img-caption-solution"
+                  />
+                  <figcaption
+                    id="img-caption-solution"
+                    className="mt-3 text-center text-xs sm:text-sm text-gray-400"
+                  >
+                    Finalised solution that streamlined the process and improved clarity.
+                  </figcaption>
+                </figure>
+
+                <p className="max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
+                  The final solution consolidated key guidance, optimised visual hierarchy, and reduced unnecessary scrolling. This made the process faster to complete, more accessible, and easier for users to follow without confusion.
+                </p>
+
               </div>
             </AnimateOnScroll>
+
           </section>
 
           {/* Conclusion Section */}

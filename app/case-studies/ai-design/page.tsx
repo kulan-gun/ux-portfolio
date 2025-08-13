@@ -564,32 +564,117 @@ export default function CRMCaseStudyPage() {
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-in" delay={600}>
-              <div className="mt-8">
-                <ImageModal src="/ai-design/aura_architecture.png" alt="AURA architecture diagram" />
+              {/* AURA architecture */}
+              <div className="mt-8 space-y-6 sm:space-y-8">
+                <figure className="m-0">
+                  <ImageModal
+                    src="/ai-design/aura_architecture.png"
+                    alt="AURA system architecture showing data flow, model orchestration, and integration points"
+                    aria-describedby="aura-arch-caption"
+                  />
+                  <figcaption
+                    id="aura-arch-caption"
+                    className="mt-3 text-center text-xs sm:text-sm text-gray-400"
+                  >
+                    AURA system architecture with data flow and integration points.
+                  </figcaption>
+                </figure>
+
+                <p className="max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
+                  Defines how AURA connects to enterprise data and tools, routes prompts through model services, handles auth, and logs activity for audit and safety.
+                </p>
               </div>
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-in" delay={600}>
-              <div className="mt-8">
-                <ImageModal src="/ai-design/early_stage_concepts.png" alt="Early concepts of AURA" />
+              {/* Early stage concepts */}
+              <div className="mt-8 space-y-6 sm:space-y-8">
+                <figure className="m-0">
+                  <ImageModal
+                    src="/ai-design/early_stage_concepts.png"
+                    alt="Early AURA concepts exploring information architecture, workflows, and feature directions"
+                    aria-describedby="aura-concepts-caption"
+                  />
+                  <figcaption
+                    id="aura-concepts-caption"
+                    className="mt-3 text-center text-xs sm:text-sm text-gray-400"
+                  >
+                    Early concepts exploring IA, workflows, and feature directions.
+                  </figcaption>
+                </figure>
+
+                <p className="max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
+                  Compared navigation models, task flows, and prompt patterns to align scope and run quick concept tests before investing in high fidelity.
+                </p>
               </div>
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-in" delay={600}>
-              <div className="mt-8">
-                <ImageModal src="/ai-design/aura_design_crit.png" alt="Design critique findings for AURA" />
+              {/* Design critique findings */}
+              <div className="mt-8 space-y-6 sm:space-y-8">
+                <figure className="m-0">
+                  <ImageModal
+                    src="/ai-design/aura_design_crit.png"
+                    alt="Design critique notes that informed AURA refinements"
+                    aria-describedby="aura-crit-caption"
+                  />
+                  <figcaption
+                    id="aura-crit-caption"
+                    className="mt-3 text-center text-xs sm:text-sm text-gray-400"
+                  >
+                    Design critique highlights that guided refinements.
+                  </figcaption>
+                </figure>
+
+                <p className="max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
+                  Prioritised clarity and control: tighter labels, better empty states, simplified layouts, and consistent patterns across generate, review, and publish steps.
+                </p>
               </div>
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-in" delay={600}>
-              <div className="mt-8">
-                <ImageModal src="/ai-design/aura_ur.png" alt="User research session findings for AURA" />
+              {/* User research findings */}
+              <div className="mt-8 space-y-6 sm:space-y-8">
+                <figure className="m-0">
+                  <ImageModal
+                    src="/ai-design/aura_ur.png"
+                    alt="User research findings that shaped AURA’s interaction patterns"
+                    aria-describedby="aura-ur-caption"
+                  />
+                  <figcaption
+                    id="aura-ur-caption"
+                    className="mt-3 text-center text-xs sm:text-sm text-gray-400"
+                  >
+                    Research insights shaping trust, transparency, and control.
+                  </figcaption>
+                </figure>
+
+                <p className="max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
+                  Sessions surfaced pain points around trust and explainability. We added clearer consent, source attribution, and reversible actions to build confidence.
+                </p>
               </div>
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-in" delay={600}>
-              <div className="mt-8">
-                <ImageModal src="/ai-design/aura_generate.gif" alt="Animated demonstration of the AURA generate feature" />
+              {/* Generate feature demo */}
+              <div className="mt-8 space-y-6 sm:space-y-8">
+                <figure className="m-0">
+                  <ImageModal
+                    src="/ai-design/aura_generate.gif"
+                    alt="Animation of AURA’s Generate feature creating a draft from a prompt with inline editing"
+                    aria-describedby="aura-generate-caption"
+                  />
+                  <figcaption
+                    id="aura-generate-caption"
+                    className="mt-3 text-center text-xs sm:text-sm text-gray-400"
+                  >
+                    Generate demo: prompt, draft, and quick edits.
+                  </figcaption>
+                </figure>
+
+                <p className="max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
+                  Shows prompt presets, draft output, and lightweight edits with guardrails. Designed to keep users in control while speeding up first-draft creation.
+                </p>
               </div>
             </AnimateOnScroll>
 
@@ -605,44 +690,66 @@ export default function CRMCaseStudyPage() {
 
             <AnimateOnScroll animation="fade-up" delay={200}>
               <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
-                Solution: ship a focused MVP that proves value without UI complexity. We selected Claude Sonnet for its long context window and reliable summarisation, primed it with representative HR and policy documents, and used a targeted system prompt to control tone and format.
-                <br /><br />
-                The document viewing pane and chat interface were removed from scope due to technical complexity and time. Summarisation ran behind the scenes, and users simply downloaded channel-ready outputs such as one-pagers, intranet posts, or poster copy. Fine-tuning or in-app editing was not included in the MVP.
-                <br /><br />
-                This validated the core outcome fast: accurate, consistent summaries that reduced manual effort and improved clarity, ready for future iterations that can add a viewer, highlights, and conversational refinement.
+                We built a focused MVP that proves value without UI complexity. We selected Claude Sonnet for its long context window and reliable summarisation, primed it with representative HR and policy documents, and used a targeted system prompt to control tone and format.
               </p>
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-in" delay={600}>
-              <div className="mt-8">
-                <ImageModal
-                  src="/ai-design/aura_mvp.gif"
-                  alt="Animated demonstration of the Aura MVP with some features removed, to help with releasing earlier"
-                />
+              <div className="mt-8 space-y-6 sm:space-y-8">
+                <figure className="m-0">
+                  <ImageModal
+                    src="/ai-design/aura_mvp.gif"
+                    alt="Animated demonstration of the new AURA generate feature"
+                    aria-describedby="img-caption-aura-generate"
+                  />
+                  <figcaption
+                    id="img-caption-aura-generate"
+                    className="mt-3 text-center text-xs sm:text-sm text-gray-400"
+                  >
+                    Animated demonstration of the AURA generate feature producing ready-to-use summaries.
+                  </figcaption>
+                </figure>
+
+                <p className="max-w-3xl text-sm sm:text-base md:text-lg text-gray-300 mb-4">
+                  The document viewing pane and chat interface were removed from scope due to technical complexity and time. Summarisation ran behind the scenes, and users simply downloaded channel-ready outputs such as one-pagers, intranet posts, or poster copy. Fine-tuning or in-app editing was not included in the MVP.
+                </p>
+
+                <p className="max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
+                  This validated the core outcome fast: accurate, consistent summaries that reduced manual effort and improved clarity, ready for future iterations that can add a viewer, highlights, and conversational refinement.
+                </p>
               </div>
             </AnimateOnScroll>
 
           </section>
 
           {/* Results Section */}
-          <section id="results" className="min-h-screen py-8 sm:py-12" aria-labelledby="results-heading">
+          <section
+            id="results"
+            className="pt-8 sm:pt-12 pb-8 sm:pb-12"  /* was: min-h-screen pt-8 sm:pt-12 pb-4 sm:pb-6 */
+            aria-labelledby="results-heading"
+          >
             <AnimateOnScroll animation="bounce-up">
-              <h2 id="results-heading" className="mb-6 sm:mb-8 text-2xl sm:text-3xl md:text-4xl font-display">
+              <h2
+                id="results-heading"
+                className="mb-6 sm:mb-8 text-2xl sm:text-3xl md:text-4xl font-display"
+              >
                 Results
               </h2>
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={200}>
-              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
-                The AURA proof of concept explored how RAG-powered AI could automatically summarise lengthy documents for public and private sector users.
-                Through research, prototyping, and stakeholder testing, we validated the core value: AI could deliver accurate summaries behind the scenes, removing the need for a complex in-app viewer or editing tools at MVP stage.
-                <br /><br />
+              {/* Split into two paragraphs; control spacing via mb */}
+              <p className="mb-5 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
+                The AURA proof of concept explored how RAG-powered AI could automatically summarise lengthy documents for public and private sector users. Through research, prototyping, and stakeholder testing, we validated the core value: AI could deliver accurate summaries behind the scenes, removing the need for a complex in-app viewer or editing tools at MVP stage.
+              </p>
+              <p className="mb-6 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
                 While the project was paused before launch due to shifting priorities, it delivered clear learning on technical feasibility, user expectations, and MVP scoping. These insights have since informed other AI initiatives and strengthened our approach to designing responsible, human-centred AI tools.
               </p>
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={400}>
-              <div className="mt-8 mb-8">
+              {/* Reduce bottom margin so it doesn't stack with section padding */}
+              <div className="mt-8 mb-6">  {/* was: mb-8 */}
                 <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3" role="group" aria-label="AURA proof of concept outcomes">
 
                   <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
@@ -669,9 +776,8 @@ export default function CRMCaseStudyPage() {
                 </div>
               </div>
             </AnimateOnScroll>
-
-
           </section>
+
 
           {/* Conclusion Section */}
           <section id="conclusion" className="min-h-[50vh] py-6 sm:py-8" aria-labelledby="conclusion-heading">
