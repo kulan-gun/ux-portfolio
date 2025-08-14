@@ -230,7 +230,7 @@ export default function BenefitsCaseStudyPage() {
 
             <AnimateOnScroll animation="fade-up" delay={400}>
               <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
-                This case study highlights my work on a UK government benefits service, enabling 500,000 - 700,000
+                This case study shows my work on a government benefits service, enabling 500,000 - 700,000
                 citizens each year to submit fit notes and access financial support.
               </p>
             </AnimateOnScroll>
@@ -291,6 +291,10 @@ export default function BenefitsCaseStudyPage() {
                         <ul className="space-y-4 text-gray-300">
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
+                            <span>Low completion and satisfaction rates</span>
+                          </li>
+                          <li className="flex gap-3">
+                            <span className="text-white">•</span>
                             <span>Limited developer capacity</span>
                           </li>
                           <li className="flex gap-3">
@@ -309,15 +313,15 @@ export default function BenefitsCaseStudyPage() {
                         <ul className="space-y-4 text-gray-300">
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
-                            <span>Applied design and systems thinking to map upstream issues to downstream impacts.</span>
+                            <span>Applied design and systems thinking to map upstream issues to downstream impacts</span>
                           </li>
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
-                            <span>Iterated on research and prototypes to reduce upload errors and drop-offs.</span>
+                            <span>Iterated on research and prototypes to reduce upload errors and drop-offs</span>
                           </li>
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
-                            <span>Worked cross-functionally to align improvements across tech, policy, and ops.</span>
+                            <span>Worked cross-functionally to align improvements across tech, policy, and ops</span>
                           </li>
                         </ul>
                       </div>
@@ -603,7 +607,7 @@ export default function BenefitsCaseStudyPage() {
                       <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
                         <span className="text-xl md:text-2xl font-medium text-white">2</span>
                       </div>
-                      <h4 className="text-lg md:text-xl font-normal text-white mb-4">Analysis and ideation</h4>
+                      <h4 className="text-lg md:text-xl font-normal text-white mb-4">Analysis</h4>
                       <ul className="space-y-3 text-left w-full">
                         <li className="text-gray-300 text-sm md:text-base text-center">
                           Assessed back-end performance and user flows, identified bottlenecks, and drew inspiration
@@ -616,7 +620,7 @@ export default function BenefitsCaseStudyPage() {
                       <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
                         <span className="text-xl md:text-2xl font-medium text-white">3</span>
                       </div>
-                      <h4 className="text-lg md:text-xl font-normal text-white mb-4">Prototyping and testing</h4>
+                      <h4 className="text-lg md:text-xl font-normal text-white mb-4">Prototyping</h4>
                       <ul className="space-y-3 text-left w-full">
                         <li className="text-gray-300 text-sm md:text-base text-center">
                           Designed low- and high-fidelity prototypes, iteratively tested with users, and refined based
@@ -629,7 +633,7 @@ export default function BenefitsCaseStudyPage() {
                       <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
                         <span className="text-xl md:text-2xl font-medium text-white">4</span>
                       </div>
-                      <h4 className="text-lg md:text-xl font-normal text-white mb-4">Collaboration and alignment</h4>
+                      <h4 className="text-lg md:text-xl font-normal text-white mb-4">Collaboration</h4>
                       <ul className="space-y-3 text-left w-full">
                         <li className="text-gray-300 text-sm md:text-base text-center">
                           Worked with UX writers, researchers, developers, and policy teams to ensure feasibility and

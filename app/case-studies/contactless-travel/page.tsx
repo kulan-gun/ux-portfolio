@@ -289,15 +289,15 @@ export default function ContactlessTravelCaseStudyPage() {
                         <ul className="space-y-4 text-gray-300">
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
-                            <span>Improved the digital immigration status service for millions of users worldwide. Also looked into biometric technology for easy, long-term “passport-less” identity verification.</span>
+                            <span>Improved the digital immigration status service for millions of users worldwide.</span>
+                          </li>
+                           <li className="flex gap-3">
+                            <span className="text-white">•</span>
+                            <span>Investigated biometric technology that can enable easy, long-term “passport-less” identity verification.</span>
                           </li>
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
-                            <span>Applied a user-centred, systems thinking approach. Linked a Figma mobile prototype to a coded prototype. This enabled realistic omni-channel testing across diverse users, devices, and nationalities.</span>
-                          </li>
-                          <li className="flex gap-3">
-                            <span className="text-white">•</span>
-                            <span>Made important usability and accessibility upgrades to the public-facing service and internal tools. This made them clearer and more inclusive by design.</span>
+                            <span>Made important usability and accessibility upgrades to the public-facing service and internal tools.</span>
                           </li>
                         </ul>
                       </div>
@@ -312,7 +312,7 @@ export default function ContactlessTravelCaseStudyPage() {
                         <ul className="space-y-4 text-gray-300">
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
-                            <span>Rigid architecture that restricts redesign opportunities.</span>
+                            <span>Rigid backend architecture that restricts redesign opportunities.</span>
                           </li>
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
@@ -320,7 +320,7 @@ export default function ContactlessTravelCaseStudyPage() {
                           </li>
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
-                            <span>Security requirements for identity authentication.</span>
+                            <span>Strict security requirements for identity authentication.</span>
                           </li>
                         </ul>
                       </div>
@@ -385,11 +385,11 @@ export default function ContactlessTravelCaseStudyPage() {
                           </li>
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
-                            <span>Users with limited digital skills struggled with identity verification online.</span>
+                            <span>Inaccessible content and jargon made it hard for users with limited digital skills or lower English skills.</span>
                           </li>
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
-                            <span>The service had some inaccessible content due to complex terminology and acronyms.</span>
+                            <span>Users had to rely on offline methods to recover their account if they lost their details.</span>
                           </li>
                         </ul>
                       </div>
@@ -727,15 +727,15 @@ export default function ContactlessTravelCaseStudyPage() {
                         <ul className="space-y-4 text-gray-300">
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
-                            <span>Refining complex service steps into clear, accessible interactions for users with varied technical skills</span>
+                            <span>Refining complex service steps into clear, accessible interactions for users with varied technical skills.</span>
                           </li>
                           <li className="flex gap-3">
                             <span className="text-white">•</span>
-                            <span>Validating the flow through usability testing, ensuring inclusivity and reliability across devices</span>
+                            <span>Validating the flow through usability testing, ensuring inclusivity and reliability across devices.</span>
                           </li>
                            <li className="flex gap-3">
                             <span className="text-white">•</span>
-                            <span>Co-designed an automated online account recovery journey to enhance self-service recovery</span>
+                            <span>Co-designed an automated online account recovery journey to enhance self-service recovery.</span>
                           </li>
                         </ul>
                       </div>

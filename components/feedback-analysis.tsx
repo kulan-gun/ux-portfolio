@@ -35,12 +35,12 @@ export default function FeedbackAnalysis() {
   // Modify the chartData object to include a title that indicates we're showing top 7
   const chartData = {
     labels: [
-      "Communication issues",
-      "Difficulty uploading",
+      "Comms issues",
+      "Uploading",
       "Photo acceptance",
       "General frustration",
-      "Phone lines general",
-      "Fit note not received",
+      "Phone lines",
+      "Not received",
       "Payments",
     ],
     values: [230, 178, 139, 106, 100, 94, 89],

@@ -2,6 +2,26 @@
 
 import { useEffect, useRef } from "react"
 
+function getNiceScale(rawMax: number, desiredSteps = 5) {
+  if (rawMax <= 0) return { niceMax: 1, step: 1 }
+
+  const roughStep = rawMax / desiredSteps
+  const pow10 = Math.pow(10, Math.floor(Math.log10(roughStep)))
+  const candidates = [1, 2, 2.5, 5, 10].map(m => m * pow10)
+
+  let step = candidates[0]
+  for (const c of candidates) {
+    const ticks = Math.ceil(rawMax / c) + 1
+    if (ticks <= desiredSteps + 1) {
+      step = c
+      break
+    }
+  }
+
+  const niceMax = Math.ceil(rawMax / step) * step
+  return { niceMax, step }
+}
+
 interface BarChartProps {
   title?: string
   description?: string
@@ -15,7 +35,14 @@ interface BarChartProps {
   xAxisLabel?: string
 }
 
-export default function BarChart({ title, description, data, height = 400, yAxisLabel, xAxisLabel }: BarChartProps) {
+export default function BarChart({
+  title,
+  description,
+  data,
+  height = 400,
+  yAxisLabel,
+  xAxisLabel
+}: BarChartProps) {
   const canvasRef = useRef<HTMLCanvasElement>(null)
 
   useEffect(() => {
@@ -25,20 +52,19 @@ export default function BarChart({ title, description, data, height = 400, yAxis
     const ctx = canvas.getContext("2d")
     if (!ctx) return
 
-    // Set canvas dimensions with device pixel ratio for sharper rendering
     const dpr = window.devicePixelRatio || 1
     canvas.width = canvas.offsetWidth * dpr
     canvas.height = height * dpr
     ctx.scale(dpr, dpr)
 
-    // Reset canvas
     ctx.clearRect(0, 0, canvas.width, canvas.height)
 
-    // Chart dimensions
-    const chartWidth = canvas.offsetWidth - 80 // Left padding for y-axis labels
-    const chartHeight = height - 100 // Bottom padding for x-axis labels
+    const chartWidth = canvas.offsetWidth - 80
+    const chartHeight = height - 100
     const barSpacing = 2
-    const maxValue = Math.max(...data.values) * 1.1 // Add 10% padding to the top
+
+    const rawMax = Math.max(...data.values)
+    const { niceMax, step } = getNiceScale(rawMax, 5)
     const barWidth = chartWidth / data.values.length - barSpacing
 
     // Draw y-axis
@@ -56,27 +82,25 @@ export default function BarChart({ title, description, data, height = 400, yAxis
     ctx.stroke()
 
     // Draw y-axis grid lines and labels
-    const yAxisSteps = 5
     ctx.textAlign = "right"
     ctx.font = "12px Inter, system-ui, sans-serif"
     ctx.fillStyle = "#999"
 
+    const yAxisSteps = Math.round(niceMax / step)
     for (let i = 0; i <= yAxisSteps; i++) {
-      const y = chartHeight + 20 - (i * chartHeight) / yAxisSteps
-      const value = Math.round((i * maxValue) / yAxisSteps)
+      const value = i * step
+      const y = chartHeight + 20 - (value / niceMax) * chartHeight
 
-      // Grid line
       ctx.beginPath()
       ctx.moveTo(60, y)
       ctx.lineTo(chartWidth + 60, y)
       ctx.strokeStyle = "#333"
       ctx.stroke()
 
-      // Label
       ctx.fillText(value.toString(), 50, y + 4)
     }
 
-    // Draw y-axis label if provided
+    // Y-axis label
     if (yAxisLabel) {
       ctx.save()
       ctx.translate(15, chartHeight / 2 + 20)
@@ -86,31 +110,28 @@ export default function BarChart({ title, description, data, height = 400, yAxis
       ctx.restore()
     }
 
-    // Draw bars and x-axis labels
+    // Bars and x-axis labels
     ctx.textAlign = "center"
-
-    data.values.slice(0, 7).forEach((value, index) => {
+    data.values.forEach((value, index) => {
       const x = 60 + index * (barWidth + barSpacing)
-      const barHeight = (value / maxValue) * chartHeight
+      const barHeight = (value / niceMax) * chartHeight
       const y = chartHeight + 20 - barHeight
 
-      // Draw bar
-      ctx.fillStyle = "#90d190" // Light green color
+      ctx.fillStyle = "#90d190"
       ctx.fillRect(x, y, barWidth, barHeight)
 
-      // Draw x-axis label (category number)
       ctx.fillStyle = "#999"
       ctx.fillText((index + 1).toString(), x + barWidth / 2, chartHeight + 40)
 
-      // Draw x-axis label (truncated category name)
       if (data.labels[index]) {
         const label = data.labels[index]
-        const truncatedLabel = label.length > 10 ? label.substring(0, 10) + "..." : label
+        const truncatedLabel =
+          label.length > 10 ? label.substring(0, 10) + "..." : label
         ctx.fillText(truncatedLabel, x + barWidth / 2, chartHeight + 60)
       }
     })
 
-    // Draw x-axis label if provided
+    // X-axis label
     if (xAxisLabel) {
       ctx.fillStyle = "#999"
       ctx.textAlign = "center"
@@ -120,7 +141,11 @@ export default function BarChart({ title, description, data, height = 400, yAxis
 
   return (
     <div className="rounded-3xl bg-zinc-900/50 p-6 md:p-8 backdrop-blur-sm">
-      {title && <h3 className="text-xl md:text-2xl font-normal text-white mb-4">{title}</h3>}
+      {title && (
+        <h3 className="text-xl md:text-2xl font-normal text-white mb-4">
+          {title}
+        </h3>
+      )}
       {description && <p className="text-gray-300 mb-6">{description}</p>}
 
       <div className="w-full">
@@ -131,7 +156,6 @@ export default function BarChart({ title, description, data, height = 400, yAxis
           role="img"
         ></canvas>
 
-        {/* Legend for categories if provided */}
         {data.categories && data.categories.length > 0 && (
           <div className="mt-4 flex flex-wrap gap-4">
             {data.categories.map((category, index) => (
@@ -146,4 +170,3 @@ export default function BarChart({ title, description, data, height = 400, yAxis
     </div>
   )
 }
-

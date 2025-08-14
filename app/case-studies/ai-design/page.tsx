@@ -397,7 +397,7 @@ export default function CRMCaseStudyPage() {
                         <div>
                           <h3 className="text-xl sm:text-2xl font-medium text-white mb-4">Persona: Rani – the Change Management Consultant</h3>
                           <p className="text-gray-300 text-sm sm:text-base md:text-lg">
-                            Rani supports public and private sector clients through organisational change. She regularly works with lengthy HR policies, compliance documents, and workplace guidelines, but needs to turn them into concise, engaging formats such as emails, intranet posts, and posters. She wants a tool that speeds up this process while maintaining accuracy and audience relevance.
+                            Rani helps organisations handle change. She often turns long HR and policy documents into engaging formats, like emails, intranet posts, and posters. She needs a way of speeding this up without losing accuracy.
                           </p>
                         </div>
                       </div>
@@ -406,20 +406,31 @@ export default function CRMCaseStudyPage() {
                     {/* Journey Stages */}
                     <div className="grid grid-cols-4 gap-4 mt-12" role="region" aria-label="User journey stages">
                       <div className="text-center">
-                        <h4 className="text-xl font-normal text-white mb-4">Awareness</h4>
-                        <p className="text-sm text-gray-300">Rani learns about AURA as a way to transform complex workplace policies into audience-friendly summaries for both public and private clients.</p>
+                        <h4 className="text-xl font-normal text-white mb-4">Receiving</h4>
+                        <p className="text-sm text-gray-300">
+                          Rani is sent lengthy workplace policy documents from clients. They can be hundreds of pages long, packed with complex language and legal terms.
+                        </p>
                       </div>
                       <div className="text-center">
-                        <h4 className="text-xl font-normal text-white mb-4">Motivation</h4>
-                        <p className="text-sm text-gray-300">She wants to save hours of manual rewriting while keeping content accurate, compliant, and engaging.</p>
+                        <h4 className="text-xl font-normal text-white mb-4">Extracting</h4>
+                        <p className="text-sm text-gray-300">
+                          She reads through each document in detail, manually highlighting and copying relevant sections
+                          into a separate working file for later rewriting.
+                        </p>
                       </div>
                       <div className="text-center">
-                        <h4 className="text-xl font-normal text-white mb-4">Exploration</h4>
-                        <p className="text-sm text-gray-300">Rani tries AURA, adjusting tone, length, and format to fit different audiences and channels.</p>
+                        <h4 className="text-xl font-normal text-white mb-4">Rewriting</h4>
+                        <p className="text-sm text-gray-300">
+                          Rani rewrites the extracted content in plain language, adjusting tone, structure, and length to
+                          match the intended audience, often rechecking for compliance.
+                        </p>
                       </div>
                       <div className="text-center">
-                        <h4 className="text-xl font-normal text-white mb-4">Application</h4>
-                        <p className="text-sm text-gray-300">She uses AURA across multiple projects, delivering consistent, high-impact communications in a fraction of the time.</p>
+                        <h4 className="text-xl font-normal text-white mb-4">Review</h4>
+                        <p className="text-sm text-gray-300">
+                          She proofreads, formats, and finalises the summaries before sharing them with colleagues or clients.
+                          The whole process can take several days per document.
+                        </p>
                       </div>
                     </div>
 
@@ -458,10 +469,10 @@ export default function CRMCaseStudyPage() {
                         <p className="text-sm text-gray-300">"I need summaries that are both accurate and engaging."</p>
                       </div>
                       <div className="text-center">
-                        <p className="text-sm text-gray-300">"AURA makes tailoring content for different audiences effortless."</p>
+                        <p className="text-sm text-gray-300">"I wish tailoring content for different audiences were effortless."</p>
                       </div>
                       <div className="text-center">
-                        <p className="text-sm text-gray-300">"I cut my comms prep time in half across two client projects."</p>
+                        <p className="text-sm text-gray-300">"It's finally done. That took longer than it needed to."</p>
                       </div>
                     </div>
 
@@ -483,13 +494,7 @@ export default function CRMCaseStudyPage() {
 
             <AnimateOnScroll animation="fade-up" delay={200}>
               <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
-                The AURA prototype was developed through an iterative, evidence-based approach.
-                <br /><br />
-                We began with model selection, testing Claude Sonnet against alternative LLMs using parameters such as context length, summarisation accuracy, tone control, and processing speed. This ensured we chose the most reliable model for distilling lengthy HR and policy documents into clear, engaging formats.
-                <br /><br />
-                Next, we primed the model with sample documents and applied a carefully crafted system prompt to maintain accuracy, avoid hallucinations, and tailor outputs to channels such as emails, posts, and posters.
-                <br /><br />
-                We then explored two interface concepts: a chat-style interface for conversational refinement and an agentic design with a document viewing pane for side-by-side reading, annotation, and summary generation. Rapid Figma prototypes and AI API integrations allowed us to test both paradigms quickly and make evidence-based design decisions.
+                The AURA prototype was developed through an iterative, evidence-based approach. We began with model selection, testing Claude Sonnet against alternative LLMs using parameters such as context length, summarisation accuracy, tone control, and processing speed. This ensured we chose the most reliable model for distilling lengthy HR and policy documents into clear, engaging formats.
               </p>
             </AnimateOnScroll>
 
@@ -526,7 +531,7 @@ export default function CRMCaseStudyPage() {
                       <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
                         <span className="text-xl md:text-2xl font-medium text-white">3</span>
                       </div>
-                      <h3 className="text-lg md:text-xl font-normal text-white mb-4">Prompt & data design</h3>
+                      <h3 className="text-lg md:text-xl font-normal text-white mb-4">System prompt</h3>
                       <ul className="space-y-3 text-left w-full">
                         <li className="text-gray-300 text-sm md:text-base text-center">
                           Primed the model with sample documents and a tailored system prompt to ensure accuracy, avoid hallucinations, and adapt tone to different formats.
@@ -538,7 +543,7 @@ export default function CRMCaseStudyPage() {
                       <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
                         <span className="text-xl md:text-2xl font-medium text-white">4</span>
                       </div>
-                      <h3 className="text-lg md:text-xl font-normal text-white mb-4">Interface prototyping</h3>
+                      <h3 className="text-lg md:text-xl font-normal text-white mb-4">Prototyping</h3>
                       <ul className="space-y-3 text-left w-full">
                         <li className="text-gray-300 text-sm md:text-base text-center">
                           Explored both chat-style and agentic document-pane interfaces using Figma and API integrations to assess usability and efficiency.
@@ -581,7 +586,7 @@ export default function CRMCaseStudyPage() {
                 </figure>
 
                 <p className="max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
-                  Defines how AURA connects to enterprise data and tools, routes prompts through model services, handles auth, and logs activity for audit and safety.
+                  The architecture diagram shows how AURA connects to MongoDB, routes prompts through model services, handles auth, and logs activity for audit and safety. We primed the model with sample documents and applied a carefully crafted system prompt to maintain accuracy, avoid hallucinations, and tailor outputs to channels such as emails, posts, and posters.
                 </p>
               </div>
             </AnimateOnScroll>
@@ -604,7 +609,30 @@ export default function CRMCaseStudyPage() {
                 </figure>
 
                 <p className="max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
-                  Compared navigation models, task flows, and prompt patterns to align scope and run quick concept tests before investing in high fidelity.
+                  I explored two interface concepts: a chat-style interface for conversational refinement and an agentic design with a document viewing pane for side-by-side reading, annotation, and summary generation. Rapid Figma prototypes and AI API integrations allowed us to test both paradigms quickly and make evidence-based design decisions.
+                </p>
+              </div>
+            </AnimateOnScroll>
+
+            <AnimateOnScroll animation="fade-in" delay={600}>
+              {/* Generate feature demo */}
+              <div className="mt-8 space-y-6 sm:space-y-8">
+                <figure className="m-0">
+                  <ImageModal
+                    src="/ai-design/aura_generate.gif"
+                    alt="Animation of AURA’s Generate feature creating a draft from a prompt with inline editing"
+                    aria-describedby="aura-generate-caption"
+                  />
+                  <figcaption
+                    id="aura-generate-caption"
+                    className="mt-3 text-center text-xs sm:text-sm text-gray-400"
+                  >
+                    Generate demo: prompt, draft, and quick edits.
+                  </figcaption>
+                </figure>
+
+                <p className="max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
+                  Shows prompt presets, draft output, and lightweight edits with guardrails. Designed to keep users in control while speeding up first-draft creation.
                 </p>
               </div>
             </AnimateOnScroll>
@@ -651,29 +679,6 @@ export default function CRMCaseStudyPage() {
 
                 <p className="max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
                   Sessions surfaced pain points around trust and explainability. We added clearer consent, source attribution, and reversible actions to build confidence.
-                </p>
-              </div>
-            </AnimateOnScroll>
-
-            <AnimateOnScroll animation="fade-in" delay={600}>
-              {/* Generate feature demo */}
-              <div className="mt-8 space-y-6 sm:space-y-8">
-                <figure className="m-0">
-                  <ImageModal
-                    src="/ai-design/aura_generate.gif"
-                    alt="Animation of AURA’s Generate feature creating a draft from a prompt with inline editing"
-                    aria-describedby="aura-generate-caption"
-                  />
-                  <figcaption
-                    id="aura-generate-caption"
-                    className="mt-3 text-center text-xs sm:text-sm text-gray-400"
-                  >
-                    Generate demo: prompt, draft, and quick edits.
-                  </figcaption>
-                </figure>
-
-                <p className="max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
-                  Shows prompt presets, draft output, and lightweight edits with guardrails. Designed to keep users in control while speeding up first-draft creation.
                 </p>
               </div>
             </AnimateOnScroll>
