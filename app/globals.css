@@ -121,3 +121,10 @@ body {
 @media (prefers-reduced-motion: reduce) {
   .wave-span { animation: none !important; }
 }
+
+/* Hides the waving hand on mobiles */
+@media (max-width: 639px) {
+  .hide-hand-on-mobile { 
+    display: none !important;
+  }
+}

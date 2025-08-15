@@ -57,19 +57,21 @@ export default function HomePage() {
 
   // Waving hand animation
   useEffect(() => {
-    const hand = document.getElementById("waving-hand");
-    if (hand) {
-      // Start waving
-      hand.classList.add("waving");
-
-      // Start fade after waving
-      setTimeout(() => {
-        hand.classList.add("fade-out");
-        setTimeout(() => {
-          hand.style.display = "none"; // Hide after fade
-        }, 500); // Matches fade-out duration
-      }, 4000); // Match your CSS waving duration
+    if (typeof window !== "undefined" && window.matchMedia("(max-width: 639px)").matches) {
+      return; // Skip animation on mobile
     }
+
+    const hand = document.getElementById("waving-hand");
+    if (!hand) return;
+
+    hand.classList.add("waving");
+    const t1 = setTimeout(() => hand.classList.add("fade-out"), 3000); // fade start after 4 seconds
+    const t2 = setTimeout(() => { hand.style.display = "none"; }, 3500); // hide after fade out
+
+    return () => {
+      clearTimeout(t1);
+      clearTimeout(t2);
+    };
   }, []);
 
   // Delay showing the typing animation until after the bounce animations
@@ -182,17 +184,14 @@ export default function HomePage() {
           <h1 className="text-[36px] sm:text-[48px] md:text-[56px] lg:text-[64px] font-display font-semibold text-white">
             {renderWave("Welcome! I'm Kulan")}
             <span
-              className="wave-span ml-2 hidden sm:inline" // hide on mobile, show >= sm
+              className="wave-span ml-2 hide-hand-on-mobile sm:inline"
               style={{ animationDelay: `${"Welcome! I'm Kulan".length * 0.05}s` }}
             >
-              <span
-                id="waving-hand"
-                aria-hidden="true"
-                style={{ animationDelay: `${("Welcome! I'm Kulan".length * 0.05) + 0.02}s` }}
-              >
+              <span id="waving-hand" aria-hidden="true" style={{ animationDelay: `${("Welcome! I'm Kulan".length * 0.05) + 0.02}s` }}>
                 👋🏽
               </span>
             </span>
+
 
             <span className="sr-only">Welcome! I'm Kulan</span>
           </h1>
