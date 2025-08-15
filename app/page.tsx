@@ -182,7 +182,7 @@ export default function HomePage() {
           <h1 className="text-[36px] sm:text-[48px] md:text-[56px] lg:text-[64px] font-display font-semibold text-white">
             {renderWave("Welcome! I'm Kulan")}
             <span
-              className="wave-span ml-2" // adds Tailwind margin-left
+              className="wave-span ml-2 hidden sm:inline" // hide on mobile, show >= sm
               style={{ animationDelay: `${"Welcome! I'm Kulan".length * 0.05}s` }}
             >
               <span
@@ -193,6 +193,7 @@ export default function HomePage() {
                 👋🏽
               </span>
             </span>
+
             <span className="sr-only">Welcome! I'm Kulan</span>
           </h1>
 
