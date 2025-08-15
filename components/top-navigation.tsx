@@ -43,7 +43,7 @@ export default function TopNavigation({ onMobileMenuToggle }: TopNavigationProps
         </div>
 
         <nav className="flex items-center space-x-6" aria-label="Main navigation">
-          <Link href="https://kulangun.com" className="text-sm font-normal hover:text-gray-300 focus:outline-none focus:underline">
+          <Link href="https://kulangun.com/#work" className="text-sm font-normal hover:text-gray-300 focus:outline-none focus:underline">
             Work
           </Link>
 

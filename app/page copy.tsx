@@ -176,26 +176,23 @@ export default function HomePage() {
 
       {/* HERO SECTION */}
       <section
-        className="relative bg-cover bg-center bg-no-repeat min-h-screen flex items-start px-4 sm:px-8 lg:px-12 pt-56 sm:pt-48 md:pt-56 lg:pt-56"
+        className="relative bg-cover bg-center bg-no-repeat min-h-screen flex items-start px-4 pt-56 sm:pt-48 md:pt-56 lg:pt-56"
         style={{ backgroundImage: "url('/hero-bg.png')" }}
         ref={heroRef}
-      >
-        {/* Heading container — must match cards */}
-        <div className="max-w-7xl mx-auto w-full text-left space-y-4 z-10">
+      > {/* Heading is constrained by this wrapper on the hero */}
+        <div className="max-w-6xl mx-auto w-full text-left space-y-4 z-10">
           <h1 className="text-[36px] sm:text-[48px] md:text-[56px] lg:text-[64px] font-display font-semibold text-white">
             {renderWave("Welcome! I'm Kulan")}
             <span
               className="wave-span ml-2 hide-hand-on-mobile sm:inline"
               style={{ animationDelay: `${"Welcome! I'm Kulan".length * 0.05}s` }}
             >
-              <span
-                id="waving-hand"
-                aria-hidden="true"
-                style={{ animationDelay: `${("Welcome! I'm Kulan".length * 0.05) + 0.02}s` }}
-              >
+              <span id="waving-hand" aria-hidden="true" style={{ animationDelay: `${("Welcome! I'm Kulan".length * 0.05) + 0.02}s` }}>
                 👋🏽
               </span>
             </span>
+
+
             <span className="sr-only">Welcome! I'm Kulan</span>
           </h1>
 
@@ -209,11 +206,14 @@ export default function HomePage() {
           <p className="sr-only">I'm a Product Designer, UX Lead and Innovator.</p>
         </div>
 
-        {/* Time aligned to the SAME container */}
-        <div className="absolute inset-x-0 bottom-24 sm:bottom-28 z-10 hidden sm:block" aria-hidden="true">
-          <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
+        {/* Time pinned to the bottom but aligned to the same container as the heading. Hidden on mobile and from screen readers. Raise the bottom values to bring up the time. */}
+        <div
+          className="absolute inset-x-0 bottom-24 sm:bottom-28 z-10 hidden sm:block"
+          aria-hidden="true"
+        >
+          <div className="mx-auto max-w-6xl px-4">
             <div className="flex justify-end">
-              <div className="text-right text-xs sm:text-sm md:text-base text-gray-300 font-mono">
+              <div className="text-right text-xs sm:text-sm md:text-base text-gray-300 font-mono animate-bounce-up">
                 <div>London, UK</div>
                 <div>{time}</div>
               </div>
@@ -223,8 +223,6 @@ export default function HomePage() {
 
         <div className="absolute inset-0 bg-black bg-opacity-50 z-0" />
       </section>
-
-
 
 
       {/* Main Content */}
