@@ -12,6 +12,7 @@ import BackToTopButton from "@/components/back-to-top-button"
 import SummaryCard from "@/components/summary-card"
 import FeedbackAnalysis from "@/components/feedback-analysis"
 import ImageModal from "@/components/ImageModal"
+import MetricShuffle from "@/components/metric-shuffle"
 
 // Define the sections for this case study
 const sections = [
@@ -238,23 +239,41 @@ export default function BenefitsCaseStudyPage() {
             <AnimateOnScroll animation="fade-up" delay={400}>
               <div className="mt-8 mb-8">
                 <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3" role="group" aria-label="Key metrics">
+
+                  {/* Monthly sessions */}
                   <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">46K</div>
-                    <div className="text-xs sm:text-sm md:text-base text-gray-300">monthly sessions</div>
+                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">
+                      <MetricShuffle final="46K" scrambleLetters />
+                    </div>
+                    <div className="text-xs sm:text-sm md:text-base text-gray-300">
+                      monthly sessions
+                    </div>
                   </div>
+
+                  {/* Digital uptake increase */}
                   <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">+10%</div>
+                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">
+                      <MetricShuffle final="+10%" scrambleLetters />
+                    </div>
                     <div className="text-xs sm:text-sm md:text-base text-gray-300">
                       points increase in digital uptake
                     </div>
                   </div>
+
+                  {/* CSAT increase */}
                   <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">+5%</div>
-                    <div className="text-xs sm:text-sm md:text-base text-gray-300">points increase in CSAT</div>
+                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">
+                      <MetricShuffle final="+5%" scrambleLetters />
+                    </div>
+                    <div className="text-xs sm:text-sm md:text-base text-gray-300">
+                      points increase in CSAT
+                    </div>
                   </div>
+
                 </div>
               </div>
             </AnimateOnScroll>
+
 
             <AnimateOnScroll animation="fade-up" delay={400}>
               <div className="mt-12 mb-12">
@@ -927,22 +946,37 @@ export default function BenefitsCaseStudyPage() {
             <AnimateOnScroll animation="fade-up" delay={400}>
               <div className="mt-8">
                 <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3" role="group" aria-label="Key metrics">
+
+                  {/* Completion rate increase */}
                   <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">+3%</div>
+                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">
+                      <MetricShuffle final="+3%" scrambleLetters />
+                    </div>
                     <div className="text-xs sm:text-sm md:text-base text-gray-300">
                       points increase in completion rate
                     </div>
                   </div>
+
+                  {/* Digital uptake increase */}
                   <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">+10%</div>
+                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">
+                      <MetricShuffle final="+10%" scrambleLetters />
+                    </div>
                     <div className="text-xs sm:text-sm md:text-base text-gray-300">
                       points increase in digital uptake
                     </div>
                   </div>
+
+                  {/* CSAT increase */}
                   <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">+5%</div>
-                    <div className="text-xs sm:text-sm md:text-base text-gray-300">points increase in CSAT</div>
+                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">
+                      <MetricShuffle final="+5%" scrambleLetters />
+                    </div>
+                    <div className="text-xs sm:text-sm md:text-base text-gray-300">
+                      points increase in CSAT
+                    </div>
                   </div>
+
                 </div>
               </div>
             </AnimateOnScroll>

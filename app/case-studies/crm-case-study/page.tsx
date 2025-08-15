@@ -13,6 +13,7 @@ import SummaryCard from "@/components/summary-card"
 import QuoteCard from "@/components/quote-card"
 import UXLessonsCard from "@/components/ux-lessons-card"
 import ImageModal from "@/components/ImageModal"
+import MetricShuffle from "@/components/metric-shuffle"
 
 // Define the sections for this case study
 const sections = [
@@ -240,24 +241,37 @@ export default function CRMCaseStudyPage() {
             <AnimateOnScroll animation="fade-up" delay={400}>
               <div className="mt-8 mb-8">
                 <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3" role="group" aria-label="Key metrics">
+
+                  {/* Delivery time */}
                   <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">1 mo</div>
+                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">
+                      <MetricShuffle final="1 mo" scrambleLetters />
+                    </div>
                     <div className="text-xs sm:text-sm md:text-base text-gray-300">
                       delivered project within 1 month
                     </div>
                   </div>
+
+                  {/* Click reduction */}
                   <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
                     <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">
-                      5 to 10
+                      <MetricShuffle final="5 to 10" scrambleLetters />
                     </div>
-                    <div className="text-xs sm:text-sm md:text-base text-gray-300">fewer estimated clicks per task</div>
+                    <div className="text-xs sm:text-sm md:text-base text-gray-300">
+                      fewer estimated clicks per task
+                    </div>
                   </div>
+
+                  {/* Task time reduction */}
                   <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">-40%</div>
+                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">
+                      <MetricShuffle final="-40%" scrambleLetters />
+                    </div>
                     <div className="text-xs sm:text-sm md:text-base text-gray-300">
                       estimated reduction in task time
                     </div>
                   </div>
+
                 </div>
               </div>
             </AnimateOnScroll>
@@ -663,26 +677,39 @@ export default function CRMCaseStudyPage() {
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={400}>
-              <div className="mt-8">
+              <div className="mt-8 mb-8">
                 <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3" role="group" aria-label="Key metrics">
+
+                  {/* Delivery time */}
                   <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">1 mo</div>
+                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">
+                      <MetricShuffle final="1 mo" scrambleLetters />
+                    </div>
                     <div className="text-xs sm:text-sm md:text-base text-gray-300">
                       delivered project within 1 month
                     </div>
                   </div>
+
+                  {/* Click reduction */}
                   <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
                     <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">
-                      5 to 10
+                      <MetricShuffle final="5 to 10" scrambleLetters />
                     </div>
-                    <div className="text-xs sm:text-sm md:text-base text-gray-300">fewer estimated clicks per task</div>
+                    <div className="text-xs sm:text-sm md:text-base text-gray-300">
+                      fewer estimated clicks per task
+                    </div>
                   </div>
+
+                  {/* Task time reduction */}
                   <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">-40%</div>
+                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">
+                      <MetricShuffle final="-40%" scrambleLetters />
+                    </div>
                     <div className="text-xs sm:text-sm md:text-base text-gray-300">
                       estimated reduction in task time
                     </div>
                   </div>
+
                 </div>
               </div>
             </AnimateOnScroll>

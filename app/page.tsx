@@ -16,6 +16,38 @@ export default function HomePage() {
   const currentPhraseIndex = loopNum % phrases.length
   const currentPhrase = phrases[currentPhraseIndex]
   const heroRef = useRef<HTMLDivElement>(null)
+  const [time, setTime] = useState("")
+
+  const renderWave = (text: string) =>
+    text.split("").map((ch, i) => (
+      <span
+        key={i}
+        className="wave-span"
+        style={{ animationDelay: `${i * 0.05}s` }}
+        aria-hidden="true"
+      >
+        {ch === " " ? "\u00A0" : ch}
+      </span>
+    ));
+
+
+
+  // Clock updater
+  useEffect(() => {
+    const updateClock = () => {
+      const now = new Date()
+      const londonTime = now.toLocaleTimeString("en-GB", {
+        timeZone: "Europe/London",
+        hour12: false,
+      })
+      setTime(londonTime)
+    }
+
+    updateClock()
+    const timer = setInterval(updateClock, 1000)
+    return () => clearInterval(timer)
+  }, [])
+
 
   // Waving hand animation
   useEffect(() => {
@@ -134,18 +166,30 @@ export default function HomePage() {
       {/* Header */}
       <TopNavigation />
 
-      {/* HERO SECTION — full width */}
+      {/* HERO SECTION */}
       <section
         className="relative bg-cover bg-center bg-no-repeat min-h-screen flex items-start px-4 pt-56 sm:pt-48 md:pt-56 lg:pt-56"
         style={{ backgroundImage: "url('/hero-bg.png')" }}
         ref={heroRef}
-      >
-
+      > {/* Heading is constrained by this wrapper on the hero */}
         <div className="max-w-6xl mx-auto w-full text-left space-y-4 z-10">
-          <h1 className="text-[36px] sm:text-[48px] md:text-[56px] lg:text-[64px] font-display font-semibold text-white opacity-0 animate-bounce-up">
-            Welcome! I'm Kulan{" "}
-            <span id="waving-hand" aria-hidden="true">👋🏽</span>
+          <h1 className="text-[36px] sm:text-[48px] md:text-[56px] lg:text-[64px] font-display font-semibold text-white">
+            {renderWave("Welcome! I'm Kulan")}
+            <span
+              className="wave-span ml-2" // adds Tailwind margin-left
+              style={{ animationDelay: `${"Welcome! I'm Kulan".length * 0.05}s` }}
+            >
+              <span
+                id="waving-hand"
+                aria-hidden="true"
+                style={{ animationDelay: `${("Welcome! I'm Kulan".length * 0.05) + 0.02}s` }}
+              >
+                👋🏽
+              </span>
+            </span>
+            <span className="sr-only">Welcome! I'm Kulan</span>
           </h1>
+
 
           <p
             className={`text-xl sm:text-2xl font-mono text-gray-300 ${showTyping ? "animate-fade-in" : "opacity-0"}`}
@@ -156,6 +200,19 @@ export default function HomePage() {
           </p>
           <p className="sr-only">I'm a Product Designer, UX Lead and Innovator.</p>
         </div>
+
+        {/* Time pinned to the bottom but aligned to the same container as the heading. Raise the bottom values to bring up the time. */}
+        <div className="absolute inset-x-0 bottom-24 sm:bottom-28 z-10">
+          <div className="mx-auto max-w-6xl px-4">
+            <div className="flex justify-end">
+              <div className="text-right text-xs sm:text-sm md:text-base text-gray-300 font-mono animate-bounce-up">
+                <div>London, UK</div>
+                <div>{time}</div>
+              </div>
+            </div>
+          </div>
+        </div>
+
         <div className="absolute inset-0 bg-black bg-opacity-50 z-0" />
       </section>
 

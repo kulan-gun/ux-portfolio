@@ -11,7 +11,6 @@ import BackToTopButton from "@/components/back-to-top-button"
 import Footer from "@/components/footer"
 import UXLessonsCard from "@/components/ux-lessons-card"
 import ImageModal from "@/components/ImageModal"
-import MetricShuffle from "@/components/metric-shuffle"
 
 // Define the sections for this case study
 const sections = [
@@ -249,10 +248,7 @@ export default function ContactlessTravelCaseStudyPage() {
                   {/* Users total with growth */}
                   <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm" aria-label="Users metric">
                     <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">
-                      <MetricShuffle final="7m" />
-                      <span className="ml-2 align-middle text-base sm:text-lg text-emerald-400">
-                        <MetricShuffle final="+40% increase" scrambleLetters />
-                      </span>
+                      7m<span className="ml-2 align-middle text-base sm:text-lg text-emerald-400">+40% increase</span>
                     </div>
                     <div className="text-xs sm:text-sm md:text-base text-gray-300">
                       global users, up from 5m
@@ -262,10 +258,7 @@ export default function ContactlessTravelCaseStudyPage() {
                   {/* Completion rate with pp lift */}
                   <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm" aria-label="Completion rate metric">
                     <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">
-                      <MetricShuffle final="83%" />
-                      <span className="ml-2 align-middle text-base sm:text-lg text-emerald-400">
-                        <MetricShuffle final="+9pp" scrambleLetters />
-                      </span>
+                      83%<span className="ml-2 align-middle text-base sm:text-lg text-emerald-400">+9pp</span>
                     </div>
                     <div className="text-xs sm:text-sm md:text-base text-gray-300">
                       completion rate, up from 74% in 2 months
@@ -274,12 +267,8 @@ export default function ContactlessTravelCaseStudyPage() {
 
                   {/* GDS assessment */}
                   <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm" aria-label="GDS assessment result">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">
-                      <MetricShuffle final="1st" scrambleLetters />
-                    </div>
-                    <div className="text-xs sm:text-sm md:text-base text-gray-300">
-                      GDS assessment pass on first attempt
-                    </div>
+                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">1st</div>
+                    <div className="text-xs sm:text-sm md:text-base text-gray-300">GDS assessment pass on first attempt</div>
                   </div>
 
                 </div>
@@ -302,7 +291,7 @@ export default function ContactlessTravelCaseStudyPage() {
                             <span className="text-white">•</span>
                             <span>Improved the digital immigration status service for millions of users worldwide.</span>
                           </li>
-                          <li className="flex gap-3">
+                           <li className="flex gap-3">
                             <span className="text-white">•</span>
                             <span>Investigated biometric technology that can enable easy, long-term “passport-less” identity verification.</span>
                           </li>
@@ -744,7 +733,7 @@ export default function ContactlessTravelCaseStudyPage() {
                             <span className="text-white">•</span>
                             <span>Validating the flow through usability testing, ensuring inclusivity and reliability across devices.</span>
                           </li>
-                          <li className="flex gap-3">
+                           <li className="flex gap-3">
                             <span className="text-white">•</span>
                             <span>Co-designed an automated online account recovery journey to enhance self-service recovery.</span>
                           </li>
@@ -904,10 +893,7 @@ export default function ContactlessTravelCaseStudyPage() {
                   {/* Users total with growth */}
                   <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm" aria-label="Users metric">
                     <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">
-                      <MetricShuffle final="7m" duration={800} />
-                      <span className="ml-2 align-middle text-base sm:text-lg text-emerald-400">
-                        <MetricShuffle final="+40% increase" duration={800} speed={40} scrambleLetters />
-                      </span>
+                      7m<span className="ml-2 align-middle text-base sm:text-lg text-emerald-400">+40% increase</span>
                     </div>
                     <div className="text-xs sm:text-sm md:text-base text-gray-300">
                       global users, up from 5m
@@ -917,10 +903,7 @@ export default function ContactlessTravelCaseStudyPage() {
                   {/* Completion rate with pp lift */}
                   <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm" aria-label="Completion rate metric">
                     <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">
-                      <MetricShuffle final="83%" duration={800} />
-                      <span className="ml-2 align-middle text-base sm:text-lg text-emerald-400">
-                        <MetricShuffle final="+9pp" duration={800} speed={40} scrambleLetters />
-                      </span>
+                      83%<span className="ml-2 align-middle text-base sm:text-lg text-emerald-400">+9pp</span>
                     </div>
                     <div className="text-xs sm:text-sm md:text-base text-gray-300">
                       completion rate, up from 74% in 2 months
@@ -929,18 +912,14 @@ export default function ContactlessTravelCaseStudyPage() {
 
                   {/* GDS assessment */}
                   <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm" aria-label="GDS assessment result">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">
-                      <MetricShuffle final="1st" duration={800} scrambleLetters />
-                    </div>
-                    <div className="text-xs sm:text-sm md:text-base text-gray-300">
-                      GDS assessment pass on first attempt
-                    </div>
+                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">1st</div>
+                    <div className="text-xs sm:text-sm md:text-base text-gray-300">GDS assessment pass on first attempt</div>
                   </div>
 
                   {/* Journey time reduction */}
                   <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm" aria-label="Journey time reduction metric">
                     <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">
-                      <MetricShuffle final="-4%" duration={800} />
+                      -4%
                     </div>
                     <div className="text-xs sm:text-sm md:text-base text-gray-300">
                       average journey time, now 21 mins
@@ -950,7 +929,7 @@ export default function ContactlessTravelCaseStudyPage() {
                   {/* Offline requests reduction */}
                   <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm" aria-label="Offline requests reduction metric">
                     <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">
-                      <MetricShuffle final="-67%" duration={800} />
+                      -67%
                     </div>
                     <div className="text-xs sm:text-sm md:text-base text-gray-300">
                       fewer offline account recovery requests
@@ -960,7 +939,7 @@ export default function ContactlessTravelCaseStudyPage() {
                   {/* Remote trial participants */}
                   <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm" aria-label="Testing participants metric">
                     <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">
-                      <MetricShuffle final="200+" duration={800} />
+                      200+
                     </div>
                     <div className="text-xs sm:text-sm md:text-base text-gray-300">
                       participants in biometric enrolment trials
@@ -970,6 +949,7 @@ export default function ContactlessTravelCaseStudyPage() {
                 </div>
               </div>
             </AnimateOnScroll>
+
 
             <AnimateOnScroll animation="bounce-up">
               {/* Trim bottom margin so it doesn't compound with the quote block that follows */}

@@ -13,6 +13,8 @@ import SummaryCard from "@/components/summary-card"
 import QuoteCard from "@/components/quote-card"
 import UXLessonsCard from "@/components/ux-lessons-card"
 import ImageModal from "@/components/ImageModal"
+import MetricShuffle from "@/components/metric-shuffle"
+
 
 
 // Define the sections for this case study
@@ -263,26 +265,30 @@ export default function CRMCaseStudyPage() {
 
             <AnimateOnScroll animation="fade-up" delay={400}>
               <div className="mt-8 mb-8">
+
                 <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3" role="group" aria-label="Key metrics">
                   <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">40+</div>
-                    <div className="text-xs sm:text-sm md:text-base text-gray-300">
-                      participants in Designathons
+                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">
+                      <MetricShuffle final="40+" />
                     </div>
+                    <div className="text-xs sm:text-sm md:text-base text-gray-300">participants in Designathons</div>
                   </div>
+
                   <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">1.5×</div>
-                    <div className="text-xs sm:text-sm md:text-base text-gray-300">
-                      faster design iteration cycles
+                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">
+                      <MetricShuffle final="1.5×" />
                     </div>
+                    <div className="text-xs sm:text-sm md:text-base text-gray-300">faster design iteration cycles</div>
                   </div>
+
                   <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">3,000+</div>
-                    <div className="text-xs sm:text-sm md:text-base text-gray-300">
-                      engagements with Agentic AI article
+                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">
+                      <MetricShuffle final="3,000+" />
                     </div>
+                    <div className="text-xs sm:text-sm md:text-base text-gray-300">engagements with Agentic AI article</div>
                   </div>
                 </div>
+
               </div>
             </AnimateOnScroll>
 
@@ -753,34 +759,48 @@ export default function CRMCaseStudyPage() {
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={400}>
-              {/* Reduce bottom margin so it doesn't stack with section padding */}
-              <div className="mt-8 mb-6">  {/* was: mb-8 */}
-                <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3" role="group" aria-label="AURA proof of concept outcomes">
+  <div className="mt-8 mb-6">
+    <div
+      className="grid gap-4 sm:grid-cols-2 md:grid-cols-3"
+      role="group"
+      aria-label="AURA proof of concept outcomes"
+    >
 
-                  <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">3</div>
-                    <div className="text-xs sm:text-sm md:text-base text-gray-300">
-                      interface concepts explored before narrowing scope
-                    </div>
-                  </div>
+      {/* Metric 1 */}
+      <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
+        <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">
+          <MetricShuffle final="3" />
+        </div>
+        <div className="text-xs sm:text-sm md:text-base text-gray-300">
+          interface concepts explored before narrowing scope
+        </div>
+      </div>
 
-                  <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">60%+</div>
-                    <div className="text-xs sm:text-sm md:text-base text-gray-300">
-                      estimated time saved in document summarisation during testing
-                    </div>
-                  </div>
+      {/* Metric 2 */}
+      <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
+        <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">
+          <MetricShuffle final="60%+" />
+        </div>
+        <div className="text-xs sm:text-sm md:text-base text-gray-300">
+          estimated time saved in document summarisation during testing
+        </div>
+      </div>
 
-                  <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">MVP</div>
-                    <div className="text-xs sm:text-sm md:text-base text-gray-300">
-                      simplified to automated behind-the-scenes summarisation due to technical constraints
-                    </div>
-                  </div>
+      {/* Metric 3 (letters shuffle) */}
+      <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
+        <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">
+          <MetricShuffle final="MVP" />
+        </div>
+        <div className="text-xs sm:text-sm md:text-base text-gray-300">
+          simplified to automated behind-the-scenes summarisation due to technical constraints
+        </div>
+      </div>
 
-                </div>
-              </div>
-            </AnimateOnScroll>
+    </div>
+  </div>
+</AnimateOnScroll>
+
+
           </section>
 
 
