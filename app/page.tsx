@@ -30,22 +30,28 @@ export default function HomePage() {
       </span>
     ));
 
-
-
-  // Clock updater
+  // Clock updater: always Europe/London, aligned to the second
   useEffect(() => {
-    const updateClock = () => {
-      const now = new Date()
-      const londonTime = now.toLocaleTimeString("en-GB", {
-        timeZone: "Europe/London",
-        hour12: false,
-      })
-      setTime(londonTime)
-    }
+    const formatter = new Intl.DateTimeFormat("en-GB", {
+      timeZone: "Europe/London",
+      hour: "2-digit",
+      minute: "2-digit",
+      second: "2-digit",
+      hour12: false,
+    })
 
-    updateClock()
-    const timer = setInterval(updateClock, 1000)
-    return () => clearInterval(timer)
+    const update = () => setTime(formatter.format(new Date()))
+
+    // align the first tick to the next whole second to prevent drift
+    update()
+    const align = 1000 - new Date().getMilliseconds()
+    let timer = window.setTimeout(function tick() {
+      update()
+      // schedule the next update exactly 1s later
+      timer = window.setTimeout(tick, 1000)
+    }, align)
+
+    return () => clearTimeout(timer)
   }, [])
 
 
@@ -190,7 +196,6 @@ export default function HomePage() {
             <span className="sr-only">Welcome! I'm Kulan</span>
           </h1>
 
-
           <p
             className={`text-xl sm:text-2xl font-mono text-gray-300 ${showTyping ? "animate-fade-in" : "opacity-0"}`}
             aria-hidden="true"
@@ -201,8 +206,11 @@ export default function HomePage() {
           <p className="sr-only">I'm a Product Designer, UX Lead and Innovator.</p>
         </div>
 
-        {/* Time pinned to the bottom but aligned to the same container as the heading. Raise the bottom values to bring up the time. */}
-        <div className="absolute inset-x-0 bottom-24 sm:bottom-28 z-10">
+        {/* Time pinned to the bottom but aligned to the same container as the heading. Hidden on mobile and from screen readers. Raise the bottom values to bring up the time. */}
+        <div
+          className="absolute inset-x-0 bottom-24 sm:bottom-28 z-10 hidden sm:block"
+          aria-hidden="true"
+        >
           <div className="mx-auto max-w-6xl px-4">
             <div className="flex justify-end">
               <div className="text-right text-xs sm:text-sm md:text-base text-gray-300 font-mono animate-bounce-up">
