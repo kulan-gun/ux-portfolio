@@ -180,8 +180,9 @@ export default function HomePage() {
         style={{ backgroundImage: "url('/hero-bg.png')" }}
         ref={heroRef}
       >
-        {/* Heading container — must match cards */}
-        <div className="max-w-7xl mx-auto w-full text-left space-y-4 z-10">
+        {/* Heading is constrained by this wrapper on the hero */}
+        {/* Extra left padding here shifts the heading right WITHOUT moving the time */}
+        <div className="max-w-7xl mx-auto w-full text-left space-y-4 z-10 pl-2 sm:pl-4 md:pl-6 lg:pl-8">
           <h1 className="text-[36px] sm:text-[48px] md:text-[56px] lg:text-[64px] font-display font-semibold text-white">
             {renderWave("Welcome! I'm Kulan")}
             <span
@@ -204,12 +205,15 @@ export default function HomePage() {
             aria-hidden="true"
           >
             {displayText}
-            <span className={`inline-block w-0.5 h-5 ml-0.5 bg-current align-middle ${showCursor ? "opacity-100" : "opacity-0"}`}></span>
+            <span
+              className={`inline-block w-0.5 h-5 ml-0.5 bg-current align-middle ${showCursor ? "opacity-100" : "opacity-0"
+                }`}
+            ></span>
           </p>
           <p className="sr-only">I'm a Product Designer, UX Lead and Innovator.</p>
         </div>
 
-        {/* Time aligned to the SAME container */}
+        {/* Time pinned to the bottom, unchanged position */}
         <div className="absolute inset-x-0 bottom-24 sm:bottom-28 z-10 hidden sm:block" aria-hidden="true">
           <div className="max-w-7xl mx-auto px-4 sm:px-8 lg:px-12">
             <div className="flex justify-end">
@@ -223,9 +227,6 @@ export default function HomePage() {
 
         <div className="absolute inset-0 bg-black bg-opacity-50 z-0" />
       </section>
-
-
-
 
       {/* Main Content */}
       <main className="px-4 sm:px-8 py-12 md:py-16">
