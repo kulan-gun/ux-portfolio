@@ -5,27 +5,19 @@ import CaseStudyPreview from "@/components/case-study-preview"
 import Footer from "@/components/footer"
 import TopNavigation from "@/components/top-navigation"
 
+// Reverse chronological: newest at top (04), oldest at bottom (01)
 const missions = [
   {
     seq: "04",
-    date: "2023",
-    client: "Anglian Water",
-    title: "Transforming customer relationship management",
-    href: "/case-studies/crm-case-study/",
-    imageSrc: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/anglian3-min-Gg1yQETIOPvQr9fySm8O1i5tRZYm3U.jpeg",
+    date: "2024/25",
+    client: "GOV.UK",
+    title: "Designing the future of contactless travel",
+    href: "/case-studies/contactless-travel/",
+    imageSrc: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/trials2-min-152wrS8iv0dqCjFwiwsHTR5R7Mhdk7.jpeg",
     status: { label: "Shipped" as const },
   },
   {
     seq: "03",
-    date: "2024",
-    client: "GOV.UK",
-    title: "Improving access to benefits for citizens in medical need",
-    href: "/case-studies/benefits-case-study/",
-    imageSrc: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/dwp-work1-YBcOjNYGrLjyFctNlf12YOF2Jeftgh.png",
-    status: { label: "Shipped" as const },
-  },
-  {
-    seq: "02",
     date: "2024/25",
     client: "Capgemini Invent",
     title: "Leading human-centred design, empowered by AI",
@@ -34,12 +26,21 @@ const missions = [
     status: { label: "Concept" as const },
   },
   {
-    seq: "01",
-    date: "2024/25",
+    seq: "02",
+    date: "2024",
     client: "GOV.UK",
-    title: "Designing the future of contactless travel",
-    href: "/case-studies/contactless-travel/",
-    imageSrc: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/trials2-min-152wrS8iv0dqCjFwiwsHTR5R7Mhdk7.jpeg",
+    title: "Improving access to benefits for citizens in medical need",
+    href: "/case-studies/benefits-case-study/",
+    imageSrc: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/dwp-work1-YBcOjNYGrLjyFctNlf12YOF2Jeftgh.png",
+    status: { label: "Shipped" as const },
+  },
+  {
+    seq: "01",
+    date: "2023",
+    client: "Anglian Water",
+    title: "Transforming customer relationship management",
+    href: "/case-studies/crm-case-study/",
+    imageSrc: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/anglian3-min-Gg1yQETIOPvQr9fySm8O1i5tRZYm3U.jpeg",
     status: { label: "Shipped" as const },
   },
 ]
