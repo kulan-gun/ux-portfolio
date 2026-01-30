@@ -54,26 +54,26 @@ export default function ScrollSpyNavigation({ sections }: ScrollSpyNavigationPro
   }
 
   return (
-    <nav className="space-y-6 text-gray-300 pl-8" aria-label="Table of contents">
+    <nav className="space-y-6 text-muted-foreground pl-8" aria-label="Table of contents">
       <ul className="space-y-6">
         {sections.map((section) => (
           <li key={section.id}>
             <button
-              className="flex items-center cursor-pointer group w-full text-left focus:outline-none focus:ring-2 focus:ring-dark-purple focus:ring-opacity-50 rounded-sm"
+              className="flex items-center cursor-pointer group w-full text-left focus:outline-none focus:ring-2 focus:ring-fui-primary focus:ring-opacity-50 rounded-sm"
               onClick={() => scrollToSection(section.id)}
               aria-current={activeSection === section.id ? "location" : undefined}
             >
               <div
                 className={cn(
                   "w-1 h-6 mr-4 rounded transition-colors duration-300",
-                  activeSection === section.id ? "bg-white" : "bg-transparent group-hover:bg-white/50",
+                  activeSection === section.id ? "bg-primary" : "bg-transparent group-hover:bg-primary/50",
                 )}
                 aria-hidden="true"
               />
               <span
                 className={cn(
                   "text-sm font-light transition-colors duration-300",
-                  activeSection === section.id ? "text-white" : "text-gray-300 group-hover:text-gray-300",
+                  activeSection === section.id ? "text-foreground" : "text-muted-foreground group-hover:text-foreground/80",
                 )}
               >
                 {section.title}

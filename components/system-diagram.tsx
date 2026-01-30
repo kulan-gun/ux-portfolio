@@ -1,6 +1,6 @@
 export default function SystemDiagram() {
   return (
-    <div className="rounded-3xl bg-zinc-900/50 p-8 md:p-12 backdrop-blur-sm">
+    <div className="rounded-3xl bg-muted p-8 md:p-12 backdrop-blur-sm">
       <div className="flex flex-col items-center justify-center">
         {/* TV Section */}
         <div className="relative mb-16">
@@ -11,7 +11,7 @@ export default function SystemDiagram() {
           {/* TV Label */}
           <div className="absolute right-[-180px] top-[20px] flex items-center">
             <div className="w-24 h-px bg-gray-500" aria-hidden="true"></div>
-            <div className="ml-4 text-white">
+            <div className="ml-4 text-foreground">
               <p>TV playing common</p>
               <p>stream</p>
             </div>
@@ -31,7 +31,7 @@ export default function SystemDiagram() {
 
             {/* User Gesture Label */}
             <div className="absolute left-[-180px] top-[10px] flex items-center">
-              <div className="text-white mr-4">User gesture input</div>
+              <div className="text-foreground mr-4">User gesture input</div>
               <div className="w-24 h-px bg-gray-500" aria-hidden="true"></div>
             </div>
           </div>
@@ -48,7 +48,7 @@ export default function SystemDiagram() {
             {/* AR Headset Label */}
             <div className="absolute right-[-140px] top-[10px] flex items-center">
               <div className="w-24 h-px bg-gray-500" aria-hidden="true"></div>
-              <div className="ml-4 text-white">AR Headset</div>
+              <div className="ml-4 text-foreground">AR Headset</div>
             </div>
           </div>
         </div>

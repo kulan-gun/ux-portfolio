@@ -144,23 +144,22 @@ export default function CaseStudyTemplate({
   }, [sidebarOpen])
 
   return (
-    <div className="min-h-screen text-white font-sans" style={{ backgroundColor: "#121212" }}>
-      {/* Navigation - Static on mobile, sticky on desktop */}
+    <div className="min-h-screen bg-background text-foreground font-sans flex flex-col">
       <TopNavigation onMobileMenuToggle={(isOpen) => setSidebarOpen(isOpen)} />
 
-      {/* Left Navigation - Fixed on desktop, slide-in on mobile */}
+      <div className="flex flex-1 min-h-0">
+      {/* Left Navigation - Sticky on desktop so it meets footer when scrolled */}
       {!isMobile && (
-        <div
-          id="mobile-menu"
-          className="w-64 md:fixed md:top-16 md:bottom-0 md:pt-16 relative"
-          style={{ backgroundColor: "#121212" }}
+        <aside
+          id="section-nav"
+          className="w-64 md:sticky md:top-16 md:self-start md:pt-16 shrink-0 bg-background"
           role="navigation"
           aria-label="Section navigation"
         >
           <div className="pl-8 mb-6 pt-8">
             <Link
               href="/"
-              className="inline-flex items-center px-4 pr-5 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white rounded-full transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+              className="inline-flex items-center px-4 pr-5 py-1.5 bg-muted hover:bg-muted/80 text-muted-foreground hover:text-foreground rounded-full transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-fui-primary focus:ring-opacity-50"
               aria-label="Go back to home page"
             >
               <svg
@@ -179,11 +178,12 @@ export default function CaseStudyTemplate({
             </Link>
           </div>
           <ScrollSpyNavigation sections={sections} />
-        </div>
+        </aside>
       )}
 
-      {/* Main Content - With left margin on desktop, full width on mobile */}
-      <main className={`flex-1 px-4 sm:px-8 py-12 ${isMobile ? "w-full" : "md:ml-64 md:max-w-[calc(100%-64px)]"}`}>
+      {/* Main Content - Footer is below this row so nav never overlaps it */}
+      <div className={`flex-1 min-w-0 ${isMobile ? "w-full" : ""}`}>
+      <main className={`px-4 sm:px-8 py-12 ${isMobile ? "w-full" : ""}`}>
         <div className="max-w-6xl mx-auto">
           {/* Case Study Title and Lozenges */}
           <div>
@@ -194,7 +194,7 @@ export default function CaseStudyTemplate({
                 </TagBadge>
               ))}
             </div>
-            <h1 id="case-study-title" className="text-3xl sm:text-4xl md:text-5xl font-display mb-8 sm:mb-12">
+            <h1 id="case-study-title" className="text-3xl sm:text-4xl md:text-5xl font-display font-semibold text-foreground mb-8 sm:mb-12">
               {title}
             </h1>
 
@@ -203,7 +203,7 @@ export default function CaseStudyTemplate({
               <img
                 src={heroImage || "/placeholder.svg"}
                 alt="Project hero image showing the benefits application interface"
-                className="w-full rounded-lg"
+                className="w-full rounded-lg border border-black/10 dark:border-white/10"
               />
             </div>
           </div>
@@ -211,13 +211,13 @@ export default function CaseStudyTemplate({
           {/* Overview Section */}
           <section id="overview" className="min-h-screen py-8 sm:py-12" aria-labelledby="overview-heading">
             <AnimateOnScroll animation="bounce-up">
-              <h2 id="overview-heading" className="mb-6 sm:mb-8 text-2xl sm:text-3xl md:text-4xl font-display">
+              <h2 id="overview-heading" className="mb-6 sm:mb-8 text-2xl sm:text-3xl md:text-4xl font-display text-foreground">
                 Overview
               </h2>
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={200}>
-              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
+              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
                 {overviewDescription ||
                   "A brief introduction to the case study, highlighting the key challenges, approach, and outcomes. This section provides context and sets expectations for what the reader will learn from this case study."}
               </p>
@@ -240,7 +240,7 @@ export default function CaseStudyTemplate({
                 <img
                   src="/placeholder.svg?height=150&width=800"
                   alt="Project overview diagram showing the key components of the benefits system"
-                  className="w-full rounded-lg"
+                  className="w-full rounded-lg border border-black/10 dark:border-white/10"
                 />
               </div>
             </AnimateOnScroll>
@@ -249,13 +249,13 @@ export default function CaseStudyTemplate({
           {/* Problem Section */}
           <section id="problem" className="min-h-screen py-8 sm:py-12" aria-labelledby="problem-heading">
             <AnimateOnScroll animation="bounce-up">
-              <h2 id="problem-heading" className="mb-6 sm:mb-8 text-2xl sm:text-3xl md:text-4xl font-display">
+              <h2 id="problem-heading" className="mb-6 sm:mb-8 text-2xl sm:text-3xl md:text-4xl font-display text-foreground">
                 Problem
               </h2>
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={200}>
-              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
+              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
                 {problemDescription ||
                   "Citizens were facing significant delays and complications when applying for and receiving their benefits."}
               </p>
@@ -288,7 +288,7 @@ export default function CaseStudyTemplate({
                 <img
                   src="/placeholder.svg?height=150&width=800"
                   alt="Problem definition diagram illustrating the challenges in the benefits application process"
-                  className="w-full rounded-lg"
+                  className="w-full rounded-lg border border-black/10 dark:border-white/10"
                 />
               </div>
             </AnimateOnScroll>
@@ -297,13 +297,13 @@ export default function CaseStudyTemplate({
           {/* Process Section */}
           <section id="process" className="min-h-screen py-8 sm:py-12" aria-labelledby="process-heading">
             <AnimateOnScroll animation="bounce-up">
-              <h2 id="process-heading" className="mb-6 sm:mb-8 text-2xl sm:text-3xl md:text-4xl font-display">
+              <h2 id="process-heading" className="mb-6 sm:mb-8 text-2xl sm:text-3xl md:text-4xl font-display text-foreground">
                 Process
               </h2>
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={200}>
-              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
+              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
                 {processDescription ||
                   "We used Figma as our primary design tool, and MS Teams for remote user interviews. Our process was as follows:"}
               </p>
@@ -320,7 +320,7 @@ export default function CaseStudyTemplate({
                 <img
                   src="/placeholder.svg?height=150&width=800"
                   alt="Design process workflow showing research, ideation, prototyping, and testing phases"
-                  className="w-full rounded-lg"
+                  className="w-full rounded-lg border border-black/10 dark:border-white/10"
                 />
               </div>
             </AnimateOnScroll>
@@ -329,13 +329,13 @@ export default function CaseStudyTemplate({
           {/* Solution Section */}
           <section id="solution" className="min-h-screen py-8 sm:py-12" aria-labelledby="solution-heading">
             <AnimateOnScroll animation="bounce-up">
-              <h2 id="solution-heading" className="mb-6 sm:mb-8 text-2xl sm:text-3xl md:text-4xl font-display">
+              <h2 id="solution-heading" className="mb-6 sm:mb-8 text-2xl sm:text-3xl md:text-4xl font-display text-foreground">
                 Solution
               </h2>
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={200}>
-              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
+              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
                 {solutionDescription ||
                   "An overview of the solution that was designed and implemented to address the identified problems. This section showcases the final product, key features, and how they solve the user and business needs."}
               </p>
@@ -346,7 +346,7 @@ export default function CaseStudyTemplate({
                 <img
                   src="/placeholder.svg?height=150&width=800"
                   alt="Solution design mockup showing the redesigned benefits application interface"
-                  className="w-full rounded-lg"
+                  className="w-full rounded-lg border border-black/10 dark:border-white/10"
                 />
               </div>
             </AnimateOnScroll>
@@ -355,13 +355,13 @@ export default function CaseStudyTemplate({
           {/* Results Section */}
           <section id="results" className="min-h-screen py-8 sm:py-12" aria-labelledby="results-heading">
             <AnimateOnScroll animation="bounce-up">
-              <h2 id="results-heading" className="mb-6 sm:mb-8 text-2xl sm:text-3xl md:text-4xl font-display">
+              <h2 id="results-heading" className="mb-6 sm:mb-8 text-2xl sm:text-3xl md:text-4xl font-display text-foreground">
                 Results
               </h2>
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={200}>
-              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
+              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
                 {resultsDescription ||
                   "My design changes delivered significant results in under six months. This demonstrates the effectiveness of my solution and the value it provided."}
               </p>
@@ -384,7 +384,7 @@ export default function CaseStudyTemplate({
                 <img
                   src="/placeholder.svg?height=150&width=800"
                   alt="Results dashboard showing key performance metrics and improvements"
-                  className="w-full rounded-lg"
+                  className="w-full rounded-lg border border-black/10 dark:border-white/10"
                 />
               </div>
             </AnimateOnScroll>
@@ -393,13 +393,13 @@ export default function CaseStudyTemplate({
           {/* Conclusion Section */}
           <section id="conclusion" className="min-h-screen py-8 sm:py-12" aria-labelledby="conclusion-heading">
             <AnimateOnScroll animation="bounce-up">
-              <h2 id="conclusion-heading" className="mb-6 sm:mb-8 text-2xl sm:text-3xl md:text-4xl font-display">
+              <h2 id="conclusion-heading" className="mb-6 sm:mb-8 text-2xl sm:text-3xl md:text-4xl font-display text-foreground">
                 Conclusion
               </h2>
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={200}>
-              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
+              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
                 {conclusionDescription ||
                   "Through accessible and thoughtful design, we empowered users to navigate the service more confidently, transforming lives and demonstrating the profound impact design can have on public services."}
               </p>
@@ -416,7 +416,7 @@ export default function CaseStudyTemplate({
                     <UXLessonsCard
                       icon={
                         <svg
-                          className="w-6 h-6 text-gray-300"
+                          className="w-6 h-6 text-muted-foreground"
                           viewBox="0 0 24 24"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
@@ -451,7 +451,7 @@ export default function CaseStudyTemplate({
                     <UXLessonsCard
                       icon={
                         <svg
-                          className="w-6 h-6 text-gray-300"
+                          className="w-6 h-6 text-muted-foreground"
                           viewBox="0 0 24 24"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
@@ -479,7 +479,7 @@ export default function CaseStudyTemplate({
                     <UXLessonsCard
                       icon={
                         <svg
-                          className="w-6 h-6 text-gray-300"
+                          className="w-6 h-6 text-muted-foreground"
                           viewBox="0 0 24 24"
                           fill="none"
                           xmlns="http://www.w3.org/2000/svg"
@@ -514,15 +514,18 @@ export default function CaseStudyTemplate({
                 <img
                   src="/placeholder.svg?height=150&width=800"
                   alt="Project conclusion summary showing key learnings and future opportunities"
-                  className="w-full rounded-lg"
+                  className="w-full rounded-lg border border-black/10 dark:border-white/10"
                 />
               </div>
             </AnimateOnScroll>
           </section>
         </div>
         <BackToTopButton />
-        <Footer />
       </main>
+      </div>
+      </div>
+
+      <Footer />
     </div>
   )
 }

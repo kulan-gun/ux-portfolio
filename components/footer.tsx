@@ -1,94 +1,94 @@
+"use client"
+
 import Link from "next/link"
+import { ArrowUpRight } from "lucide-react"
+import { cn } from "@/lib/utils"
+
+const mainLinks = [
+  { href: "/#work", label: "Work", external: false },
+  { href: "https://medium.com/@kulan.gun", label: "Articles", external: true },
+]
+
+const contactLinks = [
+  { href: "https://www.linkedin.com/in/kulan-gun/", label: "LinkedIn", external: true },
+]
 
 export default function Footer() {
   return (
     <footer
-      className="border-t border-gray-800 backdrop-blur-sm"
-      style={{ backgroundColor: "rgba(18, 18, 18, 0.8)" }}
+      className={cn(
+        "border-t border-black/10 dark:border-white/10",
+        "bg-sheet dark:bg-void"
+      )}
       role="contentinfo"
     >
       <div className="mx-auto max-w-6xl px-4 sm:px-8 py-12 md:py-16">
         <div className="grid grid-cols-2 gap-8 md:gap-16 mb-12">
-          {/* Main Links */}
           <div>
-            <h3 className="text-sm font-medium text-white mb-4">MAIN</h3>
+            <h3 className="font-mono text-xs tracking-widest-fui uppercase font-bold text-foreground mb-4">
+              Main
+            </h3>
             <ul className="space-y-3">
-              <li>
-                <Link
-                  href="/work"
-                  className="text-sm text-gray-300 hover:text-white transition-colors focus:outline-none focus:underline"
-                >
-                  Work
-                </Link>
-              </li>
-              <li>
-                <a
-                  href="https://medium.com/@kulan.gun"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-gray-300 hover:text-white transition-colors flex items-center group focus:outline-none focus:underline"
-                  aria-label="Articles (opens in new tab)"
-                >
-                  Articles
-                  <svg
-                    width="12"
-                    height="12"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    className="ml-1 transition-transform duration-300 group-hover:translate-x-[2px] group-hover:-translate-y-[2px]"
-                    aria-hidden="true"
-                  >
-                    <path d="M7 17L17 7M17 7H7M17 7V17" />
-                  </svg>
-                </a>
-              </li>
-              {/* <li>
-                <Link
-                  href="/info"
-                  className="text-sm text-gray-400 hover:text-white transition-colors focus:outline-none focus:underline"
-                >
-                  Info
-                </Link>
-              </li> */}
+              {mainLinks.map(({ href, label, external }) => {
+                const Wrapper = external ? "a" : Link
+                const props = external
+                  ? { href, target: "_blank", rel: "noopener noreferrer" }
+                  : { href }
+                return (
+                  <li key={label}>
+                    <Wrapper
+                      {...props}
+                      className={cn(
+                        "group font-mono text-xs tracking-widest-fui uppercase text-fui-dim",
+                        "hover:text-fui-primary dark:hover:text-fui-primary transition-colors",
+                        "inline-flex items-center gap-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-fui-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-fui"
+                      )}
+                    >
+                      {label}
+                      {external && (
+                        <ArrowUpRight
+                          className="w-3 h-3 shrink-0 transition-transform duration-200 ease-out group-hover:translate-x-1 group-hover:-translate-y-1"
+                          strokeWidth={2}
+                        />
+                      )}
+                    </Wrapper>
+                  </li>
+                )
+              })}
             </ul>
           </div>
 
-          {/* Contact Links */}
           <div>
-            <h3 className="text-sm font-medium text-white mb-4">CONTACT</h3>
+            <h3 className="font-mono text-xs tracking-widest-fui uppercase font-bold text-foreground mb-4">
+              Contact
+            </h3>
             <ul className="space-y-3">
-              <li>
-                <a
-                  href="https://www.linkedin.com/in/kulan-gun/"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-sm text-gray-300 hover:text-white transition-colors flex items-center group focus:outline-none focus:underline"
-                  aria-label="LinkedIn (opens in new tab)"
-                >
-                  LinkedIn
-                  <svg
-                    width="12"
-                    height="12"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    className="ml-1 transition-transform duration-300 group-hover:translate-x-[2px] group-hover:-translate-y-[2px]"
-                    aria-hidden="true"
+              {contactLinks.map(({ href, label }) => (
+                <li key={label}>
+                  <a
+                    href={href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={cn(
+                      "group font-mono text-xs tracking-widest-fui uppercase text-fui-dim",
+                      "hover:text-fui-primary dark:hover:text-fui-primary transition-colors",
+                      "inline-flex items-center gap-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-fui-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-fui"
+                    )}
                   >
-                    <path d="M7 17L17 7M17 7H7M17 7V17" />
-                  </svg>
-                </a>
-              </li>
+                    {label}
+                    <ArrowUpRight
+                      className="w-3 h-3 shrink-0 transition-transform duration-200 ease-out group-hover:translate-x-1 group-hover:-translate-y-1"
+                      strokeWidth={2}
+                    />
+                  </a>
+                </li>
+              ))}
             </ul>
           </div>
         </div>
 
-        {/* Copyright */}
-        <div className="pt-8 border-t border-gray-800">
-          <p className="text-sm text-white mb-4">
+        <div className="pt-8 border-t border-black/10 dark:border-white/10">
+          <p className="font-sans text-xs text-muted-foreground">
             © 2025 Kulan Gunawardena. Built with Next.js, React & TypeScript. Always a work in progress.
           </p>
         </div>
@@ -96,4 +96,3 @@ export default function Footer() {
     </footer>
   )
 }
-

@@ -62,23 +62,22 @@ export default function CaseStudyLayout({
   }, [sidebarOpen])
 
   return (
-    <div className="min-h-screen text-white font-sans" style={{ backgroundColor: "#121212" }}>
-      {/* Navigation - Static on mobile, sticky on desktop */}
+    <div className="min-h-screen bg-background text-foreground font-sans flex flex-col">
       <TopNavigation onMobileMenuToggle={(isOpen) => setSidebarOpen(isOpen)} />
 
-      {/* Left Navigation - Fixed on desktop, slide-in on mobile */}
+      <div className="flex flex-1 min-h-0">
+      {/* Left Navigation - Sticky on desktop so it meets footer when scrolled */}
       {!isMobile && (
-        <div
-          id="mobile-menu"
-          className="w-64 md:fixed md:top-16 md:bottom-0 md:pt-16 relative"
-          style={{ backgroundColor: "#121212" }}
+        <aside
+          id="section-nav"
+          className="w-64 md:sticky md:top-16 md:self-start md:pt-16 shrink-0 bg-background"
           role="navigation"
           aria-label="Section navigation"
         >
           <div className="pl-8 mb-6 pt-8">
             <Link
               href="/"
-              className="inline-flex items-center px-4 pr-5 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white rounded-full transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+              className="inline-flex items-center px-4 pr-5 py-1.5 bg-muted hover:bg-muted/80 text-muted-foreground hover:text-foreground rounded-full transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-fui-primary focus:ring-opacity-50"
               aria-label="Go back to home page"
             >
               <svg
@@ -97,27 +96,28 @@ export default function CaseStudyLayout({
             </Link>
           </div>
           <ScrollSpyNavigation sections={sections} />
-        </div>
+        </aside>
       )}
 
       {/* Overlay for mobile sidebar */}
 
-      {/* Main Content - With left margin on desktop, full width on mobile */}
-      <main className={`flex-1 px-4 sm:px-8 py-12 ${isMobile ? "w-full" : "md:ml-64 md:max-w-[calc(100%-64px)]"}`}>
-        <div className="max-w-6xl mx-auto">
-          {/* Case Study Title and Lozenges */}
+      {/* Main Content - Footer is below this row so nav never overlaps it */}
+      <div className={isMobile ? "w-full" : "min-w-0 flex-1"}>
+        <main className={`px-4 sm:px-8 py-12 ${isMobile ? "w-full" : ""}`}>
+          <div className="max-w-6xl mx-auto">
+            {/* Case Study Title and Lozenges */}
           <div>
             <div className="flex flex-wrap gap-2 sm:gap-4 pt-8 mb-6" aria-label="Project tags">
               {tags.map((tag, index) => (
-                <div key={index} className="inline-flex rounded-full bg-zinc-800/50 px-3 py-1 sm:px-4 sm:py-1.5">
+                <div key={index} className="inline-flex rounded-full bg-muted px-3 py-1 sm:px-4 sm:py-1.5">
                   <div className="flex items-center gap-2">
                     {tag.hasBackground && tag.color && <div className={`h-2 w-2 rounded-full ${tag.color}`} />}
-                    <span className="text-xs font-medium text-gray-300 tracking-wide uppercase">{tag.label}</span>
+                    <span className="text-xs font-medium text-muted-foreground tracking-wide uppercase">{tag.label}</span>
                   </div>
                 </div>
               ))}
             </div>
-            <h1 id="case-study-title" className="text-3xl sm:text-4xl md:text-5xl font-display mb-8 sm:mb-12">
+            <h1 id="case-study-title" className="text-3xl sm:text-4xl md:text-5xl font-display font-semibold text-foreground mb-8 sm:mb-12">
               {title}
             </h1>
 
@@ -126,17 +126,18 @@ export default function CaseStudyLayout({
               <img
                 src={heroImage || "/placeholder.svg"}
                 alt={`Project hero image for ${title}`}
-                className="w-full rounded-lg"
+                className="w-full rounded-lg border border-black/10 dark:border-white/10"
               />
             </div>
           </div>
 
-          {/* Render children (case study sections) */}
-          {children}
-        </div>
-      </main>
+            {/* Render children (case study sections) */}
+            {children}
+          </div>
+        </main>
+      </div>
+      </div>
 
-      {/* Add the Footer component */}
       <Footer />
     </div>
   )

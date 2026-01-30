@@ -11,7 +11,7 @@ export default function TechnologyStack() {
               <path d="M20 8.00004L4 16" stroke="currentColor" strokeWidth="2" />
             </svg>
           </div>
-          <h3 className="text-xl font-normal text-white mb-2">Frontend</h3>
+          <h3 className="text-xl font-normal text-foreground mb-2">Frontend</h3>
           <ul className="text-gray-300 space-y-2">
             <li>React Native</li>
             <li>TypeScript</li>
@@ -26,7 +26,7 @@ export default function TechnologyStack() {
               <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
             </svg>
           </div>
-          <h3 className="text-xl font-normal text-white mb-2">Backend</h3>
+          <h3 className="text-xl font-normal text-foreground mb-2">Backend</h3>
           <ul className="text-gray-300 space-y-2">
             <li>Node.js</li>
             <li>Express</li>
@@ -65,7 +65,7 @@ export default function TechnologyStack() {
               />
             </svg>
           </div>
-          <h3 className="text-xl font-normal text-white mb-2">DevOps</h3>
+          <h3 className="text-xl font-normal text-foreground mb-2">DevOps</h3>
           <ul className="text-gray-300 space-y-2">
             <li>Docker</li>
             <li>Kubernetes</li>

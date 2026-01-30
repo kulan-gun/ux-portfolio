@@ -36,7 +36,7 @@ export default function BackToTopButton() {
     <div className="flex justify-center my-8">
       <button
         onClick={scrollToTop}
-        className="inline-flex items-center px-4 py-2 bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white rounded-full transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+        className="inline-flex items-center px-4 py-2 bg-muted hover:bg-muted/80 text-muted-foreground hover:text-foreground rounded-full transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-fui-primary focus:ring-opacity-50"
         aria-label="Scroll back to top"
       >
         <ArrowUp className="mr-1.5 w-4 h-4" aria-hidden="true" />

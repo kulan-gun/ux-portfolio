@@ -12,14 +12,14 @@ const config: Config = {
     extend: {
       // ---------- FONTS ----------
       fontFamily: {
-        // Body text font
-        sans: ["Onest", "system-ui", "sans-serif"], // Onest is the primary sans-serif font
-        // Headings font (currently the same as body)
-        display: ["Onest", "system-ui", "sans-serif"], 
-        // Monospace font for typing animation or code blocks - "JetBrains Mono", "monospace"
-        mono: ["Recursive", "Ubuntu Mono", "monospace"], 
+        sans: ["'DM Sans'", "system-ui", "sans-serif"],
+        display: ["'DM Sans'", "system-ui", "sans-serif"],
+        mono: ["'JetBrains Mono'", "monospace"],
       },
-
+      letterSpacing: {
+        "widest-fui": "0.15em",
+        "wider-fui": "0.1em",
+      },
       // ---------- TYPE SCALE ----------
       fontSize: {
         // Large screens (>640px)
@@ -40,6 +40,18 @@ const config: Config = {
 
       // ---------- COLOURS ----------
       colors: {
+        void: "#0A0A0A",
+        surface: "#121212",
+        paper: "#F2F2F2",
+        sheet: "#FFFFFF",
+        ink: "#111111",
+        fui: {
+          primary:
+            "color-mix(in srgb, var(--fui-primary) calc(100% * <alpha-value>), transparent)",
+          blue: "#3B82F6",
+          alert: "#FF3333",
+          dim: "#888888",
+        },
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",
         card: {
@@ -98,6 +110,8 @@ const config: Config = {
         lg: "var(--radius)",
         md: "calc(var(--radius) - 2px)",
         sm: "calc(var(--radius) - 4px)",
+        fui: "2px",
+        "fui-lg": "4px",
       },
 
       // ---------- BACKGROUND GRADIENTS ----------
@@ -108,18 +122,16 @@ const config: Config = {
 
       // ---------- KEYFRAMES & ANIMATIONS ----------
       keyframes: {
-        "accordion-down": {
-          from: { height: "0" },
-          to: { height: "var(--radix-accordion-content-height)" },
-        },
-        "accordion-up": {
-          from: { height: "var(--radix-accordion-content-height)" },
-          to: { height: "0" },
-        },
+        "accordion-down": { from: { height: "0" }, to: { height: "var(--radix-accordion-content-height)" } },
+        "accordion-up": { from: { height: "var(--radix-accordion-content-height)" }, to: { height: "0" } },
+        "cursor-blink": { "0%, 50%": { opacity: "1" }, "51%, 100%": { opacity: "0" } },
+        "fade-in-up": { "0%": { opacity: "0", transform: "translateY(12px)" }, "100%": { opacity: "1", transform: "translateY(0)" } },
       },
       animation: {
         "accordion-down": "accordion-down 0.2s ease-out",
         "accordion-up": "accordion-up 0.2s ease-out",
+        "cursor-blink": "cursor-blink 0.6s step-end infinite",
+        "fade-in-up": "fade-in-up 0.5s ease-out forwards",
       },
     },
   },

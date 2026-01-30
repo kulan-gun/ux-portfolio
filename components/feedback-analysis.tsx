@@ -60,7 +60,7 @@ export default function FeedbackAnalysis() {
     <div className="space-y-12">
       <div>
         <h3 className="text-2xl font-normal text-white mb-6">Feedback Inbox Analysis</h3>
-        <ul className="space-y-2 text-sm sm:text-base md:text-lg text-gray-300 list-disc pl-5">
+        <ul className="space-y-2 text-sm sm:text-base md:text-lg text-muted-foreground list-disc pl-5">
           <li>Analysed 4,767 user comments from the feedback inbox exported as Excel rows.</li>
           <li>Grouped feedback by satisfaction score (SS) using Net Promoter Score (NPS) principles.</li>
           <li>Classified SS1 to 2 as service demoters, SS3 as passive, and SS4 to 5 as service promoters.</li>
@@ -77,7 +77,7 @@ export default function FeedbackAnalysis() {
 
       <div>
         <h3 className="text-2xl font-normal text-white mb-6">NPS Demoter (SS1 & SS2)</h3>
-        <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
+        <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
           We prioritised addressing the demoter levels, which had 1,074 comments. The table below shows the top 20 categories. Highlighted
           rows show specific feature requests from users.
         </p>

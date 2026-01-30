@@ -16,9 +16,9 @@ interface DataTableProps {
     caption,
   }: DataTableProps) {
     return (
-      <div className="rounded-3xl bg-zinc-900/50 p-6 md:p-8 backdrop-blur-sm">
-        {title && <h4 className="text-lg md:text-xl font-normal text-white mb-4">{title}</h4>}
-        {description && <p className="text-gray-300 mb-6">{description}</p>}
+      <div className="rounded-3xl bg-muted p-6 md:p-8 backdrop-blur-sm">
+        {title && <h4 className="text-lg md:text-xl font-normal text-foreground mb-4">{title}</h4>}
+        {description && <p className="text-muted-foreground mb-6">{description}</p>}
   
         <div className="overflow-x-auto">
           <table className="w-full border-collapse">
@@ -26,7 +26,7 @@ interface DataTableProps {
             <thead>
               <tr className="border-b border-gray-700">
                 {columns.map((column, index) => (
-                  <th key={index} className="text-left py-3 px-4 text-gray-300 font-medium">
+                  <th key={index} className="text-left py-3 px-4 text-muted-foreground font-medium">
                     {column}
                   </th>
                 ))}
@@ -39,7 +39,7 @@ interface DataTableProps {
                   className={`border-b border-gray-800 ${highlightedRows.includes(rowIndex) ? "bg-green-900/20" : ""}`}
                 >
                   {row.map((cell, cellIndex) => (
-                    <td key={cellIndex} className="py-3 px-4 text-gray-300">
+                    <td key={cellIndex} className="py-3 px-4 text-muted-foreground">
                       {cell}
                     </td>
                   ))}

@@ -1,6 +1,6 @@
 export default function KnownsUnknownsDiagram() {
   return (
-    <div className="rounded-3xl bg-zinc-900/50 p-8 md:p-12 backdrop-blur-sm">
+    <div className="rounded-3xl bg-muted p-8 md:p-12 backdrop-blur-sm">
       <div className="space-y-12">
         {/* Knowns Section */}
         <div className="flex items-start gap-8 md:gap-16">
@@ -9,7 +9,7 @@ export default function KnownsUnknownsDiagram() {
           </div>
           <div className="flex-1">
             <div className="h-0.5 w-12 bg-white mb-6 opacity-70"></div>
-            <ul className="space-y-4 text-gray-300">
+            <ul className="space-y-4 text-muted-foreground">
               <li className="flex gap-3">
                 <span className="text-white">•</span>
                 <span>Setting: Home/Residential + multiple simultaneous users</span>
@@ -37,7 +37,7 @@ export default function KnownsUnknownsDiagram() {
           </div>
           <div className="flex-1">
             <div className="h-0.5 w-12 bg-white mb-6 opacity-70"></div>
-            <ul className="space-y-4 text-gray-300">
+            <ul className="space-y-4 text-muted-foreground">
               <li className="flex gap-3">
                 <span className="text-white">•</span>
                 <span>Peripherals & Interaction medium</span>
@@ -53,7 +53,7 @@ export default function KnownsUnknownsDiagram() {
           </div>
           <div className="flex-1">
             <div className="h-0.5 w-12 bg-white mb-6 opacity-70"></div>
-            <ul className="space-y-4 text-gray-300">
+            <ul className="space-y-4 text-muted-foreground">
               <li className="flex gap-3">
                 <span className="text-white">•</span>
                 <span>Additional Information users want presented</span>

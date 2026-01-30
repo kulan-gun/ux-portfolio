@@ -114,25 +114,23 @@ export default function CRMCaseStudyPage() {
   }
 
   return (
-    <div className="min-h-screen text-white font-sans" style={{ backgroundColor: "#121212" }}>
+    <div className="min-h-screen bg-background text-foreground font-sans flex flex-col">
       <ScrollProgressIndicator />
 
-      {/* Navigation - Static on mobile, sticky on desktop */}
       <TopNavigation onMobileMenuToggle={(isOpen) => setSidebarOpen(isOpen)} />
 
-      {/* Left Navigation - Fixed on desktop, slide-in on mobile */}
+      <div className="flex flex-1 min-h-0">
       {!isMobile && (
-        <div
-          id="mobile-menu"
-          className="w-64 md:fixed md:top-16 md:bottom-0 md:pt-16 relative"
-          style={{ backgroundColor: "#121212" }}
+        <aside
+          id="section-nav"
+          className="w-64 md:sticky md:top-16 md:self-start md:pt-16 shrink-0 bg-background"
           role="navigation"
           aria-label="Section navigation"
         >
           <div className="pl-8 mb-6 pt-8">
             <Link
               href="/"
-              className="inline-flex items-center px-4 pr-5 py-1.5 bg-gray-800 hover:bg-gray-700 text-gray-300 hover:text-white rounded-full transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-white focus:ring-opacity-50"
+              className="inline-flex items-center px-4 pr-5 py-1.5 bg-muted hover:bg-muted/80 text-muted-foreground hover:text-foreground rounded-full transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-fui-primary focus:ring-opacity-50"
               aria-label="Go back to home page"
             >
               <svg
@@ -152,23 +150,21 @@ export default function CRMCaseStudyPage() {
           </div>
 
           {/* Navigation links */}
-          <nav className="space-y-6 text-gray-300 pl-8" aria-label="Table of contents">
+          <nav className="space-y-6 text-muted-foreground pl-8" aria-label="Table of contents">
             <ul className="space-y-6">
               {sections.map((section) => (
                 <li key={section.id}>
                   <button
-                    className="flex items-center cursor-pointer group w-full text-left focus:outline-none focus:ring-2 focus:ring-dark-purple focus:ring-opacity-50 rounded-sm"
+                    className="flex items-center cursor-pointer group w-full text-left focus:outline-none focus:ring-2 focus:ring-fui-primary focus:ring-opacity-50 rounded-sm"
                     onClick={() => scrollToSection(section.id)}
                     aria-current={activeSection === section.id ? "location" : undefined}
                   >
                     <div
-                      className={`w-1 h-6 mr-4 rounded transition-colors duration-300 ${activeSection === section.id ? "bg-white" : "bg-transparent group-hover:bg-white/50"
-                        }`}
+                      className={`w-1 h-6 mr-4 rounded transition-colors duration-300 ${activeSection === section.id ? "bg-primary" : "bg-transparent group-hover:bg-primary/50"}`}
                       aria-hidden="true"
                     />
                     <span
-                      className={`text-sm font-light transition-colors duration-300 ${activeSection === section.id ? "text-white" : "text-gray-300 group-hover:text-gray-300"
-                        }`}
+                      className={`text-sm font-light transition-colors duration-300 ${activeSection === section.id ? "text-foreground" : "text-muted-foreground group-hover:text-foreground/80"}`}
                     >
                       {section.title}
                     </span>
@@ -177,34 +173,34 @@ export default function CRMCaseStudyPage() {
               ))}
             </ul>
           </nav>
-        </div>
+        </aside>
       )}
 
-      {/* Main Content - With left margin on desktop, full width on mobile */}
-      <main className={`flex-1 px-4 sm:px-8 py-12 ${isMobile ? "w-full" : "md:ml-64 md:max-w-[calc(100%-64px)]"}`}>
+      <div className={`flex-1 min-w-0 flex flex-col ${isMobile ? "w-full" : ""}`}>
+      <main className={`flex-1 px-4 sm:px-8 py-12 ${isMobile ? "w-full" : ""}`}>
         <div className="max-w-6xl mx-auto">
           {/* Case Study Title and Tags */}
           <div>
             <div className="flex flex-wrap gap-2 sm:gap-4 pt-8 mb-6" aria-label="Project tags">
-              <div className="inline-flex rounded-full bg-zinc-800/50 px-3 py-1 sm:px-4 sm:py-1.5">
+              <div className="inline-flex rounded-full bg-muted px-3 py-1 sm:px-4 sm:py-1.5">
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-medium text-gray-300 tracking-wide uppercase">UX Designer</span>
+                  <span className="text-xs font-medium text-muted-foreground tracking-wide uppercase">UX Designer</span>
                 </div>
               </div>
-              <div className="inline-flex rounded-full bg-zinc-800/50 px-3 py-1 sm:px-4 sm:py-1.5">
+              <div className="inline-flex rounded-full bg-muted px-3 py-1 sm:px-4 sm:py-1.5">
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-medium text-gray-300 tracking-wide uppercase">2024/25</span>
+                  <span className="text-xs font-medium text-muted-foreground tracking-wide uppercase">2024/25</span>
                 </div>
               </div>
-              <div className="inline-flex rounded-full bg-zinc-800/50 px-3 py-1 sm:px-4 sm:py-1.5">
+              <div className="inline-flex rounded-full bg-muted px-3 py-1 sm:px-4 sm:py-1.5">
                 <div className="flex items-center gap-2">
-                  <span className="text-xs font-medium text-gray-300 tracking-wide uppercase">Capgemini Invent</span>
+                  <span className="text-xs font-medium text-muted-foreground tracking-wide uppercase">Capgemini Invent</span>
                 </div>
               </div>
-              <div className="inline-flex rounded-full bg-zinc-800/50 px-3 py-1 sm:px-4 sm:py-1.5">
+              <div className="inline-flex rounded-full bg-muted px-3 py-1 sm:px-4 sm:py-1.5">
                 <div className="flex items-center gap-2">
                   <div className="h-2 w-2 rounded-full bg-pink-500" />
-                  <span className="text-xs font-medium text-gray-300 tracking-wide uppercase">Concept</span>
+                  <span className="text-xs font-medium text-muted-foreground tracking-wide uppercase">Concept</span>
                 </div>
               </div>
             </div>
@@ -231,17 +227,17 @@ export default function CRMCaseStudyPage() {
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={200}>
-              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
+              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
                 As Design Lead for Capgemini Invent's Innovation Lab, I led our exploration into how Generative AI (GenAI) and Agentic AI can empower human-centred design.</p>
 
-              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
+              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
                 This involved exploring (1) how to design AI tools and (2) how to integrate them into design workflows.</p>
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={300}>
               <div className="mb-8 max-w-3xl">
-                <h3 className="text-xl font-medium text-white mb-4">Key highlights:</h3>
-                <ul className="space-y-2 text-sm sm:text-base md:text-lg text-gray-300 list-disc pl-5">
+                <h3 className="text-xl font-medium text-foreground mb-4">Key highlights:</h3>
+                <ul className="space-y-2 text-sm sm:text-base md:text-lg text-muted-foreground list-disc pl-5">
                   <li>Created a prototype for AURA (Automatic Resource Assistant). This AI tool turns long, complex documents into clear, concise content.</li>
                   <li>Launched a Designathon for over 40 designers. This event encouraged safe, hands-on experimentation with AI tools like v0, ChatGPT and Copilot.</li>
                   <li>
@@ -267,25 +263,25 @@ export default function CRMCaseStudyPage() {
               <div className="mt-8 mb-8">
 
                 <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3" role="group" aria-label="Key metrics">
-                  <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">
+                  <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm">
+                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-foreground">
                       <MetricShuffle final="40+" />
                     </div>
-                    <div className="text-xs sm:text-sm md:text-base text-gray-300">participants in Designathons</div>
+                    <div className="text-xs sm:text-sm md:text-base text-muted-foreground">participants in Designathons</div>
                   </div>
 
-                  <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">
+                  <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm">
+                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-foreground">
                       <MetricShuffle final="1.5×" />
                     </div>
-                    <div className="text-xs sm:text-sm md:text-base text-gray-300">faster design iteration cycles</div>
+                    <div className="text-xs sm:text-sm md:text-base text-muted-foreground">faster design iteration cycles</div>
                   </div>
 
-                  <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">
+                  <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm">
+                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-foreground">
                       <MetricShuffle final="3,000+" />
                     </div>
-                    <div className="text-xs sm:text-sm md:text-base text-gray-300">engagements with Agentic AI article</div>
+                    <div className="text-xs sm:text-sm md:text-base text-muted-foreground">engagements with Agentic AI article</div>
                   </div>
                 </div>
 
@@ -332,7 +328,7 @@ export default function CRMCaseStudyPage() {
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={200}>
-              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
+              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
                 This case study focuses on AURA. Change management consultants needed a faster, more engaging way to communicate complex HR policies. AURA sought to do just that.
               </p>
             </AnimateOnScroll>
@@ -373,7 +369,7 @@ export default function CRMCaseStudyPage() {
 
             <AnimateOnScroll animation="fade-up" delay={400}>
               <div className="mt-12 mb-12">
-                <div className="rounded-3xl bg-zinc-900/50 p-8 md:p-12 backdrop-blur-sm">
+                <div className="rounded-3xl bg-muted p-8 md:p-12 backdrop-blur-sm">
                   <div className="flex flex-col items-center justify-center">
 
                     {/* User Persona */}
@@ -401,8 +397,8 @@ export default function CRMCaseStudyPage() {
                           </svg>
                         </div>
                         <div>
-                          <h3 className="text-xl sm:text-2xl font-medium text-white mb-4">Persona: Rani – the Change Management Consultant</h3>
-                          <p className="text-gray-300 text-sm sm:text-base md:text-lg">
+                          <h3 className="text-xl sm:text-2xl font-medium text-foreground mb-4">Persona: Rani – the Change Management Consultant</h3>
+                          <p className="text-muted-foreground text-sm sm:text-base md:text-lg">
                             Rani helps organisations handle change. She often turns long HR and policy documents into engaging formats, like emails, intranet posts, and posters. She needs a way of speeding this up without losing accuracy.
                           </p>
                         </div>
@@ -412,28 +408,28 @@ export default function CRMCaseStudyPage() {
                     {/* Journey Stages */}
                     <div className="grid grid-cols-4 gap-4 mt-12" role="region" aria-label="User journey stages">
                       <div className="text-center">
-                        <h4 className="text-xl font-normal text-white mb-4">Receiving</h4>
-                        <p className="text-sm text-gray-300">
+                        <h4 className="text-xl font-normal text-foreground mb-4">Receiving</h4>
+                        <p className="text-sm text-muted-foreground">
                           Rani is sent lengthy workplace policy documents from clients. They can be hundreds of pages long, packed with complex language and legal terms.
                         </p>
                       </div>
                       <div className="text-center">
-                        <h4 className="text-xl font-normal text-white mb-4">Extracting</h4>
-                        <p className="text-sm text-gray-300">
+                        <h4 className="text-xl font-normal text-foreground mb-4">Extracting</h4>
+                        <p className="text-sm text-muted-foreground">
                           She reads through each document in detail, manually highlighting and copying relevant sections
                           into a separate working file for later rewriting.
                         </p>
                       </div>
                       <div className="text-center">
-                        <h4 className="text-xl font-normal text-white mb-4">Rewriting</h4>
-                        <p className="text-sm text-gray-300">
+                        <h4 className="text-xl font-normal text-foreground mb-4">Rewriting</h4>
+                        <p className="text-sm text-muted-foreground">
                           Rani rewrites the extracted content in plain language, adjusting tone, structure, and length to
                           match the intended audience, often rechecking for compliance.
                         </p>
                       </div>
                       <div className="text-center">
-                        <h4 className="text-xl font-normal text-white mb-4">Review</h4>
-                        <p className="text-sm text-gray-300">
+                        <h4 className="text-xl font-normal text-foreground mb-4">Review</h4>
+                        <p className="text-sm text-muted-foreground">
                           She proofreads, formats, and finalises the summaries before sharing them with colleagues or clients.
                           The whole process can take several days per document.
                         </p>
@@ -469,16 +465,16 @@ export default function CRMCaseStudyPage() {
                     {/* Quotes */}
                     <div className="grid grid-cols-4 gap-4 mt-8" aria-label="User quotes at different journey stages">
                       <div className="text-center">
-                        <p className="text-sm text-gray-300">"These policies are too long for busy employees to digest."</p>
+                        <p className="text-sm text-muted-foreground">"These policies are too long for busy employees to digest."</p>
                       </div>
                       <div className="text-center">
-                        <p className="text-sm text-gray-300">"I need summaries that are both accurate and engaging."</p>
+                        <p className="text-sm text-muted-foreground">"I need summaries that are both accurate and engaging."</p>
                       </div>
                       <div className="text-center">
-                        <p className="text-sm text-gray-300">"I wish tailoring content for different audiences were effortless."</p>
+                        <p className="text-sm text-muted-foreground">"I wish tailoring content for different audiences were effortless."</p>
                       </div>
                       <div className="text-center">
-                        <p className="text-sm text-gray-300">"It's finally done. That took longer than it needed to."</p>
+                        <p className="text-sm text-muted-foreground">"It's finally done. That took longer than it needed to."</p>
                       </div>
                     </div>
 
@@ -499,23 +495,23 @@ export default function CRMCaseStudyPage() {
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={200}>
-              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
+              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
                 The AURA prototype was developed through an iterative, evidence-based approach. We began with model selection, testing Claude Sonnet against alternative LLMs using parameters such as context length, summarisation accuracy, tone control, and processing speed. This ensured we chose the most reliable model for distilling lengthy HR and policy documents into clear, engaging formats.
               </p>
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={300}>
               <div className="mt-8 mb-12">
-                <div className="rounded-3xl bg-zinc-900/50 p-8 md:p-12 backdrop-blur-sm">
+                <div className="rounded-3xl bg-muted p-8 md:p-12 backdrop-blur-sm">
                   <div className="grid grid-cols-1 md:grid-cols-5 gap-12 md:gap-6">
 
                     <div className="flex flex-col items-center text-center">
                       <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-white">1</span>
+                        <span className="text-xl md:text-2xl font-medium text-foreground">1</span>
                       </div>
-                      <h3 className="text-lg md:text-xl font-normal text-white mb-4">Scoping & research</h3>
+                      <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">Scoping & research</h3>
                       <ul className="space-y-3 text-left w-full">
-                        <li className="text-gray-300 text-sm md:text-base text-center">
+                        <li className="text-muted-foreground text-sm md:text-base text-center">
                           Mapped challenges faced by consultants in summarising lengthy HR and policy documents through interviews and workflow analysis.
                         </li>
                       </ul>
@@ -523,11 +519,11 @@ export default function CRMCaseStudyPage() {
 
                     <div className="flex flex-col items-center text-center">
                       <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-white">2</span>
+                        <span className="text-xl md:text-2xl font-medium text-foreground">2</span>
                       </div>
-                      <h3 className="text-lg md:text-xl font-normal text-white mb-4">Model evaluation</h3>
+                      <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">Model evaluation</h3>
                       <ul className="space-y-3 text-left w-full">
-                        <li className="text-gray-300 text-sm md:text-base text-center">
+                        <li className="text-muted-foreground text-sm md:text-base text-center">
                           Tested Claude Sonnet and alternative LLMs using parameters such as summarisation accuracy, tone control, and processing speed.
                         </li>
                       </ul>
@@ -535,11 +531,11 @@ export default function CRMCaseStudyPage() {
 
                     <div className="flex flex-col items-center text-center">
                       <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-white">3</span>
+                        <span className="text-xl md:text-2xl font-medium text-foreground">3</span>
                       </div>
-                      <h3 className="text-lg md:text-xl font-normal text-white mb-4">System prompt</h3>
+                      <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">System prompt</h3>
                       <ul className="space-y-3 text-left w-full">
-                        <li className="text-gray-300 text-sm md:text-base text-center">
+                        <li className="text-muted-foreground text-sm md:text-base text-center">
                           Primed the model with sample documents and a tailored system prompt to ensure accuracy, avoid hallucinations, and adapt tone to different formats.
                         </li>
                       </ul>
@@ -547,11 +543,11 @@ export default function CRMCaseStudyPage() {
 
                     <div className="flex flex-col items-center text-center">
                       <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-white">4</span>
+                        <span className="text-xl md:text-2xl font-medium text-foreground">4</span>
                       </div>
-                      <h3 className="text-lg md:text-xl font-normal text-white mb-4">Prototyping</h3>
+                      <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">Prototyping</h3>
                       <ul className="space-y-3 text-left w-full">
-                        <li className="text-gray-300 text-sm md:text-base text-center">
+                        <li className="text-muted-foreground text-sm md:text-base text-center">
                           Explored both chat-style and agentic document-pane interfaces using Figma and API integrations to assess usability and efficiency.
                         </li>
                       </ul>
@@ -559,11 +555,11 @@ export default function CRMCaseStudyPage() {
 
                     <div className="flex flex-col items-center text-center">
                       <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-white">5</span>
+                        <span className="text-xl md:text-2xl font-medium text-foreground">5</span>
                       </div>
-                      <h3 className="text-lg md:text-xl font-normal text-white mb-4">Testing & iteration</h3>
+                      <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">Testing & iteration</h3>
                       <ul className="space-y-3 text-left w-full">
-                        <li className="text-gray-300 text-sm md:text-base text-center">
+                        <li className="text-muted-foreground text-sm md:text-base text-center">
                           Gathered feedback from consultants and clients, refining UI, tone handling, and summarisation quality for real-world adoption.
                         </li>
                       </ul>
@@ -591,7 +587,7 @@ export default function CRMCaseStudyPage() {
                   </figcaption>
                 </figure>
 
-                <p className="max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
+                <p className="max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
                   The architecture diagram shows how AURA connects to MongoDB, routes prompts through model services, handles auth, and logs activity for audit and safety. We primed the model with sample documents and applied a carefully crafted system prompt to maintain accuracy, avoid hallucinations, and tailor outputs to channels such as emails, posts, and posters.
                 </p>
               </div>
@@ -614,7 +610,7 @@ export default function CRMCaseStudyPage() {
                   </figcaption>
                 </figure>
 
-                <p className="max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
+                <p className="max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
                   I explored two interface concepts: a chat-style interface for conversational refinement and an agentic design with a document viewing pane for side-by-side reading, annotation, and summary generation. Rapid Figma prototypes and AI API integrations allowed us to test both paradigms quickly and make evidence-based design decisions.
                 </p>
               </div>
@@ -637,7 +633,7 @@ export default function CRMCaseStudyPage() {
                   </figcaption>
                 </figure>
 
-                <p className="max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
+                <p className="max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
                   Shows prompt presets, draft output, and lightweight edits with guardrails. Designed to keep users in control while speeding up first-draft creation.
                 </p>
               </div>
@@ -660,7 +656,7 @@ export default function CRMCaseStudyPage() {
                   </figcaption>
                 </figure>
 
-                <p className="max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
+                <p className="max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
                   Prioritised clarity and control: tighter labels, better empty states, simplified layouts, and consistent patterns across generate, review, and publish steps.
                 </p>
               </div>
@@ -683,7 +679,7 @@ export default function CRMCaseStudyPage() {
                   </figcaption>
                 </figure>
 
-                <p className="max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
+                <p className="max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
                   Sessions surfaced pain points around trust and explainability. We added clearer consent, source attribution, and reversible actions to build confidence.
                 </p>
               </div>
@@ -700,7 +696,7 @@ export default function CRMCaseStudyPage() {
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={200}>
-              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
+              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
                 We built a focused MVP that proves value without UI complexity. We selected Claude Sonnet for its long context window and reliable summarisation, primed it with representative HR and policy documents, and used a targeted system prompt to control tone and format.
               </p>
             </AnimateOnScroll>
@@ -721,11 +717,11 @@ export default function CRMCaseStudyPage() {
                   </figcaption>
                 </figure>
 
-                <p className="max-w-3xl text-sm sm:text-base md:text-lg text-gray-300 mb-4">
+                <p className="max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground mb-4">
                   The document viewing pane and chat interface were removed from scope due to technical complexity and time. Summarisation ran behind the scenes, and users simply downloaded channel-ready outputs such as one-pagers, intranet posts, or poster copy. Fine-tuning or in-app editing was not included in the MVP.
                 </p>
 
-                <p className="max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
+                <p className="max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
                   This validated the core outcome fast: accurate, consistent summaries that reduced manual effort and improved clarity, ready for future iterations that can add a viewer, highlights, and conversational refinement.
                 </p>
               </div>
@@ -750,10 +746,10 @@ export default function CRMCaseStudyPage() {
 
             <AnimateOnScroll animation="fade-up" delay={200}>
               {/* Split into two paragraphs; control spacing via mb */}
-              <p className="mb-5 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
+              <p className="mb-5 max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
                 The AURA proof of concept explored how RAG-powered AI could automatically summarise lengthy documents for public and private sector users. Through research, prototyping, and stakeholder testing, we validated the core value: AI could deliver accurate summaries behind the scenes, removing the need for a complex in-app viewer or editing tools at MVP stage.
               </p>
-              <p className="mb-6 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
+              <p className="mb-6 max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
                 While the project was paused before launch due to shifting priorities, it delivered clear learning on technical feasibility, user expectations, and MVP scoping. These insights have since informed other AI initiatives and strengthened our approach to designing responsible, human-centred AI tools.
               </p>
             </AnimateOnScroll>
@@ -767,31 +763,31 @@ export default function CRMCaseStudyPage() {
     >
 
       {/* Metric 1 */}
-      <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-        <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">
+      <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm">
+        <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-foreground">
           <MetricShuffle final="3" />
         </div>
-        <div className="text-xs sm:text-sm md:text-base text-gray-300">
+        <div className="text-xs sm:text-sm md:text-base text-muted-foreground">
           interface concepts explored before narrowing scope
         </div>
       </div>
 
       {/* Metric 2 */}
-      <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-        <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">
+      <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm">
+        <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-foreground">
           <MetricShuffle final="60%+" />
         </div>
-        <div className="text-xs sm:text-sm md:text-base text-gray-300">
+        <div className="text-xs sm:text-sm md:text-base text-muted-foreground">
           estimated time saved in document summarisation during testing
         </div>
       </div>
 
       {/* Metric 3 (letters shuffle) */}
-      <div className="rounded-2xl bg-zinc-900/50 p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-        <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-white">
+      <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm">
+        <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-foreground">
           <MetricShuffle final="MVP" />
         </div>
-        <div className="text-xs sm:text-sm md:text-base text-gray-300">
+        <div className="text-xs sm:text-sm md:text-base text-muted-foreground">
           simplified to automated behind-the-scenes summarisation due to technical constraints
         </div>
       </div>
@@ -813,7 +809,7 @@ export default function CRMCaseStudyPage() {
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={200}>
-              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">
+              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
                 From concept to proof-of-concept, AURA showed how Retrieval-Augmented Generation could transform dense HR and policy documents into concise, engaging formats.
                 <br /><br />
                 While the MVP was simplified and never shipped, the process delivered valuable internal learnings, reusable design patterns, and a clearer view of the technical and ethical considerations for deploying AI in client contexts.
@@ -826,7 +822,7 @@ export default function CRMCaseStudyPage() {
                 <UXLessonsCard
                   icon={
                     <svg
-                      className="w-6 h-6 text-gray-300"
+                      className="w-6 h-6 text-muted-foreground"
                       viewBox="0 0 24 24"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
@@ -861,7 +857,7 @@ export default function CRMCaseStudyPage() {
                 <UXLessonsCard
                   icon={
                     <svg
-                      className="w-6 h-6 text-gray-300"
+                      className="w-6 h-6 text-muted-foreground"
                       viewBox="0 0 24 24"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
@@ -892,7 +888,7 @@ export default function CRMCaseStudyPage() {
                 <UXLessonsCard
                   icon={
                     <svg
-                      className="w-6 h-6 text-gray-300"
+                      className="w-6 h-6 text-muted-foreground"
                       viewBox="0 0 24 24"
                       fill="none"
                       xmlns="http://www.w3.org/2000/svg"
@@ -924,8 +920,9 @@ export default function CRMCaseStudyPage() {
         </div>
         <BackToTopButton />
       </main>
+      </div>
+      </div>
 
-      {/* Add the Footer component */}
       <Footer />
     </div>
   )

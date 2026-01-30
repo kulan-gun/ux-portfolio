@@ -1,12 +1,12 @@
 "use client"
 
-import { useTheme } from "next-themes"
+import { useOperativeTheme } from "@/hooks/use-operative-theme"
 import { Toaster as Sonner } from "sonner"
 
 type ToasterProps = React.ComponentProps<typeof Sonner>
 
 const Toaster = ({ ...props }: ToasterProps) => {
-  const { theme = "system" } = useTheme()
+  const theme = useOperativeTheme()
 
   return (
     <Sonner

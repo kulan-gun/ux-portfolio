@@ -1,6 +1,6 @@
 export default function UserJourneyMap() {
   return (
-    <div className="rounded-3xl bg-zinc-900/50 p-8 md:p-12 backdrop-blur-sm">
+    <div className="rounded-3xl bg-muted p-8 md:p-12 backdrop-blur-sm">
       <div className="mb-12">
         <div className="flex items-center gap-4 mb-6">
           <div
@@ -25,8 +25,8 @@ export default function UserJourneyMap() {
             </svg>
           </div>
           <div>
-            <h3 className="text-2xl font-normal text-white">Persona</h3>
-            <p className="text-gray-300">
+            <h3 className="text-2xl font-normal text-foreground">Persona</h3>
+            <p className="text-muted-foreground">
               Meet Sarah, a customer service agent at Anglian Water. She handles 40+ customer inquiries daily using
               their legacy CRM system. Frustrated by slow loading times, confusing navigation, and repetitive data
               entry, she often needs to use workarounds to complete basic tasks. Sarah wants a more intuitive system
@@ -39,26 +39,26 @@ export default function UserJourneyMap() {
       {/* Journey Stages */}
       <div className="grid grid-cols-4 gap-4 mb-8" role="region" aria-label="User journey stages">
         <div className="text-center">
-          <h4 className="text-xl font-normal text-white mb-4">Customer Contact</h4>
-          <p className="text-sm text-gray-300">
+          <h4 className="text-xl font-normal text-foreground mb-4">Customer Contact</h4>
+          <p className="text-sm text-muted-foreground">
             Sarah receives a customer call about their billing inquiry and needs to access their account.
           </p>
         </div>
         <div className="text-center">
-          <h4 className="text-xl font-normal text-white mb-4">Information Lookup</h4>
-          <p className="text-sm text-gray-300">
+          <h4 className="text-xl font-normal text-foreground mb-4">Information Lookup</h4>
+          <p className="text-sm text-muted-foreground">
             Navigates through multiple screens to find the customer's account details and payment history.
           </p>
         </div>
         <div className="text-center">
-          <h4 className="text-xl font-normal text-white mb-4">Process Request</h4>
-          <p className="text-sm text-gray-300">
+          <h4 className="text-xl font-normal text-foreground mb-4">Process Request</h4>
+          <p className="text-sm text-muted-foreground">
             Updates account information or processes payment arrangements while dealing with system lag.
           </p>
         </div>
         <div className="text-center">
-          <h4 className="text-xl font-normal text-white mb-4">Resolution</h4>
-          <p className="text-sm text-gray-300">
+          <h4 className="text-xl font-normal text-foreground mb-4">Resolution</h4>
+          <p className="text-sm text-muted-foreground">
             Completes the transaction and documents the interaction, often needing to use multiple systems to finish.
           </p>
         </div>
@@ -88,16 +88,16 @@ export default function UserJourneyMap() {
       {/* Quotes */}
       <div className="grid grid-cols-4 gap-4" aria-label="User quotes at different journey stages">
         <div className="text-center">
-          <p className="text-sm text-gray-300">"Let me try to find your account..."</p>
+          <p className="text-sm text-muted-foreground">"Let me try to find your account..."</p>
         </div>
         <div className="text-center">
-          <p className="text-sm text-gray-300">"The system is running slow today."</p>
+          <p className="text-sm text-muted-foreground">"The system is running slow today."</p>
         </div>
         <div className="text-center">
-          <p className="text-sm text-gray-300">"I'll need to open another application for this."</p>
+          <p className="text-sm text-muted-foreground">"I'll need to open another application for this."</p>
         </div>
         <div className="text-center">
-          <p className="text-sm text-gray-300">"Thanks for your patience with our system."</p>
+          <p className="text-sm text-muted-foreground">"Thanks for your patience with our system."</p>
         </div>
       </div>
     </div>

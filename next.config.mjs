@@ -1,15 +1,14 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  output: "export", // Enables static export for GitHub Pages
-  trailingSlash: true, // Fixes routing issues
-  images: {
-    unoptimized: true, // Ensures images work correctly
-  },
-  eslint: {
-    ignoreDuringBuilds: true,
-  },
-  typescript: {
-    ignoreBuildErrors: true, // Prevents build failures due to TS errors
+  ...(process.env.NODE_ENV === "production" ? { output: "export" } : {}),
+  trailingSlash: true,
+  images: { unoptimized: true },
+  eslint: { ignoreDuringBuilds: true },
+  typescript: { ignoreBuildErrors: true },
+  experimental: { webpackBuildWorker: false },
+  webpack: (config, { dev }) => {
+    if (dev) config.cache = false;
+    return config;
   },
 };
 

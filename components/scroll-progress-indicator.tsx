@@ -33,7 +33,7 @@ export default function ScrollProgressIndicator() {
   return (
     <div className="fixed top-0 left-0 right-0 h-1 z-50">
       <div
-        className="h-full bg-white transition-all duration-150 ease-out"
+        className="h-full bg-primary transition-all duration-150 ease-out"
         style={{ width: `${scrollProgress}%` }}
         aria-hidden="true"
       />

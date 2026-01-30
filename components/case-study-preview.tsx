@@ -1,6 +1,19 @@
+"use client"
+
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
+import { StatusBadge } from "@/components/status-badge"
+import type { Status } from "@/components/status-badge"
+import { cn } from "@/lib/utils"
+
+const statusLabelMap: Record<string, Status> = {
+  Shipped: "SHIPPED",
+  LIVE: "LIVE",
+  Concept: "CONCEPT",
+  PROTOTYPE: "PROTOTYPE",
+  Archived: "ARCHIVED",
+}
 
 interface CaseStudyPreviewProps {
   date: string
@@ -8,44 +21,76 @@ interface CaseStudyPreviewProps {
   title: string
   href: string
   imageSrc?: string
-  status?: { label: string; color: string }
+  status?: { label: string; color?: string } | { label: Status }
+  seq?: string
 }
 
-export default function CaseStudyPreview({ date, client, title, href, imageSrc, status }: CaseStudyPreviewProps) {
+export default function CaseStudyPreview({
+  date,
+  client,
+  title,
+  href,
+  imageSrc,
+  status,
+  seq = "00",
+}: CaseStudyPreviewProps) {
+  const statusKey =
+    status && (status.label in statusLabelMap ? statusLabelMap[status.label] : (status.label as Status))
+  const resolvedStatus = statusKey ?? "ARCHIVED"
+
   return (
-    <Link
-      href={href}
-      className="block group relative rounded-3xl bg-zinc-700/40 backdrop-blur-sm overflow-hidden transition-all duration-300 hover:bg-zinc-700/60 hover:scale-[1.02] transform"
-    >
-      <div className="absolute top-6 right-6 z-10">
-        <ArrowUpRight className="w-6 h-6 text-gray-300 transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" />
-      </div>
-      <div className="p-6 pb-4">
-        <p className="text-base text-gray-300 mb-2 tracking-[0.1em] uppercase font-sans">
-          {date} | {client}
-        </p>
-        <h3 className="text-2xl font-display font-medium mb-3">{title}</h3>
-        {status && (
-          <div className="inline-flex rounded-full bg-black px-3 py-1 mb-2">
-            <div className="flex items-center gap-2">
-              <div className={`h-2 w-2 rounded-full ${status.color}`} />
-              <span className="text-xs font-medium text-gray-300 tracking-wide uppercase">{status.label}</span>
-            </div>
-          </div>
+    <Link href={href} className="block group focus:outline-none focus-visible:ring-2 focus-visible:ring-fui-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-fui-lg">
+      <div
+        className={cn(
+          "relative border rounded-fui-lg overflow-hidden",
+          "bg-sheet dark:bg-surface border-black/10 dark:border-white/10",
+          "p-6 transition-colors duration-300",
+          "hover:border-fui-primary/50 dark:hover:border-fui-primary/50",
+          "hover:bg-paper dark:hover:bg-[#181818]"
         )}
-      </div>
-      <div className="px-6 pt-0 pb-6">
-        <div className="aspect-video w-full overflow-hidden rounded-2xl relative">
+      >
+        <span className="corner-marker corner-marker-tl" aria-hidden="true" />
+        <span className="corner-marker corner-marker-tr" aria-hidden="true" />
+        <span className="corner-marker corner-marker-bl" aria-hidden="true" />
+        <span className="corner-marker corner-marker-br" aria-hidden="true" />
+
+        <div className="flex justify-between items-start gap-4 mb-4">
+          <span className="font-mono text-xs tracking-widest-fui text-fui-dim shrink-0">
+            MISSION.{seq.padStart(2, "0")}
+          </span>
+          <StatusBadge status={resolvedStatus} />
+        </div>
+
+        <h3 className="font-sans text-xl sm:text-2xl font-semibold tracking-tight text-foreground group-hover:text-fui-primary dark:group-hover:text-fui-primary mb-2">
+          {title}
+        </h3>
+        <p className="font-mono text-xs tracking-widest-fui text-fui-dim uppercase mb-4">
+          {date} · {client}
+        </p>
+
+        <div className="relative aspect-video w-full overflow-hidden rounded-fui mt-2">
           <Image
             src={imageSrc || "/placeholder.svg?height=400&width=800"}
-            alt={`Preview of ${title}`}
+            alt=""
             fill
             sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-            className="object-cover transition-transform duration-500 group-hover:scale-105"
+            className={cn(
+              "object-cover transition-all duration-500",
+              "brightness-[0.85] dark:brightness-[0.7] group-hover:brightness-100 dark:group-hover:brightness-90",
+              "group-hover:scale-[1.02]"
+            )}
           />
+          <div
+            className="absolute inset-0 pointer-events-none bg-gradient-to-t from-background/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300"
+            aria-hidden="true"
+          />
+          <div className="absolute top-3 right-3 flex items-center gap-1 font-mono text-[10px] tracking-widest-fui text-fui-dim opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+            <span>[</span>
+            <ArrowUpRight className="w-3 h-3" strokeWidth={2} />
+            <span>]</span>
+          </div>
         </div>
       </div>
     </Link>
   )
 }
-
