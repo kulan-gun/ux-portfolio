@@ -210,7 +210,7 @@ export default function BenefitsCaseStudyPage() {
               <img
                 src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/dwp-work1-YBcOjNYGrLjyFctNlf12YOF2Jeftgh.png"
                 alt="Project hero image showing the benefits application interface"
-                className="w-full rounded-lg"
+                className="w-full rounded-2xl"
               />
             </div>
           </div>
@@ -601,8 +601,8 @@ export default function BenefitsCaseStudyPage() {
                   <div className="grid grid-cols-1 md:grid-cols-5 gap-12 md:gap-6">
                     <div className="flex flex-col items-center text-center">
                       {/* Number Circle */}
-                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-foreground">1</span>
+                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
+                        <span className="text-xl md:text-2xl font-medium text-white">1</span>
                       </div>
 
                       {/* Step Title */}
@@ -617,8 +617,8 @@ export default function BenefitsCaseStudyPage() {
                     </div>
 
                     <div className="flex flex-col items-center text-center">
-                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-foreground">2</span>
+                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
+                        <span className="text-xl md:text-2xl font-medium text-white">2</span>
                       </div>
                       <h4 className="text-lg md:text-xl font-normal text-foreground mb-4">Analysis</h4>
                       <ul className="space-y-3 text-left w-full">
@@ -630,8 +630,8 @@ export default function BenefitsCaseStudyPage() {
                     </div>
 
                     <div className="flex flex-col items-center text-center">
-                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-foreground">3</span>
+                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
+                        <span className="text-xl md:text-2xl font-medium text-white">3</span>
                       </div>
                       <h4 className="text-lg md:text-xl font-normal text-foreground mb-4">Prototyping</h4>
                       <ul className="space-y-3 text-left w-full">
@@ -643,8 +643,8 @@ export default function BenefitsCaseStudyPage() {
                     </div>
 
                     <div className="flex flex-col items-center text-center">
-                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-foreground">4</span>
+                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
+                        <span className="text-xl md:text-2xl font-medium text-white">4</span>
                       </div>
                       <h4 className="text-lg md:text-xl font-normal text-foreground mb-4">Collaboration</h4>
                       <ul className="space-y-3 text-left w-full">
@@ -656,8 +656,8 @@ export default function BenefitsCaseStudyPage() {
                     </div>
 
                     <div className="flex flex-col items-center text-center">
-                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-foreground">5</span>
+                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
+                        <span className="text-xl md:text-2xl font-medium text-white">5</span>
                       </div>
                       <h4 className="text-lg md:text-xl font-normal text-foreground mb-4">Implementation</h4>
                       <ul className="space-y-3 text-left w-full">
@@ -721,7 +721,7 @@ export default function BenefitsCaseStudyPage() {
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-in" delay={400}>
-              <h3 className="text-2xl font-normal text-foreground mb-6">Iterations</h3>
+              <h3 className="text-2xl font-normal text-foreground mt-12 mb-6">Iterations</h3>
               <ul className="space-y-2 text-sm sm:text-base md:text-lg text-muted-foreground list-disc pl-5">
                 <li>I worked with the Content Designer to improve the guidance page copy.</li>
                 <li>I designed variants to help users understand how to take clearer, more acceptable photos.</li>
@@ -1021,11 +1021,11 @@ export default function BenefitsCaseStudyPage() {
                 <div className="rounded-3xl bg-muted p-8 backdrop-blur-sm">
                   <div className="flex flex-col space-y-4">
                     <div
-                      className="h-12 w-12 rounded-full bg-zinc-800 flex items-center justify-center"
+                      className="h-12 w-12 rounded-full bg-zinc-600 dark:bg-zinc-800 flex items-center justify-center"
                       aria-hidden="true"
                     >
                       <svg
-                        className="w-6 h-6 text-muted-foreground"
+                        className="w-6 h-6 text-white"
                         viewBox="0 0 24 24"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -1066,11 +1066,11 @@ export default function BenefitsCaseStudyPage() {
                 <div className="rounded-3xl bg-muted p-8 backdrop-blur-sm">
                   <div className="flex flex-col space-y-4">
                     <div
-                      className="h-12 w-12 rounded-full bg-zinc-800 flex items-center justify-center"
+                      className="h-12 w-12 rounded-full bg-zinc-600 dark:bg-zinc-800 flex items-center justify-center"
                       aria-hidden="true"
                     >
                       <svg
-                        className="w-6 h-6 text-muted-foreground"
+                        className="w-6 h-6 text-white"
                         viewBox="0 0 24 24"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -1103,11 +1103,11 @@ export default function BenefitsCaseStudyPage() {
                 <div className="rounded-3xl bg-muted p-8 backdrop-blur-sm">
                   <div className="flex flex-col space-y-4">
                     <div
-                      className="h-12 w-12 rounded-full bg-zinc-800 flex items-center justify-center"
+                      className="h-12 w-12 rounded-full bg-zinc-600 dark:bg-zinc-800 flex items-center justify-center"
                       aria-hidden="true"
                     >
                       <svg
-                        className="w-6 h-6 text-muted-foreground"
+                        className="w-6 h-6 text-white"
                         viewBox="0 0 24 24"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"

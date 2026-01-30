@@ -89,7 +89,7 @@ export default function Footer() {
 
         <div className="pt-8 border-t border-black/10 dark:border-white/10">
           <p className="font-sans text-xs text-muted-foreground">
-            © 2025 Kulan Gunawardena. Built with Next.js, React & TypeScript. Always a work in progress.
+            © 2026 Kulan Gunawardena. Built with Next.js, React & TypeScript. Always a work in progress.
           </p>
         </div>
       </div>

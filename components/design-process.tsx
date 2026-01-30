@@ -15,8 +15,8 @@ export default function DesignProcess({ steps }: DesignProcessProps) {
         {steps.map((step) => (
           <div key={step.number} className="flex flex-col items-center text-center">
             {/* Number Circle */}
-            <div className="flex items-center justify-center w-16 h-16 rounded-full bg-muted/80 mb-4">
-              <span className="text-xl md:text-2xl font-medium text-foreground">{step.number}</span>
+            <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
+              <span className="text-xl md:text-2xl font-medium text-white">{step.number}</span>
             </div>
 
             {/* Step Title */}

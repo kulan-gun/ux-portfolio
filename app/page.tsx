@@ -46,9 +46,9 @@ const missions = [
 ]
 
 const sysLines = [
-  "AI PRODUCT DESIGN...",
-  "TECHNICAL PROTOTYPING...",
-  "SYSTEMS THINKING...",
+  "AI PRODUCT DESIGNER...",
+  "TECHNICAL PROTOTYPER...",
+  "SYSTEMS THINKER...",
 ]
 
 export default function HomePage() {

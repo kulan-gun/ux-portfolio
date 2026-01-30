@@ -215,7 +215,7 @@ export default function ContactlessTravelCaseStudyPage() {
               <img
                 src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/trials2-min-152wrS8iv0dqCjFwiwsHTR5R7Mhdk7.jpeg"
                 alt="Project hero image showing the contactless travel interface"
-                className="w-full rounded-lg"
+                className="w-full rounded-2xl"
               />
             </div>
           </div>
@@ -478,8 +478,8 @@ export default function ContactlessTravelCaseStudyPage() {
                 <div className="rounded-3xl bg-muted p-8 md:p-12 backdrop-blur-sm">
                   <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-6">
                     <div className="flex flex-col items-center text-center">
-                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-foreground">1</span>
+                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
+                        <span className="text-xl md:text-2xl font-medium text-white">1</span>
                       </div>
                       <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">User research</h3>
                       <ul className="space-y-3 text-left w-full">
@@ -490,8 +490,8 @@ export default function ContactlessTravelCaseStudyPage() {
                     </div>
 
                     <div className="flex flex-col items-center text-center">
-                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-foreground">2</span>
+                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
+                        <span className="text-xl md:text-2xl font-medium text-white">2</span>
                       </div>
                       <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">Prototyping</h3>
                       <ul className="space-y-3 text-left w-full">
@@ -502,8 +502,8 @@ export default function ContactlessTravelCaseStudyPage() {
                     </div>
 
                     <div className="flex flex-col items-center text-center">
-                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-foreground">3</span>
+                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
+                        <span className="text-xl md:text-2xl font-medium text-white">3</span>
                       </div>
                       <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">Accessibility compliance</h3>
                       <ul className="space-y-3 text-left w-full">
@@ -514,8 +514,8 @@ export default function ContactlessTravelCaseStudyPage() {
                     </div>
 
                     <div className="flex flex-col items-center text-center">
-                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-foreground">4</span>
+                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
+                        <span className="text-xl md:text-2xl font-medium text-white">4</span>
                       </div>
                       <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">Collaboration</h3>
                       <ul className="space-y-3 text-left w-full">
@@ -626,8 +626,8 @@ export default function ContactlessTravelCaseStudyPage() {
                 <div className="rounded-3xl bg-muted p-8 md:p-12 backdrop-blur-sm">
                   <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-6">
                     <div className="flex flex-col items-center text-center">
-                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-foreground">1</span>
+                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
+                        <span className="text-xl md:text-2xl font-medium text-white">1</span>
                       </div>
                       <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">User research</h3>
                       <ul className="space-y-3 text-left w-full">
@@ -638,8 +638,8 @@ export default function ContactlessTravelCaseStudyPage() {
                     </div>
 
                     <div className="flex flex-col items-center text-center">
-                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-foreground">2</span>
+                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
+                        <span className="text-xl md:text-2xl font-medium text-white">2</span>
                       </div>
                       <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">Prototyping</h3>
                       <ul className="space-y-3 text-left w-full">
@@ -650,8 +650,8 @@ export default function ContactlessTravelCaseStudyPage() {
                     </div>
 
                     <div className="flex flex-col items-center text-center">
-                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-foreground">3</span>
+                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
+                        <span className="text-xl md:text-2xl font-medium text-white">3</span>
                       </div>
                       <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">Security & trust</h3>
                       <ul className="space-y-3 text-left w-full">
@@ -662,8 +662,8 @@ export default function ContactlessTravelCaseStudyPage() {
                     </div>
 
                     <div className="flex flex-col items-center text-center">
-                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-foreground">4</span>
+                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
+                        <span className="text-xl md:text-2xl font-medium text-white">4</span>
                       </div>
                       <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">Cross-collaboration</h3>
                       <ul className="space-y-3 text-left w-full">

@@ -213,7 +213,7 @@ export default function CRMCaseStudyPage() {
               <img
                 src="/ai-design/aura_min.jpeg"
                 alt="Project hero image showing the AURA interface"
-                className="w-full rounded-lg"
+                className="w-full rounded-2xl"
               />
             </div>
           </div>
@@ -506,8 +506,8 @@ export default function CRMCaseStudyPage() {
                   <div className="grid grid-cols-1 md:grid-cols-5 gap-12 md:gap-6">
 
                     <div className="flex flex-col items-center text-center">
-                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-foreground">1</span>
+                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
+                        <span className="text-xl md:text-2xl font-medium text-white">1</span>
                       </div>
                       <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">Scoping & research</h3>
                       <ul className="space-y-3 text-left w-full">
@@ -518,8 +518,8 @@ export default function CRMCaseStudyPage() {
                     </div>
 
                     <div className="flex flex-col items-center text-center">
-                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-foreground">2</span>
+                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
+                        <span className="text-xl md:text-2xl font-medium text-white">2</span>
                       </div>
                       <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">Model evaluation</h3>
                       <ul className="space-y-3 text-left w-full">
@@ -530,8 +530,8 @@ export default function CRMCaseStudyPage() {
                     </div>
 
                     <div className="flex flex-col items-center text-center">
-                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-foreground">3</span>
+                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
+                        <span className="text-xl md:text-2xl font-medium text-white">3</span>
                       </div>
                       <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">System prompt</h3>
                       <ul className="space-y-3 text-left w-full">
@@ -542,8 +542,8 @@ export default function CRMCaseStudyPage() {
                     </div>
 
                     <div className="flex flex-col items-center text-center">
-                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-foreground">4</span>
+                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
+                        <span className="text-xl md:text-2xl font-medium text-white">4</span>
                       </div>
                       <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">Prototyping</h3>
                       <ul className="space-y-3 text-left w-full">
@@ -554,8 +554,8 @@ export default function CRMCaseStudyPage() {
                     </div>
 
                     <div className="flex flex-col items-center text-center">
-                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-foreground">5</span>
+                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
+                        <span className="text-xl md:text-2xl font-medium text-white">5</span>
                       </div>
                       <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">Testing & iteration</h3>
                       <ul className="space-y-3 text-left w-full">

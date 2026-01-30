@@ -44,7 +44,7 @@ export default function OverviewSection({
           <img
             src={image || "/placeholder.svg"}
             alt="Project overview diagram showing the key components of the system"
-            className="w-full rounded-lg"
+            className="w-full rounded-2xl"
           />
         </div>
       </AnimateOnScroll>

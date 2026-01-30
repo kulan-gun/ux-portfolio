@@ -56,7 +56,7 @@ export default function CaseStudyPreview({
 
         <div className="flex justify-between items-start gap-4 mb-4">
           <span className="font-mono text-xs tracking-widest-fui text-fui-dim shrink-0">
-            MISSION.{seq.padStart(2, "0")}
+            MISSION {seq.padStart(2, "0")}
           </span>
           <StatusBadge status={resolvedStatus} />
         </div>
@@ -68,7 +68,7 @@ export default function CaseStudyPreview({
           {date} · {client}
         </p>
 
-        <div className="relative aspect-video w-full overflow-hidden rounded-fui mt-2">
+        <div className="relative aspect-video w-full overflow-hidden rounded-2xl mt-2">
           <Image
             src={imageSrc || "/placeholder.svg?height=400&width=800"}
             alt=""

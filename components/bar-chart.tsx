@@ -142,7 +142,7 @@ export default function BarChart({
   return (
     <div className="rounded-3xl bg-muted p-6 md:p-8 backdrop-blur-sm">
       {title && (
-        <h3 className="text-xl md:text-2xl font-normal text-white mb-4">
+        <h3 className="text-xl md:text-2xl font-normal text-foreground mb-4">
           {title}
         </h3>
       )}

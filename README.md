@@ -175,5 +175,4 @@ The home page lists Mission Logs in reverse chronological order, with the most r
 
 ## About
 
-**kulangun.com** — Kulan Gunawardena, Senior Experience Designer at Autodesk.  
-Optimising the experience of trust-critical systems.
+**kulangun.com** — Made by Kulan Gunawardena

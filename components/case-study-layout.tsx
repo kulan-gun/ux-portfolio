@@ -126,7 +126,7 @@ export default function CaseStudyLayout({
               <img
                 src={heroImage || "/placeholder.svg"}
                 alt={`Project hero image for ${title}`}
-                className="w-full rounded-lg border border-black/10 dark:border-white/10"
+                className="w-full rounded-2xl border border-black/10 dark:border-white/10"
               />
             </div>
           </div>
