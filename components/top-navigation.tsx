@@ -49,8 +49,8 @@ export default function TopNavigation({ onMobileMenuToggle: _ }: TopNavigationPr
         <nav className="grid grid-cols-2 sm:flex sm:flex-row items-center justify-items-center sm:justify-items-stretch gap-3 sm:gap-6 md:gap-8" aria-label="Main navigation">
           {navLinks.map(({ href, label, external }) => {
             const linkClass = cn(
-              "font-mono text-xs tracking-widest-fui uppercase text-fui-dim",
-              "hover:text-fui-primary dark:hover:text-fui-primary hover:tracking-wider-fui transition-all duration-200",
+              "group font-mono text-xs tracking-widest-fui uppercase text-fui-dim",
+              "hover:text-fui-primary dark:hover:text-fui-primary transition-colors duration-200",
               "focus:outline-none focus-visible:ring-2 focus-visible:ring-fui-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-fui",
               "inline-flex items-center gap-1"
             )
@@ -63,7 +63,7 @@ export default function TopNavigation({ onMobileMenuToggle: _ }: TopNavigationPr
                 className={linkClass}
               >
                 {label}
-                <ArrowUpRight className="w-3 h-3 shrink-0" strokeWidth={2} />
+                <ArrowUpRight className="w-3 h-3 shrink-0 transition-transform duration-200 ease-out group-hover:translate-x-1 group-hover:-translate-y-1" strokeWidth={2} />
               </a>
             ) : (
               <Link key={label} href={href} className={linkClass}>

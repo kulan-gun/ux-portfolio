@@ -138,7 +138,7 @@ export default function HomePage() {
               Optimising the experience of trust-critical systems.
             </p>
             <div
-              className="font-mono text-sm tracking-widest-fui text-fui-dim flex items-center gap-2 min-h-5 animate-fade-in-up opacity-0 [animation-fill-mode:forwards]"
+              className="font-mono text-sm tracking-widest-fui text-foreground dark:text-white flex items-center gap-2 min-h-5 animate-fade-in-up opacity-0 [animation-fill-mode:forwards]"
               style={{ animationDelay: "320ms" }}
               aria-live="polite"
             >
