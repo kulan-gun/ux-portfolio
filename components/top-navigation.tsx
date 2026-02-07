@@ -21,11 +21,12 @@ export default function TopNavigation({ onMobileMenuToggle: _ }: TopNavigationPr
   return (
     <header
       className={cn(
+        "w-full min-w-0 overflow-x-hidden",
         "md:sticky md:top-0 z-40 border-b border-black/10 dark:border-white/10",
         "bg-sheet/95 dark:bg-void/95 backdrop-blur-sm"
       )}
     >
-      <div className="flex flex-col md:flex-row md:h-14 items-center justify-between px-4 sm:px-6 lg:px-8 py-3 md:py-0 gap-3 md:gap-0">
+      <div className="w-full min-w-0 flex flex-col md:flex-row md:h-14 items-center justify-between px-4 sm:px-6 lg:px-8 py-3 md:py-0 gap-3 md:gap-0">
         <Link
           href="/"
           className="flex items-center focus:outline-none focus-visible:ring-2 focus-visible:ring-fui-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-fui"
@@ -33,7 +34,7 @@ export default function TopNavigation({ onMobileMenuToggle: _ }: TopNavigationPr
         >
           <div className="w-9 h-9 relative overflow-hidden rounded-fui border border-black/10 dark:border-white/10 bg-sheet dark:bg-surface">
             <Image
-              src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/logo-b07vLZDfIhbE0cTGGIba8vBcMMU4UB.png"
+              src="/favicon.png"
               alt=""
               fill
               className="object-contain p-1"
@@ -46,7 +47,7 @@ export default function TopNavigation({ onMobileMenuToggle: _ }: TopNavigationPr
           <ThemeToggle />
         </div>
 
-        <nav className="grid grid-cols-2 sm:flex sm:flex-row items-center justify-items-center sm:justify-items-stretch gap-3 sm:gap-6 md:gap-8" aria-label="Main navigation">
+        <nav className="min-w-0 grid grid-cols-2 sm:flex sm:flex-row items-center justify-items-center sm:justify-items-stretch gap-3 sm:gap-6 md:gap-8" aria-label="Main navigation">
           {navLinks.map(({ href, label, external }) => {
             const linkClass = cn(
               "group font-mono text-xs tracking-widest-fui uppercase text-fui-dim",

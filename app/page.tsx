@@ -104,12 +104,12 @@ export default function HomePage() {
   }, [mounted, displayText, isDeleting, lineIndex, typingSpeed])
 
   return (
-    <div className="home-page min-h-screen bg-background text-foreground font-sans">
+    <div className="home-page min-h-screen w-full min-w-0 overflow-x-hidden bg-background text-foreground font-sans">
       <TopNavigation />
 
       <section
         ref={heroRef}
-        className="relative min-h-[85vh] flex flex-col justify-center px-4 sm:px-8 pt-24 sm:pt-28 md:pt-32 lg:pt-36 pb-20"
+        className="relative min-h-[85vh] w-full min-w-0 flex flex-col justify-center px-4 sm:px-8 pt-24 sm:pt-28 md:pt-32 lg:pt-36 pb-20 overflow-x-hidden"
       >
         <div
           className="absolute inset-0 bg-[url('/hero-bg.png')] bg-cover bg-center bg-no-repeat opacity-30 dark:opacity-20"
@@ -164,9 +164,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      <main className="px-4 sm:px-8 py-16 md:py-24">
-        <div className="max-w-6xl mx-auto">
-          <section id="work" className="space-y-12">
+      <main className="w-full min-w-0 px-4 sm:px-8 py-16 md:py-24">
+        <div className="max-w-6xl mx-auto w-full min-w-0">
+          <section id="work" className="space-y-12 min-w-0">
             <div className="space-y-2">
               <p className="font-mono text-xs tracking-widest-fui uppercase text-fui-dim">
                 SELECTED WORK
@@ -176,11 +176,11 @@ export default function HomePage() {
               </h2>
             </div>
 
-            <div className="grid gap-6 sm:gap-8">
+            <div className="grid gap-6 sm:gap-8 min-w-0">
               {missions.map((m, i) => (
                 <div
                   key={m.href}
-                  className="animate-fade-in-up opacity-0 [animation-fill-mode:forwards]"
+                  className="min-w-0 animate-fade-in-up opacity-0 [animation-fill-mode:forwards]"
                   style={{ animationDelay: `${180 + i * 60}ms` }}
                 >
                   <CaseStudyPreview

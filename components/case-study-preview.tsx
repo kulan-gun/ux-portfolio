@@ -1,12 +1,10 @@
 "use client"
 
-import { useState, useEffect, useRef } from "react"
 import Image from "next/image"
 import Link from "next/link"
 import { ArrowUpRight } from "lucide-react"
 import { StatusBadge } from "@/components/status-badge"
 import type { Status } from "@/components/status-badge"
-import DecryptedText from "@/components/decrypted-text"
 import { cn } from "@/lib/utils"
 
 const statusLabelMap: Record<string, Status> = {
@@ -40,57 +38,35 @@ export default function CaseStudyPreview({
     status && (status.label in statusLabelMap ? statusLabelMap[status.label] : (status.label as Status))
   const resolvedStatus = statusKey ?? "ARCHIVED"
 
-  const [hasBeenInView, setHasBeenInView] = useState(false)
-  const cardRef = useRef<HTMLDivElement>(null)
-
-  useEffect(() => {
-    const el = cardRef.current
-    if (!el) return
-    const io = new IntersectionObserver(
-      ([entry]) => {
-        if (entry?.isIntersecting) setHasBeenInView(true)
-      },
-      { threshold: 0.2, rootMargin: "0px 0px -50px 0px" }
-    )
-    io.observe(el)
-    return () => io.disconnect()
-  }, [])
-
   return (
     <Link
       href={href}
-      className="block group focus:outline-none focus-visible:ring-2 focus-visible:ring-fui-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-fui-lg"
+      className="block min-w-0 w-full group focus:outline-none focus-visible:ring-2 focus-visible:ring-fui-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-fui-lg"
     >
       <div
-        ref={cardRef}
         className={cn(
-          "relative border rounded-fui-lg overflow-hidden",
+          "relative border rounded-fui-lg overflow-hidden min-w-0 w-full",
           "bg-sheet dark:bg-surface border-black/10 dark:border-white/10",
           "p-6 transition-colors duration-300",
           "hover:border-fui-primary/50 dark:hover:border-fui-primary/50",
           "hover:bg-paper dark:hover:bg-[#181818]"
         )}
       >
-        <div className="flex justify-between items-start gap-4 mb-4">
+        <div className="flex justify-between items-start gap-4 mb-4 min-w-0">
           <span className="font-mono text-xs tracking-widest-fui text-fui-dim shrink-0">
             MISSION {seq.padStart(2, "0")}
           </span>
           <StatusBadge status={resolvedStatus} />
         </div>
 
-        <h3 className="font-sans text-xl sm:text-2xl font-semibold tracking-tight text-foreground group-hover:text-fui-primary dark:group-hover:text-fui-primary mb-2">
-          <DecryptedText
-            text={title}
-            trigger={hasBeenInView ? 1 : 0}
-            revealInterval={20}
-            scrambleCycles={3}
-          />
+        <h3 className="font-sans text-xl sm:text-2xl font-semibold tracking-tight text-foreground group-hover:text-fui-primary dark:group-hover:text-fui-primary mb-2 break-words min-w-0">
+          <span className="block max-w-full">{title}</span>
         </h3>
-        <p className="font-mono text-xs tracking-widest-fui text-fui-dim uppercase mb-4">
+        <p className="font-mono text-xs tracking-widest-fui text-fui-dim uppercase mb-4 min-w-0">
           {date} · {client}
         </p>
 
-        <div className="relative aspect-video w-full overflow-hidden rounded-2xl mt-2">
+        <div className="relative aspect-video w-full min-w-0 overflow-hidden rounded-2xl mt-2">
           <Image
             src={imageSrc || "/placeholder.svg?height=400&width=800"}
             alt=""

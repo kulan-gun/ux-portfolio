@@ -17,12 +17,13 @@ export default function Footer() {
   return (
     <footer
       className={cn(
+        "w-full min-w-0 overflow-x-hidden",
         "border-t border-black/10 dark:border-white/10",
         "bg-sheet dark:bg-void"
       )}
       role="contentinfo"
     >
-      <div className="mx-auto max-w-6xl px-4 sm:px-8 py-12 md:py-16">
+      <div className="mx-auto max-w-6xl w-full min-w-0 px-4 sm:px-8 py-12 md:py-16">
         <div className="grid grid-cols-2 gap-8 md:gap-16 mb-12">
           <div>
             <h3 className="font-mono text-xs tracking-widest-fui uppercase font-bold text-foreground mb-4">
