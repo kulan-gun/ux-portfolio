@@ -5,7 +5,7 @@ const nextConfig = {
   images: { unoptimized: true },
   eslint: { ignoreDuringBuilds: true },
   typescript: { ignoreBuildErrors: true },
-  experimental: { webpackBuildWorker: false },
+  experimental: { webpackBuildWorker: false, globalNotFound: true },
   webpack: (config, { dev }) => {
     if (dev) config.cache = false;
     return config;
