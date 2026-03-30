@@ -5,8 +5,17 @@ import CaseStudyPreview from "@/components/case-study-preview"
 import Footer from "@/components/footer"
 import TopNavigation from "@/components/top-navigation"
 
-// Reverse chronological: newest at top (04), oldest at bottom (01)
+// Reverse chronological: newest at top (05), oldest at bottom (01)
 const missions = [
+  {
+    seq: "05",
+    date: "2025/26",
+    client: "Autodesk",
+    title: "ContentNext: scaling content design with AI",
+    href: "/case-studies/contentnext-case-study/",
+    imageSrc: "/ai-design/aura_min.jpeg",
+    status: { label: "Shipped" as const },
+  },
   {
     seq: "04",
     date: "2024/25",
