@@ -1,7 +1,7 @@
 "use client"
 
 import Link from "next/link"
-import { ArrowUpRight } from "lucide-react"
+import { ArrowUp, ArrowUpRight } from "lucide-react"
 import { cn } from "@/lib/utils"
 
 const mainLinks = [
@@ -14,6 +14,13 @@ const contactLinks = [
 ]
 
 export default function Footer() {
+  const scrollToTop = () => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    })
+  }
+
   return (
     <footer
       className={cn(
@@ -88,10 +95,24 @@ export default function Footer() {
           </div>
         </div>
 
-        <div className="pt-8 border-t border-black/10 dark:border-white/10">
+        <div className="pt-8 border-t border-black/10 dark:border-white/10 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
           <p className="font-sans text-xs text-muted-foreground">
             © 2026 Kulan Gunawardena. Built with Next.js, React & TypeScript. Always a work in progress.
           </p>
+          <button
+            type="button"
+            onClick={scrollToTop}
+            className={cn(
+              "inline-flex w-fit items-center gap-1.5",
+              "font-mono text-xs tracking-widest-fui uppercase text-fui-dim",
+              "hover:text-fui-primary dark:hover:text-fui-primary transition-colors",
+              "focus:outline-none focus-visible:ring-2 focus-visible:ring-fui-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-fui"
+            )}
+            aria-label="Back to top"
+          >
+            <ArrowUp className="w-3.5 h-3.5" strokeWidth={2} aria-hidden="true" />
+            Back to top
+          </button>
         </div>
       </div>
     </footer>

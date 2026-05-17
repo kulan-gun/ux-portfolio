@@ -13,7 +13,7 @@ const missions = [
     client: "Autodesk",
     title: "ContentNext: scaling content design with AI",
     href: "/case-studies/contentnext-case-study/",
-    imageSrc: "/ai-design/aura_min.jpeg",
+    imageSrc: "/contentnext/cover.jpg",
     status: { label: "Shipped" as const },
   },
   {
@@ -56,7 +56,7 @@ const missions = [
 
 const sysLines = [
   "AI PRODUCT DESIGNER...",
-  "TECHNICAL PROTOTYPER...",
+  "PEOPLE LEADER...",
   "SYSTEMS THINKER...",
 ]
 

@@ -167,8 +167,8 @@ export default function ContentNextCaseStudyPage() {
 
                 <div className="mb-12 sm:mb-16">
                   <img
-                    src="/ai-design/aura_min.jpeg"
-                    alt="Abstract AI interface visual representing ContentNext"
+                    src="/contentnext/cover.jpg"
+                    alt="ContentNext toolkit and Custom GPT configuration interfaces"
                     className="w-full rounded-2xl"
                   />
                 </div>
@@ -185,7 +185,8 @@ export default function ContentNextCaseStudyPage() {
                   <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
                     ContentNext is an AI-powered content design system created for Fusion teams at Autodesk. It helps
                     designers and engineers produce consistent, Weave-compliant in-product copy such as tooltips,
-                    warnings, errors, and notifications.
+                    warnings, errors, success messages, and notifications. The key shift was moving from a bespoke app
+                    to a Custom GPT plus Cursor workflow so teams could work where they already are.
                   </p>
                 </AnimateOnScroll>
 
@@ -205,7 +206,7 @@ export default function ContentNextCaseStudyPage() {
                           <MetricShuffle final="-4.67" />
                         </div>
                         <div className="text-xs sm:text-sm md:text-base text-muted-foreground">
-                          warning-grade improvement with guided input
+                          average Flesch-Kincaid readability grade reduction for warning messages
                         </div>
                       </div>
                       <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm">
@@ -227,7 +228,7 @@ export default function ContentNextCaseStudyPage() {
                         {
                           title: "Key facts",
                           items: [
-                            "Project duration: 6 months (October 2025 to March 2026)",
+                            "Project duration: 6 months (October 2025 to present)",
                             "Role: Sole designer, owning prompt architecture, testing, and production decision",
                             "Cross-functional inputs from CXD reviewers, leadership, and content design leads",
                           ],
@@ -243,6 +244,7 @@ export default function ContentNextCaseStudyPage() {
                         {
                           title: "Approach",
                           items: [
+                            "Improved readability metric language to remove ambiguity around target scores",
                             "Encoded Weave standards into a modular prompt architecture",
                             "Tested multiple delivery models before selecting production route",
                             "Ran controlled guided-vs-free-text comparisons",
@@ -264,8 +266,8 @@ export default function ContentNextCaseStudyPage() {
                 <AnimateOnScroll animation="fade-up" delay={200}>
                   <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
                     Content design was becoming a delivery bottleneck. Engineers needed compliant copy late in build
-                    cycles, and guidance was fragmented across docs and tribal knowledge. Informal AI drafting was fast
-                    but inconsistent.
+                    cycles, and guidance was fragmented across docs, Confluence, and tribal knowledge. Informal AI
+                    drafting was fast but inconsistent, with uneven structure and tone.
                   </p>
                 </AnimateOnScroll>
 
@@ -278,7 +280,7 @@ export default function ContentNextCaseStudyPage() {
                           items: [
                             "Engineers needed quality UI copy without content design expertise",
                             "Content designers spent time rewriting drafts instead of shaping systems",
-                            "Ad-hoc AI outputs lacked consistency and compliance",
+                            "Ad-hoc AI outputs lacked consistency and Weave compliance",
                           ],
                         },
                         {
@@ -287,6 +289,7 @@ export default function ContentNextCaseStudyPage() {
                             "Inconsistent copy quality across Fusion surfaces",
                             "Manual reviews consumed CXD team capacity",
                             "No scalable way to enforce standards at point of creation",
+                            "Low confidence in whether score outputs were interpreted correctly by users",
                           ],
                         },
                         {
@@ -312,8 +315,9 @@ export default function ContentNextCaseStudyPage() {
 
                 <AnimateOnScroll animation="fade-up" delay={200}>
                   <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
-                    The work progressed through prompt architecture, structured input experimentation, and delivery model
-                    evaluation. Each phase used evidence to guide the next decision.
+                    The work progressed through three phases: baseline and prompt architecture, guided-vs-free-text
+                    testing, and Custom GPT delivery evaluation. Each phase was designed to reduce guesswork and make
+                    decisions with evidence.
                   </p>
                 </AnimateOnScroll>
 
@@ -323,22 +327,24 @@ export default function ContentNextCaseStudyPage() {
                       <div>
                         <h3 className="text-xl font-normal text-foreground mb-4">Phase 1</h3>
                         <p className="text-muted-foreground text-sm sm:text-base">
-                          Built an AUTOMAT-based system prompt and translated content standards into explicit rules for
-                          readability, tone, structure, and message constraints.
+                          Established a baseline with expert heuristic review, then built an AUTOMAT-based prompt
+                          architecture. Also redesigned metric labels to clarify grade-level and reading-ease targets.
                         </p>
                       </div>
                       <div>
                         <h3 className="text-xl font-normal text-foreground mb-4">Phase 2</h3>
                         <p className="text-muted-foreground text-sm sm:text-base">
-                          Compared guided fields against free text while holding backend prompts constant. Guided input
-                          delivered stronger readability gains, especially for warnings.
+                          Compared guided input against free text while holding the backend pipeline and prompts
+                          constant. Guided input improved readability grade overall (-2.86 vs -1.88), with the strongest
+                          uplift on warning content.
                         </p>
                       </div>
                       <div>
                         <h3 className="text-xl font-normal text-foreground mb-4">Phase 3</h3>
                         <p className="text-muted-foreground text-sm sm:text-base">
-                          Evaluated AWS toolkit, Custom GPT, and Cursor workflows. Chose Custom GPT for drafting and
-                          Cursor for production integration.
+                          Evaluated AWS toolkit, Custom GPT, and Cursor workflows. Selected Custom GPT for
+                          low-friction drafting, with Cursor as the repo pathway and the app retained as a governance
+                          option.
                         </p>
                       </div>
                     </div>
@@ -357,6 +363,7 @@ export default function ContentNextCaseStudyPage() {
                   <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
                     ContentNext shipped as a system, not just a single tool: a production Custom GPT for zero-friction
                     drafting, Cursor workflows for repo-level pathways, and modular knowledge files for fast iteration.
+                    This preserved quality and speed while removing infra overhead from the default path.
                   </p>
                 </AnimateOnScroll>
 
@@ -369,7 +376,7 @@ export default function ContentNextCaseStudyPage() {
                           items: [
                             "Custom GPT in ChatGPT Enterprise for structured in-product content drafting",
                             "Cursor-adjacent workflows for codebase-connected production routes",
-                            "Modular prompt stack: instructions, conversation starter, examples, and system prompt",
+                            "Modular prompt stack: GPT instructions, conversation starter, examples, and system prompt",
                           ],
                         },
                         {
@@ -385,6 +392,7 @@ export default function ContentNextCaseStudyPage() {
                             "Meet users where they already work",
                             "Use structure and constraints to make AI reliable",
                             "Treat guided input as behavior design, not just form design",
+                            "Stay explicit about evidence limits when quality fields are incomplete",
                           ],
                         },
                       ]}
@@ -402,8 +410,9 @@ export default function ContentNextCaseStudyPage() {
 
                 <AnimateOnScroll animation="fade-up" delay={200}>
                   <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
-                    The production decision delivered immediate adoption, lower operational burden, and faster prompt
-                    iteration cycles while preserving quality guardrails for in-product content.
+                    The production decision delivered faster adoption, lower operational burden, and rapid prompt
+                    iteration while preserving quality guardrails for in-product content. Readability improvements were
+                    measurable, and we documented where further instrumentation was needed.
                   </p>
                 </AnimateOnScroll>
 
@@ -428,21 +437,36 @@ export default function ContentNextCaseStudyPage() {
                       </div>
                       <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm">
                         <div className="mb-2 text-2xl sm:text-3xl md:text-4xl font-normal text-foreground">
-                          <MetricShuffle final="-0" />
+                          <MetricShuffle final="0" />
                         </div>
                         <div className="text-xs sm:text-sm md:text-base text-muted-foreground">
-                          additional DevOps overhead in production
+                          AWS hosting and DevOps overhead in production
                         </div>
                       </div>
                       <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm">
                         <div className="mb-2 text-2xl sm:text-3xl md:text-4xl font-normal text-foreground">
-                          <MetricShuffle final="4 files" />
+                          <MetricShuffle final="-4.67" />
                         </div>
                         <div className="text-xs sm:text-sm md:text-base text-muted-foreground">
-                          modular knowledge assets powering updates
+                          average Flesch-Kincaid readability grade reduction for warning messages
                         </div>
                       </div>
                     </div>
+                  </div>
+                </AnimateOnScroll>
+
+                <AnimateOnScroll animation="fade-up" delay={450}>
+                  <div className="mt-8 mb-8 rounded-3xl bg-muted p-8 backdrop-blur-sm">
+                    <p className="text-sm sm:text-base text-muted-foreground">
+                      In the February workbook, guided input won on readability in most paired rows and performed
+                      especially well for warning content. The warning group showed an average -4.67 point reduction
+                      on the Flesch-Kincaid readability grade, indicating output that is easier to read for a wider
+                      range of users. We target a readability grade of around 7 to 8 where possible, while preserving necessary
+                      detail and accuracy. Error content was the exception in this sample, which led to a concrete next
+                      step: improve the quality of guided error-field completion. We also flagged that B-side
+                      quality/compliance/context fields must be fully captured to make stronger A/B claims beyond
+                      readability.
+                    </p>
                   </div>
                 </AnimateOnScroll>
               </section>
@@ -458,7 +482,8 @@ export default function ContentNextCaseStudyPage() {
                   <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
                     ContentNext demonstrated that AI reliability comes from design structure, not model novelty. Prompt
                     engineering, interaction design, and measured experimentation enabled a practical system that scales
-                    quality without scaling friction.
+                    quality without scaling friction. The strongest strategic lesson was to layer tools by maturity:
+                    GPT for adoption, Cursor for integration, and app governance only where strict controls are needed.
                   </p>
                 </AnimateOnScroll>
 
