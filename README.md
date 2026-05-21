@@ -9,9 +9,9 @@ Personal portfolio for [kulangun.com](https://kulangun.com). A static site showc
 The portfolio uses a **Future User Interface (FUI)** design language: a "Mission Control" or "Operative OS" vibe that evokes command centres, dashboards, and trust-critical systems. The visual style draws on:
 
 - **Dual-mode theming**: Dark mode (default) with bright green accents (`#00FF94`), and light mode with dark green accents (`#166534`), both optimised for readability and consistency across home and case study pages.
-- **FUI micro-interactions**: Visible grid lines, corner markers on cards, a typing-style hero animation, and a live London time display to suggest real-time monitoring.
+- **FUI micro-interactions**: Visible grid lines, corner markers on cards, a typing-style hero animation, a live London time display, and a **falling-particle hero background** (circles in FUI palette) to suggest ambient system activity.
 - **Typography hierarchy**: Sans-serif (DM Sans) for headings and body, monospace (JetBrains Mono) for labels, metadata, and navigational elements.
-- **Semantic structure**: Work is presented as "Mission Logs" with projects ordered reverse-chronologically (MISSION 04 at top → MISSION 01 at bottom), reinforcing the operative/control-room metaphor.
+- **Semantic structure**: Work is presented as "Mission Logs" with projects ordered reverse-chronologically, reinforcing the operative/control-room metaphor.
 - **Theme-aware components**: All UI—including case studies, charts, and cards—responds correctly to light and dark modes via CSS variables and Tailwind classes.
 
 ---
@@ -127,10 +127,11 @@ Shadows are used sparingly. Subtle shadows (`shadow-sm`, `shadow`) work well for
 | Icons                | Lucide React                           | UI and navigation icons                                    |
 | UI Components        | Radix UI, shadcn/ui                    | Accessible primitives and composable components            |
 | Animations           | React + Tailwind keyframes             | Typing effect, fade-in-up, cursor blink                    |
+| Hero particles       | [Sparticles](https://github.com/simeydotme/sparticles) (vendored) | Canvas falling circles on the home hero (`HeroSparticles`) |
 | Theme                | Custom (`use-operative-theme`)         | Light/dark mode via localStorage and `class` on `<html>`   |
 | Deployment           | Static export → GitHub Pages           | CDN-ready hosting via `gh-pages`                           |
 
-The site runs on React within Next.js, which provides routing, server-side rendering, and optimised static builds. TypeScript (`.tsx`) adds static typing for clearer code and fewer bugs. Tailwind is used for utility-first styling, with custom FUI colours and tokens defined in `tailwind.config.ts` and `globals.css`. Fonts are loaded via Google Fonts in `layout.tsx`. The typing effect and animations are hand-coded with React state and Tailwind keyframes. Theme switching uses a custom hook (`use-operative-theme`) and an inline script to avoid flash on load; there is no dependency on `next-themes`. The site is statically exported and published to the `gh-pages` branch for hosting on GitHub Pages.
+The site runs on React within Next.js, which provides routing, server-side rendering, and optimised static builds. TypeScript (`.tsx`) adds static typing for clearer code and fewer bugs. Tailwind is used for utility-first styling, with custom FUI colours and tokens defined in `tailwind.config.ts` and `globals.css`. Fonts are loaded via Google Fonts in `layout.tsx`. The typing effect and animations are hand-coded with React state and Tailwind keyframes. The home hero uses **Sparticles** (loaded from `public/vendor/sparticles.js`) via the `HeroSparticles` client component—falling circles only, themed to match light/dark mode, with a gradient overlay for text contrast. Theme switching uses a custom hook (`use-operative-theme`) and an inline script to avoid flash on load; there is no dependency on `next-themes`. The site is statically exported and published to the `gh-pages` branch for hosting on GitHub Pages.
 
 ### Build & Deploy
 ```bash
@@ -145,6 +146,7 @@ npm run deploy   # Build + publish to gh-pages branch
 
 | Component                | Role                                                                 |
 |--------------------------|----------------------------------------------------------------------|
+| `HeroSparticles`         | Home hero canvas background: falling circles via Sparticles (client-only) |
 | `TopNavigation`          | Header with logo, nav links, theme toggle; responsive grid on mobile |
 | `ThemeToggle`            | Light/dark mode switch (centered on mobile, right on desktop)        |
 | `CaseStudyPreview`       | Mission log card with image, status badge, corner markers            |
@@ -157,19 +159,36 @@ npm run deploy   # Build + publish to gh-pages branch
 | `SummaryCard`, `QuoteCard`, `MetricsDisplay` | Reusable content blocks for case studies   |
 | `DataTable`, `BarChart`, `SystemDiagram`     | Data and diagram components         |
 
-These components organise layout and add interactivity without cluttering pages. `TopNavigation` and `Footer` wrap all main content. Case study pages use `CaseStudyLayout` for the left-nav shell and scroll progress; `ScrollSpyNavigation` highlights the active section as the user scrolls. Content blocks (`SummaryCard`, `QuoteCard`, `MetricsDisplay`, etc.) are reused across case studies for consistent presentation of overviews, quotes, and data.
+These components organise layout and add interactivity without cluttering pages. `HeroSparticles` replaces the former static hero image (`hero-bg.png`) on the home page only. `TopNavigation` and `Footer` wrap all main content. Case study pages use `CaseStudyLayout` for the left-nav shell and scroll progress; `ScrollSpyNavigation` highlights the active section as the user scrolls. Content blocks (`SummaryCard`, `QuoteCard`, `MetricsDisplay`, etc.) are reused across case studies for consistent presentation of overviews, quotes, and data.
+
+### Hero particles (`HeroSparticles`)
+
+The home hero background is a full-bleed HTML5 canvas animation powered by [Sparticles](https://github.com/simeydotme/sparticles) (MIT/MPL-2.0). The library is **vendored** at `public/vendor/sparticles.js` and loaded at runtime so it does not pass through the Next.js bundle.
+
+| Concern | Implementation |
+|---------|----------------|
+| **Where** | `components/hero-sparticles.tsx`, mounted in `app/page.tsx` inside the hero `<section>` |
+| **Shapes** | Circles only (`shape: "circle"`) — no line particles |
+| **Motion** | Downward fall (`direction: 180`), twinkle, light parallax |
+| **Colours** | Dark: `#00FF94`, `#3B82F6`, `#FAFAFA`, `#888888` — Light: `#166534`, `#111111`, `#888888` |
+| **Size** | `minSize: 5`, `maxSize: 20` (dark) / `15` (light); count scales with viewport width |
+| **Accessibility** | Skipped when `prefers-reduced-motion: reduce` is set |
+| **Readability** | Gradient overlay on the hero (`from-background/85`) keeps headline text legible |
+
+To tune the effect, edit `getOptions()` in `hero-sparticles.tsx`. To revert to a static image, remove `<HeroSparticles />` and restore a `bg-[url('/hero-bg.png')]` layer in `app/page.tsx`.
 
 ---
 
 ## Site Structure
 
-- **/** — Home: hero with typing animation, Mission Logs (reverse chronological)
-- **/case-studies/contactless-travel/** — MISSION 04 (most recent)
-- **/case-studies/ai-design/** — MISSION 03
-- **/case-studies/benefits-case-study/** — MISSION 02
-- **/case-studies/crm-case-study/** — MISSION 01 (oldest)
+- **/** — Home: hero with particle background, typing animation, Mission Logs (reverse chronological)
+- **/case-studies/contentnext-case-study/** — MISSION 05 (most recent) — **ContentNext: Scaling content design with AI** (Autodesk, 2025/26, Shipped)
+- **/case-studies/contactless-travel/** — MISSION 04 — Designing the future of contactless travel (GOV.UK, 2024/25, Shipped)
+- **/case-studies/ai-design/** — MISSION 03 — Leading human-centred design, empowered by AI (Capgemini Invent, 2024/25, Concept)
+- **/case-studies/benefits-case-study/** — MISSION 02 — Improving access to benefits for citizens in medical need (GOV.UK, 2024, Shipped)
+- **/case-studies/crm-case-study/** — MISSION 01 (oldest) — Transforming customer relationship management (Anglian Water, 2023, Shipped)
 
-The home page lists Mission Logs in reverse chronological order, with the most recent project at the top. Each case study has its own route under `/case-studies/` and uses the shared `CaseStudyLayout` with scroll-spy navigation.
+The home page lists Mission Logs in reverse chronological order, with the most recent project at the top. **MISSION 05** documents ContentNext—an AI-powered content design system for Autodesk Fusion teams (Custom GPT, Cursor workflows, and modular knowledge files). Each case study has its own route under `/case-studies/`; newer pages such as ContentNext use a dedicated page component, while others use the shared `CaseStudyLayout` with scroll-spy navigation.
 
 ---
 

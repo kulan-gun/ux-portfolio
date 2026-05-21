@@ -3,6 +3,7 @@
 import { useEffect, useState, useRef } from "react"
 import CaseStudyPreview from "@/components/case-study-preview"
 import Footer from "@/components/footer"
+import HeroSparticles from "@/components/hero-sparticles"
 import TopNavigation from "@/components/top-navigation"
 
 // Reverse chronological: newest at top (05), oldest at bottom (01)
@@ -11,7 +12,7 @@ const missions = [
     seq: "05",
     date: "2025/26",
     client: "Autodesk",
-    title: "ContentNext: scaling content design with AI",
+    title: "ContentNext: Scaling content design with AI",
     href: "/case-studies/contentnext-case-study/",
     imageSrc: "/contentnext/cover.jpg",
     status: { label: "Shipped" as const },
@@ -120,11 +121,8 @@ export default function HomePage() {
         ref={heroRef}
         className="relative min-h-[85vh] w-full min-w-0 flex flex-col justify-center px-4 sm:px-8 pt-24 sm:pt-28 md:pt-32 lg:pt-36 pb-20 overflow-x-hidden"
       >
-        <div
-          className="absolute inset-0 bg-[url('/hero-bg.png')] bg-cover bg-center bg-no-repeat opacity-30 dark:opacity-20"
-          aria-hidden="true"
-        />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/40 to-background" aria-hidden="true" />
+        <HeroSparticles />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/85 via-background/50 to-background" aria-hidden="true" />
 
         <div className="relative z-10 max-w-6xl mx-auto w-full flex flex-col">
           <div className="space-y-6 min-w-0">
