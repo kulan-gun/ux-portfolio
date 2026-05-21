@@ -162,7 +162,7 @@ export default function ContentNextCaseStudyPage() {
                 </div>
 
                 <h1 id="case-study-title" className="text-3xl sm:text-4xl md:text-5xl font-display mb-8 sm:mb-12">
-                  ContentNext: scaling content design with AI
+                  ContentNext: Scaling content design with AI
                 </h1>
 
                 <div className="mb-12 sm:mb-16">
