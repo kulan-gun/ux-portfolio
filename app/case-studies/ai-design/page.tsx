@@ -3,7 +3,6 @@
 import type React from "react"
 
 import { useState, useEffect } from "react"
-import Link from "next/link"
 import ScrollProgressIndicator from "@/components/scroll-progress-indicator"
 import AnimateOnScroll from "@/components/animate-on-scroll"
 import Footer from "@/components/footer"
@@ -14,8 +13,10 @@ import QuoteCard from "@/components/quote-card"
 import UXLessonsCard from "@/components/ux-lessons-card"
 import ImageModal from "@/components/ImageModal"
 import MetricShuffle from "@/components/metric-shuffle"
+import CaseStudyHeader, { CaseStudyBackLink } from "@/components/case-study-header"
+import { getProjectById } from "@/lib/projects"
 
-
+const project = getProjectById("aura")!
 
 // Define the sections for this case study
 const sections = [
@@ -27,7 +28,7 @@ const sections = [
   { id: "conclusion", title: "Conclusion" },
 ]
 
-export default function CRMCaseStudyPage() {
+export default function AuraCaseStudyPage() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
   const [isMobile, setIsMobile] = useState(false)
   const [activeSection, setActiveSection] = useState<string>(sections[0]?.id || "")
@@ -127,27 +128,7 @@ export default function CRMCaseStudyPage() {
           role="navigation"
           aria-label="Section navigation"
         >
-          <div className="pl-8 mb-6 pt-8">
-            <Link
-              href="/"
-              className="inline-flex items-center px-4 pr-5 py-1.5 bg-muted hover:bg-muted/80 text-muted-foreground hover:text-foreground rounded-full transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-fui-primary focus:ring-opacity-50"
-              aria-label="Go back to home page"
-            >
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                className="mr-1.5"
-                aria-hidden="true"
-              >
-                <path d="M19 12H5M12 19l-7-7 7-7" />
-              </svg>
-              <span>Back</span>
-            </Link>
-          </div>
+          <CaseStudyBackLink href="/work/archived/" />
 
           {/* Navigation links */}
           <nav className="space-y-6 text-muted-foreground pl-8" aria-label="Table of contents">
@@ -180,43 +161,7 @@ export default function CRMCaseStudyPage() {
       <main className={`flex-1 px-4 sm:px-8 py-12 ${isMobile ? "w-full" : ""}`}>
         <div className="max-w-6xl mx-auto">
           {/* Case Study Title and Tags */}
-          <div>
-            <div className="flex flex-wrap gap-2 sm:gap-4 pt-8 mb-6" aria-label="Project tags">
-              <div className="inline-flex rounded-full bg-muted px-3 py-1 sm:px-4 sm:py-1.5">
-                <div className="flex items-center gap-2">
-                  <span className="text-xs font-medium text-muted-foreground tracking-wide uppercase">UX Designer</span>
-                </div>
-              </div>
-              <div className="inline-flex rounded-full bg-muted px-3 py-1 sm:px-4 sm:py-1.5">
-                <div className="flex items-center gap-2">
-                  <span className="text-xs font-medium text-muted-foreground tracking-wide uppercase">2024/25</span>
-                </div>
-              </div>
-              <div className="inline-flex rounded-full bg-muted px-3 py-1 sm:px-4 sm:py-1.5">
-                <div className="flex items-center gap-2">
-                  <span className="text-xs font-medium text-muted-foreground tracking-wide uppercase">Capgemini Invent</span>
-                </div>
-              </div>
-              <div className="inline-flex rounded-full bg-muted px-3 py-1 sm:px-4 sm:py-1.5">
-                <div className="flex items-center gap-2">
-                  <div className="h-2 w-2 rounded-full bg-pink-500" />
-                  <span className="text-xs font-medium text-muted-foreground tracking-wide uppercase">Concept</span>
-                </div>
-              </div>
-            </div>
-            <h1 id="case-study-title" className="text-3xl sm:text-4xl md:text-5xl font-display mb-8 sm:mb-12">
-              Leading human-centred design, empowered by AI
-            </h1>
-
-            {/* Hero image */}
-            <div className="mb-12 sm:mb-16">
-              <img
-                src="/ai-design/aura_min.jpeg"
-                alt="Project hero image showing the AURA interface"
-                className="w-full rounded-2xl"
-              />
-            </div>
-          </div>
+          <CaseStudyHeader project={project} />
 
           {/* Overview Section */}
           <section id="overview" className="min-h-screen py-8 sm:py-12" aria-labelledby="overview-heading">

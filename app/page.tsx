@@ -5,67 +5,13 @@ import CaseStudyPreview from "@/components/case-study-preview"
 import Footer from "@/components/footer"
 import HeroSparticles from "@/components/hero-sparticles"
 import TopNavigation from "@/components/top-navigation"
+import { selectedProjects } from "@/lib/projects"
 
-// Reverse chronological: newest at top (05), oldest at bottom (01)
-const missions = [
-  {
-    seq: "05",
-    date: "2025/26",
-    client: "Autodesk",
-    title: "ContentNext: Scaling content design with AI",
-    href: "/case-studies/contentnext-case-study/",
-    imageSrc: "/contentnext/cover.jpg",
-    status: { label: "Shipped" as const },
-  },
-  {
-    seq: "04",
-    date: "2024/25",
-    client: "GOV.UK",
-    title: "Designing the future of contactless travel",
-    href: "/case-studies/contactless-travel/",
-    imageSrc: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/trials2-min-152wrS8iv0dqCjFwiwsHTR5R7Mhdk7.jpeg",
-    status: { label: "Shipped" as const },
-  },
-  {
-    seq: "03",
-    date: "2024/25",
-    client: "Capgemini Invent",
-    title: "Leading human-centred design, empowered by AI",
-    href: "/case-studies/ai-design/",
-    imageSrc: "/ai-design/aura_min.jpeg",
-    status: { label: "Concept" as const },
-  },
-  {
-    seq: "02",
-    date: "2024",
-    client: "GOV.UK",
-    title: "Improving access to benefits for citizens in medical need",
-    href: "/case-studies/benefits-case-study/",
-    imageSrc: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/dwp-work1-YBcOjNYGrLjyFctNlf12YOF2Jeftgh.png",
-    status: { label: "Shipped" as const },
-  },
-  {
-    seq: "01",
-    date: "2023",
-    client: "Anglian Water",
-    title: "Transforming customer relationship management",
-    href: "/case-studies/crm-case-study/",
-    imageSrc: "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/anglian3-min-Gg1yQETIOPvQr9fySm8O1i5tRZYm3U.jpeg",
-    status: { label: "Shipped" as const },
-  },
-]
-
-const sysLines = [
-  "AI PRODUCT DESIGNER...",
-  "PEOPLE LEADER...",
-  "SYSTEMS THINKER...",
-]
+const TAGLINE = "Optimising the experience of trust-critical systems."
 
 export default function HomePage() {
-  const [lineIndex, setLineIndex] = useState(0)
   const [displayText, setDisplayText] = useState("")
-  const [isDeleting, setIsDeleting] = useState(false)
-  const [typingSpeed, setTypingSpeed] = useState(90)
+  const [typingDone, setTypingDone] = useState(false)
   const [mounted, setMounted] = useState(false)
   const [time, setTime] = useState("")
   const heroRef = useRef<HTMLDivElement>(null)
@@ -93,25 +39,26 @@ export default function HomePage() {
 
   useEffect(() => {
     if (!mounted) return
-    const current = sysLines[lineIndex]
-    if (!isDeleting && displayText === current) {
-      const t = setTimeout(() => setIsDeleting(true), 1800)
-      return () => clearTimeout(t)
-    }
-    if (isDeleting && displayText === "") {
-      setIsDeleting(false)
-      setLineIndex((i) => (i + 1) % sysLines.length)
-      setTypingSpeed(400)
+
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setDisplayText(TAGLINE)
+      setTypingDone(true)
       return
     }
-    const t = setTimeout(() => {
-      setDisplayText((prev) =>
-        isDeleting ? prev.slice(0, -1) : current.slice(0, prev.length + 1)
-      )
-      setTypingSpeed(isDeleting ? 35 : 90)
-    }, typingSpeed)
-    return () => clearTimeout(t)
-  }, [mounted, displayText, isDeleting, lineIndex, typingSpeed])
+
+    let i = 0
+    const speed = 36
+    const timer = window.setInterval(() => {
+      i += 1
+      setDisplayText(TAGLINE.slice(0, i))
+      if (i >= TAGLINE.length) {
+        window.clearInterval(timer)
+        setTypingDone(true)
+      }
+    }, speed)
+
+    return () => window.clearInterval(timer)
+  }, [mounted])
 
   return (
     <div className="home-page min-h-screen w-full min-w-0 overflow-x-hidden bg-background text-foreground font-sans">
@@ -139,24 +86,18 @@ export default function HomePage() {
               Kulan Gunawardena
             </h1>
             <p
-              className="max-w-2xl font-sans text-body-m text-muted-foreground animate-fade-in-up opacity-0 [animation-fill-mode:forwards]"
+              className="max-w-2xl font-sans text-body-m text-muted-foreground flex items-center gap-1 min-h-[1.25rem] animate-fade-in-up opacity-0 [animation-fill-mode:forwards]"
               style={{ animationDelay: "160ms" }}
-            >
-              Optimising the experience of trust-critical systems.
-            </p>
-            <div
-              className="font-mono text-sm tracking-widest-fui text-foreground dark:text-white flex items-center gap-2 min-h-5 animate-fade-in-up opacity-0 [animation-fill-mode:forwards]"
-              style={{ animationDelay: "320ms" }}
               aria-live="polite"
             >
-              <span className="uppercase min-w-0 tabular-nums">
-                {displayText || "\u200B"}
-              </span>
-              <span
-                className="inline-block w-0.5 h-4 bg-fui-primary shrink-0 animate-cursor-blink"
-                aria-hidden="true"
-              />
-            </div>
+              <span>{displayText || "\u200B"}</span>
+              {!typingDone ? (
+                <span
+                  className="inline-block w-0.5 h-4 bg-fui-primary shrink-0 animate-cursor-blink"
+                  aria-hidden="true"
+                />
+              ) : null}
+            </p>
           </div>
 
           {mounted && (
@@ -179,25 +120,26 @@ export default function HomePage() {
                 SELECTED WORK
               </p>
               <h2 className="font-sans text-3xl sm:text-4xl font-semibold tracking-tight text-foreground">
-                Mission Logs
+                Projects
               </h2>
             </div>
 
             <div className="grid gap-6 sm:gap-8 min-w-0">
-              {missions.map((m, i) => (
+              {selectedProjects.map((project, i) => (
                 <div
-                  key={m.href}
+                  key={project.href}
                   className="min-w-0 animate-fade-in-up opacity-0 [animation-fill-mode:forwards]"
                   style={{ animationDelay: `${180 + i * 60}ms` }}
                 >
                   <CaseStudyPreview
-                    seq={m.seq}
-                    date={m.date}
-                    client={m.client}
-                    title={m.title}
-                    href={m.href}
-                    imageSrc={m.imageSrc}
-                    status={m.status}
+                    seq={project.seq}
+                    date={project.date}
+                    client={project.client}
+                    title={project.title}
+                    subtitle={project.subtitle}
+                    href={project.href}
+                    imageSrc={project.imageSrc}
+                    status={{ label: project.status }}
                   />
                 </div>
               ))}

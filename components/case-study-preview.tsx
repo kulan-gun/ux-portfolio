@@ -19,6 +19,7 @@ interface CaseStudyPreviewProps {
   date: string
   client: string
   title: string
+  subtitle?: string
   href: string
   imageSrc?: string
   status?: { label: string; color?: string } | { label: Status }
@@ -29,14 +30,16 @@ export default function CaseStudyPreview({
   date,
   client,
   title,
+  subtitle,
   href,
   imageSrc,
   status,
-  seq = "00",
+  seq,
 }: CaseStudyPreviewProps) {
   const statusKey =
     status && (status.label in statusLabelMap ? statusLabelMap[status.label] : (status.label as Status))
   const resolvedStatus = statusKey ?? "ARCHIVED"
+  const showSeq = typeof seq === "string" && seq.length > 0
 
   return (
     <Link
@@ -52,16 +55,26 @@ export default function CaseStudyPreview({
           "hover:bg-paper dark:hover:bg-[#181818]"
         )}
       >
-        <div className="flex justify-between items-start gap-4 mb-4 min-w-0">
-          <span className="font-mono text-xs tracking-widest-fui text-fui-dim shrink-0">
-            MISSION {seq.padStart(2, "0")}
-          </span>
-          <StatusBadge status={resolvedStatus} />
-        </div>
+        {showSeq ? (
+          <div className="flex justify-between items-start gap-4 mb-4 min-w-0">
+            <span className="font-mono text-xs tracking-widest-fui text-fui-dim shrink-0">
+              PROJECT {seq.padStart(2, "0")}
+            </span>
+            <StatusBadge status={resolvedStatus} />
+          </div>
+        ) : null}
 
-        <h3 className="font-sans text-xl sm:text-2xl font-semibold tracking-tight text-foreground group-hover:text-fui-primary dark:group-hover:text-fui-primary mb-2 break-words min-w-0">
-          <span className="block max-w-full">{title}</span>
-        </h3>
+        <div className="flex justify-between items-start gap-4 mb-2 min-w-0">
+          <h3 className="font-sans text-xl sm:text-2xl font-semibold tracking-tight text-foreground group-hover:text-fui-primary dark:group-hover:text-fui-primary break-words min-w-0">
+            <span className="block max-w-full">{title}</span>
+          </h3>
+          {!showSeq ? <StatusBadge status={resolvedStatus} className="shrink-0 mt-1" /> : null}
+        </div>
+        {subtitle ? (
+          <p className="font-sans text-sm sm:text-base text-muted-foreground mb-3 break-words min-w-0">
+            {subtitle}
+          </p>
+        ) : null}
         <p className="font-mono text-xs tracking-widest-fui text-fui-dim uppercase mb-4 min-w-0">
           {date} · {client}
         </p>

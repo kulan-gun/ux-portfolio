@@ -7,6 +7,8 @@ import { cn } from "@/lib/utils"
 const mainLinks = [
   { href: "/#work", label: "Work", external: false },
   { href: "https://medium.com/@kulan.gun", label: "Articles", external: true },
+  { href: "https://www.credly.com/users/kulan-gunawardena", label: "Credentials", external: true },
+  { href: "/work/archived/", label: "Archive", external: false },
 ]
 
 const contactLinks = [

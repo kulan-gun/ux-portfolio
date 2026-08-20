@@ -3,7 +3,6 @@
 import type React from "react"
 
 import { useState, useEffect } from "react"
-import Link from "next/link"
 import ScrollProgressIndicator from "@/components/scroll-progress-indicator"
 import AnimateOnScroll from "@/components/animate-on-scroll"
 import TopNavigation from "@/components/top-navigation"
@@ -12,6 +11,10 @@ import Footer from "@/components/footer"
 import SummaryCard from "@/components/summary-card"
 import UXLessonsCard from "@/components/ux-lessons-card"
 import MetricShuffle from "@/components/metric-shuffle"
+import CaseStudyHeader, { CaseStudyBackLink } from "@/components/case-study-header"
+import { getProjectById } from "@/lib/projects"
+
+const project = getProjectById("contentnext")!
 
 const sections = [
   { id: "overview", title: "Overview" },
@@ -89,27 +92,7 @@ export default function ContentNextCaseStudyPage() {
             role="navigation"
             aria-label="Section navigation"
           >
-            <div className="pl-8 mb-6 pt-8">
-              <Link
-                href="/"
-                className="inline-flex items-center px-4 pr-5 py-1.5 bg-muted hover:bg-muted/80 text-muted-foreground hover:text-foreground rounded-full transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-fui-primary focus:ring-opacity-50"
-                aria-label="Go back to home page"
-              >
-                <svg
-                  width="16"
-                  height="16"
-                  viewBox="0 0 24 24"
-                  fill="none"
-                  stroke="currentColor"
-                  strokeWidth="2"
-                  className="mr-1.5"
-                  aria-hidden="true"
-                >
-                  <path d="M19 12H5M12 19l-7-7 7-7" />
-                </svg>
-                <span>Back</span>
-              </Link>
-            </div>
+            <CaseStudyBackLink />
 
             <nav className="space-y-6 text-muted-foreground pl-8" aria-label="Table of contents">
               <ul className="space-y-6">
@@ -140,39 +123,7 @@ export default function ContentNextCaseStudyPage() {
         <div className={`flex-1 min-w-0 flex flex-col ${isMobile ? "w-full" : ""}`}>
           <main className={`flex-1 px-4 sm:px-8 py-12 ${isMobile ? "w-full" : ""}`}>
             <div className="max-w-6xl mx-auto">
-              <div>
-                <div className="flex flex-wrap gap-2 sm:gap-4 pt-8 mb-6" aria-label="Project tags">
-                  <div className="inline-flex rounded-full bg-muted px-3 py-1 sm:px-4 sm:py-1.5">
-                    <span className="text-xs font-medium text-muted-foreground tracking-wide uppercase">
-                      Senior Experience Designer
-                    </span>
-                  </div>
-                  <div className="inline-flex rounded-full bg-muted px-3 py-1 sm:px-4 sm:py-1.5">
-                    <span className="text-xs font-medium text-muted-foreground tracking-wide uppercase">2025/26</span>
-                  </div>
-                  <div className="inline-flex rounded-full bg-muted px-3 py-1 sm:px-4 sm:py-1.5">
-                    <span className="text-xs font-medium text-muted-foreground tracking-wide uppercase">Autodesk</span>
-                  </div>
-                  <div className="inline-flex rounded-full bg-muted px-3 py-1 sm:px-4 sm:py-1.5">
-                    <div className="flex items-center gap-2">
-                      <div className="h-2 w-2 rounded-full bg-green-500" />
-                      <span className="text-xs font-medium text-muted-foreground tracking-wide uppercase">Shipped</span>
-                    </div>
-                  </div>
-                </div>
-
-                <h1 id="case-study-title" className="text-3xl sm:text-4xl md:text-5xl font-display mb-8 sm:mb-12">
-                  ContentNext: Scaling content design with AI
-                </h1>
-
-                <div className="mb-12 sm:mb-16">
-                  <img
-                    src="/contentnext/cover.jpg"
-                    alt="ContentNext toolkit and Custom GPT configuration interfaces"
-                    className="w-full rounded-2xl"
-                  />
-                </div>
-              </div>
+              <CaseStudyHeader project={project} />
 
               <section id="overview" className="min-h-screen py-8 sm:py-12" aria-labelledby="overview-heading">
                 <AnimateOnScroll animation="bounce-up">
@@ -229,7 +180,7 @@ export default function ContentNextCaseStudyPage() {
                           title: "Key facts",
                           items: [
                             "Project duration: 6 months (October 2025 to present)",
-                            "Role: Sole designer, owning prompt architecture, testing, and production decision",
+                            "Role: Sole designer, owning prompt architecture, testing, and the production decision",
                             "Cross-functional inputs from CXD reviewers, leadership, and content design leads",
                           ],
                         },
@@ -289,7 +240,6 @@ export default function ContentNextCaseStudyPage() {
                             "Inconsistent copy quality across Fusion surfaces",
                             "Manual reviews consumed CXD team capacity",
                             "No scalable way to enforce standards at point of creation",
-                            "Low confidence in whether score outputs were interpreted correctly by users",
                           ],
                         },
                         {
@@ -382,7 +332,7 @@ export default function ContentNextCaseStudyPage() {
                         {
                           title: "What was paused",
                           items: [
-                            "AWS toolkit app paused to avoid infrastructure and maintenance overhead",
+                            "The AWS toolkit app was paused to avoid infrastructure and maintenance overhead",
                             "Governed app remains a future option when deterministic enforcement is required",
                           ],
                         },
@@ -459,7 +409,7 @@ export default function ContentNextCaseStudyPage() {
                   <div className="mt-8 mb-8 rounded-3xl bg-muted p-8 backdrop-blur-sm">
                     <p className="text-sm sm:text-base text-muted-foreground">
                       In the February workbook, guided input won on readability in most paired rows and performed
-                      especially well for warning content. The warning group showed an average -4.67 point reduction
+                      especially well for warning content. The warning group showed an average 4.67-point reduction
                       on the Flesch-Kincaid readability grade, indicating output that is easier to read for a wider
                       range of users. We target a readability grade of around 7 to 8 where possible, while preserving necessary
                       detail and accuracy. Error content was the exception in this sample, which led to a concrete next
