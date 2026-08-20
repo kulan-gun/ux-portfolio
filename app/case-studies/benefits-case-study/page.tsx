@@ -3,7 +3,6 @@
 import type React from "react"
 
 import { useState, useEffect } from "react"
-import Link from "next/link"
 import ScrollProgressIndicator from "@/components/scroll-progress-indicator"
 import AnimateOnScroll from "@/components/animate-on-scroll"
 import Footer from "@/components/footer"
@@ -13,6 +12,10 @@ import SummaryCard from "@/components/summary-card"
 import FeedbackAnalysis from "@/components/feedback-analysis"
 import ImageModal from "@/components/ImageModal"
 import MetricShuffle from "@/components/metric-shuffle"
+import CaseStudyHeader, { CaseStudyBackLink } from "@/components/case-study-header"
+import { getProjectById } from "@/lib/projects"
+
+const project = getProjectById("benefits")!
 
 // Define the sections for this case study
 const sections = [
@@ -124,27 +127,7 @@ export default function BenefitsCaseStudyPage() {
           role="navigation"
           aria-label="Section navigation"
         >
-          <div className="pl-8 mb-6 pt-8">
-            <Link
-              href="/"
-              className="inline-flex items-center px-4 pr-5 py-1.5 bg-muted hover:bg-muted/80 text-muted-foreground hover:text-foreground rounded-full transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-fui-primary focus:ring-opacity-50"
-              aria-label="Go back to home page"
-            >
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                className="mr-1.5"
-                aria-hidden="true"
-              >
-                <path d="M19 12H5M12 19l-7-7 7-7" />
-              </svg>
-              <span>Back</span>
-            </Link>
-          </div>
+          <CaseStudyBackLink />
 
           {/* Navigation links */}
           <nav className="space-y-6 text-muted-foreground pl-8" aria-label="Table of contents">
@@ -177,43 +160,7 @@ export default function BenefitsCaseStudyPage() {
       <main className={`flex-1 px-4 sm:px-8 py-12 ${isMobile ? "w-full" : ""}`}>
         <div className="max-w-6xl mx-auto">
           {/* Case Study Title and Tags */}
-          <div>
-            <div className="flex flex-wrap gap-2 sm:gap-4 pt-8 mb-6" aria-label="Project tags">
-              <div className="inline-flex rounded-full bg-muted px-3 py-1 sm:px-4 sm:py-1.5">
-                <div className="flex items-center gap-2">
-                  <span className="text-xs font-medium text-muted-foreground tracking-wide uppercase">Product Designer</span>
-                </div>
-              </div>
-              <div className="inline-flex rounded-full bg-muted px-3 py-1 sm:px-4 sm:py-1.5">
-                <div className="flex items-center gap-2">
-                  <span className="text-xs font-medium text-muted-foreground tracking-wide uppercase">2024</span>
-                </div>
-              </div>
-              <div className="inline-flex rounded-full bg-muted px-3 py-1 sm:px-4 sm:py-1.5">
-                <div className="flex items-center gap-2">
-                  <span className="text-xs font-medium text-muted-foreground tracking-wide uppercase">Confidential Client</span>
-                </div>
-              </div>
-              <div className="inline-flex rounded-full bg-muted px-3 py-1 sm:px-4 sm:py-1.5">
-                <div className="flex items-center gap-2">
-                  <div className="h-2 w-2 rounded-full bg-green-500" />
-                  <span className="text-xs font-medium text-muted-foreground tracking-wide uppercase">Shipped</span>
-                </div>
-              </div>
-            </div>
-            <h1 id="case-study-title" className="text-3xl sm:text-4xl md:text-5xl font-display mb-8 sm:mb-12">
-              Improving access to benefits for citizens in medical need
-            </h1>
-
-            {/* Hero image */}
-            <div className="mb-12 sm:mb-16">
-              <img
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/dwp-work1-YBcOjNYGrLjyFctNlf12YOF2Jeftgh.png"
-                alt="Project hero image showing the benefits application interface"
-                className="w-full rounded-2xl"
-              />
-            </div>
-          </div>
+          <CaseStudyHeader project={project} />
 
           {/* Overview Section */}
           <section id="overview" className="min-h-screen py-8 sm:py-12" aria-labelledby="overview-heading">
@@ -375,7 +322,7 @@ export default function BenefitsCaseStudyPage() {
 
             <AnimateOnScroll animation="fade-up" delay={400}>
               <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
-                Citizens need to submit fit notes as evidence for their benefit claim, but were facing big difficulties when doing this.
+                Citizens need to submit fit notes as evidence for their benefit claim, but face significant difficulties when doing so.
                 Through research, we found that primary users are likely to submit their fit note several
                 times due to a recurring health condition.
               </p>
@@ -696,16 +643,16 @@ export default function BenefitsCaseStudyPage() {
                     items: [
                       "Negative themes include communication issues, upload difficulties, and missing fit notes.",
                       "Issues around payments were out of our scope, so we escalated them to policy teams and agents.",
-                      "Payment-related complaints are common among low satisfaction scores (demoters).",
+                      "Payment-related complaints are common among low satisfaction scores (detractors).",
                       "The most requested feature was the ability to upload multiple fit notes in one session.",
                     ],
                   },
                   {
                     title: "User interview insights",
                     items: [
-                      "Users may have limited digital literacy",
-                      "Users are highly likely to have accessibility needs",
-                      "Users may rely on their phones to access the service if they do not own a computer",
+                      "Users may have limited digital literacy.",
+                      "Users are highly likely to have accessibility needs.",
+                      "Users may rely on their phones to access the service if they do not own a computer.",
                     ],
                   },
                   {
@@ -770,8 +717,8 @@ export default function BenefitsCaseStudyPage() {
               <div className="mt-12 mb-12">
                 <h3 className="text-2xl font-normal text-foreground mb-6">Research Findings - Round 2</h3>
                 <ul className="space-y-2 text-sm sm:text-base md:text-lg text-muted-foreground list-disc pl-5">
-                  <li>I took my design to critiques and had them heuristically evaluated.</li>
-                  <li>The team conducted several rounds of usability tested to unveil new insights.</li>
+                  <li>I took my design to critiques and had it heuristically evaluated.</li>
+                  <li>The team conducted several rounds of usability testing to uncover new insights.</li>
                 </ul>
               </div>
             </AnimateOnScroll>
@@ -820,7 +767,7 @@ export default function BenefitsCaseStudyPage() {
                 <h3 className="text-2xl font-normal text-foreground mb-6">Further iterations</h3>
                 <ul className="space-y-2 text-sm sm:text-base md:text-lg text-muted-foreground list-disc pl-5">
                   <li>I also designed and prototyped new error messages and 'multiple fit note' upload flows.</li>
-                  <li>I explored ways to convey contextual error messages, and playback the user's uploaded fit note.</li>
+                  <li>I explored ways to convey contextual error messages and play back the user's uploaded fit note.</li>
                   <li>Due to limited developer capacity, these were placed in the backlog.</li>
                 </ul>
               </div>
@@ -889,10 +836,10 @@ export default function BenefitsCaseStudyPage() {
                 <div className="mb-8 max-w-3xl">
                   <h3 className="text-2xl font-normal text-foreground mb-6">Key features include:</h3>
                   <ul className="space-y-2 text-sm sm:text-base md:text-lg text-muted-foreground list-disc pl-5">
-                    <li>Clearer and more helpful guidance content and error messages</li>
-                    <li>Provided better examples of good and bad images of fit notes</li>
-                    <li>Brought the primary and secondary buttons closer together on the upload page</li>
-                    <li>Worked in tandem with developers to enable HEIC and HEIF files to be accepted</li>
+                    <li>Clearer, more helpful guidance content and error messages</li>
+                    <li>Better examples of good and bad fit-note images</li>
+                    <li>Primary and secondary buttons placed closer together on the upload page</li>
+                    <li>HEIC and HEIF file support, delivered with developers</li>
                   </ul>
                 </div>
               </AnimateOnScroll>
@@ -1056,9 +1003,9 @@ export default function BenefitsCaseStudyPage() {
                     </div>
                     <h3 className="text-2xl font-normal text-foreground mb-6">Data-driven design</h3>
                     <p className="text-muted-foreground leading-relaxed">
-                      In live projects, using quantitative data for Reach, Impact, Confidence, and Effort (RICE) scoring
-                      helps prioritise design changes effectively, focusing on areas with the greatest impact. A/B
-                      testing can validate how our design changes are benefiting the service.
+                      In live projects, using quantitative data helps you do Reach, Impact, Confidence, and Effort (RICE) scoring. This method
+                      can help prioritise design changes effectively, focusing on areas with the greatest benefit to users in the shortest amount of time. Live dashboards and A/B
+                      testing can then help validate how our design changes impact the service.
                     </p>
                   </div>
                 </div>
@@ -1094,8 +1041,8 @@ export default function BenefitsCaseStudyPage() {
                     </div>
                     <h3 className="text-2xl font-normal text-foreground mb-6">Digital inclusion</h3>
                     <p className="text-muted-foreground leading-relaxed">
-                      Users were told to take a screenshot of their fit note, but one user this meant taking a photo of a screen. This revealed a bias in assuming all users understand technical
-                      terms, highlighting the need for simpler language to support those with lower digital literacy.
+                      Users were told to take a screenshot of their fit note, but one user thought a 'screenshot' meant taking a photo of your screen with a separate camera. This revealed the 'curse of knowledge' bias, where we assume users understand the same things
+                      we do. This highlighted the need for simpler language and relatable analogies to support those with lower digital literacy.
                     </p>
                   </div>
                 </div>
@@ -1131,7 +1078,7 @@ export default function BenefitsCaseStudyPage() {
                     </div>
                     <h3 className="text-2xl font-normal text-foreground mb-6">Content can't solve it all</h3>
                     <p className="text-muted-foreground leading-relaxed">
-                      Not all issues can be fixed with front-end changes. To reduce failed uploads and improve processing accuracy, we introduced key back-end enhancements — including a HEIC file converter to support iPhone image uploads, and improvements to the scanning capabilities. These changes led to fewer errors, less manual rework, and a further 6%+ uplift in user satisfaction.
+                      Not all issues can be fixed with front-end changes. To reduce failed uploads and improve processing accuracy, we introduced key back-end enhancements. This included a HEIC file converter to support iPhone image uploads, and improvements to the scanning capabilities. These changes led to fewer errors, less manual rework, and a further 6%+ uplift in user satisfaction.
                     </p>
 
                   </div>

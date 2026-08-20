@@ -3,7 +3,6 @@
 import type React from "react"
 
 import { useState, useEffect } from "react"
-import Link from "next/link"
 import ScrollProgressIndicator from "@/components/scroll-progress-indicator"
 import AnimateOnScroll from "@/components/animate-on-scroll"
 import TopNavigation from "@/components/top-navigation"
@@ -12,6 +11,10 @@ import Footer from "@/components/footer"
 import UXLessonsCard from "@/components/ux-lessons-card"
 import ImageModal from "@/components/ImageModal"
 import MetricShuffle from "@/components/metric-shuffle"
+import CaseStudyHeader, { CaseStudyBackLink } from "@/components/case-study-header"
+import { getProjectById } from "@/lib/projects"
+
+const project = getProjectById("contactless-travel")!
 
 // Define the sections for this case study
 const sections = [
@@ -124,27 +127,7 @@ export default function ContactlessTravelCaseStudyPage() {
           role="navigation"
           aria-label="Section navigation"
         >
-          <div className="pl-8 mb-6 pt-8">
-            <Link
-              href="/"
-              className="inline-flex items-center px-4 pr-5 py-1.5 bg-muted hover:bg-muted/80 text-muted-foreground hover:text-foreground rounded-full transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-fui-primary focus:ring-opacity-50"
-              aria-label="Go back to home page"
-            >
-              <svg
-                width="16"
-                height="16"
-                viewBox="0 0 24 24"
-                fill="none"
-                stroke="currentColor"
-                strokeWidth="2"
-                className="mr-1.5"
-                aria-hidden="true"
-              >
-                <path d="M19 12H5M12 19l-7-7 7-7" />
-              </svg>
-              <span>Back</span>
-            </Link>
-          </div>
+          <CaseStudyBackLink />
 
           {/* Navigation links */}
           <nav className="space-y-6 text-muted-foreground pl-8" aria-label="Table of contents">
@@ -177,48 +160,7 @@ export default function ContactlessTravelCaseStudyPage() {
       <main className={`flex-1 px-4 sm:px-8 py-12 ${isMobile ? "w-full" : ""}`}>
         <div className="max-w-6xl mx-auto">
           {/* Case Study Title and Tags */}
-          <div>
-            <div className="flex flex-wrap gap-2 sm:gap-4 pt-8 mb-6" aria-label="Project tags">
-              <div className="inline-flex rounded-full bg-muted px-3 py-1 sm:px-4 sm:py-1.5">
-                <div className="flex items-center gap-2">
-                  <span className="text-xs font-medium text-muted-foreground tracking-wide uppercase">Senior UX Designer</span>
-                </div>
-              </div>
-              <div className="inline-flex rounded-full bg-muted px-3 py-1 sm:px-4 sm:py-1.5">
-                <div className="flex items-center gap-2">
-                  <span className="text-xs font-medium text-muted-foreground tracking-wide uppercase">2024/25</span>
-                </div>
-              </div>
-              <div className="inline-flex rounded-full bg-muted px-3 py-1 sm:px-4 sm:py-1.5">
-                <div className="flex items-center gap-2">
-                  <span className="text-xs font-medium text-muted-foreground tracking-wide uppercase">GOV.UK CLIENT</span>
-                </div>
-              </div>
-              <div className="inline-flex rounded-full bg-muted px-3 py-1 sm:px-4 sm:py-1.5">
-                <div className="flex items-center gap-2">
-                  <div className="h-2 w-2 rounded-full bg-green-500" />
-                  <span className="text-xs font-medium text-muted-foreground tracking-wide uppercase">Shipped</span>
-                </div>
-              </div>
-            </div>
-            <h1
-              id="case-study-title"
-              className="text-3xl sm:text-4xl md:text-5xl font-display mb-8 sm:mb-12"
-            >
-              Designing the future of contactless travel{" "}
-              <span aria-hidden="true" role="presentation">✈️</span>
-            </h1>
-
-
-            {/* Hero image */}
-            <div className="mb-12 sm:mb-16">
-              <img
-                src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/trials2-min-152wrS8iv0dqCjFwiwsHTR5R7Mhdk7.jpeg"
-                alt="Project hero image showing the contactless travel interface"
-                className="w-full rounded-2xl"
-              />
-            </div>
-          </div>
+          <CaseStudyHeader project={project} />
 
           {/* Overview Section */}
           <section id="overview" className="min-h-screen py-8 sm:py-12" aria-labelledby="overview-heading">
@@ -242,7 +184,7 @@ export default function ContactlessTravelCaseStudyPage() {
                   {/* Users total with growth */}
                   <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm" aria-label="Users metric">
                     <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-foreground">
-                      <MetricShuffle final="7m" />
+                      <MetricShuffle final="7M" />
                       <span className="ml-2 align-middle text-base sm:text-lg text-emerald-400">
                         <MetricShuffle final="+40% increase" scrambleLetters />
                       </span>
@@ -385,7 +327,7 @@ export default function ContactlessTravelCaseStudyPage() {
                           </li>
                           <li className="flex gap-3">
                             <span className="text-foreground">•</span>
-                            <span>Users without identity documents, but who have valid reasons, faced barriers to setting up accounts.</span>
+                            <span>Users without identity documents who still had valid reasons to access the service faced barriers to setting up accounts.</span>
                           </li>
                           <li className="flex gap-3">
                             <span className="text-foreground">•</span>
@@ -437,7 +379,7 @@ export default function ContactlessTravelCaseStudyPage() {
                           </li>
                           <li className="flex gap-3">
                             <span className="text-foreground">•</span>
-                            <span>Focus on the 1% of users with the most complex needs, and the other 99% benefit as a result.</span>
+                            <span>Focus on the 1% of users with the most complex needs, so the other 99% benefit as a result.</span>
                           </li>
                           <li className="flex gap-3">
                             <span className="text-foreground">•</span>
@@ -496,7 +438,7 @@ export default function ContactlessTravelCaseStudyPage() {
                       <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">Prototyping</h3>
                       <ul className="space-y-3 text-left w-full">
                         <li className="text-muted-foreground text-sm md:text-base text-center">
-                          Created iterative prototypes, refining user journeys from ongoing user feedback.
+                          Created iterative prototypes, refining user journeys based on ongoing user feedback.
                         </li>
                       </ul>
                     </div>
@@ -505,7 +447,7 @@ export default function ContactlessTravelCaseStudyPage() {
                       <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
                         <span className="text-xl md:text-2xl font-medium text-white">3</span>
                       </div>
-                      <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">Accessibility compliance</h3>
+                      <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">Accessibility</h3>
                       <ul className="space-y-3 text-left w-full">
                         <li className="text-muted-foreground text-sm md:text-base text-center">
                           Ensured compliance with WCAG standards and best practices for digital inclusion.
@@ -565,7 +507,7 @@ export default function ContactlessTravelCaseStudyPage() {
                     id="app-caption"
                     className="mt-3 text-center text-xs sm:text-sm text-gray-400"
                   >
-                    I setup a Figma mobile prototype and connected it to a GOV.UK prototype. This simulated a real omni-channel journey. I used HTML, CSS, and JavaScript for this.
+                    I set up a Figma mobile prototype and connected it to a GOV.UK prototype. This simulated a real omni-channel journey. I used HTML, CSS, and JavaScript for this.
                   </figcaption>
                 </figure>
 
@@ -694,7 +636,7 @@ export default function ContactlessTravelCaseStudyPage() {
                 </figure>
 
                 <p className="max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground text-center sm:text-left">
-                  Due to the sensitivity of workstream two, it is not possible to go into detail or show images of what I tested or designed.
+                  Due to the sensitivity of Workstream 2, it is not possible to go into detail or show images of what I tested or designed.
                   For more information, please reach out to me.
                 </p>
               </div>
@@ -739,7 +681,7 @@ export default function ContactlessTravelCaseStudyPage() {
                           </li>
                           <li className="flex gap-3">
                             <span className="text-foreground">•</span>
-                            <span>Co-designed an automated online account recovery journey to enhance self-service recovery.</span>
+                            <span>Co-designing an automated online account recovery journey to enhance self-service recovery.</span>
                           </li>
                         </ul>
                       </div>
@@ -760,7 +702,7 @@ export default function ContactlessTravelCaseStudyPage() {
                           </li>
                           <li className="flex gap-3">
                             <span className="text-foreground">•</span>
-                            <span>We authored reports for app suppliers. These reports focus on improving app accessibility, usability, and preparing for remote biometric enrolment.</span>
+                            <span>We authored reports for app suppliers. These reports focused on improving app accessibility, usability, and preparing for remote biometric enrolment.</span>
                           </li>
                           <li className="flex gap-3">
                             <span className="text-foreground">•</span>
@@ -776,7 +718,7 @@ export default function ContactlessTravelCaseStudyPage() {
 
             <AnimateOnScroll animation="fade-up" delay={200}>
               <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
-                For workstream one, I provided focused updates to the public service and internal platform. I improved content, simplified forms, and boosted accessibility. All changes were tested for a more inclusive experience.
+                For Workstream 1, I provided focused updates to the public service and internal platform. I improved content, simplified forms, and boosted accessibility. All changes were tested for a more inclusive experience.
               </p>
             </AnimateOnScroll>
 
@@ -793,7 +735,7 @@ export default function ContactlessTravelCaseStudyPage() {
                     id="img-caption-multiple-examples"
                     className="mt-3 text-center text-xs sm:text-sm text-gray-400"
                   >
-                    Plain language, acronym tooltips, and screen reader friendly layout.
+                    Plain language, acronym tooltips, and screen-reader-friendly layout.
                   </figcaption>
                 </figure>
 
@@ -838,7 +780,7 @@ export default function ContactlessTravelCaseStudyPage() {
                     id="img-caption-two-page"
                     className="mt-3 text-center text-xs sm:text-sm text-gray-400"
                   >
-                    Two-page flow clusters together options with helpful hints. Images are blurred deliberately to protect sensitive information.
+                    Two-page flow clusters options together with helpful hints. Images are blurred deliberately to protect sensitive information.
                   </figcaption>
                 </figure>
 
@@ -866,7 +808,7 @@ export default function ContactlessTravelCaseStudyPage() {
                 </figure>
 
                 <p className="max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
-                  Disabled radios failed WCAG SC 1.4.3 contrast requirements (3:1 for UI components, 4.5:1 for text). I checked with users about removing the disabled radios since they had no use when another active user was viewing the case. This solved the problem.
+                  Disabled radios failed WCAG SC 1.4.3 contrast requirements (3:1 for UI components, 4.5:1 for text). I checked with users about removing the disabled radios since they served no purpose when another active user was viewing the case. This solved the problem.
                 </p>
 
               </div>
@@ -897,7 +839,7 @@ export default function ContactlessTravelCaseStudyPage() {
                   {/* Users total with growth */}
                   <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm" aria-label="Users metric">
                     <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-foreground">
-                      <MetricShuffle final="7m" duration={800} />
+                      <MetricShuffle final="7M" duration={800} />
                       <span className="ml-2 align-middle text-base sm:text-lg text-emerald-400">
                         <MetricShuffle final="+40% increase" duration={800} speed={40} scrambleLetters />
                       </span>
@@ -977,20 +919,20 @@ export default function ContactlessTravelCaseStudyPage() {
                       <div className="flex-1">
                         <div className="h-0.5 w-12 bg-white mb-4 opacity-70"></div>  {/* was: mb-6 */}
                         <p className="text-muted-foreground mb-4">
-                          We achieved a first-time GDS assessment pass, allowing the service to move to public Beta.
+                          We achieved a first-time GDS assessment pass, allowing the service to move to public beta.
                         </p>
                         <ul className="space-y-4 text-muted-foreground">
                           <li className="flex gap-3">
                             <span className="text-foreground">•</span>
-                            <span>Over 7 million users worldwide can now prove their immigration status digitally</span>
+                            <span>Over 7 million users worldwide can now prove their immigration status digitally.</span>
                           </li>
                           <li className="flex gap-3">
                             <span className="text-foreground">•</span>
-                            <span>Simplified content and added tooltips for acronyms through inclusive language design</span>
+                            <span>Simplified content and added tooltips for acronyms through inclusive language design.</span>
                           </li>
                           <li className="flex gap-3">
                             <span className="text-foreground">•</span>
-                            <span>Co-designed and prototyped an automated account recovery flow, reducing offline requests by 67%</span>
+                            <span>Co-designed and prototyped an automated account recovery flow, reducing offline requests by 67%.</span>
                           </li>
                         </ul>
                       </div>
@@ -1110,7 +1052,7 @@ export default function ContactlessTravelCaseStudyPage() {
                     </svg>
                   }
                   title="Inclusive design is essential"
-                  description={"Designing for the extremes of user ability benefits everyone. By focusing on accessibility for users with disabilities, we created a more intuitive system that all travelers found easier to use, regardless of their digital literacy or physical capabilities. By adopting an omni-channel design approach, we ensured the service works for users regardless of device access."}
+                  description={"Designing for the extremes of user ability benefits everyone. By focusing on accessibility for users with disabilities, we created a more intuitive system that all travellers found easier to use, regardless of their digital literacy or physical capabilities. By adopting an omni-channel design approach, we ensured the service works for users regardless of device access."}
                 />
 
 

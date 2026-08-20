@@ -14,7 +14,7 @@ const themeInitScript = `
 `
 
 export const metadata: Metadata = {
-  title: "Kulan Gunawardena — Senior Experience Designer",
+  title: "Kulan Gunawardena · Portfolio",
   description: "Optimising the experience of trust-critical systems. Kulan Gunawardena · Autodesk.",
 }
 

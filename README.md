@@ -1,18 +1,18 @@
 # Portfolio Documentation
 
-Personal portfolio for [kulangun.com](https://kulangun.com). A static site showcasing selected design work with a distinct **Mission Control** / **Operative OS** aesthetic.
+Personal portfolio for [kulangun.com](https://kulangun.com). A static site showcasing selected design work with a **Future User Interface (FUI)** / **Operative OS** aesthetic.
 
 ---
 
 ## Design Theme & Aesthetic
 
-The portfolio uses a **Future User Interface (FUI)** design language: a "Mission Control" or "Operative OS" vibe that evokes command centres, dashboards, and trust-critical systems. The visual style draws on:
+The portfolio uses an FUI design language: a calm “command centre” feel for trust-critical systems work — without overdoing theatrical UI chrome. The visual style draws on:
 
-- **Dual-mode theming**: Dark mode (default) with bright green accents (`#00FF94`), and light mode with dark green accents (`#166534`), both optimised for readability and consistency across home and case study pages.
-- **FUI micro-interactions**: Visible grid lines, corner markers on cards, a typing-style hero animation, a live London time display, and a **falling-particle hero background** (circles in FUI palette) to suggest ambient system activity.
-- **Typography hierarchy**: Sans-serif (DM Sans) for headings and body, monospace (JetBrains Mono) for labels, metadata, and navigational elements.
-- **Semantic structure**: Work is presented as "Mission Logs" with projects ordered reverse-chronologically, reinforcing the operative/control-room metaphor.
-- **Theme-aware components**: All UI—including case studies, charts, and cards—responds correctly to light and dark modes via CSS variables and Tailwind classes.
+- **Dual-mode theming**: Dark mode (default) with bright green accents (`#00FF94`), and light mode with dark green accents (`#166534`), both optimised for readability across home and case study pages.
+- **FUI micro-interactions**: Monospace labels, status badges, a **one-shot typewriter** on the hero tagline, a live London time display, and a **falling-particle hero background** (circles in the FUI palette).
+- **Typography hierarchy**: Sans-serif (DM Sans) for headings and body; monospace (JetBrains Mono) for labels, metadata, and navigation.
+- **Semantic structure**: Selected work is labelled **Projects** (`PROJECT 01`–`03`), newest first. Older work lives in **Archive**.
+- **Theme-aware components**: Home, archive, and case studies respond to light/dark via CSS variables and Tailwind classes.
 
 ---
 
@@ -23,9 +23,9 @@ The portfolio uses a **Future User Interface (FUI)** design language: a "Mission
 - **Display font**: Same as default — DM Sans.
 - **Monospace**: JetBrains Mono for labels, metadata, and code-like elements.
 
-The Tailwind `sans` font family is set to **DM Sans** by default. In `tailwind.config.ts`, `fontFamily` defines which font is used for body, headings, and mono elements. The browser falls back through the list if a font fails to load.
+The Tailwind `sans` font family is set to **DM Sans** by default in `tailwind.config.ts`.
 
-**Previous typeface:** An earlier version of the portfolio used **Onest** for body and display text, with **Recursive** and **Ubuntu Mono** for monospace and accent elements. The switch to DM Sans and JetBrains Mono was made to better suit the FUI / Mission Control aesthetic — DM Sans offers a clean, geometric quality that works well for both light and dark modes, while JetBrains Mono gives metadata and labels a more technical, system-interface feel.
+**Previous typeface:** An earlier version used **Onest** for body/display and **Recursive** / **Ubuntu Mono** for monospace. The switch to DM Sans and JetBrains Mono better suits the FUI aesthetic.
 
 ### Typescale
 
@@ -36,9 +36,9 @@ The Tailwind `sans` font family is set to **DM Sans** by default. In `tailwind.c
 | display-l  | 36px  | 40px        | 700    | -0.02em        |
 | heading-m  | 24px  | 30px        | 700    | —              |
 | heading-s  | 19px  | 25px        | 700    | —              |
-| body-l     | 19px  | 25px       | —      | —              |
-| body-m     | 16px  | 20px       | —      | —              |
-| body-s     | 14px  | 20px       | —      | —              |
+| body-l     | 19px  | 25px        | —      | —              |
+| body-m     | 16px  | 20px        | —      | —              |
+| body-s     | 14px  | 20px        | —      | —              |
 
 #### Small screens (<640px)
 | Token         | Size  | Line Height | Weight | Letter Spacing |
@@ -53,8 +53,6 @@ The Tailwind `sans` font family is set to **DM Sans** by default. In `tailwind.c
 |------------|--------|
 | widest-fui | 0.15em |
 | wider-fui  | 0.1em  |
-
-The typescale is used consistently across the site. Display tokens are for hero headlines and major sections; heading tokens for section titles; body tokens for paragraphs and general UI. FUI letter-spacing tokens add a technical, label-like feel to uppercase nav text and metadata.
 
 ---
 
@@ -78,60 +76,50 @@ The typescale is used consistently across the site. Display tokens are for hero 
 | spacing-24 | 96px   |
 | spacing-32 | 128px  |
 
-Spacing follows an 4px base unit (Tailwind’s default). Use these tokens for padding, margins, and gaps to keep layouts consistent.
+Spacing follows a 4px base unit (Tailwind’s default).
 
 ### Grid
 - **Max content width**: 1280px (Tailwind `max-w-6xl`).
-- **Columns**: Flexible, often 12-column grid using `grid-cols-12`.
+- **Columns**: Flexible; often a 12-column grid via `grid-cols-12`.
 - **Gap sizes**: Tailwind spacing units (e.g. `gap-4`, `gap-8`).
 
-Content is centered within a max-width container. On smaller screens, columns collapse and gaps reduce to suit the viewport.
-
 ### Border Radius
-| Token       | Value  |
-|-------------|--------|
-| rounded-sm  | 2px    |
-| rounded     | 4px    |
-| rounded-md  | 6px    |
-| rounded-lg  | 8px    |
-| rounded-xl  | 12px   |
-| rounded-2xl | 16px   |
-| rounded-fui | 2px    |
-| rounded-fui-lg | 4px |
-| rounded-full| 9999px |
+| Token          | Value  |
+|----------------|--------|
+| rounded-sm     | 2px    |
+| rounded        | 4px    |
+| rounded-md     | 6px    |
+| rounded-lg     | 8px    |
+| rounded-xl     | 12px   |
+| rounded-2xl    | 16px   |
+| rounded-fui    | 2px    |
+| rounded-fui-lg | 4px    |
+| rounded-full   | 9999px |
 
-Standard radii apply to cards, buttons, and images. FUI tokens (`rounded-fui`, `rounded-fui-lg`) use small radii (2px, 4px) to keep the interface feeling precise and technical.
+FUI tokens use small radii to keep the interface precise and technical.
 
 ### Shadows
-| Token     | Example use         |
-|-----------|---------------------|
-| shadow-sm | Subtle card shadow  |
-| shadow    | Default shadow      |
-| shadow-md | Medium emphasis     |
-| shadow-lg | Elevated cards      |
-| shadow-xl | High emphasis       |
-
-Shadows are used sparingly. Subtle shadows (`shadow-sm`, `shadow`) work well for cards; stronger ones for modals and elevated elements.
+Used sparingly (`shadow-sm` through `shadow-xl`) for cards and elevated surfaces.
 
 ---
 
 ## Tech Stack
 
-| Layer                | Tech Used                             | Role                                                       |
-|----------------------|----------------------------------------|------------------------------------------------------------|
-| Framework            | Next.js 15 (App Router)                | Routing, static generation, optimised builds               |
-| Language             | TypeScript (TSX)                       | Type safety, clearer semantics                             |
-| UI Library           | React 18                               | Components and interactivity                               |
-| Styling              | Tailwind CSS                           | Utility-first styling, FUI tokens, responsive layout       |
-| Fonts                | DM Sans, JetBrains Mono (Google Fonts) | Typography and brand identity                              |
-| Icons                | Lucide React                           | UI and navigation icons                                    |
-| UI Components        | Radix UI, shadcn/ui                    | Accessible primitives and composable components            |
-| Animations           | React + Tailwind keyframes             | Typing effect, fade-in-up, cursor blink                    |
-| Hero particles       | [Sparticles](https://github.com/simeydotme/sparticles) (vendored) | Canvas falling circles on the home hero (`HeroSparticles`) |
-| Theme                | Custom (`use-operative-theme`)         | Light/dark mode via localStorage and `class` on `<html>`   |
-| Deployment           | Static export → GitHub Pages           | CDN-ready hosting via `gh-pages`                           |
+| Layer          | Tech Used                                      | Role                                                        |
+|----------------|------------------------------------------------|-------------------------------------------------------------|
+| Framework      | Next.js 15 (App Router)                        | Routing, static generation, optimised builds                |
+| Language       | TypeScript (TSX)                               | Type safety                                                 |
+| UI Library     | React 18                                       | Components and interactivity                                |
+| Styling        | Tailwind CSS                                   | Utility-first styling, FUI tokens, responsive layout        |
+| Fonts          | DM Sans, JetBrains Mono (Google Fonts)         | Typography                                                  |
+| Icons          | Lucide React                                   | UI and navigation icons                                     |
+| UI Components  | Radix UI, shadcn/ui                            | Accessible primitives                                       |
+| Animations     | React + Tailwind keyframes                     | One-shot hero typewriter, fade-in-up, cursor blink          |
+| Hero particles | [Sparticles](https://github.com/simeydotme/sparticles) (vendored) | Canvas falling circles (`HeroSparticles`)     |
+| Theme          | Custom (`use-operative-theme`)                 | Light/dark via localStorage and `class` on `<html>`         |
+| Deployment     | Static export → GitHub Pages                   | Publish via `gh-pages` branch                               |
 
-The site runs on React within Next.js, which provides routing, server-side rendering, and optimised static builds. TypeScript (`.tsx`) adds static typing for clearer code and fewer bugs. Tailwind is used for utility-first styling, with custom FUI colours and tokens defined in `tailwind.config.ts` and `globals.css`. Fonts are loaded via Google Fonts in `layout.tsx`. The typing effect and animations are hand-coded with React state and Tailwind keyframes. The home hero uses **Sparticles** (loaded from `public/vendor/sparticles.js`) via the `HeroSparticles` client component—falling circles only, themed to match light/dark mode, with a gradient overlay for text contrast. Theme switching uses a custom hook (`use-operative-theme`) and an inline script to avoid flash on load; there is no dependency on `next-themes`. The site is statically exported and published to the `gh-pages` branch for hosting on GitHub Pages.
+The site is statically exported and hosted on GitHub Pages (`kulangun.com`). Theme switching uses a custom hook and an inline script in `layout.tsx` to avoid flash on load (no `next-themes`). **`git push` to `main` does not deploy the live site** — run `npm run deploy` to build and publish to `gh-pages`.
 
 ### Build & Deploy
 ```bash
@@ -144,51 +132,72 @@ npm run deploy   # Build + publish to gh-pages branch
 
 ## Key Components
 
-| Component                | Role                                                                 |
-|--------------------------|----------------------------------------------------------------------|
-| `HeroSparticles`         | Home hero canvas background: falling circles via Sparticles (client-only) |
-| `TopNavigation`          | Header with logo, nav links, theme toggle; responsive grid on mobile |
-| `ThemeToggle`            | Light/dark mode switch (centered on mobile, right on desktop)        |
-| `CaseStudyPreview`       | Mission log card with image, status badge, corner markers            |
-| `CaseStudyLayout`        | Case study shell with sticky left nav and scroll progress            |
-| `ScrollProgressIndicator`| Horizontal loading bar for reading progress                          |
-| `ScrollSpyNavigation`    | Left-nav highlights active section on case study pages               |
-| `Footer`                 | MAIN / CONTACT links, copyright, tagline                             |
-| `StatusBadge`            | Shipped / Concept labels with FUI styling                            |
-| `AnimateOnScroll`        | Fade-in-up and staggered reveal                                      |
-| `SummaryCard`, `QuoteCard`, `MetricsDisplay` | Reusable content blocks for case studies   |
-| `DataTable`, `BarChart`, `SystemDiagram`     | Data and diagram components         |
+| Component                 | Role                                                                 |
+|---------------------------|----------------------------------------------------------------------|
+| `HeroSparticles`          | Home hero canvas: falling circles via vendored Sparticles            |
+| `TopNavigation`           | Logo, Work / Credentials / LinkedIn / Articles, theme toggle         |
+| `ThemeToggle`             | Light/dark switch                                                    |
+| `CaseStudyHeader`         | Shared case study tags, H1, subtitle, and hero image                 |
+| `CaseStudyPreview`        | Project card: optional `PROJECT` seq, title, subtitle, status, image |
+| `CaseStudyLayout`         | Shared case study shell (sticky left nav + scroll progress)          |
+| `ScrollProgressIndicator` | Horizontal reading progress bar                                      |
+| `ScrollSpyNavigation`     | Highlights active section in case study left nav                     |
+| `Footer`                  | MAIN (Work, Articles, Credentials, Archive) / CONTACT (LinkedIn)     |
+| `StatusBadge`             | SHIPPED / CONCEPT / ARCHIVED (and related) FUI labels                |
+| `AnimateOnScroll`         | Fade-in-up and staggered reveal                                      |
+| `SummaryCard`, `QuoteCard`, `MetricsDisplay` | Reusable case study content blocks              |
+| `DataTable`, `BarChart`, `SystemDiagram`     | Data and diagram components                       |
 
-These components organise layout and add interactivity without cluttering pages. `HeroSparticles` replaces the former static hero image (`hero-bg.png`) on the home page only. `TopNavigation` and `Footer` wrap all main content. Case study pages use `CaseStudyLayout` for the left-nav shell and scroll progress; `ScrollSpyNavigation` highlights the active section as the user scrolls. Content blocks (`SummaryCard`, `QuoteCard`, `MetricsDisplay`, etc.) are reused across case studies for consistent presentation of overviews, quotes, and data.
+`HeroSparticles` powers the home hero background. Selected projects use a short **title** plus an outcome-focused **subtitle**. Case study pages share `CaseStudyHeader` for tags, H1, subtitle, and hero image (sourced from `lib/projects.ts`) so home, Archive, and case studies stay in sync.
+
+### Hero (`app/page.tsx`)
+
+| Element | Behaviour |
+|---------|-----------|
+| **Tagline** | “Optimising the experience of trust-critical systems.” types out **once** on load (~36ms/character), then stays. Cursor hides when finished. Skipped (full text immediately) when `prefers-reduced-motion: reduce`. |
+| **Particles** | See below |
+| **Clock** | Live London time (Europe/London), decorative |
 
 ### Hero particles (`HeroSparticles`)
 
-The home hero background is a full-bleed HTML5 canvas animation powered by [Sparticles](https://github.com/simeydotme/sparticles) (MIT/MPL-2.0). The library is **vendored** at `public/vendor/sparticles.js` and loaded at runtime so it does not pass through the Next.js bundle.
+Full-bleed HTML5 canvas via [Sparticles](https://github.com/simeydotme/sparticles). Vendored at `public/vendor/sparticles.js` and loaded at runtime (not through the Next.js JS bundle).
 
 | Concern | Implementation |
 |---------|----------------|
-| **Where** | `components/hero-sparticles.tsx`, mounted in `app/page.tsx` inside the hero `<section>` |
-| **Shapes** | Circles only (`shape: "circle"`) — no line particles |
+| **Where** | `components/hero-sparticles.tsx`, in the home hero `<section>` |
+| **Shapes** | Circles only (`shape: "circle"`) |
 | **Motion** | Downward fall (`direction: 180`), twinkle, light parallax |
 | **Colours** | Dark: `#00FF94`, `#3B82F6`, `#FAFAFA`, `#888888` — Light: `#166534`, `#111111`, `#888888` |
 | **Size** | `minSize: 5`, `maxSize: 20` (dark) / `15` (light); count scales with viewport width |
-| **Accessibility** | Skipped when `prefers-reduced-motion: reduce` is set |
-| **Readability** | Gradient overlay on the hero (`from-background/85`) keeps headline text legible |
+| **Accessibility** | Skipped when `prefers-reduced-motion: reduce` |
+| **Readability** | Gradient overlay (`from-background/85`) keeps headline text legible |
 
-To tune the effect, edit `getOptions()` in `hero-sparticles.tsx`. To revert to a static image, remove `<HeroSparticles />` and restore a `bg-[url('/hero-bg.png')]` layer in `app/page.tsx`.
+Tune via `getOptions()` in `hero-sparticles.tsx`.
+
+Project titles, subtitles, clients, roles, and cover images live in `lib/projects.ts` and feed the home page, Archive page, and `CaseStudyHeader`.
 
 ---
 
 ## Site Structure
 
-- **/** — Home: hero with particle background, typing animation, Mission Logs (reverse chronological)
-- **/case-studies/contentnext-case-study/** — MISSION 05 (most recent) — **ContentNext: Scaling content design with AI** (Autodesk, 2025/26, Shipped)
-- **/case-studies/contactless-travel/** — MISSION 04 — Designing the future of contactless travel (GOV.UK, 2024/25, Shipped)
-- **/case-studies/ai-design/** — MISSION 03 — Leading human-centred design, empowered by AI (Capgemini Invent, 2024/25, Concept)
-- **/case-studies/benefits-case-study/** — MISSION 02 — Improving access to benefits for citizens in medical need (GOV.UK, 2024, Shipped)
-- **/case-studies/crm-case-study/** — MISSION 01 (oldest) — Transforming customer relationship management (Anglian Water, 2023, Shipped)
+### Navigation
+- **Top nav**: Work (`/#work`), Credentials (Credly), LinkedIn, Articles (Medium)
+- **Footer MAIN**: Work, Articles, Credentials, **Archive** (`/work/archived/`)
+- **Footer CONTACT**: LinkedIn
 
-The home page lists Mission Logs in reverse chronological order, with the most recent project at the top. **MISSION 05** documents ContentNext—an AI-powered content design system for Autodesk Fusion teams (Custom GPT, Cursor workflows, and modular knowledge files). Each case study has its own route under `/case-studies/`; newer pages such as ContentNext use a dedicated page component, while others use the shared `CaseStudyLayout` with scroll-spy navigation.
+### Routes
+
+| Path | Description |
+|------|-------------|
+| **/** | Home — hero (particles + one-shot tagline), **Projects** (`PROJECT 03` → `01`) |
+| **/work/archived/** | **Archive** — AURA and CRM (no project numbers; status **ARCHIVED**); linked from footer MAIN |
+| **/case-studies/contentnext-case-study/** | **PROJECT 03** — ContentNext (Autodesk, 2025/26, Shipped) |
+| **/case-studies/contactless-travel/** | **PROJECT 02** — Digital immigration and contactless travel (GOV.UK, 2024/25, Shipped) |
+| **/case-studies/benefits-case-study/** | **PROJECT 01** — Improving access to benefits for those in need (GOV.UK, 2024, Shipped) |
+| **/case-studies/ai-design/** | Archived — AURA (Capgemini Invent, 2024/25) |
+| **/case-studies/crm-case-study/** | Archived — Customer relationship management (Anglian Water, 2023) |
+
+Selected work on the home page is reverse-chronological (**newest = PROJECT 03**). **Archive** is reachable from the footer MAIN link only. Archived case study pages use status **Archived** and Back returns to `/work/archived/`. Case study URLs for archived work are unchanged.
 
 ---
 
