@@ -10,13 +10,13 @@ interface DesignProcessProps {
 
 export default function DesignProcess({ steps }: DesignProcessProps) {
   return (
-    <div className="rounded-3xl bg-muted p-8 md:p-12 backdrop-blur-sm">
+    <div className="rounded-fui-lg bg-muted p-8 md:p-12 backdrop-blur-sm">
       <div className="grid grid-cols-1 md:grid-cols-5 gap-12 md:gap-6">
         {steps.map((step) => (
           <div key={step.number} className="flex flex-col items-center text-center">
             {/* Number Circle */}
-            <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
-              <span className="text-xl md:text-2xl font-medium text-white">{step.number}</span>
+            <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary">
+              <span className="text-xl font-medium text-primary-foreground md:text-2xl">{step.number}</span>
             </div>
 
             {/* Step Title */}

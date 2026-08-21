@@ -10,9 +10,11 @@ import BackToTopButton from "@/components/back-to-top-button"
 import Footer from "@/components/footer"
 import UXLessonsCard from "@/components/ux-lessons-card"
 import ImageModal from "@/components/ImageModal"
-import MetricShuffle from "@/components/metric-shuffle"
+import CaseStudyMetric from "@/components/case-study-metric"
 import CaseStudyHeader, { CaseStudyBackLink } from "@/components/case-study-header"
+import MobileTableOfContents from "@/components/mobile-table-of-contents"
 import { getProjectById } from "@/lib/projects"
+import { motionSafeScrollBehavior } from "@/lib/accessibility"
 
 const project = getProjectById("contactless-travel")!
 
@@ -20,8 +22,8 @@ const project = getProjectById("contactless-travel")!
 const sections = [
   { id: "overview", title: "Overview" },
   { id: "problem", title: "Problem" },
-  { id: "technology", title: "Workstream 1 Process" },
-  { id: "process-2", title: "Workstream 2 Process" },
+  { id: "technology", title: "Workstream 1: Live service" },
+  { id: "process-2", title: "Workstream 2: Biometrics" },
   { id: "solution", title: "Solutions" },
   { id: "results", title: "Results" },
   { id: "conclusion", title: "Conclusion" },
@@ -108,7 +110,7 @@ export default function ContactlessTravelCaseStudyPage() {
     if (element) {
       window.scrollTo({
         top: element.offsetTop - 100,
-        behavior: "smooth",
+        behavior: motionSafeScrollBehavior(),
       })
     }
   }
@@ -117,34 +119,34 @@ export default function ContactlessTravelCaseStudyPage() {
     <div className="min-h-screen bg-background text-foreground font-sans flex flex-col">
       <ScrollProgressIndicator />
 
-      <TopNavigation onMobileMenuToggle={(isOpen: boolean) => setSidebarOpen(isOpen)} />
+      <TopNavigation backHref="/#work" />
 
       <div className="flex flex-1 min-h-0">
       {!isMobile && (
         <aside
           id="section-nav"
-          className="w-64 md:sticky md:top-16 md:self-start md:pt-16 shrink-0 bg-background"
-          role="navigation"
+          className="hidden w-64 shrink-0 border-r border-sidebar-border bg-sidebar md:sticky md:top-16 md:block md:self-start md:pt-16"
           aria-label="Section navigation"
         >
           <CaseStudyBackLink />
 
           {/* Navigation links */}
-          <nav className="space-y-6 text-muted-foreground pl-8" aria-label="Table of contents">
-            <ul className="space-y-6">
+          <nav className="px-6 text-muted-foreground" aria-label="Table of contents">
+            <ul className="space-y-2">
               {sections.map((section) => (
                 <li key={section.id}>
                   <button
-                    className="flex items-center cursor-pointer group w-full text-left focus:outline-none focus:ring-2 focus:ring-fui-primary focus:ring-opacity-50 rounded-sm"
+                    type="button"
+                    className={`group flex w-full cursor-pointer items-center rounded-fui py-2 pr-3 text-left transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-fui-primary ${activeSection === section.id ? "bg-sidebar-accent" : "hover:bg-sidebar-accent/60"}`}
                     onClick={() => scrollToSection(section.id)}
                     aria-current={activeSection === section.id ? "location" : undefined}
                   >
                     <div
-                      className={`w-1 h-6 mr-4 rounded transition-colors duration-300 ${activeSection === section.id ? "bg-primary" : "bg-transparent group-hover:bg-primary/50"}`}
+                      className={`mr-3 h-5 w-0.5 transition-colors duration-200 ${activeSection === section.id ? "bg-primary" : "bg-transparent group-hover:bg-primary/50"}`}
                       aria-hidden="true"
                     />
                     <span
-                      className={`text-sm font-light transition-colors duration-300 ${activeSection === section.id ? "text-foreground" : "text-muted-foreground group-hover:text-foreground/80"}`}
+                      className={`text-sm transition-colors duration-200 ${activeSection === section.id ? "font-medium text-foreground" : "text-muted-foreground group-hover:text-foreground"}`}
                     >
                       {section.title}
                     </span>
@@ -157,10 +159,13 @@ export default function ContactlessTravelCaseStudyPage() {
       )}
 
       <div className={`flex-1 min-w-0 flex flex-col ${isMobile ? "w-full" : ""}`}>
-      <main className={`flex-1 px-4 sm:px-8 py-12 ${isMobile ? "w-full" : ""}`}>
+      <main id="main-content" className={`flex-1 px-4 py-8 sm:px-8 md:py-12 ${isMobile ? "w-full" : ""}`}>
         <div className="max-w-6xl mx-auto">
           {/* Case Study Title and Tags */}
-          <CaseStudyHeader project={project} />
+          <CaseStudyHeader
+            project={project}
+            mobileNavigation={<MobileTableOfContents sections={sections} />}
+          />
 
           {/* Overview Section */}
           <section id="overview" className="min-h-screen py-8 sm:py-12" aria-labelledby="overview-heading">
@@ -172,126 +177,98 @@ export default function ContactlessTravelCaseStudyPage() {
 
             <AnimateOnScroll animation="fade-up" delay={200}>
               <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
-                I supported a government organisation in modernising travel and migration through two distinct
-                workstreams. I worked with another UX designer, three user researchers, three content designers, and several business analysts and developers.
+                On GOV.UK digital immigration, I worked across two connected workstreams: improving the live status
+                service and evaluating remote biometric enrolment. I collaborated with another UX designer, three user
+                researchers, three content designers, and several business analysts and developers.
               </p>
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={400}>
               <div className="mt-8 mb-8">
                 <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3" role="group" aria-label="Key metrics">
-
-                  {/* Users total with growth */}
-                  <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm" aria-label="Users metric">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-foreground">
-                      <MetricShuffle final="7M" />
-                      <span className="ml-2 align-middle text-base sm:text-lg text-emerald-400">
-                        <MetricShuffle final="+40% increase" scrambleLetters />
-                      </span>
-                    </div>
-                    <div className="text-xs sm:text-sm md:text-base text-muted-foreground">
-                      global users, up from 5m
-                    </div>
-                  </div>
-
-                  {/* Completion rate with pp lift */}
-                  <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm" aria-label="Completion rate metric">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-foreground">
-                      <MetricShuffle final="83%" />
-                      <span className="ml-2 align-middle text-base sm:text-lg text-emerald-400">
-                        <MetricShuffle final="+9pp" scrambleLetters />
-                      </span>
-                    </div>
-                    <div className="text-xs sm:text-sm md:text-base text-muted-foreground">
-                      completion rate, up from 74% in 2 months
-                    </div>
-                  </div>
-
-                  {/* GDS assessment */}
-                  <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm" aria-label="GDS assessment result">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-foreground">
-                      <MetricShuffle final="1st" scrambleLetters />
-                    </div>
-                    <div className="text-xs sm:text-sm md:text-base text-muted-foreground">
-                      GDS assessment pass on first attempt
-                    </div>
-                  </div>
-
+                  <CaseStudyMetric label="Global users served" value="7M" note="40% growth from 5M" trend="up" />
+                  <CaseStudyMetric label="Completion rate" value="83%" note="9 percentage points in 2 months" trend="up" />
+                  <CaseStudyMetric
+                    label="GDS service assessment"
+                    value="Passed"
+                    note="First attempt · progressed to public beta"
+                    scrambleLetters
+                  />
                 </div>
               </div>
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={400}>
               <div className="mt-8 mb-8">
-                <div className="rounded-3xl bg-muted p-8 md:p-12 backdrop-blur-sm">
-                  <div className="space-y-12">
+                <div className="grid border-y border-black/10 dark:border-white/10 md:grid-cols-3">
+                  <article className="py-8 md:pr-8">
+                    <span className="mb-3 block font-mono text-xs tracking-widest-fui text-fui-primary" aria-hidden="true">
+                      01
+                    </span>
+                    <h3 className="text-lg sm:text-xl font-medium text-foreground">Project scope</h3>
+                    <ul className="mt-5 text-sm sm:text-base text-muted-foreground">
+                      <li className="border-t border-black/10 dark:border-white/10 py-3">
+                        Workstream 1 improved the live immigration status service.
+                      </li>
+                      <li className="border-t border-black/10 dark:border-white/10 py-3">
+                        Workstream 2 evaluated remote biometric self-enrolment.
+                      </li>
+                    </ul>
+                  </article>
 
-                    <div className="flex items-start gap-8 md:gap-16">
-                      <div className="w-32 md:w-40">
-                        <h3 className="text-xl md:text-2xl font-normal text-foreground">In a nutshell</h3>
-                      </div>
-                      <div className="flex-1">
-                        <div className="h-0.5 w-12 bg-white mb-6 opacity-70"></div>
-                        <ul className="space-y-4 text-muted-foreground">
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>Improved the digital immigration status service for millions of users worldwide.</span>
-                          </li>
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>Investigated biometric technology that can enable easy, long-term “passport-less” identity verification.</span>
-                          </li>
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>Made important usability and accessibility upgrades to the public-facing service and internal tools.</span>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
+                  <article className="border-t border-black/10 dark:border-white/10 py-8 md:border-t-0 md:border-l md:px-8">
+                    <span className="mb-3 block font-mono text-xs tracking-widest-fui text-fui-primary" aria-hidden="true">
+                      02
+                    </span>
+                    <h3 className="text-lg sm:text-xl font-medium text-foreground">My contribution</h3>
+                    <ul className="mt-5 text-sm sm:text-base text-muted-foreground">
+                      <li className="border-t border-black/10 dark:border-white/10 py-3">
+                        Improved usability and accessibility across public and internal services.
+                      </li>
+                      <li className="border-t border-black/10 dark:border-white/10 py-3">
+                        Co-designed online account recovery and evaluated biometric supplier experiences.
+                      </li>
+                    </ul>
+                  </article>
 
-                    <div className="flex items-start gap-8 md:gap-16">
-                      <div className="w-32 md:w-40">
-                        <h3 className="text-xl md:text-2xl font-normal text-foreground">Challenges</h3>
-                      </div>
-                      <div className="flex-1">
-                        <div className="h-0.5 w-12 bg-white mb-6 opacity-70"></div>
-                        <ul className="space-y-4 text-muted-foreground">
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>Rigid backend architecture that restricts redesign opportunities.</span>
-                          </li>
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>Diverse user needs and cultural nuances, due to global use.</span>
-                          </li>
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>Strict security requirements for identity authentication.</span>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-
-                  </div>
+                  <article className="border-t border-black/10 dark:border-white/10 py-8 md:border-t-0 md:border-l md:pl-8">
+                    <span className="mb-3 block font-mono text-xs tracking-widest-fui text-fui-primary" aria-hidden="true">
+                      03
+                    </span>
+                    <h3 className="text-lg sm:text-xl font-medium text-foreground">Constraints</h3>
+                    <ul className="mt-5 text-sm sm:text-base text-muted-foreground">
+                      <li className="border-t border-black/10 dark:border-white/10 py-3">Rigid backend architecture</li>
+                      <li className="border-t border-black/10 dark:border-white/10 py-3">
+                        Diverse global and cultural needs
+                      </li>
+                      <li className="border-t border-black/10 dark:border-white/10 py-3">
+                        Strict identity-security requirements
+                      </li>
+                    </ul>
+                  </article>
                 </div>
               </div>
 
-
-              <figure className="mt-8">
+              <div className="mt-12 mb-6">
+                <span className="mb-3 block font-mono text-xs tracking-widest-fui text-fui-primary">
+                  SERVICE JOURNEY
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-medium text-foreground">
+                  How the eVisa journey fits together
+                </h3>
+              </div>
+              <figure>
                 <ImageModal
                   src="/contactless/evisa_flow.png"
                   alt="Process flow and high-level user journey for the contactless eVisa service"
+                  aria-describedby="evisa-flow-caption"
                 />
-                <figcaption className="mt-3 text-center text-xs sm:text-sm text-gray-400">
+                <figcaption id="evisa-flow-caption" className="case-study-caption">
                   Process flow and high-level user journey for the contactless eVisa service.
                 </figcaption>
               </figure>
 
 
-            </AnimateOnScroll>
-
-            <AnimateOnScroll animation="fade-up" delay={600}>
-              <div className="mt-12 mb-12"></div>
             </AnimateOnScroll>
           </section>
 
@@ -306,94 +283,72 @@ export default function ContactlessTravelCaseStudyPage() {
 
             <AnimateOnScroll animation="fade-up" delay={200}>
               <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
-                The project can be broken down into two workstreams.
+                The work addressed two connected problems: making the live immigration service more accessible, and
+                understanding how remote biometric enrolment could feel secure and trustworthy.
               </p>
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={300}>
-              <div className="mt-8 mb-8">
-                <div className="rounded-3xl bg-muted p-8 md:p-12 backdrop-blur-sm">
-                  <div className="space-y-12">
-                    <div className="flex items-start gap-8 md:gap-16">
-                      <div className="w-32 md:w-40">
-                        <h3 className="text-xl md:text-2xl font-normal text-foreground">Workstream 1 challenges</h3>
-                      </div>
-                      <div className="flex-1">
-                        <div className="h-0.5 w-12 bg-white mb-6 opacity-70"></div>
-                        <ul className="space-y-4 text-muted-foreground">
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>Users needed a way to display their immigration status online. This mattered because some identity documents would run out by the end of 2024.</span>
-                          </li>
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>Users without identity documents who still had valid reasons to access the service faced barriers to setting up accounts.</span>
-                          </li>
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>Inaccessible content and jargon made it hard for users with limited digital skills or lower English skills.</span>
-                          </li>
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>Users had to rely on offline methods to recover their account if they lost their details.</span>
-                          </li>
-                        </ul>
-                      </div>
+              <div className="mt-8 mb-10">
+                <div className="grid border-y border-black/10 dark:border-white/10 md:grid-cols-2">
+                  <article className="py-8 md:pr-10">
+                    <div className="mb-6">
+                      <span className="mb-3 block font-mono text-xs tracking-widest-fui text-fui-primary">
+                        WORKSTREAM 1
+                      </span>
+                      <h3 className="text-xl sm:text-2xl font-medium text-foreground">Access and account recovery</h3>
+                      <p className="mt-2 text-sm text-muted-foreground">Public immigration status service</p>
                     </div>
-                    <div className="flex items-start gap-8 md:gap-16">
-                      <div className="w-32 md:w-40">
-                        <h3 className="text-xl md:text-2xl font-normal text-foreground">Workstream 2 challenges</h3>
-                      </div>
-                      <div className="flex-1">
-                        <div className="h-0.5 w-12 bg-white mb-6 opacity-70"></div>
-                        <ul className="space-y-4 text-muted-foreground">
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>Building trust around users sharing their biometric data with the UK government.</span>
-                          </li>
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>Balancing strict security requirements with having a positive user experience.</span>
-                          </li>
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>Ensuring secure biometric data collection and storage.</span>
-                          </li>
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>Integrating biometric authentication within wider account journeys.</span>
-                          </li>
-                        </ul>
-                      </div>
+                    <ul className="text-sm sm:text-base text-muted-foreground">
+                      <li className="border-t border-black/10 dark:border-white/10 py-4">
+                        Expiring physical documents created an urgent need for digital proof of status.
+                      </li>
+                      <li className="border-t border-black/10 dark:border-white/10 py-4">
+                        Users without identity documents faced barriers when creating an account.
+                      </li>
+                      <li className="border-t border-black/10 dark:border-white/10 py-4">
+                        Jargon and inaccessible content excluded people with lower English or digital confidence.
+                      </li>
+                      <li className="border-t border-black/10 dark:border-white/10 py-4">
+                        Lost account details forced users into slow offline recovery routes.
+                      </li>
+                    </ul>
+                  </article>
+
+                  <article className="border-t border-black/10 dark:border-white/10 py-8 md:border-t-0 md:border-l md:pl-10">
+                    <div className="mb-6">
+                      <span className="mb-3 block font-mono text-xs tracking-widest-fui text-fui-primary">
+                        WORKSTREAM 2
+                      </span>
+                      <h3 className="text-xl sm:text-2xl font-medium text-foreground">Trust and remote biometrics</h3>
+                      <p className="mt-2 text-sm text-muted-foreground">Biometric self-enrolment trials</p>
                     </div>
-                    <div className="flex items-start gap-8 md:gap-16">
-                      <div className="w-32 md:w-40">
-                        <h3 className="text-xl md:text-2xl font-normal text-foreground">Opportunities</h3>
-                      </div>
-                      <div className="flex-1">
-                        <div className="h-0.5 w-12 bg-white mb-6 opacity-70"></div>
-                        <ul className="space-y-4 text-muted-foreground">
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>Create more accessible digital services for diverse user groups.</span>
-                          </li>
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>Focus on the 1% of users with the most complex needs, so the other 99% benefit as a result.</span>
-                          </li>
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>Develop innovative solutions for secure identity verification.</span>
-                          </li>
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>Understand user trust and sentiments towards government digital services.</span>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
+                    <ul className="text-sm sm:text-base text-muted-foreground">
+                      <li className="border-t border-black/10 dark:border-white/10 py-4">
+                        Users needed confidence when sharing biometric data with the UK government.
+                      </li>
+                      <li className="border-t border-black/10 dark:border-white/10 py-4">
+                        Strict security requirements had to coexist with a usable experience.
+                      </li>
+                      <li className="border-t border-black/10 dark:border-white/10 py-4">
+                        Collection and storage needed to remain secure throughout the journey.
+                      </li>
+                      <li className="border-t border-black/10 dark:border-white/10 py-4">
+                        Biometric authentication had to connect coherently with wider account journeys.
+                      </li>
+                    </ul>
+                  </article>
                 </div>
+
+                <aside className="mt-10 max-w-4xl border-l-2 border-fui-primary py-1 pl-5 sm:pl-7" aria-label="Design challenge">
+                  <p className="mb-3 font-mono text-xs tracking-widest-fui uppercase text-fui-dim">
+                    Design philosophy
+                  </p>
+                  <p className="text-lg sm:text-xl leading-relaxed text-foreground">
+                    Design for the 1% with the most complex needs, while making secure identity services clearer and
+                    easier for everyone.
+                  </p>
+                </aside>
               </div>
             </AnimateOnScroll>
 
@@ -404,7 +359,7 @@ export default function ContactlessTravelCaseStudyPage() {
           <section id="technology" className="min-h-screen py-8 sm:py-12" aria-labelledby="process-heading-1">
             <AnimateOnScroll animation="bounce-up">
               <h2 id="process-heading-1" className="mb-6 sm:mb-8 text-2xl sm:text-3xl md:text-4xl font-display">
-                Workstream 1: Process
+                Workstream 1: Improving the live service
               </h2>
             </AnimateOnScroll>
 
@@ -417,11 +372,11 @@ export default function ContactlessTravelCaseStudyPage() {
 
             <AnimateOnScroll animation="fade-up" delay={300}>
               <div className="mt-8 mb-12">
-                <div className="rounded-3xl bg-muted p-8 md:p-12 backdrop-blur-sm">
+                <div className="rounded-fui-lg bg-muted p-8 md:p-12 backdrop-blur-sm">
                   <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-6">
                     <div className="flex flex-col items-center text-center">
-                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-white">1</span>
+                      <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary">
+                        <span className="text-xl font-medium text-primary-foreground md:text-2xl">1</span>
                       </div>
                       <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">User research</h3>
                       <ul className="space-y-3 text-left w-full">
@@ -432,8 +387,8 @@ export default function ContactlessTravelCaseStudyPage() {
                     </div>
 
                     <div className="flex flex-col items-center text-center">
-                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-white">2</span>
+                      <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary">
+                        <span className="text-xl font-medium text-primary-foreground md:text-2xl">2</span>
                       </div>
                       <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">Prototyping</h3>
                       <ul className="space-y-3 text-left w-full">
@@ -444,8 +399,8 @@ export default function ContactlessTravelCaseStudyPage() {
                     </div>
 
                     <div className="flex flex-col items-center text-center">
-                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-white">3</span>
+                      <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary">
+                        <span className="text-xl font-medium text-primary-foreground md:text-2xl">3</span>
                       </div>
                       <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">Accessibility</h3>
                       <ul className="space-y-3 text-left w-full">
@@ -456,8 +411,8 @@ export default function ContactlessTravelCaseStudyPage() {
                     </div>
 
                     <div className="flex flex-col items-center text-center">
-                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-white">4</span>
+                      <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary">
+                        <span className="text-xl font-medium text-primary-foreground md:text-2xl">4</span>
                       </div>
                       <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">Collaboration</h3>
                       <ul className="space-y-3 text-left w-full">
@@ -477,13 +432,11 @@ export default function ContactlessTravelCaseStudyPage() {
                   <ImageModal
                     src="/gov_components.png"
                     alt="Key GOV.UK design system components used in the eVisa flow"
-                  /* If ImageModal forwards props to <img>, you can add:
-                     aria-describedby="gov-caption-1"
-                  */
+                    aria-describedby="gov-caption-1"
                   />
                   <figcaption
                     id="gov-caption-1"
-                    className="mt-3 text-center text-xs sm:text-sm text-gray-400"
+                    className="case-study-caption"
                   >
                     Some of the styles and components from the GOV.UK Design System used in the prototype.
                   </figcaption>
@@ -500,14 +453,15 @@ export default function ContactlessTravelCaseStudyPage() {
                 <figure className="m-0">
                   <ImageModal
                     src="/contactless/app.gif"
+                    posterSrc="/contactless/app-poster.png"
                     alt="Animated hybrid prototype showing a user journey where a Figma mobile prototype is integrated with a GOV.UK coded prototype, allowing the user to pause the desktop flow and complete identity verification via the government app on their phone"
                     aria-describedby="app-caption"
                   />
                   <figcaption
                     id="app-caption"
-                    className="mt-3 text-center text-xs sm:text-sm text-gray-400"
+                    className="case-study-caption"
                   >
-                    I set up a Figma mobile prototype and connected it to a GOV.UK prototype. This simulated a real omni-channel journey. I used HTML, CSS, and JavaScript for this.
+                    I set up a Figma mobile prototype and connected it to a GOV.UK prototype built in HTML, CSS, and JavaScript. This simulated a real omni-channel journey.
                   </figcaption>
                 </figure>
 
@@ -523,10 +477,11 @@ export default function ContactlessTravelCaseStudyPage() {
                   <ImageModal
                     src="/contactless/process1.png"
                     alt="Mural board filled with sticky notes capturing findings from two intensive rounds of user testing with eVisa applicants"
+                    aria-describedby="process1-caption"
                   />
                   <figcaption
                     id="process1-caption"
-                    className="mt-3 text-center text-xs sm:text-sm text-gray-400"
+                    className="case-study-caption"
                   >
                     Mural board from two intensive rounds of user testing with eVisa applicants, capturing key insights and pain points.
                   </figcaption>
@@ -551,7 +506,7 @@ export default function ContactlessTravelCaseStudyPage() {
                 id="process-heading-2"
                 className="mb-6 sm:mb-8 text-2xl sm:text-3xl md:text-4xl font-display"
               >
-                Workstream 2: Process
+                Workstream 2: Testing remote biometrics
               </h2>
             </AnimateOnScroll>
 
@@ -565,11 +520,11 @@ export default function ContactlessTravelCaseStudyPage() {
             <AnimateOnScroll animation="fade-up" delay={300}>
               {/* Tighten bottom margin on the card wrapper to avoid compounding with the figure's top margin */}
               <div className="mt-8 mb-8">  {/* was: mb-12 */}
-                <div className="rounded-3xl bg-muted p-8 md:p-12 backdrop-blur-sm">
+                <div className="rounded-fui-lg bg-muted p-8 md:p-12 backdrop-blur-sm">
                   <div className="grid grid-cols-1 md:grid-cols-4 gap-12 md:gap-6">
                     <div className="flex flex-col items-center text-center">
-                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-white">1</span>
+                      <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary">
+                        <span className="text-xl font-medium text-primary-foreground md:text-2xl">1</span>
                       </div>
                       <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">User research</h3>
                       <ul className="space-y-3 text-left w-full">
@@ -580,8 +535,8 @@ export default function ContactlessTravelCaseStudyPage() {
                     </div>
 
                     <div className="flex flex-col items-center text-center">
-                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-white">2</span>
+                      <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary">
+                        <span className="text-xl font-medium text-primary-foreground md:text-2xl">2</span>
                       </div>
                       <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">Prototyping</h3>
                       <ul className="space-y-3 text-left w-full">
@@ -592,8 +547,8 @@ export default function ContactlessTravelCaseStudyPage() {
                     </div>
 
                     <div className="flex flex-col items-center text-center">
-                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-white">3</span>
+                      <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary">
+                        <span className="text-xl font-medium text-primary-foreground md:text-2xl">3</span>
                       </div>
                       <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">Security & trust</h3>
                       <ul className="space-y-3 text-left w-full">
@@ -604,8 +559,8 @@ export default function ContactlessTravelCaseStudyPage() {
                     </div>
 
                     <div className="flex flex-col items-center text-center">
-                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-white">4</span>
+                      <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary">
+                        <span className="text-xl font-medium text-primary-foreground md:text-2xl">4</span>
                       </div>
                       <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">Cross-collaboration</h3>
                       <ul className="space-y-3 text-left w-full">
@@ -629,16 +584,22 @@ export default function ContactlessTravelCaseStudyPage() {
                   />
                   <figcaption
                     id="process2-caption"
-                    className="mt-3 text-center text-xs sm:text-sm text-gray-400"
+                    className="case-study-caption"
                   >
                     Insights and sentiment analysis from 200 participants in biometric self-enrolment trials.
                   </figcaption>
                 </figure>
 
-                <p className="max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground text-center sm:text-left">
-                  Due to the sensitivity of Workstream 2, it is not possible to go into detail or show images of what I tested or designed.
-                  For more information, please reach out to me.
-                </p>
+                <aside className="max-w-3xl border-l-2 border-fui-primary py-1 pl-5 sm:pl-7" aria-label="Disclosure note">
+                  <p className="mb-3 font-mono text-xs tracking-widest-fui uppercase text-fui-dim">
+                    Disclosure note
+                  </p>
+                  <p className="text-sm sm:text-base leading-relaxed text-muted-foreground">
+                    Because this work involved sensitive biometric systems, I cannot show the tested interfaces. My
+                    contribution included evaluating supplier apps, identifying accessibility and trust risks, and
+                    translating findings into recommendations for security, privacy, research, and supplier teams.
+                  </p>
+                </aside>
               </div>
             </AnimateOnScroll>
 
@@ -661,70 +622,48 @@ export default function ContactlessTravelCaseStudyPage() {
 
             <AnimateOnScroll animation="fade-up" delay={300}>
               <div className="mt-8 mb-12">
-                <div className="rounded-3xl bg-muted p-8 md:p-12 backdrop-blur-sm">
-                  <div className="space-y-12">
-                    <div className="flex items-start gap-8 md:gap-16">
-                      <div className="w-32 md:w-40">
-                        <h3 className="text-xl md:text-2xl font-normal text-foreground">Enhancing the live service</h3>
-                      </div>
-                      <div className="flex-1">
-                        <div className="h-0.5 w-12 bg-white mb-6 opacity-70"></div>
-                        <p className="text-muted-foreground mb-4">For the first workstream involving the immigration status service, I focused on:</p>
-                        <ul className="space-y-4 text-muted-foreground">
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>Refining complex service steps into clear, accessible interactions for users with varied technical skills.</span>
-                          </li>
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>Validating the flow through usability testing, ensuring inclusivity and reliability across devices.</span>
-                          </li>
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>Co-designing an automated online account recovery journey to enhance self-service recovery.</span>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-8 md:gap-16">
-                      <div className="w-32 md:w-40">
-                        <h3 className="text-xl md:text-2xl font-normal text-foreground">Simulating fingerprint scanning</h3>
-                      </div>
-                      <div className="flex-1">
-                        <div className="h-0.5 w-12 bg-white mb-6 opacity-70"></div>
-                        <p className="text-muted-foreground mb-4">
-                          For the biometric self-enrolment trials, we assessed the feasibility of capturing fingerprints remotely using mobile apps:
-                        </p>
-                        <ul className="space-y-4 text-muted-foreground">
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>We captured more than 200 fingerprints in two weeks. We also evaluated 9 supplier apps through detailed heuristic reviews. We checked them against WCAG (POUR) and Nielsen’s usability heuristics.</span>
-                          </li>
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>We authored reports for app suppliers. These reports focused on improving app accessibility, usability, and preparing for remote biometric enrolment.</span>
-                          </li>
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>If remote enrolment is adopted, it could save on staff and equipment costs. It would stop wasted travel when permissions are not granted. This way, people can make smarter travel choices.</span>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
+                <div className="grid border-y border-black/10 dark:border-white/10 md:grid-cols-2">
+                  <article className="py-8 md:pr-10">
+                    <span className="mb-3 block font-mono text-xs tracking-widest-fui text-fui-primary">
+                      WORKSTREAM 1
+                    </span>
+                    <h3 className="text-xl sm:text-2xl font-medium text-foreground">Strengthening the live service</h3>
+                    <p className="mt-3 text-sm sm:text-base leading-relaxed text-muted-foreground">
+                      I simplified complex steps, improved accessibility across devices, and co-designed an automated
+                      online account recovery journey.
+                    </p>
+                  </article>
+
+                  <article className="border-t border-black/10 dark:border-white/10 py-8 md:border-t-0 md:border-l md:pl-10">
+                    <span className="mb-3 block font-mono text-xs tracking-widest-fui text-fui-primary">
+                      WORKSTREAM 2
+                    </span>
+                    <h3 className="text-xl sm:text-2xl font-medium text-foreground">Evaluating remote biometric enrolment</h3>
+                    <p className="mt-3 text-sm sm:text-base leading-relaxed text-muted-foreground">
+                      We captured more than 200 fingerprints, evaluated nine supplier apps against accessibility and
+                      usability heuristics, and produced recommendations for safer remote enrolment.
+                    </p>
+                  </article>
                 </div>
               </div>
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={200}>
               <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
-                For Workstream 1, I provided focused updates to the public service and internal platform. I improved content, simplified forms, and boosted accessibility. All changes were tested for a more inclusive experience.
+                Four Workstream 1 design decisions show how research findings became focused improvements to the
+                public service and internal platform.
               </p>
             </AnimateOnScroll>
 
             {/* 1) Relatable analogies, tooltips, screen reader tweaks */}
             <AnimateOnScroll animation="fade-in" delay={600}>
-              <div className="mt-8 space-y-6 sm:space-y-8">
+              <div className="mt-12 space-y-6 sm:space-y-8">
+                <div className="grid gap-3 border-t border-black/10 dark:border-white/10 pt-6 md:grid-cols-[5rem_minmax(0,1fr)] md:gap-8">
+                  <span className="font-mono text-xs tracking-widest-fui text-fui-primary" aria-hidden="true">WS1 · 01</span>
+                  <h3 className="text-xl sm:text-2xl font-medium text-foreground">
+                    Use plain language and improve the reading order
+                  </h3>
+                </div>
                 <figure className="m-0">
                   <ImageModal
                     src="/contactless/multiple_examples.png"
@@ -733,7 +672,7 @@ export default function ContactlessTravelCaseStudyPage() {
                   />
                   <figcaption
                     id="img-caption-multiple-examples"
-                    className="mt-3 text-center text-xs sm:text-sm text-gray-400"
+                    className="case-study-caption"
                   >
                     Plain language, acronym tooltips, and screen-reader-friendly layout.
                   </figcaption>
@@ -747,7 +686,13 @@ export default function ContactlessTravelCaseStudyPage() {
 
             {/* 2) Context-aware warning near decision radios */}
             <AnimateOnScroll animation="fade-in" delay={600}>
-              <div className="mt-8 space-y-6 sm:space-y-8">
+              <div className="mt-16 space-y-6 sm:space-y-8">
+                <div className="grid gap-3 border-t border-black/10 dark:border-white/10 pt-6 md:grid-cols-[5rem_minmax(0,1fr)] md:gap-8">
+                  <span className="font-mono text-xs tracking-widest-fui text-fui-primary" aria-hidden="true">WS1 · 02</span>
+                  <h3 className="text-xl sm:text-2xl font-medium text-foreground">
+                    Put warnings at the point of decision
+                  </h3>
+                </div>
                 <figure className="m-0">
                   <ImageModal
                     src="/contactless/pull_revelation.png"
@@ -756,7 +701,7 @@ export default function ContactlessTravelCaseStudyPage() {
                   />
                   <figcaption
                     id="img-caption-context-warning"
-                    className="mt-3 text-center text-xs sm:text-sm text-gray-400"
+                    className="case-study-caption"
                   >
                     Inline warning placed where the decision happens. Images are blurred deliberately to protect sensitive information.
                   </figcaption>
@@ -769,7 +714,13 @@ export default function ContactlessTravelCaseStudyPage() {
 
             {/* 3) Reducing overwhelm by splitting 9 radios into two themed pages */}
             <AnimateOnScroll animation="fade-in" delay={600}>
-              <div className="mt-8 space-y-6 sm:space-y-8">
+              <div className="mt-16 space-y-6 sm:space-y-8">
+                <div className="grid gap-3 border-t border-black/10 dark:border-white/10 pt-6 md:grid-cols-[5rem_minmax(0,1fr)] md:gap-8">
+                  <span className="font-mono text-xs tracking-widest-fui text-fui-primary" aria-hidden="true">WS1 · 03</span>
+                  <h3 className="text-xl sm:text-2xl font-medium text-foreground">
+                    Split complex choices to reduce overwhelm
+                  </h3>
+                </div>
                 <figure className="m-0">
                   <ImageModal
                     src="/contactless/reduce-overwhelm.png"
@@ -778,7 +729,7 @@ export default function ContactlessTravelCaseStudyPage() {
                   />
                   <figcaption
                     id="img-caption-two-page"
-                    className="mt-3 text-center text-xs sm:text-sm text-gray-400"
+                    className="case-study-caption"
                   >
                     Two-page flow clusters options together with helpful hints. Images are blurred deliberately to protect sensitive information.
                   </figcaption>
@@ -792,7 +743,13 @@ export default function ContactlessTravelCaseStudyPage() {
 
             {/* 4) WAVE contrast issue with greyed out radios */}
             <AnimateOnScroll animation="fade-in" delay={600}>
-              <div className="mt-8 space-y-6 sm:space-y-8">
+              <div className="mt-16 space-y-6 sm:space-y-8">
+                <div className="grid gap-3 border-t border-black/10 dark:border-white/10 pt-6 md:grid-cols-[5rem_minmax(0,1fr)] md:gap-8">
+                  <span className="font-mono text-xs tracking-widest-fui text-fui-primary" aria-hidden="true">WS1 · 04</span>
+                  <h3 className="text-xl sm:text-2xl font-medium text-foreground">
+                    Remove inaccessible disabled controls
+                  </h3>
+                </div>
                 <figure className="m-0">
                   <ImageModal
                     src="/contactless/wave_test.png"
@@ -801,15 +758,36 @@ export default function ContactlessTravelCaseStudyPage() {
                   />
                   <figcaption
                     id="img-caption-wave"
-                    className="mt-3 text-center text-xs sm:text-sm text-gray-400"
+                    className="case-study-caption"
                   >
                     Disabled radios failed contrast checks in WAVE. Images are blurred deliberately to protect sensitive information.
                   </figcaption>
                 </figure>
 
-                <p className="max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
-                  Disabled radios failed WCAG SC 1.4.3 contrast requirements (3:1 for UI components, 4.5:1 for text). I checked with users about removing the disabled radios since they served no purpose when another active user was viewing the case. This solved the problem.
-                </p>
+                <div className="max-w-3xl space-y-5 text-sm sm:text-base md:text-lg leading-relaxed text-muted-foreground">
+                  <p>
+                    I initially identified the disabled radios as failing WCAG SC 1.4.3 contrast requirements. Because
+                    they served no purpose when another active user was viewing the case, I explored whether they could
+                    be removed.
+                  </p>
+
+                  <p>
+                    During the review, I learned that disabled or inactive interface components are exempt from the
+                    contrast requirements in WCAG 2.2 SC 1.4.3 and SC 1.4.11. I shared this clarification with the team,
+                    and we ultimately kept the controls disabled.
+                  </p>
+
+                  <aside className="border-l-2 border-fui-primary py-1 pl-5 sm:pl-7" aria-label="Accessibility learning">
+                    <p className="mb-2 font-mono text-xs tracking-widest-fui uppercase text-fui-dim">
+                      What I learned
+                    </p>
+                    <p>
+                      Not every low-contrast disabled component constitutes a WCAG failure. The experience reinforced
+                      the importance of checking the precise scope of accessibility criteria before recommending a
+                      change.
+                    </p>
+                  </aside>
+                </div>
 
               </div>
             </AnimateOnScroll>
@@ -835,73 +813,12 @@ export default function ContactlessTravelCaseStudyPage() {
             <AnimateOnScroll animation="bounce-up">
               <div className="mt-8 mb-8">
                 <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3" role="group" aria-label="Key metrics">
-
-                  {/* Users total with growth */}
-                  <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm" aria-label="Users metric">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-foreground">
-                      <MetricShuffle final="7M" duration={800} />
-                      <span className="ml-2 align-middle text-base sm:text-lg text-emerald-400">
-                        <MetricShuffle final="+40% increase" duration={800} speed={40} scrambleLetters />
-                      </span>
-                    </div>
-                    <div className="text-xs sm:text-sm md:text-base text-muted-foreground">
-                      global users, up from 5m
-                    </div>
-                  </div>
-
-                  {/* Completion rate with pp lift */}
-                  <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm" aria-label="Completion rate metric">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-foreground">
-                      <MetricShuffle final="83%" duration={800} />
-                      <span className="ml-2 align-middle text-base sm:text-lg text-emerald-400">
-                        <MetricShuffle final="+9pp" duration={800} speed={40} scrambleLetters />
-                      </span>
-                    </div>
-                    <div className="text-xs sm:text-sm md:text-base text-muted-foreground">
-                      completion rate, up from 74% in 2 months
-                    </div>
-                  </div>
-
-                  {/* GDS assessment */}
-                  <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm" aria-label="GDS assessment result">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-foreground">
-                      <MetricShuffle final="1st" duration={800} scrambleLetters />
-                    </div>
-                    <div className="text-xs sm:text-sm md:text-base text-muted-foreground">
-                      GDS assessment pass on first attempt
-                    </div>
-                  </div>
-
-                  {/* Journey time reduction */}
-                  <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm" aria-label="Journey time reduction metric">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-foreground">
-                      <MetricShuffle final="-4%" duration={800} />
-                    </div>
-                    <div className="text-xs sm:text-sm md:text-base text-muted-foreground">
-                      average journey time, now 21 mins
-                    </div>
-                  </div>
-
-                  {/* Offline requests reduction */}
-                  <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm" aria-label="Offline requests reduction metric">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-foreground">
-                      <MetricShuffle final="-67%" duration={800} />
-                    </div>
-                    <div className="text-xs sm:text-sm md:text-base text-muted-foreground">
-                      fewer offline account recovery requests
-                    </div>
-                  </div>
-
-                  {/* Remote trial participants */}
-                  <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm" aria-label="Testing participants metric">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-foreground">
-                      <MetricShuffle final="200+" duration={800} />
-                    </div>
-                    <div className="text-xs sm:text-sm md:text-base text-muted-foreground">
-                      participants in biometric enrolment trials
-                    </div>
-                  </div>
-
+                  <CaseStudyMetric label="Global users served" value="7M" note="40% growth from 5M" trend="up" />
+                  <CaseStudyMetric label="Completion rate" value="83%" note="9 percentage points in 2 months" trend="up" />
+                  <CaseStudyMetric label="GDS service assessment" value="Passed" note="First attempt · progressed to public beta" scrambleLetters />
+                  <CaseStudyMetric label="Average journey time" value="21 min" note="4% reduction" trend="down" />
+                  <CaseStudyMetric label="Offline recovery requests" value="-67%" note="Fewer requests after online recovery launched" />
+                  <CaseStudyMetric label="Biometric enrolment trials" value="200+" note="Participants across remote trials" />
                 </div>
               </div>
             </AnimateOnScroll>
@@ -909,7 +826,7 @@ export default function ContactlessTravelCaseStudyPage() {
             <AnimateOnScroll animation="bounce-up">
               {/* Trim bottom margin so it doesn't compound with the quote block that follows */}
               <div className="mt-8 mb-8">  {/* was: mb-12 */}
-                <div className="rounded-3xl bg-muted p-8 md:p-12 backdrop-blur-sm">
+                <div className="rounded-fui-lg bg-muted p-8 md:p-12 backdrop-blur-sm">
                   {/* Slightly tighter vertical rhythm inside the card */}
                   <div className="space-y-10">  {/* was: space-y-12 */}
                     <div className="flex items-start gap-8 md:gap-16">
@@ -917,7 +834,7 @@ export default function ContactlessTravelCaseStudyPage() {
                         <h3 className="text-xl md:text-2xl font-normal text-foreground">Workstream 1</h3>
                       </div>
                       <div className="flex-1">
-                        <div className="h-0.5 w-12 bg-white mb-4 opacity-70"></div>  {/* was: mb-6 */}
+                        <div className="mb-4 h-0.5 w-12 bg-foreground/70"></div>  {/* was: mb-6 */}
                         <p className="text-muted-foreground mb-4">
                           We achieved a first-time GDS assessment pass, allowing the service to move to public beta.
                         </p>
@@ -943,7 +860,7 @@ export default function ContactlessTravelCaseStudyPage() {
                         <h3 className="text-xl md:text-2xl font-normal text-foreground">Workstream 2</h3>
                       </div>
                       <div className="flex-1">
-                        <div className="h-0.5 w-12 bg-white mb-4 opacity-70"></div>  {/* was: mb-6 */}
+                        <div className="mb-4 h-0.5 w-12 bg-foreground/70"></div>  {/* was: mb-6 */}
                         <p className="text-muted-foreground">
                           Enhanced user trust in biometric authentication systems, achieving 100% willingness to join follow-up enrolment trials.
                         </p>
@@ -955,10 +872,10 @@ export default function ContactlessTravelCaseStudyPage() {
             </AnimateOnScroll>
 
             {/* Bring the quote block closer to the card above */}
-            <div className="mt-6 rounded-3xl bg-muted p-8 backdrop-blur-sm">  {/* was: mt-8 */}
+            <div className="mt-6 rounded-fui-lg bg-muted p-8 backdrop-blur-sm">  {/* was: mt-8 */}
               <div className="flex flex-col space-y-4">
                 <blockquote className="relative">
-                  <div className="absolute -top-4 -left-4 text-4xl text-gray-600" aria-hidden="true">
+                  <div className="absolute -top-4 -left-4 text-4xl text-muted-foreground/60" aria-hidden="true">
                     "
                   </div>
                   <p className="text-xl italic text-muted-foreground pl-6 pr-6">
@@ -968,7 +885,7 @@ export default function ContactlessTravelCaseStudyPage() {
                   <footer className="mt-4 text-sm text-muted-foreground pl-6">
                     Participant in the biometric trials
                   </footer>
-                  <div className="absolute -bottom-4 -right-4 text-4xl text-gray-600" aria-hidden="true">
+                  <div className="absolute -bottom-4 -right-4 text-4xl text-muted-foreground/60" aria-hidden="true">
                     "
                   </div>
                 </blockquote>

@@ -10,7 +10,7 @@ export default function ArchivePage() {
     <div className="min-h-screen w-full min-w-0 overflow-x-hidden bg-background text-foreground font-sans">
       <TopNavigation />
 
-      <main className="w-full min-w-0 px-4 sm:px-8 py-16 md:py-24">
+      <main id="main-content" className="w-full min-w-0 px-4 sm:px-8 py-16 md:py-24">
         <div className="max-w-6xl mx-auto w-full min-w-0">
           <section className="space-y-12 min-w-0">
             <div className="space-y-2">
@@ -24,7 +24,7 @@ export default function ArchivePage() {
                 Earlier projects retained for reference. Selected work lives under{" "}
                 <a
                   href="/#work"
-                  className="text-fui-primary hover:underline underline-offset-4"
+                  className="text-fui-primary underline underline-offset-4"
                 >
                   Projects on the home page
                 </a>
@@ -47,6 +47,7 @@ export default function ArchivePage() {
                     href={project.href}
                     imageSrc={project.imageSrc}
                     status={{ label: project.status }}
+                    headingLevel="h2"
                   />
                 </div>
               ))}

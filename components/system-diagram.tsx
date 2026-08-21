@@ -1,6 +1,6 @@
 export default function SystemDiagram() {
   return (
-    <div className="rounded-3xl bg-muted p-8 md:p-12 backdrop-blur-sm">
+    <div className="rounded-fui-lg bg-muted p-8 md:p-12 backdrop-blur-sm">
       <div className="flex flex-col items-center justify-center">
         {/* TV Section */}
         <div className="relative mb-16">
@@ -19,7 +19,7 @@ export default function SystemDiagram() {
         </div>
 
         {/* AR Headsets Section */}
-        <div className="flex justify-center gap-32 mt-8" aria-label="AR headset interaction diagram">
+        <div className="flex justify-center gap-32 mt-8" role="group" aria-label="AR headset interaction diagram">
           {/* Left Headset */}
           <div className="relative">
             <div className="w-24 h-24 bg-gray-400 rounded-full" aria-hidden="true"></div>

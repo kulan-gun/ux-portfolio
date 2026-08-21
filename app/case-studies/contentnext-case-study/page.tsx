@@ -8,11 +8,11 @@ import AnimateOnScroll from "@/components/animate-on-scroll"
 import TopNavigation from "@/components/top-navigation"
 import BackToTopButton from "@/components/back-to-top-button"
 import Footer from "@/components/footer"
-import SummaryCard from "@/components/summary-card"
-import UXLessonsCard from "@/components/ux-lessons-card"
-import MetricShuffle from "@/components/metric-shuffle"
+import CaseStudyMetric from "@/components/case-study-metric"
 import CaseStudyHeader, { CaseStudyBackLink } from "@/components/case-study-header"
+import MobileTableOfContents from "@/components/mobile-table-of-contents"
 import { getProjectById } from "@/lib/projects"
+import { motionSafeScrollBehavior } from "@/lib/accessibility"
 
 const project = getProjectById("contentnext")!
 
@@ -23,6 +23,150 @@ const sections = [
   { id: "solution", title: "Solution" },
   { id: "results", title: "Results" },
   { id: "conclusion", title: "Conclusion" },
+]
+
+function SystemWorkflow() {
+  const steps = [
+    {
+      title: "Describe the UI need",
+      detail: "An engineer or designer provides the product context and content type.",
+    },
+    {
+      title: "Guide the input",
+      detail: "Structured questions capture the information needed for a useful response.",
+    },
+    {
+      title: "Apply guardrails",
+      detail: "Modular prompts encode Autodesk Weave standards, patterns, and examples.",
+    },
+    {
+      title: "Review and ship",
+      detail: "Teams receive clearer UI content in the tools where they already work.",
+    },
+  ]
+
+  return (
+    <figure>
+      <figcaption className="sr-only">ContentNext workflow from product context to usable UI content</figcaption>
+      <ol className="grid border-y border-black/10 dark:border-white/10 md:grid-cols-4">
+        {steps.map((step, index) => (
+          <li
+            key={step.title}
+            className="border-t border-black/10 dark:border-white/10 py-6 first:border-t-0 md:border-t-0 md:border-l md:px-6 md:first:border-l-0 md:first:pl-0 md:last:pr-0"
+          >
+            <span className="mb-4 block font-mono text-xs tracking-widest-fui text-fui-primary" aria-hidden="true">
+              {String(index + 1).padStart(2, "0")}
+            </span>
+            <h3 className="text-base sm:text-lg font-medium text-foreground">{step.title}</h3>
+            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{step.detail}</p>
+          </li>
+        ))}
+      </ol>
+    </figure>
+  )
+}
+
+function ReadabilityComparison() {
+  const comparisons = [
+    { label: "Guided input", value: "−2.86 grades", width: "95%", accent: true },
+    { label: "Free text", value: "−1.88 grades", width: "63%", accent: false },
+  ]
+
+  return (
+    <figure className="mt-10 border-y border-black/10 dark:border-white/10 py-8">
+      <figcaption className="mb-7">
+        <span className="mb-2 block font-mono text-xs tracking-widest-fui text-fui-primary">
+          CONTROLLED COMPARISON
+        </span>
+        <span className="text-xl sm:text-2xl font-medium text-foreground">
+          Guided input improved readability more
+        </span>
+        <span className="mt-2 block text-sm text-muted-foreground">
+          Average Flesch-Kincaid grade reduction; a larger drop means easier-to-read content.
+        </span>
+      </figcaption>
+      <div className="space-y-6">
+        {comparisons.map((comparison) => (
+          <div key={comparison.label} className="grid gap-2 sm:grid-cols-[8rem_minmax(0,1fr)_7rem] sm:items-center sm:gap-5">
+            <span className="text-sm font-medium text-foreground">{comparison.label}</span>
+            <div className="h-2 bg-muted" aria-hidden="true">
+              <div
+                className={`h-full ${comparison.accent ? "bg-fui-primary" : "bg-muted-foreground/40"}`}
+                style={{ width: comparison.width }}
+              />
+            </div>
+            <span className="font-mono text-xs tracking-wider-fui text-muted-foreground sm:text-right">
+              {comparison.value}
+            </span>
+          </div>
+        ))}
+      </div>
+    </figure>
+  )
+}
+
+function DeliveryRouteDiagram() {
+  const routes = [
+    {
+      status: "SHIPPED",
+      title: "Custom GPT",
+      detail: "Lowest-friction route for everyday drafting in ChatGPT Enterprise.",
+      signal: "Default entry point",
+    },
+    {
+      status: "INTEGRATED",
+      title: "Cursor workflow",
+      detail: "Connects governed content guidance to codebase and repository workflows.",
+      signal: "Production pathway",
+    },
+    {
+      status: "SUNSET",
+      title: "AWS toolkit app",
+      detail: "Sunset after evaluation because its infrastructure and maintenance costs outweighed the adoption benefit.",
+      signal: "Avoided ongoing overhead",
+    },
+  ]
+
+  return (
+    <figure>
+      <figcaption className="sr-only">ContentNext production routes</figcaption>
+      <div className="grid border-y border-black/10 dark:border-white/10 md:grid-cols-3">
+        {routes.map((route, index) => (
+          <article
+            key={route.title}
+            className="flex flex-col border-t border-black/10 dark:border-white/10 py-8 first:border-t-0 md:border-t-0 md:border-l md:px-8 md:first:border-l-0 md:first:pl-0 md:last:pr-0"
+          >
+            <span className="font-mono text-xs tracking-widest-fui text-fui-primary">{route.status}</span>
+            <h3 className="mt-3 text-xl font-medium text-foreground">{route.title}</h3>
+            <p className="mt-3 text-sm sm:text-base leading-relaxed text-muted-foreground">{route.detail}</p>
+            <div className="mt-auto pt-6">
+              <p className="border-t border-black/10 dark:border-white/10 pt-3 font-mono text-xs tracking-wider-fui text-fui-dim">
+                {String(index + 1).padStart(2, "0")} · {route.signal}
+              </p>
+            </div>
+          </article>
+        ))}
+      </div>
+    </figure>
+  )
+}
+
+const lessons = [
+  {
+    title: "Bespoke tools face lifecycle risk",
+    description:
+      "In enterprise settings, custom internal apps can be outpaced by licensed platform tools. Shipping where users already work often improves adoption, cost, and resilience.",
+  },
+  {
+    title: "Prompt engineering is product design",
+    description:
+      "Quality output required rules, examples, constraints, and maintainable knowledge structures. Designing those systems had direct product impact.",
+  },
+  {
+    title: "Proxy testing can unlock momentum",
+    description:
+      "When formal research capacity is constrained, structured proxy testing can still produce actionable findings, as long as limits are explicit and follow-up instrumentation is planned.",
+  },
 ]
 
 export default function ContentNextCaseStudyPage() {
@@ -74,7 +218,7 @@ export default function ContentNextCaseStudyPage() {
     if (element) {
       window.scrollTo({
         top: element.offsetTop - 100,
-        behavior: "smooth",
+        behavior: motionSafeScrollBehavior(),
       })
     }
   }
@@ -82,33 +226,33 @@ export default function ContentNextCaseStudyPage() {
   return (
     <div className="min-h-screen bg-background text-foreground font-sans flex flex-col">
       <ScrollProgressIndicator />
-      <TopNavigation onMobileMenuToggle={(isOpen: boolean) => setSidebarOpen(isOpen)} />
+      <TopNavigation backHref="/#work" />
 
       <div className="flex flex-1 min-h-0">
         {!isMobile && (
           <aside
             id="section-nav"
-            className="w-64 md:sticky md:top-16 md:self-start md:pt-16 shrink-0 bg-background"
-            role="navigation"
+            className="hidden w-64 shrink-0 border-r border-sidebar-border bg-sidebar md:sticky md:top-16 md:block md:self-start md:pt-16"
             aria-label="Section navigation"
           >
             <CaseStudyBackLink />
 
-            <nav className="space-y-6 text-muted-foreground pl-8" aria-label="Table of contents">
-              <ul className="space-y-6">
+            <nav className="px-6 text-muted-foreground" aria-label="Table of contents">
+              <ul className="space-y-2">
                 {sections.map((section) => (
                   <li key={section.id}>
                     <button
-                      className="flex items-center cursor-pointer group w-full text-left focus:outline-none focus:ring-2 focus:ring-fui-primary focus:ring-opacity-50 rounded-sm"
+                      type="button"
+                      className={`group flex w-full cursor-pointer items-center rounded-fui py-2 pr-3 text-left transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-fui-primary ${activeSection === section.id ? "bg-sidebar-accent" : "hover:bg-sidebar-accent/60"}`}
                       onClick={() => scrollToSection(section.id)}
                       aria-current={activeSection === section.id ? "location" : undefined}
                     >
                       <div
-                        className={`w-1 h-6 mr-4 rounded transition-colors duration-300 ${activeSection === section.id ? "bg-primary" : "bg-transparent group-hover:bg-primary/50"}`}
+                        className={`mr-3 h-5 w-0.5 transition-colors duration-200 ${activeSection === section.id ? "bg-primary" : "bg-transparent group-hover:bg-primary/50"}`}
                         aria-hidden="true"
                       />
                       <span
-                        className={`text-sm font-light transition-colors duration-300 ${activeSection === section.id ? "text-foreground" : "text-muted-foreground group-hover:text-foreground/80"}`}
+                        className={`text-sm transition-colors duration-200 ${activeSection === section.id ? "font-medium text-foreground" : "text-muted-foreground group-hover:text-foreground"}`}
                       >
                         {section.title}
                       </span>
@@ -121,11 +265,14 @@ export default function ContentNextCaseStudyPage() {
         )}
 
         <div className={`flex-1 min-w-0 flex flex-col ${isMobile ? "w-full" : ""}`}>
-          <main className={`flex-1 px-4 sm:px-8 py-12 ${isMobile ? "w-full" : ""}`}>
+          <main id="main-content" className={`flex-1 px-4 py-8 sm:px-8 md:py-12 ${isMobile ? "w-full" : ""}`}>
             <div className="max-w-6xl mx-auto">
-              <CaseStudyHeader project={project} />
+              <CaseStudyHeader
+                project={project}
+                mobileNavigation={<MobileTableOfContents sections={sections} />}
+              />
 
-              <section id="overview" className="min-h-screen py-8 sm:py-12" aria-labelledby="overview-heading">
+              <section id="overview" className="py-8 sm:py-12" aria-labelledby="overview-heading">
                 <AnimateOnScroll animation="bounce-up">
                   <h2 id="overview-heading" className="mb-6 sm:mb-8 text-2xl sm:text-3xl md:text-4xl font-display">
                     Overview
@@ -134,80 +281,40 @@ export default function ContentNextCaseStudyPage() {
 
                 <AnimateOnScroll animation="fade-up" delay={200}>
                   <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
-                    ContentNext is an AI-powered content design system created for Fusion teams at Autodesk. It helps
-                    designers and engineers produce consistent, Weave-compliant in-product copy such as tooltips,
-                    warnings, errors, success messages, and notifications. The key shift was moving from a bespoke app
-                    to a Custom GPT plus Cursor workflow so teams could work where they already are.
+                    ContentNext helps Autodesk Fusion teams create clearer, Weave-compliant UI content with AI. I moved
+                    it from a bespoke app to a Custom GPT and Cursor workflow so teams could use it where they already
+                    work.
                   </p>
                 </AnimateOnScroll>
 
                 <AnimateOnScroll animation="fade-up" delay={400}>
                   <div className="mt-8 mb-8">
+                    <dl className="mb-8 grid gap-5 border-y border-border py-5 sm:grid-cols-2">
+                      <div>
+                        <dt className="font-mono text-xs tracking-widest-fui text-fui-dim">DURATION</dt>
+                        <dd className="mt-2 text-sm text-muted-foreground">6 months</dd>
+                      </div>
+                      <div>
+                        <dt className="font-mono text-xs tracking-widest-fui text-fui-dim">COLLABORATORS</dt>
+                        <dd className="mt-2 text-sm text-muted-foreground">CXD reviewers, content leads, and leadership</dd>
+                      </div>
+                    </dl>
                     <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3" role="group" aria-label="Key metrics">
-                      <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                        <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-foreground">
-                          <MetricShuffle final="~2.2/3" />
-                        </div>
-                        <div className="text-xs sm:text-sm md:text-base text-muted-foreground">
-                          average first-pass publishability score
-                        </div>
-                      </div>
-                      <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                        <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-foreground">
-                          <MetricShuffle final="-4.67" />
-                        </div>
-                        <div className="text-xs sm:text-sm md:text-base text-muted-foreground">
-                          average Flesch-Kincaid readability grade reduction for warning messages
-                        </div>
-                      </div>
-                      <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                        <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-foreground">
-                          <MetricShuffle final="0" />
-                        </div>
-                        <div className="text-xs sm:text-sm md:text-base text-muted-foreground">
-                          additional AWS hosting cost in production
-                        </div>
-                      </div>
+                      <CaseStudyMetric label="First-pass publishability" value="~2.2/3" note="Average quality score" />
+                      <CaseStudyMetric label="Warning readability" value="-4.67" note="Average grade-level reduction" />
+                      <CaseStudyMetric label="Production hosting cost" value="0" note="Additional AWS hosting cost" />
                     </div>
                   </div>
                 </AnimateOnScroll>
 
                 <AnimateOnScroll animation="fade-up" delay={500}>
                   <div className="mt-12 mb-12">
-                    <SummaryCard
-                      sections={[
-                        {
-                          title: "Key facts",
-                          items: [
-                            "Project duration: 6 months (October 2025 to present)",
-                            "Role: Sole designer, owning prompt architecture, testing, and the production decision",
-                            "Cross-functional inputs from CXD reviewers, leadership, and content design leads",
-                          ],
-                        },
-                        {
-                          title: "Challenges",
-                          items: [
-                            "No dedicated user research resource for formal studies",
-                            "Need to move quickly in a fast-changing product environment",
-                            "Balancing governance depth with speed-to-value",
-                          ],
-                        },
-                        {
-                          title: "Approach",
-                          items: [
-                            "Improved readability metric language to remove ambiguity around target scores",
-                            "Encoded Weave standards into a modular prompt architecture",
-                            "Tested multiple delivery models before selecting production route",
-                            "Ran controlled guided-vs-free-text comparisons",
-                          ],
-                        },
-                      ]}
-                    />
+                    <SystemWorkflow />
                   </div>
                 </AnimateOnScroll>
               </section>
 
-              <section id="problem" className="min-h-screen py-8 sm:py-12" aria-labelledby="problem-heading">
+              <section id="problem" className="py-8 sm:py-12" aria-labelledby="problem-heading">
                 <AnimateOnScroll animation="bounce-up">
                   <h2 id="problem-heading" className="mb-6 sm:mb-8 text-2xl sm:text-3xl md:text-4xl font-display">
                     Problem
@@ -216,47 +323,49 @@ export default function ContentNextCaseStudyPage() {
 
                 <AnimateOnScroll animation="fade-up" delay={200}>
                   <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
-                    Content design was becoming a delivery bottleneck. Engineers needed compliant copy late in build
-                    cycles, and guidance was fragmented across docs, Confluence, and tribal knowledge. Informal AI
-                    drafting was fast but inconsistent, with uneven structure and tone.
+                    Engineers needed compliant UI copy late in build cycles, but the guidance was scattered and expert
+                    review did not scale. Informal AI drafting was faster, but its quality and tone were inconsistent.
                   </p>
                 </AnimateOnScroll>
 
                 <AnimateOnScroll animation="fade-up" delay={350}>
                   <div className="mt-8 mb-12">
-                    <SummaryCard
-                      sections={[
-                        {
-                          title: "User pain points",
-                          items: [
-                            "Engineers needed quality UI copy without content design expertise",
-                            "Content designers spent time rewriting drafts instead of shaping systems",
-                            "Ad-hoc AI outputs lacked consistency and Weave compliance",
-                          ],
-                        },
-                        {
-                          title: "Business challenges",
-                          items: [
-                            "Inconsistent copy quality across Fusion surfaces",
-                            "Manual reviews consumed CXD team capacity",
-                            "No scalable way to enforce standards at point of creation",
-                          ],
-                        },
-                        {
-                          title: "Opportunities",
-                          items: [
-                            "Formalize existing AI drafting behavior with design guardrails",
-                            "Encode Weave standards into reusable prompts and patterns",
-                            "Ship lightweight tooling with high adoption and low overhead",
-                          ],
-                        },
-                      ]}
-                    />
+                    <figure>
+                      <figcaption className="sr-only">ContentNext content-design delivery bottleneck</figcaption>
+                      <ol className="grid border-y border-black/10 dark:border-white/10 md:grid-cols-4">
+                        {[
+                          ["01", "Late copy need", "UI content was often requested near the end of build cycles."],
+                          ["02", "Scattered guidance", "Standards lived across documentation, Confluence, and expert knowledge."],
+                          ["03", "Inconsistent AI drafts", "Ad-hoc prompts produced uneven structure, tone, and compliance."],
+                          ["04", "Manual rewrite", "Content designers fixed drafts instead of improving the wider system."],
+                        ].map(([number, title, detail]) => (
+                          <li
+                            key={number}
+                            className="border-t border-black/10 dark:border-white/10 py-6 first:border-t-0 md:border-t-0 md:border-l md:px-6 md:first:border-l-0 md:first:pl-0 md:last:pr-0"
+                          >
+                            <span className="font-mono text-xs tracking-widest-fui text-fui-primary" aria-hidden="true">
+                              {number}
+                            </span>
+                            <h3 className="mt-3 text-base sm:text-lg font-medium text-foreground">{title}</h3>
+                            <p className="mt-2 text-sm leading-relaxed text-muted-foreground">{detail}</p>
+                          </li>
+                        ))}
+                      </ol>
+                    </figure>
+                    <aside className="mt-8 max-w-4xl border-l-2 border-fui-primary py-1 pl-5 sm:pl-7" aria-label="Design opportunity">
+                      <p className="mb-2 font-mono text-xs tracking-widest-fui uppercase text-fui-dim">
+                        Design opportunity
+                      </p>
+                      <p className="text-lg leading-relaxed text-foreground">
+                        Help engineers create consistent, compliant UI copy in the tools they already use—without
+                        adding another complex system to learn.
+                      </p>
+                    </aside>
                   </div>
                 </AnimateOnScroll>
               </section>
 
-              <section id="process" className="min-h-screen py-8 sm:py-12" aria-labelledby="process-heading">
+              <section id="process" className="py-8 sm:py-12" aria-labelledby="process-heading">
                 <AnimateOnScroll animation="bounce-up">
                   <h2 id="process-heading" className="mb-6 sm:mb-8 text-2xl sm:text-3xl md:text-4xl font-display">
                     Process
@@ -265,44 +374,52 @@ export default function ContentNextCaseStudyPage() {
 
                 <AnimateOnScroll animation="fade-up" delay={200}>
                   <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
-                    The work progressed through three phases: baseline and prompt architecture, guided-vs-free-text
-                    testing, and Custom GPT delivery evaluation. Each phase was designed to reduce guesswork and make
-                    decisions with evidence.
+                    Three phases moved the work from an untested concept to an evidence-backed production route.
                   </p>
                 </AnimateOnScroll>
 
                 <AnimateOnScroll animation="fade-up" delay={300}>
-                  <div className="mt-8 mb-12 rounded-3xl bg-muted p-8 md:p-12 backdrop-blur-sm">
-                    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  <ol className="mt-8 mb-12 border-y border-black/10 dark:border-white/10">
+                    <li className="grid gap-4 py-8 md:grid-cols-[5rem_minmax(0,1fr)] md:gap-8">
+                      <span className="font-mono text-sm tracking-widest-fui text-fui-primary" aria-hidden="true">
+                        01
+                      </span>
                       <div>
-                        <h3 className="text-xl font-normal text-foreground mb-4">Phase 1</h3>
-                        <p className="text-muted-foreground text-sm sm:text-base">
-                          Established a baseline with expert heuristic review, then built an AUTOMAT-based prompt
-                          architecture. Also redesigned metric labels to clarify grade-level and reading-ease targets.
+                        <h3 className="text-xl font-medium text-foreground mb-3">Establishing the baseline</h3>
+                        <p className="max-w-3xl text-muted-foreground text-sm sm:text-base">
+                          Reviewed baseline outputs, clarified the readability measures, and encoded Weave standards
+                          into a modular prompt architecture.
                         </p>
                       </div>
+                    </li>
+                    <li className="grid gap-4 border-t border-black/10 dark:border-white/10 py-8 md:grid-cols-[5rem_minmax(0,1fr)] md:gap-8">
+                      <span className="font-mono text-sm tracking-widest-fui text-fui-primary" aria-hidden="true">
+                        02
+                      </span>
                       <div>
-                        <h3 className="text-xl font-normal text-foreground mb-4">Phase 2</h3>
-                        <p className="text-muted-foreground text-sm sm:text-base">
-                          Compared guided input against free text while holding the backend pipeline and prompts
-                          constant. Guided input improved readability grade overall (-2.86 vs -1.88), with the strongest
-                          uplift on warning content.
+                        <h3 className="text-xl font-medium text-foreground mb-3">Comparing input methods</h3>
+                        <p className="max-w-3xl text-muted-foreground text-sm sm:text-base">
+                          Held the backend and prompts constant, then compared guided input with free text.
                         </p>
                       </div>
+                    </li>
+                    <li className="grid gap-4 border-t border-black/10 dark:border-white/10 py-8 md:grid-cols-[5rem_minmax(0,1fr)] md:gap-8">
+                      <span className="font-mono text-sm tracking-widest-fui text-fui-primary" aria-hidden="true">
+                        03
+                      </span>
                       <div>
-                        <h3 className="text-xl font-normal text-foreground mb-4">Phase 3</h3>
-                        <p className="text-muted-foreground text-sm sm:text-base">
-                          Evaluated AWS toolkit, Custom GPT, and Cursor workflows. Selected Custom GPT for
-                          low-friction drafting, with Cursor as the repo pathway and the app retained as a governance
-                          option.
+                        <h3 className="text-xl font-medium text-foreground mb-3">Choosing the production route</h3>
+                        <p className="max-w-3xl text-muted-foreground text-sm sm:text-base">
+                          Compared the AWS toolkit, Custom GPT, and Cursor before selecting the lowest-friction route.
                         </p>
                       </div>
-                    </div>
-                  </div>
+                    </li>
+                  </ol>
+                  <ReadabilityComparison />
                 </AnimateOnScroll>
               </section>
 
-              <section id="solution" className="min-h-screen py-8 sm:py-12" aria-labelledby="solution-heading">
+              <section id="solution" className="py-8 sm:py-12" aria-labelledby="solution-heading">
                 <AnimateOnScroll animation="bounce-up">
                   <h2 id="solution-heading" className="mb-6 sm:mb-8 text-2xl sm:text-3xl md:text-4xl font-display">
                     Solution
@@ -311,42 +428,14 @@ export default function ContentNextCaseStudyPage() {
 
                 <AnimateOnScroll animation="fade-up" delay={200}>
                   <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
-                    ContentNext shipped as a system, not just a single tool: a production Custom GPT for zero-friction
-                    drafting, Cursor workflows for repo-level pathways, and modular knowledge files for fast iteration.
-                    This preserved quality and speed while removing infra overhead from the default path.
+                    ContentNext shipped as a layered system: Custom GPT for everyday drafting, Cursor for code-connected
+                    workflows, and modular knowledge files for fast iteration.
                   </p>
                 </AnimateOnScroll>
 
                 <AnimateOnScroll animation="fade-up" delay={350}>
                   <div className="mt-8 mb-12">
-                    <SummaryCard
-                      sections={[
-                        {
-                          title: "What shipped",
-                          items: [
-                            "Custom GPT in ChatGPT Enterprise for structured in-product content drafting",
-                            "Cursor-adjacent workflows for codebase-connected production routes",
-                            "Modular prompt stack: GPT instructions, conversation starter, examples, and system prompt",
-                          ],
-                        },
-                        {
-                          title: "What was paused",
-                          items: [
-                            "The AWS toolkit app was paused to avoid infrastructure and maintenance overhead",
-                            "Governed app remains a future option when deterministic enforcement is required",
-                          ],
-                        },
-                        {
-                          title: "Core design decisions",
-                          items: [
-                            "Meet users where they already work",
-                            "Use structure and constraints to make AI reliable",
-                            "Treat guided input as behavior design, not just form design",
-                            "Stay explicit about evidence limits when quality fields are incomplete",
-                          ],
-                        },
-                      ]}
-                    />
+                    <DeliveryRouteDiagram />
                   </div>
                 </AnimateOnScroll>
               </section>
@@ -369,59 +458,36 @@ export default function ContentNextCaseStudyPage() {
                 <AnimateOnScroll animation="fade-up" delay={300}>
                   <div className="mt-8 mb-8">
                     <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-4" role="group" aria-label="Outcome metrics">
-                      <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                        <div className="mb-2 text-2xl sm:text-3xl md:text-4xl font-normal text-foreground">
-                          <MetricShuffle final="2.2/3" />
-                        </div>
-                        <div className="text-xs sm:text-sm md:text-base text-muted-foreground">
-                          average publishability score
-                        </div>
-                      </div>
-                      <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                        <div className="mb-2 text-2xl sm:text-3xl md:text-4xl font-normal text-foreground">
-                          <MetricShuffle final="-2.86" />
-                        </div>
-                        <div className="text-xs sm:text-sm md:text-base text-muted-foreground">
-                          guided-input grade change overall
-                        </div>
-                      </div>
-                      <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                        <div className="mb-2 text-2xl sm:text-3xl md:text-4xl font-normal text-foreground">
-                          <MetricShuffle final="0" />
-                        </div>
-                        <div className="text-xs sm:text-sm md:text-base text-muted-foreground">
-                          AWS hosting and DevOps overhead in production
-                        </div>
-                      </div>
-                      <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                        <div className="mb-2 text-2xl sm:text-3xl md:text-4xl font-normal text-foreground">
-                          <MetricShuffle final="-4.67" />
-                        </div>
-                        <div className="text-xs sm:text-sm md:text-base text-muted-foreground">
-                          average Flesch-Kincaid readability grade reduction for warning messages
-                        </div>
-                      </div>
+                      <CaseStudyMetric label="Publishability" value="2.2/3" note="Average score" compact />
+                      <CaseStudyMetric label="Guided-input readability" value="-2.86" note="Average grade-level change" compact />
+                      <CaseStudyMetric label="Production overhead" value="0" note="AWS hosting and DevOps" compact />
+                      <CaseStudyMetric label="Warning readability" value="-4.67" note="Average grade-level reduction" compact />
                     </div>
                   </div>
                 </AnimateOnScroll>
 
                 <AnimateOnScroll animation="fade-up" delay={450}>
-                  <div className="mt-8 mb-8 rounded-3xl bg-muted p-8 backdrop-blur-sm">
-                    <p className="text-sm sm:text-base text-muted-foreground">
-                      In the February workbook, guided input won on readability in most paired rows and performed
-                      especially well for warning content. The warning group showed an average 4.67-point reduction
-                      on the Flesch-Kincaid readability grade, indicating output that is easier to read for a wider
-                      range of users. We target a readability grade of around 7 to 8 where possible, while preserving necessary
-                      detail and accuracy. Error content was the exception in this sample, which led to a concrete next
-                      step: improve the quality of guided error-field completion. We also flagged that B-side
-                      quality/compliance/context fields must be fully captured to make stronger A/B claims beyond
-                      readability.
+                  <aside className="mt-10 mb-8 max-w-4xl border-l-2 border-fui-primary py-1 pl-5 sm:pl-7" aria-label="Reading the results">
+                    <p className="mb-3 font-mono text-xs tracking-widest-fui uppercase text-fui-dim">
+                      Reading the results
                     </p>
-                  </div>
+                    <div className="space-y-4 text-sm sm:text-base leading-relaxed text-muted-foreground">
+                      <p>
+                        Guided input produced more readable content than free text in most categories, with the clearest
+                        gains in warning messages. Warnings saw an average 4.67-grade-level drop on the Flesch-Kincaid
+                        scale, meaning the output went from roughly college-level reading difficulty to something
+                        accessible to a much wider audience.
+                      </p>
+                      <p>
+                      Our target is a grade level of 7 to 8: clear enough for most
+                      users, without stripping out the technical detail that makes the content accurate and useful.
+                      </p>
+                    </div>
+                  </aside>
                 </AnimateOnScroll>
               </section>
 
-              <section id="conclusion" className="min-h-screen pt-8 sm:pt-12 pb-4" aria-labelledby="conclusion-heading">
+              <section id="conclusion" className="pt-8 sm:pt-12 pb-4" aria-labelledby="conclusion-heading">
                 <AnimateOnScroll animation="bounce-up">
                   <h2 id="conclusion-heading" className="mb-6 sm:mb-8 text-2xl sm:text-3xl md:text-4xl font-display">
                     Conclusion
@@ -429,46 +495,42 @@ export default function ContentNextCaseStudyPage() {
                 </AnimateOnScroll>
 
                 <AnimateOnScroll animation="fade-up" delay={200}>
-                  <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
-                    ContentNext demonstrated that AI reliability comes from design structure, not model novelty. Prompt
-                    engineering, interaction design, and measured experimentation enabled a practical system that scales
-                    quality without scaling friction. The strongest strategic lesson was to layer tools by maturity:
-                    GPT for adoption, Cursor for integration, and app governance only where strict controls are needed.
-                  </p>
+                  <div className="mb-8 max-w-3xl space-y-4 text-sm sm:text-base md:text-lg leading-relaxed text-muted-foreground">
+                    <p>
+                      ContentNext demonstrated that AI reliability comes from design structure, not model novelty.
+                      Prompt engineering, interaction design, and measured experimentation enabled a practical system
+                      that scales quality without scaling friction.
+                    </p>
+                    <p>
+                      The strongest strategic lesson was to layer tools by maturity: GPT for adoption, Cursor for
+                      integration, and app governance only where strict controls are needed.
+                    </p>
+                  </div>
                 </AnimateOnScroll>
 
                 <AnimateOnScroll animation="fade-up" delay={400}>
-                  <div className="mt-12 mb-12 grid gap-6">
-                    <UXLessonsCard
-                      icon={
-                        <svg className="w-6 h-6 text-muted-foreground" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                          <path d="M3 3V21H21" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                          <path d="M19 9L13 15L9 11L5 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                        </svg>
-                      }
-                      title="Bespoke tools face lifecycle risk"
-                      description="In enterprise settings, custom internal apps can be outpaced by licensed platform tools. Shipping where users already work often improves adoption, cost, and resilience."
-                    />
-                    <UXLessonsCard
-                      icon={
-                        <svg className="w-6 h-6 text-muted-foreground" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                          <circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="2" />
-                          <path d="M12 8V12L15 15" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
-                        </svg>
-                      }
-                      title="Prompt engineering is product design"
-                      description="Quality output required rules, examples, constraints, and maintainable knowledge structures. Designing those systems had direct product impact."
-                    />
-                    <UXLessonsCard
-                      icon={
-                        <svg className="w-6 h-6 text-muted-foreground" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-                          <path d="M12 2L3 7V12C3 17 6.5 21.74 12 23C17.5 21.74 21 17 21 12V7L12 2Z" stroke="currentColor" strokeWidth="2" />
-                        </svg>
-                      }
-                      title="Proxy testing can unlock momentum"
-                      description="When formal research capacity is constrained, structured proxy testing can still produce actionable findings, as long as limits are explicit and follow-up instrumentation is planned."
-                    />
-                  </div>
+                  <ol className="mt-12 mb-12 grid border-y border-black/10 dark:border-white/10 md:grid-cols-3">
+                    {lessons.map((lesson, index) => (
+                      <li
+                        key={lesson.title}
+                        className={`py-8 ${
+                          index > 0
+                            ? "border-t border-black/10 dark:border-white/10 md:border-t-0 md:border-l md:pl-8"
+                            : ""
+                        } ${index < lessons.length - 1 ? "md:pr-8" : ""}`}
+                      >
+                        <span className="mb-4 block font-mono text-xs tracking-widest-fui text-fui-primary" aria-hidden="true">
+                          {String(index + 1).padStart(2, "0")}
+                        </span>
+                        <div>
+                          <h3 className="mb-3 text-xl font-medium text-foreground">{lesson.title}</h3>
+                          <p className="max-w-3xl text-sm sm:text-base leading-relaxed text-muted-foreground">
+                            {lesson.description}
+                          </p>
+                        </div>
+                      </li>
+                    ))}
+                  </ol>
                 </AnimateOnScroll>
               </section>
             </div>

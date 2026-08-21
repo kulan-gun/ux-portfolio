@@ -64,6 +64,7 @@ export default function HomePage() {
     <div className="home-page min-h-screen w-full min-w-0 overflow-x-hidden bg-background text-foreground font-sans">
       <TopNavigation />
 
+      <main id="main-content">
       <section
         ref={heroRef}
         className="relative min-h-[85vh] w-full min-w-0 flex flex-col justify-center px-4 sm:px-8 pt-24 sm:pt-28 md:pt-32 lg:pt-36 pb-20 overflow-x-hidden"
@@ -88,9 +89,9 @@ export default function HomePage() {
             <p
               className="max-w-2xl font-sans text-body-m text-muted-foreground flex items-center gap-1 min-h-[1.25rem] animate-fade-in-up opacity-0 [animation-fill-mode:forwards]"
               style={{ animationDelay: "160ms" }}
-              aria-live="polite"
             >
-              <span>{displayText || "\u200B"}</span>
+              <span className="sr-only">{TAGLINE}</span>
+              <span aria-hidden="true">{displayText || "\u200B"}</span>
               {!typingDone ? (
                 <span
                   className="inline-block w-0.5 h-4 bg-fui-primary shrink-0 animate-cursor-blink"
@@ -112,7 +113,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <main className="w-full min-w-0 px-4 sm:px-8 py-16 md:py-24">
+      <section className="w-full min-w-0 px-4 sm:px-8 py-16 md:py-24">
         <div className="max-w-6xl mx-auto w-full min-w-0">
           <section id="work" className="space-y-12 min-w-0">
             <div className="space-y-2">
@@ -146,6 +147,7 @@ export default function HomePage() {
             </div>
           </section>
         </div>
+      </section>
       </main>
 
       <Footer />

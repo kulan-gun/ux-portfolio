@@ -28,7 +28,7 @@ const config: Config = {
         "heading-m": ["24px", { lineHeight: "30px", fontWeight: "700" }],
         "heading-s": ["19px", { lineHeight: "25px", fontWeight: "700" }],
         "body-l": ["19px", { lineHeight: "25px" }], // Paragraphs (large)
-        "body-m": ["16px", { lineHeight: "20px" }], // Paragraphs (medium)
+        "body-m": ["16px", { lineHeight: "24px" }], // Paragraphs (medium)
         "body-s": ["14px", { lineHeight: "20px" }], // Small UI text
 
         // Small screens (<640px)
@@ -44,13 +44,14 @@ const config: Config = {
         surface: "#121212",
         paper: "#F2F2F2",
         sheet: "#FFFFFF",
+        "paper-deep": "#E5E5E5",
         ink: "#111111",
         fui: {
           primary:
             "color-mix(in srgb, var(--fui-primary) calc(100% * <alpha-value>), transparent)",
           blue: "#3B82F6",
           alert: "#FF3333",
-          dim: "#888888",
+          dim: "var(--fui-text-dim)",
         },
         background: "hsl(var(--background))",
         foreground: "hsl(var(--foreground))",

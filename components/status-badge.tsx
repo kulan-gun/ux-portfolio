@@ -42,11 +42,10 @@ export function StatusBadge({ status, className }: StatusBadgeProps) {
   return (
     <span
       className={cn(
-        "inline-flex items-center font-mono text-[10px] sm:text-xs tracking-widest-fui uppercase px-2 py-0.5 border rounded-fui",
+        "inline-flex items-center border px-2 py-0.5 font-mono text-xs uppercase tracking-widest-fui rounded-fui",
         statusClassName,
         className
       )}
-      aria-label={`Status: ${label}`}
     >
       {label}
     </span>

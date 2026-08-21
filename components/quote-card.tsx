@@ -7,7 +7,7 @@ interface QuoteCardProps {
 
 export default function QuoteCard({ quote, author, role, organization }: QuoteCardProps) {
   return (
-    <figure className="rounded-3xl bg-muted p-8 md:p-12 backdrop-blur-sm">
+    <figure className="rounded-fui-lg bg-muted p-8 md:p-12 backdrop-blur-sm">
       <blockquote className="relative">
         {/* Large quote mark */}
         <div className="absolute -top-4 -left-4 text-4xl text-muted-foreground/50" aria-hidden="true">

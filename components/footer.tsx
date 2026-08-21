@@ -3,6 +3,7 @@
 import Link from "next/link"
 import { ArrowUp, ArrowUpRight } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { motionSafeScrollBehavior } from "@/lib/accessibility"
 
 const mainLinks = [
   { href: "/#work", label: "Work", external: false },
@@ -19,7 +20,7 @@ export default function Footer() {
   const scrollToTop = () => {
     window.scrollTo({
       top: 0,
-      behavior: "smooth",
+      behavior: motionSafeScrollBehavior(),
     })
   }
 
@@ -33,12 +34,12 @@ export default function Footer() {
       role="contentinfo"
     >
       <div className="mx-auto max-w-6xl w-full min-w-0 px-4 sm:px-8 py-12 md:py-16">
-        <div className="grid grid-cols-2 gap-8 md:gap-16 mb-12">
+        <div className="mb-12 grid grid-cols-1 gap-8 sm:grid-cols-2 md:gap-16">
           <div>
             <h3 className="font-mono text-xs tracking-widest-fui uppercase font-bold text-foreground mb-4">
               Main
             </h3>
-            <ul className="space-y-3">
+            <ul className="grid grid-cols-2 gap-x-4 gap-y-1">
               {mainLinks.map(({ href, label, external }) => {
                 const Wrapper = external ? "a" : Link
                 const props = external
@@ -51,15 +52,19 @@ export default function Footer() {
                       className={cn(
                         "group font-mono text-xs tracking-widest-fui uppercase text-fui-dim",
                         "hover:text-fui-primary dark:hover:text-fui-primary transition-colors",
-                        "inline-flex items-center gap-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-fui-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-fui"
+                        "inline-flex min-h-11 items-center gap-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-fui-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-fui"
                       )}
                     >
                       {label}
                       {external && (
-                        <ArrowUpRight
-                          className="w-3 h-3 shrink-0 transition-transform duration-200 ease-out group-hover:translate-x-1 group-hover:-translate-y-1"
-                          strokeWidth={2}
-                        />
+                        <>
+                          <span className="sr-only"> (opens in a new tab)</span>
+                          <ArrowUpRight
+                            className="h-3 w-3 shrink-0 transition-transform duration-200 ease-out group-hover:translate-x-1 group-hover:-translate-y-1"
+                            strokeWidth={2}
+                            aria-hidden="true"
+                          />
+                        </>
                       )}
                     </Wrapper>
                   </li>
@@ -82,13 +87,15 @@ export default function Footer() {
                     className={cn(
                       "group font-mono text-xs tracking-widest-fui uppercase text-fui-dim",
                       "hover:text-fui-primary dark:hover:text-fui-primary transition-colors",
-                      "inline-flex items-center gap-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-fui-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-fui"
+                      "inline-flex min-h-11 items-center gap-1 focus:outline-none focus-visible:ring-2 focus-visible:ring-fui-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-fui"
                     )}
                   >
                     {label}
+                    <span className="sr-only"> (opens in a new tab)</span>
                     <ArrowUpRight
-                      className="w-3 h-3 shrink-0 transition-transform duration-200 ease-out group-hover:translate-x-1 group-hover:-translate-y-1"
+                      className="h-3 w-3 shrink-0 transition-transform duration-200 ease-out group-hover:translate-x-1 group-hover:-translate-y-1"
                       strokeWidth={2}
+                      aria-hidden="true"
                     />
                   </a>
                 </li>
@@ -105,7 +112,7 @@ export default function Footer() {
             type="button"
             onClick={scrollToTop}
             className={cn(
-              "inline-flex w-fit items-center gap-1.5",
+              "inline-flex min-h-11 w-fit items-center gap-1.5",
               "font-mono text-xs tracking-widest-fui uppercase text-fui-dim",
               "hover:text-fui-primary dark:hover:text-fui-primary transition-colors",
               "focus:outline-none focus-visible:ring-2 focus-visible:ring-fui-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background rounded-fui"

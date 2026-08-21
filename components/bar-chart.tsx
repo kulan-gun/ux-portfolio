@@ -51,6 +51,10 @@ export default function BarChart({
     const canvas = canvasRef.current
     const ctx = canvas.getContext("2d")
     if (!ctx) return
+    const styles = getComputedStyle(document.documentElement)
+    const mutedColor = `hsl(${styles.getPropertyValue("--muted-foreground")})`
+    const borderColor = `hsl(${styles.getPropertyValue("--border")})`
+    const primaryColor = `hsl(${styles.getPropertyValue("--primary")})`
 
     const dpr = window.devicePixelRatio || 1
     canvas.width = canvas.offsetWidth * dpr
@@ -71,20 +75,20 @@ export default function BarChart({
     ctx.beginPath()
     ctx.moveTo(60, 20)
     ctx.lineTo(60, chartHeight + 20)
-    ctx.strokeStyle = "#666"
+    ctx.strokeStyle = borderColor
     ctx.stroke()
 
     // Draw x-axis
     ctx.beginPath()
     ctx.moveTo(60, chartHeight + 20)
     ctx.lineTo(chartWidth + 60, chartHeight + 20)
-    ctx.strokeStyle = "#666"
+    ctx.strokeStyle = borderColor
     ctx.stroke()
 
     // Draw y-axis grid lines and labels
     ctx.textAlign = "right"
     ctx.font = "12px Inter, system-ui, sans-serif"
-    ctx.fillStyle = "#999"
+    ctx.fillStyle = mutedColor
 
     const yAxisSteps = Math.round(niceMax / step)
     for (let i = 0; i <= yAxisSteps; i++) {
@@ -94,7 +98,7 @@ export default function BarChart({
       ctx.beginPath()
       ctx.moveTo(60, y)
       ctx.lineTo(chartWidth + 60, y)
-      ctx.strokeStyle = "#333"
+      ctx.strokeStyle = borderColor
       ctx.stroke()
 
       ctx.fillText(value.toString(), 50, y + 4)
@@ -117,10 +121,10 @@ export default function BarChart({
       const barHeight = (value / niceMax) * chartHeight
       const y = chartHeight + 20 - barHeight
 
-      ctx.fillStyle = "#90d190"
+      ctx.fillStyle = primaryColor
       ctx.fillRect(x, y, barWidth, barHeight)
 
-      ctx.fillStyle = "#999"
+      ctx.fillStyle = mutedColor
       ctx.fillText((index + 1).toString(), x + barWidth / 2, chartHeight + 40)
 
       if (data.labels[index]) {
@@ -133,14 +137,14 @@ export default function BarChart({
 
     // X-axis label
     if (xAxisLabel) {
-      ctx.fillStyle = "#999"
+      ctx.fillStyle = mutedColor
       ctx.textAlign = "center"
       ctx.fillText(xAxisLabel, chartWidth / 2 + 60, chartHeight + 80)
     }
   }, [data, height, xAxisLabel, yAxisLabel])
 
   return (
-    <div className="rounded-3xl bg-muted p-6 md:p-8 backdrop-blur-sm">
+    <div className="rounded-fui-lg bg-muted p-6 md:p-8 backdrop-blur-sm">
       {title && (
         <h3 className="text-xl md:text-2xl font-normal text-foreground mb-4">
           {title}
@@ -152,9 +156,25 @@ export default function BarChart({
         <canvas
           ref={canvasRef}
           style={{ width: "100%", height: `${height}px` }}
-          aria-label={title || "Bar chart visualization"}
-          role="img"
+          aria-hidden="true"
         ></canvas>
+        <table className="sr-only">
+          <caption>{title ? `${title} data` : "Bar chart data"}</caption>
+          <thead>
+            <tr>
+              <th scope="col">Category</th>
+              <th scope="col">{yAxisLabel || "Value"}</th>
+            </tr>
+          </thead>
+          <tbody>
+            {data.labels.map((label, index) => (
+              <tr key={label}>
+                <th scope="row">{label}</th>
+                <td>{data.values[index]}</td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
 
         {data.categories && data.categories.length > 0 && (
           <div className="mt-4 flex flex-wrap gap-4">

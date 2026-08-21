@@ -1,6 +1,6 @@
 export default function KnownsUnknownsDiagram() {
   return (
-    <div className="rounded-3xl bg-muted p-8 md:p-12 backdrop-blur-sm">
+    <div className="rounded-fui-lg bg-muted p-8 md:p-12 backdrop-blur-sm">
       <div className="space-y-12">
         {/* Knowns Section */}
         <div className="flex items-start gap-8 md:gap-16">

@@ -183,11 +183,11 @@ export default function CaseStudyTemplate({
 
       {/* Main Content - Footer is below this row so nav never overlaps it */}
       <div className={`flex-1 min-w-0 ${isMobile ? "w-full" : ""}`}>
-      <main className={`px-4 sm:px-8 py-12 ${isMobile ? "w-full" : ""}`}>
+      <main id="main-content" className={`px-4 sm:px-8 py-12 ${isMobile ? "w-full" : ""}`}>
         <div className="max-w-6xl mx-auto">
           {/* Case Study Title and Lozenges */}
           <div>
-            <div className="flex flex-wrap gap-2 sm:gap-4 pt-8 mb-6" aria-label="Project tags">
+            <div className="flex flex-wrap gap-2 sm:gap-4 pt-8 mb-6" role="group" aria-label="Project tags">
               {tags.map((tag, index) => (
                 <TagBadge key={index} color={tag.color} hasBackground={tag.hasBackground}>
                   {tag.label}
@@ -203,7 +203,7 @@ export default function CaseStudyTemplate({
               <img
                 src={heroImage || "/placeholder.svg"}
                 alt="Project hero image showing the benefits application interface"
-                className="w-full rounded-2xl border border-black/10 dark:border-white/10"
+                className="w-full rounded-xl border border-black/10 dark:border-white/10"
               />
             </div>
           </div>
@@ -240,7 +240,7 @@ export default function CaseStudyTemplate({
                 <img
                   src="/placeholder.svg?height=150&width=800"
                   alt="Project overview diagram showing the key components of the benefits system"
-                  className="w-full rounded-2xl border border-black/10 dark:border-white/10"
+                  className="w-full rounded-xl border border-black/10 dark:border-white/10"
                 />
               </div>
             </AnimateOnScroll>
@@ -288,7 +288,7 @@ export default function CaseStudyTemplate({
                 <img
                   src="/placeholder.svg?height=150&width=800"
                   alt="Problem definition diagram illustrating the challenges in the benefits application process"
-                  className="w-full rounded-2xl border border-black/10 dark:border-white/10"
+                  className="w-full rounded-xl border border-black/10 dark:border-white/10"
                 />
               </div>
             </AnimateOnScroll>
@@ -320,7 +320,7 @@ export default function CaseStudyTemplate({
                 <img
                   src="/placeholder.svg?height=150&width=800"
                   alt="Design process workflow showing research, ideation, prototyping, and testing phases"
-                  className="w-full rounded-2xl border border-black/10 dark:border-white/10"
+                  className="w-full rounded-xl border border-black/10 dark:border-white/10"
                 />
               </div>
             </AnimateOnScroll>
@@ -346,7 +346,7 @@ export default function CaseStudyTemplate({
                 <img
                   src="/placeholder.svg?height=150&width=800"
                   alt="Solution design mockup showing the redesigned benefits application interface"
-                  className="w-full rounded-2xl border border-black/10 dark:border-white/10"
+                  className="w-full rounded-xl border border-black/10 dark:border-white/10"
                 />
               </div>
             </AnimateOnScroll>
@@ -384,7 +384,7 @@ export default function CaseStudyTemplate({
                 <img
                   src="/placeholder.svg?height=150&width=800"
                   alt="Results dashboard showing key performance metrics and improvements"
-                  className="w-full rounded-2xl border border-black/10 dark:border-white/10"
+                  className="w-full rounded-xl border border-black/10 dark:border-white/10"
                 />
               </div>
             </AnimateOnScroll>
@@ -514,7 +514,7 @@ export default function CaseStudyTemplate({
                 <img
                   src="/placeholder.svg?height=150&width=800"
                   alt="Project conclusion summary showing key learnings and future opportunities"
-                  className="w-full rounded-2xl border border-black/10 dark:border-white/10"
+                  className="w-full rounded-xl border border-black/10 dark:border-white/10"
                 />
               </div>
             </AnimateOnScroll>

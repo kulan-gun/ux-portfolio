@@ -2,6 +2,7 @@
 
 import { useEffect, useState } from "react"
 import { cn } from "@/lib/utils"
+import { motionSafeScrollBehavior } from "@/lib/accessibility"
 
 type Section = {
   id: string
@@ -48,7 +49,7 @@ export default function ScrollSpyNavigation({ sections }: ScrollSpyNavigationPro
     if (element) {
       window.scrollTo({
         top: element.offsetTop - 100, // Offset to account for fixed header
-        behavior: "smooth",
+        behavior: motionSafeScrollBehavior(),
       })
     }
   }
@@ -59,6 +60,7 @@ export default function ScrollSpyNavigation({ sections }: ScrollSpyNavigationPro
         {sections.map((section) => (
           <li key={section.id}>
             <button
+              type="button"
               className="flex items-center cursor-pointer group w-full text-left focus:outline-none focus:ring-2 focus:ring-fui-primary focus:ring-opacity-50 rounded-sm"
               onClick={() => scrollToSection(section.id)}
               aria-current={activeSection === section.id ? "location" : undefined}

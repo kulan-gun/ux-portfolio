@@ -9,7 +9,8 @@ Personal portfolio for [kulangun.com](https://kulangun.com). A static site showc
 The portfolio uses an FUI design language: a calm “command centre” feel for trust-critical systems work — without overdoing theatrical UI chrome. The visual style draws on:
 
 - **Dual-mode theming**: Dark mode (default) with bright green accents (`#00FF94`), and light mode with dark green accents (`#166534`), both optimised for readability across home and case study pages.
-- **FUI micro-interactions**: Monospace labels, status badges, a **one-shot typewriter** on the hero tagline, a live London time display, and a **falling-particle hero background** (circles in the FUI palette).
+- **FUI micro-interactions**: Monospace labels, status badges, a **one-shot typewriter** on the hero tagline, a live London time display, a **falling-particle hero background** (circles in the FUI palette), and a restrained **1% project-card hover lift**.
+- **Case-study motion**: A shared 500ms soft reveal with short travel, no artificial stagger delays, synchronised metric timing, and reduced-motion support.
 - **Typography hierarchy**: Sans-serif (DM Sans) for headings and body; monospace (JetBrains Mono) for labels, metadata, and navigation.
 - **Semantic structure**: Selected work is labelled **Projects** (`PROJECT 01`–`03`), newest first. Older work lives in **Archive**.
 - **Theme-aware components**: Home, archive, and case studies respond to light/dark via CSS variables and Tailwind classes.
@@ -84,19 +85,14 @@ Spacing follows a 4px base unit (Tailwind’s default).
 - **Gap sizes**: Tailwind spacing units (e.g. `gap-4`, `gap-8`).
 
 ### Border Radius
-| Token          | Value  |
-|----------------|--------|
-| rounded-sm     | 2px    |
-| rounded        | 4px    |
-| rounded-md     | 6px    |
-| rounded-lg     | 8px    |
-| rounded-xl     | 12px   |
-| rounded-2xl    | 16px   |
-| rounded-fui    | 2px    |
-| rounded-fui-lg | 4px    |
-| rounded-full   | 9999px |
+| Token          | Value  | Intended use                                      |
+|----------------|--------|---------------------------------------------------|
+| rounded-fui    | 2px    | Compact controls and small FUI details            |
+| rounded-fui-lg | 4px    | Cards, metric panels, diagrams and content blocks |
+| rounded-xl     | 12px   | Project imagery, screenshots and media previews   |
+| rounded-full   | 9999px | Status dots, circular icons and intentional pills |
 
-FUI tokens use small radii to keep the interface precise and technical.
+Functional surfaces use small radii to keep the interface precise and technical. Media receives a slightly larger radius so screenshots and project imagery remain visually distinct from interface containers.
 
 ### Shadows
 Used sparingly (`shadow-sm` through `shadow-xl`) for cards and elevated surfaces.
@@ -144,7 +140,7 @@ npm run deploy   # Build + publish to gh-pages branch
 | `ScrollSpyNavigation`     | Highlights active section in case study left nav                     |
 | `Footer`                  | MAIN (Work, Articles, Credentials, Archive) / CONTACT (LinkedIn)     |
 | `StatusBadge`             | SHIPPED / CONCEPT / ARCHIVED (and related) FUI labels                |
-| `AnimateOnScroll`         | Fade-in-up and staggered reveal                                      |
+| `AnimateOnScroll`         | Shared soft reveal for case-study narrative groups                    |
 | `SummaryCard`, `QuoteCard`, `MetricsDisplay` | Reusable case study content blocks              |
 | `DataTable`, `BarChart`, `SystemDiagram`     | Data and diagram components                       |
 

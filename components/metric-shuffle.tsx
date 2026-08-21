@@ -23,7 +23,7 @@ function useInViewOnce<T extends HTMLElement>() {
           io.disconnect();
         }
       },
-      { threshold: 0.3 }
+      { rootMargin: "0px 0px -8% 0px", threshold: 0.15 }
     );
     io.observe(ref.current);
     return () => io.disconnect();
@@ -44,8 +44,8 @@ function randomLetter(matchCase: "upper" | "lower") {
 
 export default function MetricShuffle({
   final,
-  duration = 800,
-  speed = 30,
+  duration = 600,
+  speed = 40,
   className,
   scrambleLetters = true,
 }: Props) {
@@ -66,13 +66,18 @@ export default function MetricShuffle({
 
   useEffect(() => {
     if (!inView || scrambleIdx.length === 0) return;
+    if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+      setDisplay(final);
+      return;
+    }
 
     const started = performance.now();
+    const animationDuration = Math.min(duration, 650);
     let timer = 0;
 
     const tick = () => {
       const now = performance.now();
-      const t = Math.min(1, (now - started) / duration);
+      const t = Math.min(1, (now - started) / animationDuration);
 
       // Progressive lock from left to right
       const lockUntil = Math.floor(scrambleIdx.length * t);
@@ -109,8 +114,8 @@ export default function MetricShuffle({
   }, [inView, final, scrambleIdx, duration, speed]);
 
   return (
-    <span ref={ref} className={className} aria-live="off">
-      {display}
+    <span ref={ref} className={className}>
+      <span aria-hidden="true">{display}</span>
       <span className="sr-only">{final}</span>
     </span>
   );
