@@ -12,9 +12,11 @@ import SummaryCard from "@/components/summary-card"
 import QuoteCard from "@/components/quote-card"
 import UXLessonsCard from "@/components/ux-lessons-card"
 import ImageModal from "@/components/ImageModal"
-import MetricShuffle from "@/components/metric-shuffle"
+import CaseStudyMetric from "@/components/case-study-metric"
 import CaseStudyHeader, { CaseStudyBackLink } from "@/components/case-study-header"
+import MobileTableOfContents from "@/components/mobile-table-of-contents"
 import { getProjectById } from "@/lib/projects"
+import { motionSafeScrollBehavior } from "@/lib/accessibility"
 
 const project = getProjectById("crm")!
 
@@ -109,7 +111,7 @@ export default function CRMCaseStudyPage() {
     if (element) {
       window.scrollTo({
         top: element.offsetTop - 100,
-        behavior: "smooth",
+        behavior: motionSafeScrollBehavior(),
       })
     }
   }
@@ -118,34 +120,34 @@ export default function CRMCaseStudyPage() {
     <div className="min-h-screen bg-background text-foreground font-sans flex flex-col">
       <ScrollProgressIndicator />
 
-      <TopNavigation onMobileMenuToggle={(isOpen) => setSidebarOpen(isOpen)} />
+      <TopNavigation backHref="/work/archived/" />
 
       <div className="flex flex-1 min-h-0">
       {!isMobile && (
         <aside
           id="section-nav"
-          className="w-64 md:sticky md:top-16 md:self-start md:pt-16 shrink-0 bg-background"
-          role="navigation"
+          className="hidden w-64 shrink-0 border-r border-sidebar-border bg-sidebar md:sticky md:top-16 md:block md:self-start md:pt-16"
           aria-label="Section navigation"
         >
           <CaseStudyBackLink href="/work/archived/" />
 
           {/* Navigation links */}
-          <nav className="space-y-6 text-muted-foreground pl-8" aria-label="Table of contents">
-            <ul className="space-y-6">
+          <nav className="px-6 text-muted-foreground" aria-label="Table of contents">
+            <ul className="space-y-2">
               {sections.map((section) => (
                 <li key={section.id}>
                   <button
-                    className="flex items-center cursor-pointer group w-full text-left focus:outline-none focus:ring-2 focus:ring-fui-primary focus:ring-opacity-50 rounded-sm"
+                    type="button"
+                    className={`group flex w-full cursor-pointer items-center rounded-fui py-2 pr-3 text-left transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-fui-primary ${activeSection === section.id ? "bg-sidebar-accent" : "hover:bg-sidebar-accent/60"}`}
                     onClick={() => scrollToSection(section.id)}
                     aria-current={activeSection === section.id ? "location" : undefined}
                   >
                     <div
-                      className={`w-1 h-6 mr-4 rounded transition-colors duration-300 ${activeSection === section.id ? "bg-primary" : "bg-transparent group-hover:bg-primary/50"}`}
+                      className={`mr-3 h-5 w-0.5 transition-colors duration-200 ${activeSection === section.id ? "bg-primary" : "bg-transparent group-hover:bg-primary/50"}`}
                       aria-hidden="true"
                     />
                     <span
-                      className={`text-sm font-light transition-colors duration-300 ${activeSection === section.id ? "text-foreground" : "text-muted-foreground group-hover:text-foreground/80"}`}
+                      className={`text-sm transition-colors duration-200 ${activeSection === section.id ? "font-medium text-foreground" : "text-muted-foreground group-hover:text-foreground"}`}
                     >
                       {section.title}
                     </span>
@@ -158,10 +160,13 @@ export default function CRMCaseStudyPage() {
       )}
 
       <div className={`flex-1 min-w-0 flex flex-col ${isMobile ? "w-full" : ""}`}>
-      <main className={`flex-1 px-4 sm:px-8 py-12 ${isMobile ? "w-full" : ""}`}>
+      <main id="main-content" className={`flex-1 px-4 py-8 sm:px-8 md:py-12 ${isMobile ? "w-full" : ""}`}>
         <div className="max-w-6xl mx-auto">
           {/* Case Study Title and Tags */}
-          <CaseStudyHeader project={project} />
+          <CaseStudyHeader
+            project={project}
+            mobileNavigation={<MobileTableOfContents sections={sections} />}
+          />
 
           {/* Overview Section */}
           <section id="overview" className="min-h-screen py-8 sm:py-12" aria-labelledby="overview-heading">
@@ -184,36 +189,9 @@ export default function CRMCaseStudyPage() {
             <AnimateOnScroll animation="fade-up" delay={400}>
               <div className="mt-8 mb-8">
                 <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3" role="group" aria-label="Key metrics">
-
-                  {/* Delivery time */}
-                  <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-foreground">
-                      <MetricShuffle final="1 mo" scrambleLetters />
-                    </div>
-                    <div className="text-xs sm:text-sm md:text-base text-muted-foreground">
-                      delivered project within 1 month
-                    </div>
-                  </div>
-
-                  {/* Click reduction */}
-                  <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-foreground">
-                      <MetricShuffle final="5 to 10" scrambleLetters />
-                    </div>
-                    <div className="text-xs sm:text-sm md:text-base text-muted-foreground">
-                      fewer estimated clicks per task
-                    </div>
-                  </div>
-
-                  {/* Task time reduction */}
-                  <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-foreground">
-                      <MetricShuffle final="-40%" scrambleLetters />
-                    </div>
-                    <div className="text-xs sm:text-sm md:text-base text-muted-foreground">
-                      estimated reduction in task time
-                    </div>
-                  </div>
+                  <CaseStudyMetric label="Delivery time" value="1 mo" note="Project completed within one month" scrambleLetters />
+                  <CaseStudyMetric label="Clicks per task" value="5–10" note="Estimated reduction" trend="down" />
+                  <CaseStudyMetric label="Task time" value="-40%" note="Estimated reduction" trend="down" />
 
                 </div>
               </div>
@@ -290,7 +268,7 @@ export default function CRMCaseStudyPage() {
 
             <AnimateOnScroll animation="fade-up" delay={400}>
               <div className="mt-12 mb-12">
-                <div className="rounded-3xl bg-muted p-8 md:p-12 backdrop-blur-sm">
+                <div className="rounded-fui-lg bg-muted p-8 md:p-12 backdrop-blur-sm">
                   <div className="flex flex-col items-center justify-center">
                     {/* User Journey Map */}
                     <div className="mb-12">
@@ -328,7 +306,7 @@ export default function CRMCaseStudyPage() {
                     </div>
 
                     {/* Journey Stages */}
-                    <div className="grid grid-cols-4 gap-4 mb-8" role="region" aria-label="User journey stages">
+                    <div className="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4" role="region" aria-label="User journey stages">
                       <div className="text-center">
                         <h4 className="text-xl font-normal text-foreground mb-4">Customer Contact</h4>
                         <p className="text-sm text-muted-foreground">
@@ -356,33 +334,32 @@ export default function CRMCaseStudyPage() {
                     </div>
 
                     {/* Emotion Line */}
-                    <div
-                      className="relative h-40 mb-8"
-                      aria-label="User emotion journey graph showing fluctuating satisfaction levels"
-                    >
+                    <figure className="relative mb-8 h-40 text-fui-primary">
                       <svg
                         className="w-full h-full"
                         viewBox="0 0 800 100"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
-                        role="img"
                         aria-hidden="true"
                       >
                         <path
                           d="M0,20 Q100,0 200,60 T400,80 T600,40 T800,90"
-                          stroke="white"
+                          stroke="currentColor"
                           strokeWidth="3"
                           fill="none"
                         />
-                        <circle cx="0" cy="20" r="8" fill="#2DD4BF" />
-                        <circle cx="200" cy="60" r="8" fill="#2DD4BF" />
-                        <circle cx="400" cy="80" r="8" fill="#2DD4BF" />
-                        <circle cx="800" cy="90" r="8" fill="#2DD4BF" />
+                        <circle cx="0" cy="20" r="8" fill="currentColor" />
+                        <circle cx="200" cy="60" r="8" fill="currentColor" />
+                        <circle cx="400" cy="80" r="8" fill="currentColor" />
+                        <circle cx="800" cy="90" r="8" fill="currentColor" />
                       </svg>
-                    </div>
+                      <figcaption className="sr-only">
+                        Frustration rises as agents move through lookup and processing, remaining high when resolving and recording the interaction.
+                      </figcaption>
+                    </figure>
 
                     {/* Quotes */}
-                    <div className="grid grid-cols-4 gap-4" aria-label="User quotes at different journey stages">
+                    <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
                       <div className="text-center">
                         <p className="text-sm text-muted-foreground">"Let me try to find your account..."</p>
                       </div>
@@ -419,11 +396,11 @@ export default function CRMCaseStudyPage() {
 
             <AnimateOnScroll animation="fade-up" delay={300}>
               <div className="mt-8 mb-12">
-                <div className="rounded-3xl bg-muted p-8 md:p-12 backdrop-blur-sm">
+                <div className="rounded-fui-lg bg-muted p-8 md:p-12 backdrop-blur-sm">
                   <div className="grid grid-cols-1 md:grid-cols-5 gap-12 md:gap-6">
                     <div className="flex flex-col items-center text-center">
-                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-white">1</span>
+                      <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary">
+                        <span className="text-xl font-medium text-primary-foreground md:text-2xl">1</span>
                       </div>
                       <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">User research</h3>
                       <ul className="space-y-3 text-left w-full">
@@ -435,8 +412,8 @@ export default function CRMCaseStudyPage() {
                     </div>
 
                     <div className="flex flex-col items-center text-center">
-                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-white">2</span>
+                      <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary">
+                        <span className="text-xl font-medium text-primary-foreground md:text-2xl">2</span>
                       </div>
                       <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">Prototyping</h3>
                       <ul className="space-y-3 text-left w-full">
@@ -448,8 +425,8 @@ export default function CRMCaseStudyPage() {
                     </div>
 
                     <div className="flex flex-col items-center text-center">
-                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-white">3</span>
+                      <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary">
+                        <span className="text-xl font-medium text-primary-foreground md:text-2xl">3</span>
                       </div>
                       <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">User testing</h3>
                       <ul className="space-y-3 text-left w-full">
@@ -461,8 +438,8 @@ export default function CRMCaseStudyPage() {
                     </div>
 
                     <div className="flex flex-col items-center text-center">
-                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-white">4</span>
+                      <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary">
+                        <span className="text-xl font-medium text-primary-foreground md:text-2xl">4</span>
                       </div>
                       <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">Presenting</h3>
                       <ul className="space-y-3 text-left w-full">
@@ -473,8 +450,8 @@ export default function CRMCaseStudyPage() {
                     </div>
 
                     <div className="flex flex-col items-center text-center">
-                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-white">5</span>
+                      <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary">
+                        <span className="text-xl font-medium text-primary-foreground md:text-2xl">5</span>
                       </div>
                       <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">Handoff</h3>
                       <ul className="space-y-3 text-left w-full">
@@ -498,7 +475,7 @@ export default function CRMCaseStudyPage() {
                   />
                   <figcaption
                     id="img-caption-current-state"
-                    className="mt-3 text-center text-xs sm:text-sm text-gray-400"
+                    className="case-study-caption"
                   >
                     Early stage screens inherited from the client, highlighting usability and visual design issues.
                   </figcaption>
@@ -519,7 +496,7 @@ export default function CRMCaseStudyPage() {
                   />
                   <figcaption
                     id="img-caption-future-state"
-                    className="mt-3 text-center text-xs sm:text-sm text-gray-400"
+                    className="case-study-caption"
                   >
                     First round of redesign concepts aimed at addressing key usability concerns.
                   </figcaption>
@@ -540,7 +517,7 @@ export default function CRMCaseStudyPage() {
                   />
                   <figcaption
                     id="img-caption-iterations"
-                    className="mt-3 text-center text-xs sm:text-sm text-gray-400"
+                    className="case-study-caption"
                   >
                     Iterative design updates incorporating user and stakeholder feedback.
                   </figcaption>
@@ -592,7 +569,7 @@ export default function CRMCaseStudyPage() {
                   />
                   <figcaption
                     id="img-caption-tallyman-proto"
-                    className="mt-3 text-center text-xs sm:text-sm text-gray-400"
+                    className="case-study-caption"
                   >
                     Prototype of the redesigned CRM interface, streamlining customer account management workflows.
                   </figcaption>
@@ -622,51 +599,24 @@ export default function CRMCaseStudyPage() {
             <AnimateOnScroll animation="fade-up" delay={400}>
               <div className="mt-8 mb-8">
                 <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3" role="group" aria-label="Key metrics">
-
-                  {/* Delivery time */}
-                  <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-foreground">
-                      <MetricShuffle final="1 mo" scrambleLetters />
-                    </div>
-                    <div className="text-xs sm:text-sm md:text-base text-muted-foreground">
-                      delivered project within 1 month
-                    </div>
-                  </div>
-
-                  {/* Click reduction */}
-                  <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-foreground">
-                      <MetricShuffle final="5 to 10" scrambleLetters />
-                    </div>
-                    <div className="text-xs sm:text-sm md:text-base text-muted-foreground">
-                      fewer estimated clicks per task
-                    </div>
-                  </div>
-
-                  {/* Task time reduction */}
-                  <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-foreground">
-                      <MetricShuffle final="-40%" scrambleLetters />
-                    </div>
-                    <div className="text-xs sm:text-sm md:text-base text-muted-foreground">
-                      estimated reduction in task time
-                    </div>
-                  </div>
+                  <CaseStudyMetric label="Delivery time" value="1 mo" note="Project completed within one month" scrambleLetters />
+                  <CaseStudyMetric label="Clicks per task" value="5–10" note="Estimated reduction" trend="down" />
+                  <CaseStudyMetric label="Task time" value="-40%" note="Estimated reduction" trend="down" />
 
                 </div>
               </div>
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={600}>
-              <div className="mt-8 rounded-3xl bg-muted p-8 backdrop-blur-sm">
+              <div className="mt-8 rounded-fui-lg bg-muted p-8 backdrop-blur-sm">
                 <div className="flex flex-col space-y-4">
                   <blockquote className="relative">
-                    <div className="absolute -top-4 -left-4 text-4xl text-gray-600" aria-hidden="true">
+                    <div className="absolute -top-4 -left-4 text-4xl text-muted-foreground/60" aria-hidden="true">
                       "
                     </div>
                     <p className="text-xl italic text-muted-foreground pl-6 pr-6">You delivered on the brief, and my team and I are really impressed with the prototypes, along with your considerations for the build now and in the future.</p>
                     <footer className="mt-4 text-sm text-muted-foreground pl-6">— Anglian Water Client</footer>
-                    <div className="absolute -bottom-4 -right-4 text-4xl text-gray-600" aria-hidden="true">
+                    <div className="absolute -bottom-4 -right-4 text-4xl text-muted-foreground/60" aria-hidden="true">
                       "
                     </div>
                   </blockquote>
@@ -695,12 +645,12 @@ export default function CRMCaseStudyPage() {
                 <figure className="m-0">
                   <ImageModal
                     src="/anglian/dashboard_alerts.jpg"
-                    alt="Project conclusion summary showing key learnings and future opportunities"
+                    alt="CRM dashboard showing alerts and account-management information"
                     aria-describedby="anglian-dashboard-caption"
                   />
                   <figcaption
                     id="anglian-dashboard-caption"
-                    className="mt-3 text-center text-xs sm:text-sm text-gray-400"
+                    className="case-study-caption"
                   >
                     Dashboard alerts summarising key learnings and opportunities for improvement.
                   </figcaption>

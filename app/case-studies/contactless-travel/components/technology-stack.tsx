@@ -1,10 +1,10 @@
 export default function TechnologyStack() {
   return (
-    <div className="rounded-3xl bg-zinc-900/50 p-8 md:p-12 backdrop-blur-sm">
+    <div className="rounded-fui-lg border border-border bg-card p-8 md:p-12">
       <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div className="text-center p-6 bg-zinc-800/50 rounded-xl">
-          <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-zinc-700 rounded-full">
-            <svg className="w-8 h-8 text-gray-300" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div className="rounded-xl bg-muted p-6 text-center">
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary">
+            <svg className="h-8 w-8 text-primary-foreground" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path d="M12 4L20 8.00004V16L12 20L4 16V8.00004L12 4Z" stroke="currentColor" strokeWidth="2" />
               <path d="M12 4V20" stroke="currentColor" strokeWidth="2" />
               <path d="M4 8.00004L20 16" stroke="currentColor" strokeWidth="2" />
@@ -12,7 +12,7 @@ export default function TechnologyStack() {
             </svg>
           </div>
           <h3 className="text-xl font-normal text-foreground mb-2">Frontend</h3>
-          <ul className="text-gray-300 space-y-2">
+          <ul className="space-y-2 text-muted-foreground">
             <li>React Native</li>
             <li>TypeScript</li>
             <li>Redux</li>
@@ -20,14 +20,14 @@ export default function TechnologyStack() {
           </ul>
         </div>
 
-        <div className="text-center p-6 bg-zinc-800/50 rounded-xl">
-          <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-zinc-700 rounded-full">
-            <svg className="w-8 h-8 text-gray-300" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div className="rounded-xl bg-muted p-6 text-center">
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary">
+            <svg className="h-8 w-8 text-primary-foreground" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path d="M4 6H20M4 12H20M4 18H20" stroke="currentColor" strokeWidth="2" strokeLinecap="round" />
             </svg>
           </div>
           <h3 className="text-xl font-normal text-foreground mb-2">Backend</h3>
-          <ul className="text-gray-300 space-y-2">
+          <ul className="space-y-2 text-muted-foreground">
             <li>Node.js</li>
             <li>Express</li>
             <li>GraphQL</li>
@@ -35,9 +35,9 @@ export default function TechnologyStack() {
           </ul>
         </div>
 
-        <div className="text-center p-6 bg-zinc-800/50 rounded-xl">
-          <div className="w-16 h-16 mx-auto mb-4 flex items-center justify-center bg-zinc-700 rounded-full">
-            <svg className="w-8 h-8 text-gray-300" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <div className="rounded-xl bg-muted p-6 text-center">
+          <div className="mx-auto mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary">
+            <svg className="h-8 w-8 text-primary-foreground" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
               <path
                 d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z"
                 stroke="currentColor"
@@ -66,7 +66,7 @@ export default function TechnologyStack() {
             </svg>
           </div>
           <h3 className="text-xl font-normal text-foreground mb-2">DevOps</h3>
-          <ul className="text-gray-300 space-y-2">
+          <ul className="space-y-2 text-muted-foreground">
             <li>Docker</li>
             <li>Kubernetes</li>
             <li>AWS</li>

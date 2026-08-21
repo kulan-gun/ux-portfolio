@@ -5,6 +5,7 @@ export type Project = {
   seq?: string
   date: string
   client: string
+  organisationLabel?: "Client" | "Company"
   role: string
   title: string
   subtitle: string
@@ -21,10 +22,11 @@ export const selectedProjects: Project[] = [
     seq: "03",
     date: "2025/26",
     client: "Autodesk",
+    organisationLabel: "Company",
     role: "Senior Experience Designer",
     title: "ContentNext",
     subtitle:
-      "Making AI-generated Fusion content more usable and doubling the average quality score",
+      "Improving AI-generated UI content quality for Autodesk Fusion",
     href: "/case-studies/contentnext-case-study/",
     imageSrc: "/contentnext/cover.jpg",
     imageAlt: "ContentNext toolkit and Custom GPT configuration interfaces",
@@ -40,8 +42,7 @@ export const selectedProjects: Project[] = [
     subtitle:
       "Making digital immigration easier for 7M+ users, reducing offline support requests by 67%",
     href: "/case-studies/contactless-travel/",
-    imageSrc:
-      "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/trials2-min-152wrS8iv0dqCjFwiwsHTR5R7Mhdk7.jpeg",
+    imageSrc: "/contactless/hero.jpg",
     imageAlt: "Project hero image showing the contactless travel interface",
     status: "Shipped",
   },
@@ -53,7 +54,7 @@ export const selectedProjects: Project[] = [
     role: "Product Designer",
     title: "Improving access to benefits for those in need",
     subtitle:
-      "Removing barriers to essential benefits, driving a 9.7pp increase in digital uptake",
+      "Simplifying fit-note submissions, increasing digital uptake by 9.7pp",
     href: "/case-studies/benefits-case-study/",
     imageSrc:
       "https://hebbkx1anhila5yf.public.blob.vercel-storage.com/dwp-work1-YBcOjNYGrLjyFctNlf12YOF2Jeftgh.png",

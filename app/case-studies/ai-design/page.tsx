@@ -12,9 +12,11 @@ import SummaryCard from "@/components/summary-card"
 import QuoteCard from "@/components/quote-card"
 import UXLessonsCard from "@/components/ux-lessons-card"
 import ImageModal from "@/components/ImageModal"
-import MetricShuffle from "@/components/metric-shuffle"
+import CaseStudyMetric from "@/components/case-study-metric"
 import CaseStudyHeader, { CaseStudyBackLink } from "@/components/case-study-header"
+import MobileTableOfContents from "@/components/mobile-table-of-contents"
 import { getProjectById } from "@/lib/projects"
+import { motionSafeScrollBehavior } from "@/lib/accessibility"
 
 const project = getProjectById("aura")!
 
@@ -109,7 +111,7 @@ export default function AuraCaseStudyPage() {
     if (element) {
       window.scrollTo({
         top: element.offsetTop - 100,
-        behavior: "smooth",
+        behavior: motionSafeScrollBehavior(),
       })
     }
   }
@@ -118,34 +120,34 @@ export default function AuraCaseStudyPage() {
     <div className="min-h-screen bg-background text-foreground font-sans flex flex-col">
       <ScrollProgressIndicator />
 
-      <TopNavigation onMobileMenuToggle={(isOpen) => setSidebarOpen(isOpen)} />
+      <TopNavigation backHref="/work/archived/" />
 
       <div className="flex flex-1 min-h-0">
       {!isMobile && (
         <aside
           id="section-nav"
-          className="w-64 md:sticky md:top-16 md:self-start md:pt-16 shrink-0 bg-background"
-          role="navigation"
+          className="hidden w-64 shrink-0 border-r border-sidebar-border bg-sidebar md:sticky md:top-16 md:block md:self-start md:pt-16"
           aria-label="Section navigation"
         >
           <CaseStudyBackLink href="/work/archived/" />
 
           {/* Navigation links */}
-          <nav className="space-y-6 text-muted-foreground pl-8" aria-label="Table of contents">
-            <ul className="space-y-6">
+          <nav className="px-6 text-muted-foreground" aria-label="Table of contents">
+            <ul className="space-y-2">
               {sections.map((section) => (
                 <li key={section.id}>
                   <button
-                    className="flex items-center cursor-pointer group w-full text-left focus:outline-none focus:ring-2 focus:ring-fui-primary focus:ring-opacity-50 rounded-sm"
+                    type="button"
+                    className={`group flex w-full cursor-pointer items-center rounded-fui py-2 pr-3 text-left transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-fui-primary ${activeSection === section.id ? "bg-sidebar-accent" : "hover:bg-sidebar-accent/60"}`}
                     onClick={() => scrollToSection(section.id)}
                     aria-current={activeSection === section.id ? "location" : undefined}
                   >
                     <div
-                      className={`w-1 h-6 mr-4 rounded transition-colors duration-300 ${activeSection === section.id ? "bg-primary" : "bg-transparent group-hover:bg-primary/50"}`}
+                      className={`mr-3 h-5 w-0.5 transition-colors duration-200 ${activeSection === section.id ? "bg-primary" : "bg-transparent group-hover:bg-primary/50"}`}
                       aria-hidden="true"
                     />
                     <span
-                      className={`text-sm font-light transition-colors duration-300 ${activeSection === section.id ? "text-foreground" : "text-muted-foreground group-hover:text-foreground/80"}`}
+                      className={`text-sm transition-colors duration-200 ${activeSection === section.id ? "font-medium text-foreground" : "text-muted-foreground group-hover:text-foreground"}`}
                     >
                       {section.title}
                     </span>
@@ -158,10 +160,13 @@ export default function AuraCaseStudyPage() {
       )}
 
       <div className={`flex-1 min-w-0 flex flex-col ${isMobile ? "w-full" : ""}`}>
-      <main className={`flex-1 px-4 sm:px-8 py-12 ${isMobile ? "w-full" : ""}`}>
+      <main id="main-content" className={`flex-1 px-4 py-8 sm:px-8 md:py-12 ${isMobile ? "w-full" : ""}`}>
         <div className="max-w-6xl mx-auto">
           {/* Case Study Title and Tags */}
-          <CaseStudyHeader project={project} />
+          <CaseStudyHeader
+            project={project}
+            mobileNavigation={<MobileTableOfContents sections={sections} />}
+          />
 
           {/* Overview Section */}
           <section id="overview" className="min-h-screen py-8 sm:py-12" aria-labelledby="overview-heading">
@@ -190,11 +195,10 @@ export default function AuraCaseStudyPage() {
                       href="https://www.capgemini.com/gb-en/insights/research-library/think-big-start-small/"
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-blue-400 hover:text-blue-300 underline"
-                      title="Read the Capgemini thought leadership article explaining Agentic AI for governments worldwide (opens in new tab)"
-                      aria-label="Read the Capgemini thought leadership article explaining Agentic AI for governments worldwide (opens in new tab)"
+                      className="text-fui-primary underline underline-offset-4"
                     >
-                      an official Capgemini article (opens in new tab)
+                      an official Capgemini article
+                      <span className="sr-only"> (opens in a new tab)</span>
                     </a> on Agentic AI’s potential to transform global citizen services.
                   </li>
 
@@ -208,26 +212,9 @@ export default function AuraCaseStudyPage() {
               <div className="mt-8 mb-8">
 
                 <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3" role="group" aria-label="Key metrics">
-                  <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-foreground">
-                      <MetricShuffle final="40+" />
-                    </div>
-                    <div className="text-xs sm:text-sm md:text-base text-muted-foreground">participants in Designathons</div>
-                  </div>
-
-                  <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-foreground">
-                      <MetricShuffle final="1.5×" />
-                    </div>
-                    <div className="text-xs sm:text-sm md:text-base text-muted-foreground">faster design iteration cycles</div>
-                  </div>
-
-                  <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-foreground">
-                      <MetricShuffle final="3,000+" />
-                    </div>
-                    <div className="text-xs sm:text-sm md:text-base text-muted-foreground">engagements with Agentic AI article</div>
-                  </div>
+                  <CaseStudyMetric label="Designathon participants" value="40+" />
+                  <CaseStudyMetric label="Design iteration speed" value="1.5×" note="Faster cycles" trend="up" />
+                  <CaseStudyMetric label="Article engagements" value="3,000+" note="Agentic AI article" />
                 </div>
 
               </div>
@@ -314,7 +301,7 @@ export default function AuraCaseStudyPage() {
 
             <AnimateOnScroll animation="fade-up" delay={400}>
               <div className="mt-12 mb-12">
-                <div className="rounded-3xl bg-muted p-8 md:p-12 backdrop-blur-sm">
+                <div className="rounded-fui-lg bg-muted p-8 md:p-12 backdrop-blur-sm">
                   <div className="flex flex-col items-center justify-center">
 
                     {/* User Persona */}
@@ -351,7 +338,7 @@ export default function AuraCaseStudyPage() {
                     </div>
 
                     {/* Journey Stages */}
-                    <div className="grid grid-cols-4 gap-4 mt-12" role="region" aria-label="User journey stages">
+                    <div className="mt-12 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4" role="region" aria-label="User journey stages">
                       <div className="text-center">
                         <h4 className="text-xl font-normal text-foreground mb-4">Receiving</h4>
                         <p className="text-sm text-muted-foreground">
@@ -382,33 +369,32 @@ export default function AuraCaseStudyPage() {
                     </div>
 
                     {/* Emotion Line */}
-                    <div
-                      className="relative h-40 mb-8"
-                      aria-label="User emotion journey graph showing fluctuating satisfaction levels"
-                    >
+                    <figure className="relative mb-8 h-40 text-fui-primary">
                       <svg
                         className="w-full h-full"
                         viewBox="0 0 800 100"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
-                        role="img"
                         aria-hidden="true"
                       >
                         <path
                           d="M0,20 Q100,0 200,60 T400,80 T600,40 T800,90"
-                          stroke="white"
+                          stroke="currentColor"
                           strokeWidth="3"
                           fill="none"
                         />
-                        <circle cx="0" cy="20" r="8" fill="#2DD4BF" />
-                        <circle cx="200" cy="60" r="8" fill="#2DD4BF" />
-                        <circle cx="400" cy="80" r="8" fill="#2DD4BF" />
-                        <circle cx="800" cy="90" r="8" fill="#2DD4BF" />
+                        <circle cx="0" cy="20" r="8" fill="currentColor" />
+                        <circle cx="200" cy="60" r="8" fill="currentColor" />
+                        <circle cx="400" cy="80" r="8" fill="currentColor" />
+                        <circle cx="800" cy="90" r="8" fill="currentColor" />
                       </svg>
-                    </div>
+                      <figcaption className="sr-only">
+                        Frustration increases as users move from finding and reading source material to adapting and reviewing summaries.
+                      </figcaption>
+                    </figure>
 
                     {/* Quotes */}
-                    <div className="grid grid-cols-4 gap-4 mt-8" aria-label="User quotes at different journey stages">
+                    <div className="mt-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
                       <div className="text-center">
                         <p className="text-sm text-muted-foreground">"These policies are too long for busy employees to digest."</p>
                       </div>
@@ -447,12 +433,12 @@ export default function AuraCaseStudyPage() {
 
             <AnimateOnScroll animation="fade-up" delay={300}>
               <div className="mt-8 mb-12">
-                <div className="rounded-3xl bg-muted p-8 md:p-12 backdrop-blur-sm">
+                <div className="rounded-fui-lg bg-muted p-8 md:p-12 backdrop-blur-sm">
                   <div className="grid grid-cols-1 md:grid-cols-5 gap-12 md:gap-6">
 
                     <div className="flex flex-col items-center text-center">
-                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-white">1</span>
+                      <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary">
+                        <span className="text-xl font-medium text-primary-foreground md:text-2xl">1</span>
                       </div>
                       <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">Scoping & research</h3>
                       <ul className="space-y-3 text-left w-full">
@@ -463,8 +449,8 @@ export default function AuraCaseStudyPage() {
                     </div>
 
                     <div className="flex flex-col items-center text-center">
-                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-white">2</span>
+                      <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary">
+                        <span className="text-xl font-medium text-primary-foreground md:text-2xl">2</span>
                       </div>
                       <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">Model evaluation</h3>
                       <ul className="space-y-3 text-left w-full">
@@ -475,8 +461,8 @@ export default function AuraCaseStudyPage() {
                     </div>
 
                     <div className="flex flex-col items-center text-center">
-                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-white">3</span>
+                      <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary">
+                        <span className="text-xl font-medium text-primary-foreground md:text-2xl">3</span>
                       </div>
                       <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">System prompt</h3>
                       <ul className="space-y-3 text-left w-full">
@@ -487,8 +473,8 @@ export default function AuraCaseStudyPage() {
                     </div>
 
                     <div className="flex flex-col items-center text-center">
-                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-white">4</span>
+                      <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary">
+                        <span className="text-xl font-medium text-primary-foreground md:text-2xl">4</span>
                       </div>
                       <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">Prototyping</h3>
                       <ul className="space-y-3 text-left w-full">
@@ -499,8 +485,8 @@ export default function AuraCaseStudyPage() {
                     </div>
 
                     <div className="flex flex-col items-center text-center">
-                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-white">5</span>
+                      <div className="mb-4 flex h-16 w-16 items-center justify-center rounded-full bg-primary">
+                        <span className="text-xl font-medium text-primary-foreground md:text-2xl">5</span>
                       </div>
                       <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">Testing & iteration</h3>
                       <ul className="space-y-3 text-left w-full">
@@ -526,7 +512,7 @@ export default function AuraCaseStudyPage() {
                   />
                   <figcaption
                     id="aura-arch-caption"
-                    className="mt-3 text-center text-xs sm:text-sm text-gray-400"
+                    className="case-study-caption"
                   >
                     AURA system architecture with data flow and integration points.
                   </figcaption>
@@ -549,7 +535,7 @@ export default function AuraCaseStudyPage() {
                   />
                   <figcaption
                     id="aura-concepts-caption"
-                    className="mt-3 text-center text-xs sm:text-sm text-gray-400"
+                    className="case-study-caption"
                   >
                     Early concepts exploring IA, workflows, and feature directions.
                   </figcaption>
@@ -567,12 +553,13 @@ export default function AuraCaseStudyPage() {
                 <figure className="m-0">
                   <ImageModal
                     src="/ai-design/aura_generate.gif"
+                    posterSrc="/ai-design/aura-generate-poster.png"
                     alt="Animation of AURA’s Generate feature creating a draft from a prompt with inline editing"
                     aria-describedby="aura-generate-caption"
                   />
                   <figcaption
                     id="aura-generate-caption"
-                    className="mt-3 text-center text-xs sm:text-sm text-gray-400"
+                    className="case-study-caption"
                   >
                     Generate demo: prompt, draft, and quick edits.
                   </figcaption>
@@ -595,7 +582,7 @@ export default function AuraCaseStudyPage() {
                   />
                   <figcaption
                     id="aura-crit-caption"
-                    className="mt-3 text-center text-xs sm:text-sm text-gray-400"
+                    className="case-study-caption"
                   >
                     Design critique highlights that guided refinements.
                   </figcaption>
@@ -618,7 +605,7 @@ export default function AuraCaseStudyPage() {
                   />
                   <figcaption
                     id="aura-ur-caption"
-                    className="mt-3 text-center text-xs sm:text-sm text-gray-400"
+                    className="case-study-caption"
                   >
                     Research insights shaping trust, transparency, and control.
                   </figcaption>
@@ -651,12 +638,13 @@ export default function AuraCaseStudyPage() {
                 <figure className="m-0">
                   <ImageModal
                     src="/ai-design/aura_mvp.gif"
+                    posterSrc="/ai-design/aura-mvp-poster.png"
                     alt="Animated demonstration of the new AURA generate feature"
                     aria-describedby="img-caption-aura-generate"
                   />
                   <figcaption
                     id="img-caption-aura-generate"
-                    className="mt-3 text-center text-xs sm:text-sm text-gray-400"
+                    className="case-study-caption"
                   >
                     Animated demonstration of the AURA generate feature producing ready-to-use summaries.
                   </figcaption>
@@ -707,35 +695,9 @@ export default function AuraCaseStudyPage() {
       aria-label="AURA proof of concept outcomes"
     >
 
-      {/* Metric 1 */}
-      <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-        <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-foreground">
-          <MetricShuffle final="3" />
-        </div>
-        <div className="text-xs sm:text-sm md:text-base text-muted-foreground">
-          interface concepts explored before narrowing scope
-        </div>
-      </div>
-
-      {/* Metric 2 */}
-      <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-        <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-foreground">
-          <MetricShuffle final="60%+" />
-        </div>
-        <div className="text-xs sm:text-sm md:text-base text-muted-foreground">
-          estimated time saved in document summarisation during testing
-        </div>
-      </div>
-
-      {/* Metric 3 (letters shuffle) */}
-      <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-        <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-foreground">
-          <MetricShuffle final="MVP" />
-        </div>
-        <div className="text-xs sm:text-sm md:text-base text-muted-foreground">
-          simplified to automated behind-the-scenes summarisation due to technical constraints
-        </div>
-      </div>
+      <CaseStudyMetric label="Concepts explored" value="3" note="Before narrowing scope" />
+      <CaseStudyMetric label="Summarisation time saved" value="60%+" note="Estimate from testing" trend="up" />
+      <CaseStudyMetric label="Final scope" value="MVP" note="Automated behind-the-scenes summarisation" scrambleLetters />
 
     </div>
   </div>

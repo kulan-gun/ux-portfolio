@@ -6,93 +6,70 @@ import { cn } from "@/lib/utils"
 interface AnimateOnScrollProps {
   children: ReactNode
   className?: string
-  delay?: number // Delay in ms
-  once?: boolean // Whether to only animate once
-  animation?: "fade-up" | "fade-in" | "bounce-up" // Animation type
-  initiallyVisible?: boolean // Whether to show the animation immediately on load
+  /** Retained for compatibility; all case-study reveals now share one rhythm. */
+  delay?: number
+  once?: boolean
+  /** Retained for compatibility; bounce and long fades are intentionally normalised. */
+  animation?: "fade-up" | "fade-in" | "bounce-up"
+  initiallyVisible?: boolean
 }
 
 export default function AnimateOnScroll({
   children,
   className,
-  delay = 0,
+  delay: _delay = 0,
   once = true,
-  animation = "fade-up",
+  animation: _animation = "fade-up",
   initiallyVisible = false,
 }: AnimateOnScrollProps) {
   const [isVisible, setIsVisible] = useState(initiallyVisible)
-  const [hasAnimated, setHasAnimated] = useState(initiallyVisible)
   const ref = useRef<HTMLDivElement>(null)
+  const hasAnimated = useRef(initiallyVisible)
 
   useEffect(() => {
-    // If initiallyVisible is true, we don't need to observe
-    if (initiallyVisible) {
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches
+
+    if (initiallyVisible || reduceMotion) {
       setIsVisible(true)
-      if (once) setHasAnimated(true)
+      hasAnimated.current = true
       return
     }
 
     const observer = new IntersectionObserver(
       ([entry]) => {
-        // If we only want to animate once and it's already animated, do nothing
-        if (once && hasAnimated) return
+        if (once && hasAnimated.current) return
 
-        // Update visibility state based on intersection
         if (entry.isIntersecting) {
           setIsVisible(true)
-          if (once) setHasAnimated(true)
+          if (once) {
+            hasAnimated.current = true
+            observer.disconnect()
+          }
         } else if (!once) {
           setIsVisible(false)
         }
       },
       {
         root: null,
-        rootMargin: "0px",
-        threshold: 0.1, // Trigger when at least 10% of the element is visible
+        rootMargin: "0px 0px -8% 0px",
+        threshold: 0.08,
       },
     )
 
     const currentRef = ref.current
-    if (currentRef) {
-      observer.observe(currentRef)
-    }
+    if (currentRef) observer.observe(currentRef)
 
-    return () => {
-      if (currentRef) {
-        observer.unobserve(currentRef)
-      }
-    }
-  }, [once, hasAnimated, initiallyVisible])
-
-  // Animation classes based on the selected animation type
-  const animationClasses = {
-    "fade-up": "translate-y-10 opacity-0",
-    "fade-in": "opacity-0",
-    "bounce-up": "translate-y-16 opacity-0",
-  }
-
-  // Transition classes based on the selected animation type
-  const transitionClasses = {
-    "fade-up": "transition-all duration-700 ease-out",
-    "fade-in": "transition-opacity duration-700 ease-out",
-    "bounce-up": "transition-all duration-700 ease-out",
-  }
+    return () => observer.disconnect()
+  }, [once, initiallyVisible])
 
   return (
     <div
       ref={ref}
-      className={cn(transitionClasses[animation], isVisible ? "" : animationClasses[animation], className)}
-      style={{
-        transitionDelay: `${delay}ms`,
-        transform: isVisible
-          ? "translate3d(0, 0, 0)"
-          : animation === "fade-in"
-            ? "translate3d(0, 0, 0)"
-            : animation === "bounce-up"
-              ? "translate3d(0, 4rem, 0)"
-              : "translate3d(0, 2.5rem, 0)",
-        opacity: isVisible ? 1 : 0,
-      }}
+      className={cn(
+        "transition-[opacity,transform] duration-500 ease-[cubic-bezier(0.22,1,0.36,1)] motion-reduce:transition-none",
+        isVisible ? "translate-y-0 opacity-100" : "reveal-pending",
+        className,
+      )}
     >
       {children}
     </div>

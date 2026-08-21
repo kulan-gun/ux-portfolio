@@ -45,14 +45,18 @@ export function ThemeToggle() {
       type="button"
       onClick={toggle}
       className={cn(
-        "p-2 rounded-fui border border-black/10 dark:border-white/10",
+        "inline-flex min-h-11 min-w-11 items-center justify-center rounded-fui border border-black/10 dark:border-white/10",
         "text-fui-dim hover:text-fui-primary dark:hover:text-fui-primary hover:border-fui-primary/40",
         "transition-colors duration-200",
         "focus:outline-none focus-visible:ring-2 focus-visible:ring-fui-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
       )}
       aria-label={theme === "dark" ? "Switch to light mode" : "Switch to dark mode"}
     >
-      {theme === "dark" ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+      {theme === "dark" ? (
+        <Sun className="h-4 w-4" aria-hidden="true" />
+      ) : (
+        <Moon className="h-4 w-4" aria-hidden="true" />
+      )}
     </button>
   )
 }

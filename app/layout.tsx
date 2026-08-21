@@ -5,7 +5,7 @@ const themeInitScript = `
 (function(){
   try {
     var k='operative-theme';
-    var t='dark';
+    var t=window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
     if (typeof localStorage!='undefined') { var s=localStorage.getItem(k); if (s==='light'||s==='dark') t=s; }
     var el=document.documentElement;
     if (el) { el.classList.remove('light','dark'); el.classList.add(t); }
@@ -14,7 +14,10 @@ const themeInitScript = `
 `
 
 export const metadata: Metadata = {
-  title: "Kulan Gunawardena · Portfolio",
+  title: {
+    default: "Kulan Gunawardena · Portfolio",
+    template: "%s · Kulan Gunawardena",
+  },
   description: "Optimising the experience of trust-critical systems. Kulan Gunawardena · Autodesk.",
 }
 
@@ -35,7 +38,15 @@ export default function RootLayout({
           rel="stylesheet"
         />
       </head>
-      <body>{children}</body>
+      <body>
+        <a
+          href="#main-content"
+          className="fixed left-4 top-4 z-[10000] -translate-y-24 rounded-fui bg-foreground px-4 py-3 font-medium text-background transition-transform focus:translate-y-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-fui-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
+        >
+          Skip to main content
+        </a>
+        {children}
+      </body>
     </html>
   )
 }

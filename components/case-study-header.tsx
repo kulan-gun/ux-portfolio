@@ -1,4 +1,5 @@
 import Link from "next/link"
+import type { ReactNode } from "react"
 import type { Project, ProjectStatus } from "@/lib/projects"
 
 const statusDotClass: Record<ProjectStatus, string> = {
@@ -12,45 +13,47 @@ type CaseStudyHeaderProps = {
   /** Where the Back control should go. Archived studies link to Archive. */
   backHref?: string
   backLabel?: string
+  mobileNavigation?: ReactNode
 }
 
 export function CaseStudyHeaderTags({ project }: { project: Project }) {
   return (
-    <div className="flex flex-wrap gap-2 sm:gap-4 pt-8 mb-6" aria-label="Project tags">
-      <div className="inline-flex rounded-full bg-muted px-3 py-1 sm:px-4 sm:py-1.5">
-        <span className="text-xs font-medium text-muted-foreground tracking-wide uppercase">
-          {project.role}
-        </span>
+    <dl
+      className="mb-6 grid grid-cols-2 border-y border-border sm:mb-8 lg:grid-cols-4"
+      aria-label="Project details"
+    >
+      <div className="py-4 pr-3 sm:pr-6">
+        <dt className="font-machine text-fui-dim">Role</dt>
+        <dd className="mt-1.5 text-sm text-foreground">{project.role}</dd>
       </div>
-      <div className="inline-flex rounded-full bg-muted px-3 py-1 sm:px-4 sm:py-1.5">
-        <span className="text-xs font-medium text-muted-foreground tracking-wide uppercase">
-          {project.date}
-        </span>
+      <div className="border-l border-border py-4 pl-3 sm:pl-6">
+        <dt className="font-machine text-fui-dim">Date</dt>
+        <dd className="mt-1.5 text-sm text-foreground">{project.date}</dd>
       </div>
-      <div className="inline-flex rounded-full bg-muted px-3 py-1 sm:px-4 sm:py-1.5">
-        <span className="text-xs font-medium text-muted-foreground tracking-wide uppercase">
-          {project.client}
-        </span>
+      <div className="border-t border-border py-4 pr-3 sm:pr-6 lg:border-l lg:border-t-0 lg:pl-6">
+        <dt className="font-machine text-fui-dim">{project.organisationLabel ?? "Client"}</dt>
+        <dd className="mt-1.5 text-sm text-foreground">{project.client}</dd>
       </div>
-      <div className="inline-flex rounded-full bg-muted px-3 py-1 sm:px-4 sm:py-1.5">
-        <div className="flex items-center gap-2">
-          <div className={`h-2 w-2 rounded-full ${statusDotClass[project.status]}`} />
-          <span className="text-xs font-medium text-muted-foreground tracking-wide uppercase">
+      <div className="border-l border-t border-border py-4 pl-3 sm:pl-6 lg:border-t-0">
+        <dt className="font-machine text-fui-dim">Status</dt>
+        <dd className="mt-1.5 flex items-center gap-2 text-sm text-foreground">
+          <span className={`h-2 w-2 rounded-full ${statusDotClass[project.status]}`} aria-hidden="true" />
+          <span>
             {project.status}
           </span>
-        </div>
+        </dd>
       </div>
-    </div>
+    </dl>
   )
 }
 
 export function CaseStudyTitleBlock({ project }: { project: Project }) {
   return (
-    <div className="mb-8 sm:mb-12">
-      <h1 id="case-study-title" className="text-3xl sm:text-4xl md:text-5xl font-display mb-3 sm:mb-4">
+    <div className="mb-6 sm:mb-12">
+      <h1 className="text-3xl sm:text-4xl md:text-5xl font-display mb-3 sm:mb-4">
         {project.title}
       </h1>
-      <p className="max-w-3xl text-lg sm:text-xl md:text-2xl text-muted-foreground font-sans">
+      <p className="max-w-3xl text-lg sm:text-xl leading-relaxed text-muted-foreground font-sans">
         {project.subtitle}
       </p>
     </div>
@@ -63,7 +66,7 @@ export function CaseStudyHeroImage({ project }: { project: Project }) {
       <img
         src={project.imageSrc}
         alt={project.imageAlt}
-        className="w-full rounded-2xl"
+        className="w-full rounded-xl"
       />
     </div>
   )
@@ -72,29 +75,40 @@ export function CaseStudyHeroImage({ project }: { project: Project }) {
 /** Shared tags + title/subtitle + hero image for case study pages. */
 export default function CaseStudyHeader({
   project,
-}: Pick<CaseStudyHeaderProps, "project">) {
+  mobileNavigation,
+}: Pick<CaseStudyHeaderProps, "project" | "mobileNavigation">) {
   return (
     <div>
-      <CaseStudyHeaderTags project={project} />
-      <CaseStudyTitleBlock project={project} />
+      <div className="md:hidden">
+        <CaseStudyTitleBlock project={project} />
+        <CaseStudyHeaderTags project={project} />
+        {mobileNavigation}
+      </div>
+      <div className="hidden md:block">
+        <CaseStudyHeaderTags project={project} />
+        <CaseStudyTitleBlock project={project} />
+      </div>
       <CaseStudyHeroImage project={project} />
     </div>
   )
 }
 
 export function CaseStudyBackLink({
-  href = "/",
-  label = "Back",
+  href = "/#work",
+  label,
+  compact = false,
 }: {
   href?: string
   label?: string
+  compact?: boolean
 }) {
+  const resolvedLabel = label ?? (href === "/work/archived/" ? "Back to archive" : "Back to work")
+
   return (
-    <div className="pl-8 mb-6 pt-8">
+    <div className={compact ? "mb-8" : "mb-6 px-6 pt-8"}>
       <Link
         href={href}
-        className="inline-flex items-center px-4 pr-5 py-1.5 bg-muted hover:bg-muted/80 text-muted-foreground hover:text-foreground rounded-full transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-fui-primary focus:ring-opacity-50"
-        aria-label={href === "/work/archived/" ? "Go back to Archive" : "Go back to home page"}
+        className="inline-flex min-h-11 items-center gap-2 rounded-fui border border-border bg-card px-3.5 py-2 text-sm font-medium text-foreground shadow-sm transition-colors hover:border-fui-primary/50 hover:bg-sidebar-accent hover:text-fui-primary focus:outline-none focus-visible:ring-2 focus-visible:ring-fui-primary focus-visible:ring-offset-2 focus-visible:ring-offset-background"
       >
         <svg
           width="16"
@@ -103,12 +117,11 @@ export function CaseStudyBackLink({
           fill="none"
           stroke="currentColor"
           strokeWidth="2"
-          className="mr-1.5"
           aria-hidden="true"
         >
           <path d="M19 12H5M12 19l-7-7 7-7" />
         </svg>
-        <span>{label}</span>
+        <span>{resolvedLabel}</span>
       </Link>
     </div>
   )

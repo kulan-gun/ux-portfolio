@@ -4,16 +4,17 @@ import type React from "react"
 
 import { useState, useEffect } from "react"
 import ScrollProgressIndicator from "@/components/scroll-progress-indicator"
-import AnimateOnScroll from "@/components/animate-on-scroll"
+import ScrollReveal from "@/components/animate-on-scroll"
 import Footer from "@/components/footer"
 import TopNavigation from "@/components/top-navigation"
 import BackToTopButton from "@/components/back-to-top-button"
-import SummaryCard from "@/components/summary-card"
 import FeedbackAnalysis from "@/components/feedback-analysis"
 import ImageModal from "@/components/ImageModal"
-import MetricShuffle from "@/components/metric-shuffle"
+import CaseStudyMetric from "@/components/case-study-metric"
 import CaseStudyHeader, { CaseStudyBackLink } from "@/components/case-study-header"
+import MobileTableOfContents from "@/components/mobile-table-of-contents"
 import { getProjectById } from "@/lib/projects"
+import { motionSafeScrollBehavior } from "@/lib/accessibility"
 
 const project = getProjectById("benefits")!
 
@@ -26,6 +27,17 @@ const sections = [
   { id: "results", title: "Results" },
   { id: "conclusion", title: "Conclusion" },
 ]
+
+type RevealProps = React.ComponentProps<typeof ScrollReveal>
+
+// Keep every reveal on this long-form page on one motion rhythm.
+function AnimateOnScroll({ children, className }: RevealProps) {
+  return (
+    <ScrollReveal animation="fade-up" className={className}>
+      {children}
+    </ScrollReveal>
+  )
+}
 
 export default function BenefitsCaseStudyPage() {
   const [sidebarOpen, setSidebarOpen] = useState(false)
@@ -108,7 +120,7 @@ export default function BenefitsCaseStudyPage() {
     if (element) {
       window.scrollTo({
         top: element.offsetTop - 100,
-        behavior: "smooth",
+        behavior: motionSafeScrollBehavior(),
       })
     }
   }
@@ -117,34 +129,34 @@ export default function BenefitsCaseStudyPage() {
     <div className="min-h-screen bg-background text-foreground font-sans flex flex-col">
       <ScrollProgressIndicator />
 
-      <TopNavigation onMobileMenuToggle={(isOpen) => setSidebarOpen(isOpen)} />
+      <TopNavigation backHref="/#work" />
 
       <div className="flex flex-1 min-h-0">
       {!isMobile && (
         <aside
           id="section-nav"
-          className="w-64 md:sticky md:top-16 md:self-start md:pt-16 shrink-0 bg-background"
-          role="navigation"
+          className="hidden w-64 shrink-0 border-r border-sidebar-border bg-sidebar md:sticky md:top-16 md:block md:self-start md:pt-16"
           aria-label="Section navigation"
         >
           <CaseStudyBackLink />
 
           {/* Navigation links */}
-          <nav className="space-y-6 text-muted-foreground pl-8" aria-label="Table of contents">
-            <ul className="space-y-6">
+          <nav className="px-6 text-muted-foreground" aria-label="Table of contents">
+            <ul className="space-y-2">
               {sections.map((section) => (
                 <li key={section.id}>
                   <button
-                    className="flex items-center cursor-pointer group w-full text-left focus:outline-none focus:ring-2 focus:ring-fui-primary focus:ring-opacity-50 rounded-sm"
+                    type="button"
+                    className={`group flex w-full cursor-pointer items-center rounded-fui py-2 pr-3 text-left transition-colors focus:outline-none focus-visible:ring-2 focus-visible:ring-fui-primary ${activeSection === section.id ? "bg-sidebar-accent" : "hover:bg-sidebar-accent/60"}`}
                     onClick={() => scrollToSection(section.id)}
                     aria-current={activeSection === section.id ? "location" : undefined}
                   >
                     <div
-                      className={`w-1 h-6 mr-4 rounded transition-colors duration-300 ${activeSection === section.id ? "bg-primary" : "bg-transparent group-hover:bg-primary/50"}`}
+                      className={`mr-3 h-5 w-0.5 transition-colors duration-200 ${activeSection === section.id ? "bg-primary" : "bg-transparent group-hover:bg-primary/50"}`}
                       aria-hidden="true"
                     />
                     <span
-                      className={`text-sm font-light transition-colors duration-300 ${activeSection === section.id ? "text-foreground" : "text-muted-foreground group-hover:text-foreground/80"}`}
+                      className={`text-sm transition-colors duration-200 ${activeSection === section.id ? "font-medium text-foreground" : "text-muted-foreground group-hover:text-foreground"}`}
                     >
                       {section.title}
                     </span>
@@ -157,10 +169,13 @@ export default function BenefitsCaseStudyPage() {
       )}
 
       <div className={`flex-1 min-w-0 flex flex-col ${isMobile ? "w-full" : ""}`}>
-      <main className={`flex-1 px-4 sm:px-8 py-12 ${isMobile ? "w-full" : ""}`}>
+      <main id="main-content" className={`flex-1 px-4 py-8 sm:px-8 md:py-12 ${isMobile ? "w-full" : ""}`}>
         <div className="max-w-6xl mx-auto">
           {/* Case Study Title and Tags */}
-          <CaseStudyHeader project={project} />
+          <CaseStudyHeader
+            project={project}
+            mobileNavigation={<MobileTableOfContents sections={sections} />}
+          />
 
           {/* Overview Section */}
           <section id="overview" className="min-h-screen py-8 sm:py-12" aria-labelledby="overview-heading">
@@ -180,37 +195,9 @@ export default function BenefitsCaseStudyPage() {
             <AnimateOnScroll animation="fade-up" delay={400}>
               <div className="mt-8 mb-8">
                 <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3" role="group" aria-label="Key metrics">
-
-                  {/* Monthly sessions */}
-                  <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-foreground">
-                      <MetricShuffle final="46K" scrambleLetters />
-                    </div>
-                    <div className="text-xs sm:text-sm md:text-base text-muted-foreground">
-                      monthly sessions
-                    </div>
-                  </div>
-
-                  {/* Digital uptake increase */}
-                  <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-foreground">
-                      <MetricShuffle final="+10%" scrambleLetters />
-                    </div>
-                    <div className="text-xs sm:text-sm md:text-base text-muted-foreground">
-                      points increase in digital uptake
-                    </div>
-                  </div>
-
-                  {/* CSAT increase */}
-                  <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-foreground">
-                      <MetricShuffle final="+5%" scrambleLetters />
-                    </div>
-                    <div className="text-xs sm:text-sm md:text-base text-muted-foreground">
-                      points increase in CSAT
-                    </div>
-                  </div>
-
+                  <CaseStudyMetric label="Monthly sessions" value="46K" note="Average service traffic" />
+                  <CaseStudyMetric label="Digital uptake" value="+10pp" note="Increase after launch" trend="up" />
+                  <CaseStudyMetric label="Customer satisfaction" value="+5pp" note="Increase after launch" trend="up" />
                 </div>
               </div>
             </AnimateOnScroll>
@@ -218,75 +205,57 @@ export default function BenefitsCaseStudyPage() {
 
             <AnimateOnScroll animation="fade-up" delay={400}>
               <div className="mt-12 mb-12">
-                <div className="rounded-3xl bg-muted p-8 md:p-12 backdrop-blur-sm">
-                  <div className="space-y-12">
-                    <div className="flex items-start gap-8 md:gap-16">
-                      <div className="w-32 md:w-40">
-                        <h3 className="text-2xl font-normal text-foreground mb-6">Key Facts</h3>
+                <div className="grid border-y border-black/10 dark:border-white/10 md:grid-cols-3">
+                  <article className="py-8 md:pr-8">
+                    <span className="mb-3 block font-mono text-xs tracking-widest-fui text-fui-primary" aria-hidden="true">
+                      01
+                    </span>
+                    <h3 className="text-lg sm:text-xl font-medium text-foreground">Scope and ownership</h3>
+                    <dl className="mt-5 text-sm sm:text-base">
+                      <div className="border-t border-black/10 dark:border-white/10 py-3">
+                        <dt className="text-xs text-fui-dim">ROLE</dt>
+                        <dd className="mt-1 text-muted-foreground">Lead UX Designer</dd>
                       </div>
-                      <div className="flex-1">
-                        <div className="h-0.5 w-12 bg-white mb-6 opacity-70"></div>
-                        <ul className="space-y-4 text-muted-foreground">
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>Project duration: 1 year, 2 months</span>
-                          </li>
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>Team size: 10+ members</span>
-                          </li>
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>My role: Lead UX Designer</span>
-                          </li>
-                        </ul>
+                      <div className="border-t border-black/10 dark:border-white/10 py-3">
+                        <dt className="text-xs text-fui-dim">DURATION</dt>
+                        <dd className="mt-1 text-muted-foreground">1 year, 2 months</dd>
                       </div>
-                    </div>
-                    <div className="flex items-start gap-8 md:gap-16">
-                      <div className="w-32 md:w-40">
-                        <h3 className="text-2xl font-normal text-foreground mb-6">Challenges</h3>
+                      <div className="border-t border-black/10 dark:border-white/10 py-3">
+                        <dt className="text-xs text-fui-dim">TEAM</dt>
+                        <dd className="mt-1 text-muted-foreground">10+ cross-functional members</dd>
                       </div>
-                      <div className="flex-1">
-                        <div className="h-0.5 w-12 bg-white mb-6 opacity-70"></div>
-                        <ul className="space-y-4 text-muted-foreground">
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>Low completion and satisfaction rates</span>
-                          </li>
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>Limited developer capacity</span>
-                          </li>
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>Nuanced policy requirements</span>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                    <div className="flex items-start gap-8 md:gap-16">
-                      <div className="w-32 md:w-40">
-                        <h3 className="text-2xl font-normal text-foreground mb-6">Approach</h3>
-                      </div>
-                      <div className="flex-1">
-                        <div className="h-0.5 w-12 bg-white mb-6 opacity-70"></div>
-                        <ul className="space-y-4 text-muted-foreground">
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>Applied design and systems thinking to map upstream issues to downstream impacts</span>
-                          </li>
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>Iterated on research and prototypes to reduce upload errors and drop-offs</span>
-                          </li>
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>Worked cross-functionally to align improvements across tech, policy, and ops</span>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
+                    </dl>
+                  </article>
+
+                  <article className="border-t border-black/10 dark:border-white/10 py-8 md:border-t-0 md:border-l md:px-8">
+                    <span className="mb-3 block font-mono text-xs tracking-widest-fui text-fui-primary" aria-hidden="true">
+                      02
+                    </span>
+                    <h3 className="text-lg sm:text-xl font-medium text-foreground">Constraints</h3>
+                    <ul className="mt-5 text-sm sm:text-base text-muted-foreground">
+                      <li className="border-t border-black/10 dark:border-white/10 py-3">Low completion and satisfaction rates</li>
+                      <li className="border-t border-black/10 dark:border-white/10 py-3">Limited developer capacity</li>
+                      <li className="border-t border-black/10 dark:border-white/10 py-3">Nuanced policy requirements</li>
+                    </ul>
+                  </article>
+
+                  <article className="border-t border-black/10 dark:border-white/10 py-8 md:border-t-0 md:border-l md:pl-8">
+                    <span className="mb-3 block font-mono text-xs tracking-widest-fui text-fui-primary" aria-hidden="true">
+                      03
+                    </span>
+                    <h3 className="text-lg sm:text-xl font-medium text-foreground">Approach</h3>
+                    <ul className="mt-5 text-sm sm:text-base text-muted-foreground">
+                      <li className="border-t border-black/10 dark:border-white/10 py-3">
+                        Map upstream issues to downstream service impacts
+                      </li>
+                      <li className="border-t border-black/10 dark:border-white/10 py-3">
+                        Iterate research and prototypes to reduce upload failures
+                      </li>
+                      <li className="border-t border-black/10 dark:border-white/10 py-3">
+                        Align design decisions across technology, policy, and operations
+                      </li>
+                    </ul>
+                  </article>
                 </div>
               </div>
             </AnimateOnScroll>
@@ -301,7 +270,7 @@ export default function BenefitsCaseStudyPage() {
                   />
                   <figcaption
                     id="img-caption-syfn-flowchart"
-                    className="mt-3 text-center text-xs sm:text-sm text-gray-400"
+                    className="case-study-caption"
                   >
                     Process flow diagram illustrating the user's journey in the benefits application process.
                   </figcaption>
@@ -330,107 +299,81 @@ export default function BenefitsCaseStudyPage() {
 
             <AnimateOnScroll animation="fade-up" delay={400}>
               <div className="mt-8 mb-12">
-                <div className="rounded-3xl bg-muted p-8 md:p-12 backdrop-blur-sm">
-                  <div className="space-y-12">
-                    <div className="flex items-start gap-8 md:gap-16">
-                      <div className="w-32 md:w-40">
-                        <h3 className="text-xl md:text-2xl font-normal text-foreground">User pain points</h3>
-                      </div>
-                      <div className="flex-1">
-                        <div className="h-0.5 w-12 bg-white mb-6 opacity-70"></div>
-                        <ul className="space-y-4 text-muted-foreground">
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>As a citizen, I find the guidance confusing and difficult to follow.</span>
-                          </li>
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>As a citizen, I encounter technical issues when trying to upload my fit note.</span>
-                          </li>
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>As a citizen, I cannot upload my fit note because the file format is not supported.</span>
-                          </li>
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>As a citizen, I often give up because the upload process is frustrating or unclear.</span>
-                          </li>
-                        </ul>
-                      </div>
+                <div className="grid border-y border-black/10 dark:border-white/10 md:grid-cols-2">
+                  <article className="py-8 md:pr-10">
+                    <span className="mb-3 block font-mono text-xs tracking-widest-fui text-fui-primary">
+                      CITIZEN EXPERIENCE
+                    </span>
+                    <h3 className="text-xl sm:text-2xl font-medium text-foreground">Uploading a fit note was too difficult</h3>
+                    <ul className="mt-6 text-sm sm:text-base text-muted-foreground">
+                      <li className="border-t border-black/10 dark:border-white/10 py-4">
+                        Guidance was confusing and difficult to follow.
+                      </li>
+                      <li className="border-t border-black/10 dark:border-white/10 py-4">
+                        Technical upload issues interrupted an already stressful journey.
+                      </li>
+                      <li className="border-t border-black/10 dark:border-white/10 py-4">
+                        Unsupported file formats prevented valid fit notes from being submitted.
+                      </li>
+                      <li className="border-t border-black/10 dark:border-white/10 py-4">
+                        Frustration and uncertainty caused some users to abandon the process.
+                      </li>
+                    </ul>
+                  </article>
 
-                    </div>
-                    <div className="flex items-start gap-8 md:gap-16">
-                      <div className="w-32 md:w-40">
-                        <h3 className="text-xl md:text-2xl font-normal text-foreground">Business challenges</h3>
-                      </div>
-                      <div className="flex-1">
-                        <div className="h-0.5 w-12 bg-white mb-6 opacity-70"></div>
-                        <ul className="space-y-4 text-muted-foreground">
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>As an agent, I deal with a high volume of support calls from struggling users.</span>
-                          </li>
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>As an agent, I spend a lot of time manually reprocessing incorrectly uploaded fit notes.</span>
-                          </li>
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>As an agent, I see delays to benefit processing when fit notes are rejected.</span>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-
-                    <div className="flex items-start gap-8 md:gap-16">
-                      <div className="w-32 md:w-40">
-                        <h3 className="text-xl md:text-2xl font-normal text-foreground">Opportunities</h3>
-                      </div>
-                      <div className="flex-1">
-                        <div className="h-0.5 w-12 bg-white mb-6 opacity-70"></div>
-                        <ul className="space-y-4 text-muted-foreground">
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>Explore ways to simplify the submission journey for users.</span>
-                          </li>
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>Investigate how users interpret and act on existing guidance.</span>
-                          </li>
-                          <li className="flex gap-3">
-                            <span className="text-foreground">•</span>
-                            <span>Understand user behaviours that lead to support calls.</span>
-                          </li>
-                        </ul>
-                      </div>
-                    </div>
-                  </div>
+                  <article className="border-t border-black/10 dark:border-white/10 py-8 md:border-t-0 md:border-l md:pl-10">
+                    <span className="mb-3 block font-mono text-xs tracking-widest-fui text-fui-primary">
+                      OPERATIONAL IMPACT
+                    </span>
+                    <h3 className="text-xl sm:text-2xl font-medium text-foreground">Failed uploads created avoidable work</h3>
+                    <ul className="mt-6 text-sm sm:text-base text-muted-foreground">
+                      <li className="border-t border-black/10 dark:border-white/10 py-4">
+                        Support teams received high volumes of calls from users who could not complete the journey.
+                      </li>
+                      <li className="border-t border-black/10 dark:border-white/10 py-4">
+                        Agents manually reprocessed incorrectly uploaded fit notes.
+                      </li>
+                      <li className="border-t border-black/10 dark:border-white/10 py-4">
+                        Rejected evidence delayed benefit processing for people awaiting financial support.
+                      </li>
+                    </ul>
+                  </article>
                 </div>
+
+                <aside className="mt-10 max-w-4xl border-l-2 border-fui-primary py-1 pl-5 sm:pl-7" aria-label="Design challenge">
+                  <p className="mb-3 font-mono text-xs tracking-widest-fui uppercase text-fui-dim">
+                    Design challenge
+                  </p>
+                  <p className="text-lg sm:text-xl leading-relaxed text-foreground">
+                    Make repeat fit-note submissions clear and reliable, while reducing failed uploads, avoidable
+                    support calls, and delays to benefit processing.
+                  </p>
+                </aside>
               </div>
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={400}>
               <div className="mt-12 mb-12">
-                <div className="rounded-3xl bg-muted p-8 md:p-12 backdrop-blur-sm">
+                <div className="border-y border-black/10 dark:border-white/10 py-8 md:py-12">
                   <div className="flex flex-col items-center justify-center">
                     {/* User Journey Map */}
                     <div className="mb-12">
                       <div className="flex items-center gap-4 mb-6">
                         <div
-                          className="w-16 h-16 bg-white rounded-full overflow-hidden flex items-center justify-center"
+                          className="w-16 h-16 shrink-0 bg-muted border border-black/10 dark:border-white/10 rounded-fui-lg overflow-hidden flex items-center justify-center text-foreground"
                           aria-hidden="true"
                         >
                           <svg className="w-8 h-8" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path
                               d="M12 13C14.2091 13 16 11.2091 16 9C16 6.79086 14.2091 5 12 5C9.79086 5 8 6.79086 8 9C8 11.2091 9.79086 13 12 13Z"
-                              stroke="black"
+                              stroke="currentColor"
                               strokeWidth="1.5"
                               strokeLinecap="round"
                               strokeLinejoin="round"
                             />
                             <path
                               d="M5 20C5 17.2386 8.13401 15 12 15C15.866 15 19 17.2386 19 20"
-                              stroke="black"
+                              stroke="currentColor"
                               strokeWidth="1.5"
                               strokeLinecap="round"
                               strokeLinejoin="round"
@@ -449,7 +392,7 @@ export default function BenefitsCaseStudyPage() {
                     </div>
 
                     {/* Journey Stages */}
-                    <div className="grid grid-cols-4 gap-4 mb-8" role="region" aria-label="User journey stages">
+                    <div className="mb-8 grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4" role="region" aria-label="User journey stages">
                       <div className="text-center">
                         <h4 className="text-xl font-normal text-foreground mb-4">Consider</h4>
                         <p className="text-sm text-muted-foreground">
@@ -479,33 +422,32 @@ export default function BenefitsCaseStudyPage() {
                     </div>
 
                     {/* Emotion Line */}
-                    <div
-                      className="relative h-40 mb-8"
-                      aria-label="User emotion journey graph showing fluctuating satisfaction levels"
-                    >
+                    <figure className="relative mb-8 h-40">
                       <svg
-                        className="w-full h-full"
+                        className="w-full h-full text-fui-primary"
                         viewBox="0 0 800 100"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
-                        role="img"
                         aria-hidden="true"
                       >
                         <path
                           d="M0,20 Q100,0 200,60 T400,80 T600,40 T800,90"
-                          stroke="white"
+                          stroke="currentColor"
                           strokeWidth="3"
                           fill="none"
                         />
-                        <circle cx="0" cy="20" r="8" fill="#2DD4BF" />
-                        <circle cx="200" cy="60" r="8" fill="#2DD4BF" />
-                        <circle cx="400" cy="80" r="8" fill="#2DD4BF" />
-                        <circle cx="800" cy="90" r="8" fill="#2DD4BF" />
+                        <circle cx="0" cy="20" r="8" fill="currentColor" />
+                        <circle cx="200" cy="60" r="8" fill="currentColor" />
+                        <circle cx="400" cy="80" r="8" fill="currentColor" />
+                        <circle cx="800" cy="90" r="8" fill="currentColor" />
                       </svg>
-                    </div>
+                      <figcaption className="sr-only">
+                        User confidence declines across the journey, with the greatest frustration during upload and completion.
+                      </figcaption>
+                    </figure>
 
                     {/* Quotes */}
-                    <div className="grid grid-cols-4 gap-4" aria-label="User quotes at different journey stages">
+                    <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 md:grid-cols-4">
                       <div className="text-center">
                         <p className="text-sm text-muted-foreground">"What do I need to do here?"</p>
                       </div>
@@ -542,80 +484,53 @@ export default function BenefitsCaseStudyPage() {
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={400}>
-              <h3 className="text-2xl font-normal text-foreground">Activities</h3>
-              <div className="mt-8 mb-12">
-                <div className="rounded-3xl bg-muted p-8 md:p-12 backdrop-blur-sm">
-                  <div className="grid grid-cols-1 md:grid-cols-5 gap-12 md:gap-6">
-                    <div className="flex flex-col items-center text-center">
-                      {/* Number Circle */}
-                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-white">1</span>
-                      </div>
-
-                      {/* Step Title */}
-                      <h4 className="text-xl font-normal text-foreground mb-4">User research</h4>
-
-                      {/* Tasks List */}
-                      <ul className="space-y-3 text-left w-full">
-                        <li className="text-muted-foreground text-sm md:text-base text-center">
-                          Reviewed feedback inbox and conducted user and staff interviews and usability testing to reveal insights.
-                        </li>
-                      </ul>
-                    </div>
-
-                    <div className="flex flex-col items-center text-center">
-                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-white">2</span>
-                      </div>
-                      <h4 className="text-lg md:text-xl font-normal text-foreground mb-4">Analysis</h4>
-                      <ul className="space-y-3 text-left w-full">
-                        <li className="text-muted-foreground text-sm md:text-base text-center">
-                          Assessed back-end performance and user flows, identified bottlenecks, and drew inspiration
-                          from similar services.
-                        </li>
-                      </ul>
-                    </div>
-
-                    <div className="flex flex-col items-center text-center">
-                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-white">3</span>
-                      </div>
-                      <h4 className="text-lg md:text-xl font-normal text-foreground mb-4">Prototyping</h4>
-                      <ul className="space-y-3 text-left w-full">
-                        <li className="text-muted-foreground text-sm md:text-base text-center">
-                          Designed low- and high-fidelity prototypes, iteratively tested with users, and refined based
-                          on feedback.
-                        </li>
-                      </ul>
-                    </div>
-
-                    <div className="flex flex-col items-center text-center">
-                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-white">4</span>
-                      </div>
-                      <h4 className="text-lg md:text-xl font-normal text-foreground mb-4">Collaboration</h4>
-                      <ul className="space-y-3 text-left w-full">
-                        <li className="text-muted-foreground text-sm md:text-base text-center">
-                          Worked with UX writers, researchers, developers, and policy teams to ensure feasibility and
-                          secure sign-off.
-                        </li>
-                      </ul>
-                    </div>
-
-                    <div className="flex flex-col items-center text-center">
-                      <div className="flex items-center justify-center w-16 h-16 rounded-full bg-zinc-600 dark:bg-zinc-800 mb-4">
-                        <span className="text-xl md:text-2xl font-medium text-white">5</span>
-                      </div>
-                      <h4 className="text-lg md:text-xl font-normal text-foreground mb-4">Implementation</h4>
-                      <ul className="space-y-3 text-left w-full">
-                        <li className="text-muted-foreground text-sm md:text-base text-center">
-                          Partnered with developers to roll out changes, preserving the design intent and improving the
-                          user experience.
-                        </li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
+              <div>
+                <span className="mb-3 block font-mono text-xs tracking-widest-fui text-fui-primary">
+                  DELIVERY SEQUENCE
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-medium text-foreground">Activities</h3>
+                <ol className="mt-8 mb-12 border-y border-black/10 dark:border-white/10">
+                  {[
+                    {
+                      title: "User research",
+                      description:
+                        "Reviewed the feedback inbox and conducted interviews and usability testing with citizens and staff.",
+                    },
+                    {
+                      title: "Analysis",
+                      description:
+                        "Assessed backend performance and user flows, identified bottlenecks, and compared similar services.",
+                    },
+                    {
+                      title: "Prototyping",
+                      description:
+                        "Designed low- and high-fidelity prototypes, tested them with users, and refined the journey.",
+                    },
+                    {
+                      title: "Collaboration",
+                      description:
+                        "Worked with content, research, development, and policy teams to align feasibility and secure sign-off.",
+                    },
+                    {
+                      title: "Implementation",
+                      description:
+                        "Partnered with developers during rollout to preserve design intent and respond to delivery constraints.",
+                    },
+                  ].map((activity, index) => (
+                    <li
+                      key={activity.title}
+                      className="grid gap-3 border-t border-black/10 dark:border-white/10 py-6 first:border-t-0 sm:grid-cols-[3rem_10rem_minmax(0,1fr)] sm:items-baseline sm:gap-6"
+                    >
+                      <span className="font-mono text-xs tracking-widest-fui text-fui-primary" aria-hidden="true">
+                        {String(index + 1).padStart(2, "0")}
+                      </span>
+                      <h4 className="text-lg font-medium text-foreground">{activity.title}</h4>
+                      <p className="max-w-2xl text-sm sm:text-base leading-relaxed text-muted-foreground">
+                        {activity.description}
+                      </p>
+                    </li>
+                  ))}
+                </ol>
               </div>
             </AnimateOnScroll>
 
@@ -627,44 +542,75 @@ export default function BenefitsCaseStudyPage() {
 
             <AnimateOnScroll animation="fade-up" delay={400}>
               <div className="mt-12 mb-12">
-                <h3 className="text-2xl font-normal text-foreground mb-6">Research Findings - Round 1</h3>
-                <ul className="space-y-2 text-sm sm:text-base md:text-lg text-muted-foreground list-disc pl-5">
-                  <li>In addition to analysing the inbox, we conducted user interviews with citizens and agents.</li>
-                  <li>We used affinity mapping and synthesised our key findings.</li>
-                </ul>
+                <span className="mb-3 block font-mono text-xs tracking-widest-fui text-fui-primary">
+                  RESEARCH ROUND 01
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-medium text-foreground mb-4">
+                  Finding where submissions failed
+                </h3>
+                <p className="max-w-3xl text-sm sm:text-base md:text-lg leading-relaxed text-muted-foreground">
+                  We combined feedback-inbox analysis with interviews involving citizens and agents, then used affinity
+                  mapping to identify the strongest recurring patterns.
+                </p>
               </div>
-            </AnimateOnScroll>
+              <div className="grid border-y border-black/10 dark:border-white/10 md:grid-cols-3">
+                <article className="py-8 md:pr-8">
+                  <span className="mb-3 block font-mono text-xs tracking-widest-fui text-fui-primary" aria-hidden="true">
+                    01
+                  </span>
+                  <h4 className="text-lg sm:text-xl font-medium text-foreground">Feedback inbox</h4>
+                  <ul className="mt-5 text-sm sm:text-base text-muted-foreground">
+                    <li className="border-t border-black/10 dark:border-white/10 py-3">
+                      Communication problems, upload failures, and missing fit notes dominated negative feedback.
+                    </li>
+                    <li className="border-t border-black/10 dark:border-white/10 py-3">
+                      Payment complaints were common among detractors but sat outside our scope, so we escalated them.
+                    </li>
+                    <li className="border-t border-black/10 dark:border-white/10 py-3">
+                      Uploading multiple fit notes in one session was the most requested feature.
+                    </li>
+                  </ul>
+                </article>
 
-            <AnimateOnScroll animation="fade-in" delay={400}>
-              <SummaryCard
-                sections={[
-                  {
-                    title: "Feedback inbox insights",
-                    items: [
-                      "Negative themes include communication issues, upload difficulties, and missing fit notes.",
-                      "Issues around payments were out of our scope, so we escalated them to policy teams and agents.",
-                      "Payment-related complaints are common among low satisfaction scores (detractors).",
-                      "The most requested feature was the ability to upload multiple fit notes in one session.",
-                    ],
-                  },
-                  {
-                    title: "User interview insights",
-                    items: [
-                      "Users may have limited digital literacy.",
-                      "Users are highly likely to have accessibility needs.",
-                      "Users may rely on their phones to access the service if they do not own a computer.",
-                    ],
-                  },
-                  {
-                    title: "Analytics",
-                    items: [
-                      "3 = average no. of attempts to upload a fit note",
-                      "37% = drop-off rate",
-                      "63% = monthly completion rate",
-                    ],
-                  },
-                ]}
-              />
+                <article className="border-t border-black/10 dark:border-white/10 py-8 md:border-t-0 md:border-l md:px-8">
+                  <span className="mb-3 block font-mono text-xs tracking-widest-fui text-fui-primary" aria-hidden="true">
+                    02
+                  </span>
+                  <h4 className="text-lg sm:text-xl font-medium text-foreground">User interviews</h4>
+                  <ul className="mt-5 text-sm sm:text-base text-muted-foreground">
+                    <li className="border-t border-black/10 dark:border-white/10 py-3">
+                      Many users had limited digital confidence or accessibility needs.
+                    </li>
+                    <li className="border-t border-black/10 dark:border-white/10 py-3">
+                      Mobile phones were often the only available way to access the service.
+                    </li>
+                    <li className="border-t border-black/10 dark:border-white/10 py-3">
+                      Repeat submissions made unclear guidance and upload failures especially costly.
+                    </li>
+                  </ul>
+                </article>
+
+                <article className="border-t border-black/10 dark:border-white/10 py-8 md:border-t-0 md:border-l md:pl-8">
+                  <span className="mb-3 block font-mono text-xs tracking-widest-fui text-fui-primary" aria-hidden="true">
+                    03
+                  </span>
+                  <h4 className="text-lg sm:text-xl font-medium text-foreground">Behavioural data</h4>
+                  <dl className="mt-5">
+                    <div className="border-t border-black/10 dark:border-white/10 py-3">
+                      <dt className="text-2xl font-medium text-foreground">3</dt>
+                      <dd className="mt-1 text-sm text-muted-foreground">average upload attempts</dd>
+                    </div>
+                    <div className="border-t border-black/10 dark:border-white/10 py-3">
+                      <dt className="text-2xl font-medium text-foreground">37%</dt>
+                      <dd className="mt-1 text-sm text-muted-foreground">drop-off rate</dd>
+                    </div>
+                    <div className="border-t border-black/10 dark:border-white/10 py-3">
+                      <dt className="text-2xl font-medium text-foreground">63%</dt>
+                      <dd className="mt-1 text-sm text-muted-foreground">monthly completion rate</dd>
+                    </div>
+                  </dl>
+                </article>
+              </div>
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-in" delay={400}>
@@ -683,7 +629,7 @@ export default function BenefitsCaseStudyPage() {
                   />
                   <figcaption
                     id="img-caption-iterations-test"
-                    className="mt-3 text-center text-xs sm:text-sm text-gray-400"
+                    className="case-study-caption"
                   >
                     Variant layouts tested to improve users’ ability to take acceptable photos.
                   </figcaption>
@@ -702,7 +648,7 @@ export default function BenefitsCaseStudyPage() {
                   />
                   <figcaption
                     id="img-caption-iterations"
-                    className="mt-3 text-center text-xs sm:text-sm text-gray-400"
+                    className="case-study-caption"
                   >
                     Revised guidance page layout with improved copy for better user clarity.
                   </figcaption>
@@ -715,51 +661,59 @@ export default function BenefitsCaseStudyPage() {
 
             <AnimateOnScroll animation="fade-up" delay={400}>
               <div className="mt-12 mb-12">
-                <h3 className="text-2xl font-normal text-foreground mb-6">Research Findings - Round 2</h3>
-                <ul className="space-y-2 text-sm sm:text-base md:text-lg text-muted-foreground list-disc pl-5">
-                  <li>I took my design to critiques and had it heuristically evaluated.</li>
-                  <li>The team conducted several rounds of usability testing to uncover new insights.</li>
-                </ul>
+                <span className="mb-3 block font-mono text-xs tracking-widest-fui text-fui-primary">
+                  RESEARCH ROUND 02
+                </span>
+                <h3 className="text-2xl sm:text-3xl font-medium text-foreground mb-4">
+                  Testing the clearest guidance
+                </h3>
+                <p className="max-w-3xl text-sm sm:text-base md:text-lg leading-relaxed text-muted-foreground">
+                  I took the revised designs through critique and heuristic evaluation, then worked with the team
+                  across several usability-testing rounds to understand which guidance people could act on.
+                </p>
               </div>
-            </AnimateOnScroll>
+              <div className="grid border-y border-black/10 dark:border-white/10 md:grid-cols-2">
+                <article className="py-8 md:pr-10">
+                  <span className="mb-3 block font-mono text-xs tracking-widest-fui text-fui-primary" aria-hidden="true">
+                    01
+                  </span>
+                  <h4 className="text-lg sm:text-xl font-medium text-foreground">What users showed us</h4>
+                  <ul className="mt-5 text-sm sm:text-base text-muted-foreground">
+                    <li className="border-t border-black/10 dark:border-white/10 py-4">
+                      Crosshairs around the fit-note image made the intended framing easiest to understand.
+                    </li>
+                    <li className="border-t border-black/10 dark:border-white/10 py-4">
+                      Data matrices had to remain clearly visible so the service could extract fit-note information.
+                    </li>
+                    <li className="border-t border-black/10 dark:border-white/10 py-4">
+                      “Data matrix” and “QR code” confused users, especially those with lower digital confidence.
+                    </li>
+                  </ul>
+                </article>
 
-            <AnimateOnScroll animation="fade-up" delay={400}>
-              <SummaryCard
-                sections={[
-                  {
-                    title: "New insights",
-                    items: [
-                      "Users responded best to the version with crosshairs around the fit note image.",
-                      "Some fit notes have data matrices or 'QR codes' on them. These must be clearly visible in the user's uploaded photo, so the service can automatically extract the fit note's data.",
-                      "User research sessions revealed that 'data matrix' was a confusing term for users, as was 'QR code', especially for those with lower digital literacy.",
-                    ],
-                  },
-                  {
-                    title: "Suggested improvements",
-                    items: [
-                      "Collaborating with the Content Designer, we created relatable copy describing the data matrix as a 'black and white square'.",
-                      "This content resonated well in the next rounds, as the fit note contains only one square.",
-                    ],
-                  },
-                ]}
-              />
-            </AnimateOnScroll>
-
-            <AnimateOnScroll animation="fade-up" delay={400}>
-              <div className="mt-8 rounded-3xl bg-muted p-8 backdrop-blur-sm">
-                <div className="flex flex-col space-y-4">
-                  <blockquote className="relative">
-                    <div className="absolute -top-4 -left-4 text-4xl text-gray-600" aria-hidden="true">
-                      "
-                    </div>
-                    <p className="text-xl italic text-muted-foreground pl-6 pr-6">My mum wouldn't know what a QR code is.</p>
-                    <footer className="mt-4 text-sm text-muted-foreground pl-6">— User of the benefits service</footer>
-                    <div className="absolute -bottom-4 -right-4 text-4xl text-gray-600" aria-hidden="true">
-                      "
-                    </div>
-                  </blockquote>
-                </div>
+                <article className="border-t border-black/10 dark:border-white/10 py-8 md:border-t-0 md:border-l md:pl-10">
+                  <span className="mb-3 block font-mono text-xs tracking-widest-fui text-fui-primary" aria-hidden="true">
+                    02
+                  </span>
+                  <h4 className="text-lg sm:text-xl font-medium text-foreground">What we changed</h4>
+                  <ul className="mt-5 text-sm sm:text-base text-muted-foreground">
+                    <li className="border-t border-black/10 dark:border-white/10 py-4">
+                      I worked with the content designer to describe the data matrix as a “black and white square.”
+                    </li>
+                    <li className="border-t border-black/10 dark:border-white/10 py-4">
+                      The phrasing tested well because each fit note contains only one such square.
+                    </li>
+                  </ul>
+                </article>
               </div>
+              <blockquote className="mt-10 max-w-3xl border-l-2 border-fui-primary py-2 pl-5 sm:pl-7">
+                <p className="text-xl sm:text-2xl leading-relaxed text-foreground">
+                  “My mum wouldn't know what a QR code is.”
+                </p>
+                <footer className="mt-4 font-mono text-xs tracking-wider-fui uppercase text-fui-dim">
+                  User of the benefits service
+                </footer>
+              </blockquote>
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-in" delay={400}>
@@ -784,7 +738,7 @@ export default function BenefitsCaseStudyPage() {
                   />
                   <figcaption
                     id="img-caption-iterations2"
-                    className="mt-3 text-center text-xs sm:text-sm text-gray-400"
+                    className="case-study-caption"
                   >
                     Iteration exploring a clearer, more intuitive upload process.
                   </figcaption>
@@ -802,7 +756,7 @@ export default function BenefitsCaseStudyPage() {
                   />
                   <figcaption
                     id="img-caption-multiple-uploads"
-                    className="mt-3 text-center text-xs sm:text-sm text-gray-400"
+                    className="case-study-caption"
                   >
                     Iteration exploring a simplified process for multiple file uploads.
                   </figcaption>
@@ -856,7 +810,7 @@ export default function BenefitsCaseStudyPage() {
                   />
                   <figcaption
                     id="img-caption-improvements"
-                    className="mt-3 text-center text-xs sm:text-sm text-gray-400"
+                    className="case-study-caption"
                   >
                     Key design improvements implemented to simplify the process and improve clarity.
                   </figcaption>
@@ -887,37 +841,9 @@ export default function BenefitsCaseStudyPage() {
             <AnimateOnScroll animation="fade-up" delay={400}>
               <div className="mt-8">
                 <div className="grid gap-4 sm:grid-cols-2 md:grid-cols-3" role="group" aria-label="Key metrics">
-
-                  {/* Completion rate increase */}
-                  <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-foreground">
-                      <MetricShuffle final="+3%" scrambleLetters />
-                    </div>
-                    <div className="text-xs sm:text-sm md:text-base text-muted-foreground">
-                      points increase in completion rate
-                    </div>
-                  </div>
-
-                  {/* Digital uptake increase */}
-                  <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-foreground">
-                      <MetricShuffle final="+10%" scrambleLetters />
-                    </div>
-                    <div className="text-xs sm:text-sm md:text-base text-muted-foreground">
-                      points increase in digital uptake
-                    </div>
-                  </div>
-
-                  {/* CSAT increase */}
-                  <div className="rounded-2xl bg-muted p-4 sm:p-6 md:p-8 backdrop-blur-sm">
-                    <div className="mb-2 text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-normal text-foreground">
-                      <MetricShuffle final="+5%" scrambleLetters />
-                    </div>
-                    <div className="text-xs sm:text-sm md:text-base text-muted-foreground">
-                      points increase in CSAT
-                    </div>
-                  </div>
-
+                  <CaseStudyMetric label="Completion rate" value="+3pp" note="Increase after launch" trend="up" />
+                  <CaseStudyMetric label="Digital uptake" value="+10pp" note="Increase after launch" trend="up" />
+                  <CaseStudyMetric label="Customer satisfaction" value="+5pp" note="Increase after launch" trend="up" />
                 </div>
               </div>
             </AnimateOnScroll>
@@ -933,7 +859,7 @@ export default function BenefitsCaseStudyPage() {
                   />
                   <figcaption
                     id="img-caption-solution"
-                    className="mt-3 text-center text-xs sm:text-sm text-gray-400"
+                    className="case-study-caption"
                   >
                     Finalised solution that streamlined the process and improved clarity.
                   </figcaption>
@@ -965,14 +891,14 @@ export default function BenefitsCaseStudyPage() {
 
             <AnimateOnScroll animation="fade-up" delay={400}>
               <div className="mt-12 mb-12 grid gap-6">
-                <div className="rounded-3xl bg-muted p-8 backdrop-blur-sm">
+                <div className="rounded-fui-lg bg-muted p-8 backdrop-blur-sm">
                   <div className="flex flex-col space-y-4">
                     <div
-                      className="h-12 w-12 rounded-full bg-zinc-600 dark:bg-zinc-800 flex items-center justify-center"
+                      className="flex h-12 w-12 items-center justify-center rounded-full bg-primary"
                       aria-hidden="true"
                     >
                       <svg
-                        className="w-6 h-6 text-white"
+                        className="h-6 w-6 text-primary-foreground"
                         viewBox="0 0 24 24"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -1010,14 +936,14 @@ export default function BenefitsCaseStudyPage() {
                   </div>
                 </div>
 
-                <div className="rounded-3xl bg-muted p-8 backdrop-blur-sm">
+                <div className="rounded-fui-lg bg-muted p-8 backdrop-blur-sm">
                   <div className="flex flex-col space-y-4">
                     <div
-                      className="h-12 w-12 rounded-full bg-zinc-600 dark:bg-zinc-800 flex items-center justify-center"
+                      className="flex h-12 w-12 items-center justify-center rounded-full bg-primary"
                       aria-hidden="true"
                     >
                       <svg
-                        className="w-6 h-6 text-white"
+                        className="h-6 w-6 text-primary-foreground"
                         viewBox="0 0 24 24"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"
@@ -1047,14 +973,14 @@ export default function BenefitsCaseStudyPage() {
                   </div>
                 </div>
 
-                <div className="rounded-3xl bg-muted p-8 backdrop-blur-sm">
+                <div className="rounded-fui-lg bg-muted p-8 backdrop-blur-sm">
                   <div className="flex flex-col space-y-4">
                     <div
-                      className="h-12 w-12 rounded-full bg-zinc-600 dark:bg-zinc-800 flex items-center justify-center"
+                      className="flex h-12 w-12 items-center justify-center rounded-full bg-primary"
                       aria-hidden="true"
                     >
                       <svg
-                        className="w-6 h-6 text-white"
+                        className="h-6 w-6 text-primary-foreground"
                         viewBox="0 0 24 24"
                         fill="none"
                         xmlns="http://www.w3.org/2000/svg"

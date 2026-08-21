@@ -103,11 +103,11 @@ export default function CaseStudyLayout({
 
       {/* Main Content - Footer is below this row so nav never overlaps it */}
       <div className={isMobile ? "w-full" : "min-w-0 flex-1"}>
-        <main className={`px-4 sm:px-8 py-12 ${isMobile ? "w-full" : ""}`}>
+        <main id="main-content" className={`px-4 sm:px-8 py-12 ${isMobile ? "w-full" : ""}`}>
           <div className="max-w-6xl mx-auto">
             {/* Case Study Title and Lozenges */}
           <div>
-            <div className="flex flex-wrap gap-2 sm:gap-4 pt-8 mb-6" aria-label="Project tags">
+            <div className="flex flex-wrap gap-2 sm:gap-4 pt-8 mb-6" role="group" aria-label="Project tags">
               {tags.map((tag, index) => (
                 <div key={index} className="inline-flex rounded-full bg-muted px-3 py-1 sm:px-4 sm:py-1.5">
                   <div className="flex items-center gap-2">
@@ -126,7 +126,7 @@ export default function CaseStudyLayout({
               <img
                 src={heroImage || "/placeholder.svg"}
                 alt={`Project hero image for ${title}`}
-                className="w-full rounded-2xl border border-black/10 dark:border-white/10"
+                className="w-full rounded-xl border border-black/10 dark:border-white/10"
               />
             </div>
           </div>

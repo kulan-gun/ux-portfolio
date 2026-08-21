@@ -24,7 +24,7 @@ export default function OverviewSection({
       </AnimateOnScroll>
 
       <AnimateOnScroll animation="fade-up" delay={200}>
-        <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-gray-300">{description}</p>
+        <p className="mb-8 max-w-3xl text-sm text-muted-foreground sm:text-base md:text-lg">{description}</p>
       </AnimateOnScroll>
 
       <AnimateOnScroll animation="fade-up" delay={400}>
@@ -44,7 +44,7 @@ export default function OverviewSection({
           <img
             src={image || "/placeholder.svg"}
             alt="Project overview diagram showing the key components of the system"
-            className="w-full rounded-2xl"
+            className="w-full rounded-xl"
           />
         </div>
       </AnimateOnScroll>

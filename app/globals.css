@@ -5,9 +5,9 @@
 @layer base {
   :root,
   .light {
-    --background: 0 0% 95%;
+    --background: 0 0% 100%;
     --foreground: 0 0% 7%;
-    --card: 0 0% 100%;
+    --card: 0 0% 95%;
     --card-foreground: 0 0% 7%;
     --popover: 0 0% 100%;
     --popover-foreground: 0 0% 7%;
@@ -16,7 +16,7 @@
     --secondary: 0 0% 93%;
     --secondary-foreground: 0 0% 7%;
     --muted: 0 0% 93%;
-    --muted-foreground: 0 0% 45%;
+    --muted-foreground: 0 0% 38%;
     --accent: 152 55% 28%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 84% 60%;
@@ -30,7 +30,7 @@
     --chart-3: 160 84% 39%;
     --chart-4: 43 96% 56%;
     --chart-5: 280 67% 47%;
-    --sidebar-background: 0 0% 98%;
+    --sidebar-background: 0 0% 100%;
     --sidebar-foreground: 0 0% 7%;
     --sidebar-primary: 152 55% 28%;
     --sidebar-primary-foreground: 0 0% 100%;
@@ -38,10 +38,10 @@
     --sidebar-accent-foreground: 0 0% 7%;
     --sidebar-border: 0 0% 90%;
     --sidebar-ring: 152 55% 28%;
-    --fui-bg: #F2F2F2;
-    --fui-bg-elevated: #FFFFFF;
+    --fui-bg: #FFFFFF;
+    --fui-bg-elevated: #F2F2F2;
     --fui-text: #111111;
-    --fui-text-dim: #888888;
+    --fui-text-dim: #4A4A4A;
     --fui-accent: #FF3333;
     --fui-accent-alt: #111111;
     --fui-primary: #166534;
@@ -85,7 +85,7 @@
     --fui-bg: #0A0A0A;
     --fui-bg-elevated: #121212;
     --fui-text: #FAFAFA;
-    --fui-text-dim: #888888;
+    --fui-text-dim: #A3A3A3;
     --fui-accent: #00FF94;
     --fui-accent-alt: #3B82F6;
     --fui-primary: #00FF94;
@@ -110,6 +110,9 @@
   p, li {
     @apply tracking-wide;
   }
+  section[id] {
+    scroll-margin-top: 5rem;
+  }
 }
 
 @layer utilities {
@@ -118,6 +121,9 @@
   }
   .font-machine {
     @apply font-mono text-xs uppercase tracking-widest-fui;
+  }
+  .case-study-caption {
+    @apply mt-3 border-t border-border pt-3 text-left text-xs text-muted-foreground sm:text-sm;
   }
 }
 
@@ -141,7 +147,23 @@
 .corner-marker-bl { bottom: 0; left: 0; border-bottom-width: 1px; border-left-width: 1px; }
 .corner-marker-br { bottom: 0; right: 0; border-bottom-width: 1px; border-right-width: 1px; }
 
+.reveal-pending {
+  opacity: 1;
+  transform: none;
+}
+
+@media (scripting: enabled) {
+  .reveal-pending {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
+  .reveal-pending {
+    opacity: 1 !important;
+    transform: none !important;
+  }
   *, *::before, *::after {
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;

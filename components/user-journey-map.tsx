@@ -1,6 +1,6 @@
 export default function UserJourneyMap() {
   return (
-    <div className="rounded-3xl bg-muted p-8 md:p-12 backdrop-blur-sm">
+    <div className="rounded-fui-lg bg-muted p-8 md:p-12 backdrop-blur-sm">
       <div className="mb-12">
         <div className="flex items-center gap-4 mb-6">
           <div
@@ -37,7 +37,7 @@ export default function UserJourneyMap() {
       </div>
 
       {/* Journey Stages */}
-      <div className="grid grid-cols-4 gap-4 mb-8" role="region" aria-label="User journey stages">
+      <div className="mb-8 grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4" role="region" aria-label="User journey stages">
         <div className="text-center">
           <h4 className="text-xl font-normal text-foreground mb-4">Customer Contact</h4>
           <p className="text-sm text-muted-foreground">
@@ -65,28 +65,27 @@ export default function UserJourneyMap() {
       </div>
 
       {/* Emotion Line */}
-      <div
-        className="relative h-40 mb-8"
-        aria-label="User emotion journey graph showing fluctuating satisfaction levels"
-      >
+      <figure className="relative mb-8 h-40 text-fui-primary">
         <svg
           className="w-full h-full"
           viewBox="0 0 800 100"
           fill="none"
           xmlns="http://www.w3.org/2000/svg"
-          role="img"
           aria-hidden="true"
         >
-          <path d="M0,20 Q100,0 200,60 T400,80 T600,40 T800,90" stroke="white" strokeWidth="3" fill="none" />
-          <circle cx="0" cy="20" r="8" fill="#2DD4BF" />
-          <circle cx="200" cy="60" r="8" fill="#2DD4BF" />
-          <circle cx="400" cy="80" r="8" fill="#2DD4BF" />
-          <circle cx="800" cy="90" r="8" fill="#2DD4BF" />
+          <path d="M0,20 Q100,0 200,60 T400,80 T600,40 T800,90" stroke="currentColor" strokeWidth="3" fill="none" />
+          <circle cx="0" cy="20" r="8" fill="currentColor" />
+          <circle cx="200" cy="60" r="8" fill="currentColor" />
+          <circle cx="400" cy="80" r="8" fill="currentColor" />
+          <circle cx="800" cy="90" r="8" fill="currentColor" />
         </svg>
-      </div>
+        <figcaption className="sr-only">
+          Frustration increases as the agent moves from customer contact through lookup, processing and resolution.
+        </figcaption>
+      </figure>
 
       {/* Quotes */}
-      <div className="grid grid-cols-4 gap-4" aria-label="User quotes at different journey stages">
+      <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
         <div className="text-center">
           <p className="text-sm text-muted-foreground">"Let me try to find your account..."</p>
         </div>
