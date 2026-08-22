@@ -27,7 +27,7 @@ export default function CaseStudyMetric({
       </h3>
       <div
         className={cn(
-          "mb-2 mt-auto font-normal text-foreground",
+          "mt-auto font-normal text-foreground",
           compact
             ? "text-2xl sm:text-3xl md:text-4xl"
             : "text-2xl sm:text-3xl md:text-4xl lg:text-5xl",
@@ -35,21 +35,17 @@ export default function CaseStudyMetric({
       >
         <MetricShuffle final={value} scrambleLetters={scrambleLetters} />
       </div>
-      {note && (
-        <p
-          className={cn(
-            "min-h-[2.5rem] text-xs leading-snug text-muted-foreground sm:text-sm",
-            trend && "flex items-center gap-2 font-mono tracking-wider-fui",
-          )}
-        >
-          {trend && (
-            <span className="text-fui-primary" aria-hidden="true">
-              {trend === "up" ? "↑" : "↓"}
-            </span>
-          )}
-          <span>{note}</span>
-        </p>
-      )}
+      <p className="mt-4 min-h-[2.75rem] text-xs leading-snug text-muted-foreground sm:text-sm">
+        {note ? (
+          <>
+            {trend === "up" && <span aria-hidden="true">↑ </span>}
+            {trend === "down" && <span aria-hidden="true">↓ </span>}
+            {note}
+          </>
+        ) : (
+          <span className="sr-only">No additional detail</span>
+        )}
+      </p>
     </article>
   )
 }

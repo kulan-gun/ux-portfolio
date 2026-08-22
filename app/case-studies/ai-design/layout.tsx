@@ -3,7 +3,7 @@ import type { ReactNode } from "react"
 
 export const metadata: Metadata = {
   title: "AURA AI design case study",
-  description: "Exploring AI-assisted policy document summarisation through user-centred design.",
+  description: "Designing an AI-native policy summarisation prototype in a consulting lab, and sharing practice in AI tools across a wider design team.",
 }
 
 export default function AuraCaseStudyLayout({ children }: { children: ReactNode }) {
