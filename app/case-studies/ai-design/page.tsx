@@ -178,18 +178,17 @@ export default function AuraCaseStudyPage() {
 
             <AnimateOnScroll animation="fade-up" delay={200}>
               <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
-                As Design Lead for Capgemini Invent's Innovation Lab, I led our exploration into how Generative AI (GenAI) and Agentic AI can empower human-centred design.</p>
-
-              <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
-                This involved exploring (1) how to design AI tools and (2) how to integrate them into design workflows.</p>
+                As Design Lead in Capgemini Invent's Innovation Lab, a consulting services environment, I led work on
+                how to design AI-native tools and how to bring those tools into design practice.
+              </p>
             </AnimateOnScroll>
 
             <AnimateOnScroll animation="fade-up" delay={300}>
               <div className="mb-8 max-w-3xl">
                 <h3 className="text-xl font-medium text-foreground mb-4">Key highlights:</h3>
                 <ul className="space-y-2 text-sm sm:text-base md:text-lg text-muted-foreground list-disc pl-5">
-                  <li>Created a prototype for AURA (Automatic Resource Assistant). This AI tool turns long, complex documents into clear, concise content.</li>
-                  <li>Launched a Designathon for over 40 designers. This event encouraged safe, hands-on experimentation with AI tools like v0, ChatGPT and Copilot.</li>
+                  <li>Created a prototype for AURA (Automatic Resource Assistant), an AI-native tool that turns long, complex documents into clearer, shorter content.</li>
+                  <li>Ran a Designathon for over 40 designers, sharing practice and coaching people in AI tools such as v0, ChatGPT and Copilot.</li>
                   <li>
                     Published <a
                       href="https://www.capgemini.com/gb-en/insights/research-library/think-big-start-small/"
@@ -230,7 +229,7 @@ export default function AuraCaseStudyPage() {
                       items: [
                         "Project duration: 1.5 years",
                         "Team size: 8 designers and researchers",
-                        "Role: Design Lead – crafting GenAI prototypes, designathons, and thought leadership",
+                        "Role: Design Lead, GenAI prototypes, designathons, and sharing practice across the lab",
                       ],
                     },
                     {
@@ -243,7 +242,7 @@ export default function AuraCaseStudyPage() {
                       title: "Approach",
                       items: ["Working with proxy users to define AI use-cases",
                         "Design AI interfaces with a focus on transparency, trust, and usability",
-                        "Run immersive AI designathons to rapidly upskill multidisciplinary teams"],
+                        "Run immersive AI designathons to share practice and coach multidisciplinary teams"],
                     },
                   ]}
                 />
@@ -427,7 +426,10 @@ export default function AuraCaseStudyPage() {
 
             <AnimateOnScroll animation="fade-up" delay={200}>
               <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
-                The AURA prototype was developed through an iterative, evidence-based approach. We began with model selection, testing Claude Sonnet against alternative LLMs using parameters such as context length, summarisation accuracy, tone control, and processing speed. This ensured we chose the most reliable model for distilling lengthy HR and policy documents into clear, engaging formats.
+                The AURA prototype was developed through iterative experimentation and validation. We began with model
+                selection, testing Claude Sonnet against alternative LLMs using parameters such as context length,
+                summarisation accuracy, tone control, and processing speed, then chose a model that held up for
+                lengthy HR and policy documents.
               </p>
             </AnimateOnScroll>
 
@@ -719,7 +721,9 @@ export default function AuraCaseStudyPage() {
               <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
                 From concept to proof-of-concept, AURA showed how Retrieval-Augmented Generation could transform dense HR and policy documents into concise, engaging formats.
                 <br /><br />
-                While the MVP was simplified and never shipped, the process delivered valuable internal learnings, reusable design patterns, and a clearer view of the technical and ethical considerations for deploying AI in client contexts.
+                While the MVP was simplified and never shipped, the process produced internal learning, reusable design
+                patterns, and a clearer view of the technical and ethical considerations for deploying AI in a consulting
+                client context.
               </p>
             </AnimateOnScroll>
 

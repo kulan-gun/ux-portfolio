@@ -178,8 +178,10 @@ export default function ContactlessTravelCaseStudyPage() {
             <AnimateOnScroll animation="fade-up" delay={200}>
               <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
                 On GOV.UK digital immigration, I worked across two connected workstreams: improving the live status
-                service and evaluating remote biometric enrolment. I collaborated with another UX designer, three user
-                researchers, three content designers, and several business analysts and developers.
+                service and evaluating remote biometric enrolment. I owned wireframes, prototypes and detailed designs
+                for a complex, high-traffic interface, and designed to WCAG and inclusion standards. I collaborated with
+                another UX designer, three user researchers, three content designers, and several business analysts and
+                developers.
               </p>
             </AnimateOnScroll>
 
@@ -223,7 +225,7 @@ export default function ContactlessTravelCaseStudyPage() {
                     <h3 className="text-lg sm:text-xl font-medium text-foreground">My contribution</h3>
                     <ul className="mt-5 text-sm sm:text-base text-muted-foreground">
                       <li className="border-t border-black/10 dark:border-white/10 py-3">
-                        Improved usability and accessibility across public and internal services.
+                        Designed for WCAG and inclusion across public and internal services.
                       </li>
                       <li className="border-t border-black/10 dark:border-white/10 py-3">
                         Co-designed online account recovery and evaluated biometric supplier experiences.
@@ -365,8 +367,9 @@ export default function ContactlessTravelCaseStudyPage() {
 
             <AnimateOnScroll animation="fade-up" delay={200}>
               <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
-                For the digital immigration status service, we followed a user-centred design approach to ensure the
-                service was accessible and met the needs of diverse users.
+                For the digital immigration status service, we followed an iterative, user-centred process: research
+                with the user research team, prototypes I owned, and checks against WCAG and inclusion standards, so
+                the service could work for a wide range of users.
               </p>
             </AnimateOnScroll>
 
@@ -381,7 +384,8 @@ export default function ContactlessTravelCaseStudyPage() {
                       <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">User research</h3>
                       <ul className="space-y-3 text-left w-full">
                         <li className="text-muted-foreground text-sm md:text-base text-center">
-                          Usability testing with diverse users revealed issues and improved accessibility.
+                          Usability testing with diverse users, run with the research team, surfaced accessibility and
+                          inclusion issues.
                         </li>
                       </ul>
                     </div>
@@ -393,7 +397,8 @@ export default function ContactlessTravelCaseStudyPage() {
                       <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">Prototyping</h3>
                       <ul className="space-y-3 text-left w-full">
                         <li className="text-muted-foreground text-sm md:text-base text-center">
-                          Created iterative prototypes, refining user journeys based on ongoing user feedback.
+                          Owned wireframes and iterative prototypes, then refined journeys from user and stakeholder
+                          feedback.
                         </li>
                       </ul>
                     </div>
@@ -405,7 +410,8 @@ export default function ContactlessTravelCaseStudyPage() {
                       <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">Accessibility</h3>
                       <ul className="space-y-3 text-left w-full">
                         <li className="text-muted-foreground text-sm md:text-base text-center">
-                          Ensured compliance with WCAG standards and best practices for digital inclusion.
+                          Designed to WCAG and digital inclusion standards, including contrast, language, and disabled
+                          states.
                         </li>
                       </ul>
                     </div>
@@ -417,7 +423,8 @@ export default function ContactlessTravelCaseStudyPage() {
                       <h3 className="text-lg md:text-xl font-normal text-foreground mb-4">Collaboration</h3>
                       <ul className="space-y-3 text-left w-full">
                         <li className="text-muted-foreground text-sm md:text-base text-center">
-                          Worked with policy makers, PMs, and developers to align design with business goals.
+                          Worked with policy, product, engineering, and GDS assessors, and communicated the design
+                          rationale through to public beta.
                         </li>
                       </ul>
                     </div>
@@ -443,7 +450,9 @@ export default function ContactlessTravelCaseStudyPage() {
                 </figure>
 
                 <p className="max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
-                  The UK Government design system is available in Figma, Mural and as HTML, CSS, JavaScript and Nunjucks code. These tools helped me create high-quality visuals that align with good practices and the design system.
+                  I applied the GOV.UK Design System in Figma, Mural, and in HTML, CSS, JavaScript and Nunjucks. The
+                  coded prototype was also implementation guidance for engineers: how the journey should be built, not
+                  only how it should look.
                 </p>
               </div>
             </AnimateOnScroll>
@@ -461,7 +470,7 @@ export default function ContactlessTravelCaseStudyPage() {
                     id="app-caption"
                     className="case-study-caption"
                   >
-                    I set up a Figma mobile prototype and connected it to a GOV.UK prototype built in HTML, CSS, and JavaScript. This simulated a real omni-channel journey.
+                    I owned a hybrid prototype: a Figma mobile flow connected to a GOV.UK prototype in HTML, CSS, and JavaScript. This simulated a real omni-channel journey.
                   </figcaption>
                 </figure>
 
@@ -487,7 +496,9 @@ export default function ContactlessTravelCaseStudyPage() {
                   </figcaption>
                 </figure>
                 <p className="max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
-                  Usability testing with diverse users revealed pain points in accessibility, usability, and clarity. I iterated prototypes to address these, refining journeys through ongoing user and stakeholder feedback. Key fixes are outlined in the ‘Solutions’ section.
+                  Usability testing with diverse users, alongside the research team, surfaced issues in accessibility,
+                  usability, and clarity. I iterated the prototypes from that evidence and from stakeholder feedback.
+                  Key fixes are outlined in the ‘Solutions’ section.
                 </p>
               </div>
             </AnimateOnScroll>
@@ -836,7 +847,9 @@ export default function ContactlessTravelCaseStudyPage() {
                       <div className="flex-1">
                         <div className="mb-4 h-0.5 w-12 bg-foreground/70"></div>  {/* was: mb-6 */}
                         <p className="text-muted-foreground mb-4">
-                          We achieved a first-time GDS assessment pass, allowing the service to move to public beta.
+                          We achieved a first-time GDS assessment pass, taking the design rationale, including
+                          accessibility and the account-recovery flow, to assessors so the service could move to public
+                          beta.
                         </p>
                         <ul className="space-y-4 text-muted-foreground">
                           <li className="flex gap-3">
