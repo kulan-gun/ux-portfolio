@@ -28,7 +28,7 @@ export const selectedProjects: Project[] = [
     subtitle:
       "Improving AI-generated UI content quality for Autodesk Fusion",
     href: "/case-studies/contentnext-case-study/",
-    imageSrc: "/contentnext/cover.jpg",
+    imageSrc: "/contentnext/cover-card-16x9.png",
     imageAlt: "ContentNext toolkit and Custom GPT configuration interfaces",
     status: "Shipped",
   },
@@ -38,7 +38,7 @@ export const selectedProjects: Project[] = [
     date: "2024/25",
     client: "GOV.UK",
     role: "Senior UX Designer",
-    title: "Digital immigration and contactless travel",
+    title: "Digital identity and contactless travel",
     subtitle:
       "Making digital immigration easier for 7M+ users, reducing offline support requests by 67%",
     href: "/case-studies/contactless-travel/",

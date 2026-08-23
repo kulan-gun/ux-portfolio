@@ -135,13 +135,11 @@ npm run deploy   # Build + publish to gh-pages branch
 | `ThemeToggle`             | Light/dark switch                                                    |
 | `CaseStudyHeader`         | Shared case study tags, H1, subtitle, and hero image                 |
 | `CaseStudyPreview`        | Project card: optional `PROJECT` seq, title, subtitle, status, image |
-| `CaseStudyLayout`         | Shared case study shell (sticky left nav + scroll progress)          |
 | `ScrollProgressIndicator` | Horizontal reading progress bar                                      |
-| `ScrollSpyNavigation`     | Highlights active section in case study left nav                     |
 | `Footer`                  | MAIN (Work, Articles, Credentials, Archive) / CONTACT (LinkedIn)     |
 | `StatusBadge`             | SHIPPED / CONCEPT / ARCHIVED (and related) FUI labels                |
 | `AnimateOnScroll`         | Shared soft reveal for case-study narrative groups                    |
-| `SummaryCard`, `QuoteCard`, `MetricsDisplay` | Reusable case study content blocks              |
+| `SummaryCard`, `QuoteCard` | Reusable case study content blocks                                  |
 | `DataTable`, `BarChart`, `SystemDiagram`     | Data and diagram components                       |
 
 `HeroSparticles` powers the home hero background. Selected projects use a short **title** plus an outcome-focused **subtitle**. Case study pages share `CaseStudyHeader` for tags, H1, subtitle, and hero image (sourced from `lib/projects.ts`) so home, Archive, and case studies stay in sync.
