@@ -38,8 +38,16 @@ export default function CaseStudyMetric({
       <p className="mt-4 min-h-[2.75rem] text-xs leading-snug text-muted-foreground sm:text-sm">
         {note ? (
           <>
-            {trend === "up" && <span aria-hidden="true">↑ </span>}
-            {trend === "down" && <span aria-hidden="true">↓ </span>}
+            {trend === "up" && (
+              <span className="text-fui-primary" aria-hidden="true">
+                ↑{" "}
+              </span>
+            )}
+            {trend === "down" && (
+              <span className="text-fui-primary" aria-hidden="true">
+                ↓{" "}
+              </span>
+            )}
             {note}
           </>
         ) : (

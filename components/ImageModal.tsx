@@ -14,6 +14,7 @@ type ImageModalProps = {
   alt: string
   posterSrc?: string
   "aria-describedby"?: string
+  onError?: () => void
 }
 
 export default function ImageModal({
@@ -21,6 +22,7 @@ export default function ImageModal({
   alt,
   posterSrc,
   "aria-describedby": describedBy,
+  onError,
 }: ImageModalProps) {
   const [isPlaying, setIsPlaying] = useState(false)
   const displaySrc = posterSrc && !isPlaying ? posterSrc : src
@@ -35,7 +37,7 @@ export default function ImageModal({
             aria-describedby={describedBy}
           >
             <span className="sr-only">Open full-size image: </span>
-            <img src={displaySrc} alt={alt} className="block w-full rounded-xl" />
+            <img src={displaySrc} alt={alt} className="block w-full rounded-xl" onError={onError} />
             <span className="absolute right-3 top-3 inline-flex h-9 w-9 items-center justify-center rounded-fui border border-border bg-background/90 text-foreground opacity-0 backdrop-blur-sm transition-opacity group-hover:opacity-100 group-focus-visible:opacity-100">
               <Expand className="h-4 w-4" aria-hidden="true" />
             </span>
