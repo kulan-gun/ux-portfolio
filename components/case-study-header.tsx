@@ -27,8 +27,8 @@ export function CaseStudyHeaderTags({ project }: { project: Project }) {
         <dd className="mt-1.5 text-sm text-foreground">{project.role}</dd>
       </div>
       <div className="border-l border-border py-4 pl-3 sm:pl-6">
-        <dt className="font-machine text-fui-dim">Date</dt>
-        <dd className="mt-1.5 text-sm text-foreground">{project.date}</dd>
+        <dt className="font-machine text-fui-dim">{project.dateLabel ?? "Date"}</dt>
+        <dd className="mt-1.5 text-sm text-foreground">{project.dateDetail ?? project.date}</dd>
       </div>
       <div className="border-t border-border py-4 pr-3 sm:pr-6 lg:border-l lg:border-t-0 lg:pl-6">
         <dt className="font-machine text-fui-dim">{project.organisationLabel ?? "Client"}</dt>

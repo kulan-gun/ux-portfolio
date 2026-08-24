@@ -4,6 +4,10 @@ export type Project = {
   id: string
   seq?: string
   date: string
+  /** Case study header label. Defaults to "Date". */
+  dateLabel?: string
+  /** Case study header value. Defaults to `date`. */
+  dateDetail?: string
   client: string
   organisationLabel?: "Client" | "Company"
   role: string
@@ -21,6 +25,8 @@ export const selectedProjects: Project[] = [
     id: "contentnext",
     seq: "03",
     date: "2025/26",
+    dateLabel: "Date and duration",
+    dateDetail: "2025/26 (10+ months)",
     client: "Autodesk",
     organisationLabel: "Company",
     role: "Senior Experience Designer",
