@@ -19,8 +19,8 @@ const sections = [
   { id: "overview", title: "Overview" },
   { id: "problem", title: "Problem" },
   { id: "process", title: "Process" },
-  { id: "measurement", title: "Measurement" },
   { id: "solution", title: "Solution" },
+  { id: "measurement", title: "Measurement" },
   { id: "results", title: "Results" },
   { id: "conclusion", title: "Conclusion" },
 ]
@@ -29,7 +29,7 @@ function SystemWorkflow() {
   const steps = [
     {
       title: "Open ContentNext",
-      detail: "ContentNext works within tools users already use: ChatGPT and Cursor. A user starts in the ContentNext Custom GPT or Cursor toolkit and describes the UI content they need (e.g. tooltip, warning, error or dialog).",
+      detail: "ContentNext works within tools users already use: ChatGPT and Cursor. A user starts in the ContentNext Custom GPT or Cursor toolkit and describes the UI content they need (e.g. tooltip, warning, error, or dialog).",
     },
     {
       title: "ContentNext gathers the missing context",
@@ -52,12 +52,16 @@ function SystemWorkflow() {
           WHAT CONTENTNEXT DOES
         </span>
         <span className="text-xl sm:text-2xl font-medium text-foreground">
-          From a UI content need to a draft that follows Weave
-        </span>
-        <span className="mt-2 block text-sm text-muted-foreground">
-          People use ContentNext through a Custom GPT or a Cursor toolkit, but previously we had an AWS-hosted app.
+          From a UI content need to a draft that follows Weave standards
         </span>
       </figcaption>
+      <ImagePlaceholder
+        label="ContentNext visualised"
+        src="/contentnext/what_contentnext_does.png"
+        alt="ContentNext GPT and Cursor toolkit helping users write in-product content for Autodesk Fusion"
+        caption="People use ContentNext through a Custom GPT or a Cursor toolkit to write content for Autodesk Fusion."
+        className="mb-10"
+      />
       <ol className="grid border-y border-black/10 dark:border-white/10 md:grid-cols-4">
         {steps.map((step, index) => (
           <li
@@ -178,7 +182,7 @@ function MetricsDashboard() {
         aria-describedby="contentnext-dashboard-caption"
       />
       <figcaption id="contentnext-dashboard-caption" className="case-study-caption">
-      Monthly dashboard I designed to run ContentNext as a DesignOps practice. It tracks adoption, productivity and quality in one place.
+      The monthly dashboard I designed to run ContentNext as a DesignOps practice. It tracks adoption, productivity, and quality in one place.
       </figcaption>
     </figure>
   )
@@ -200,7 +204,7 @@ function ReadabilityComparison() {
           Guided fields compared with free text
         </span>
         <span className="mt-2 block text-sm text-muted-foreground">
-          Tested on the AWS toolkit app before it was sunset. Guided fields produced a larger Flesch-Kincaid drop than
+          Tested on the AWS toolkit app before it was retired. Guided fields produced a larger Flesch-Kincaid drop than
           free text. They also asked more of the user, and the app still needed specialist skills to host and maintain.
           Supporting evidence from that first arc, not a result from the Cursor toolkit.
         </span>
@@ -227,7 +231,7 @@ function ReadabilityComparison() {
 
 function OnboardingFriction() {
   const findings = [
-    ["01", "Authentication", "VPN, SSO and personal access tokens were the hardest first step.", "N=6"],
+    ["01", "Authentication", "VPN, SSO, and personal access tokens were the hardest first step.", "N=6"],
     ["02", "Git and CLI setup", "Technical setup assumed Terminal and Git knowledge many people did not have.", "N=5"],
     ["03", "Hard-to-find docs", "Wiki pages felt like a lot, with duplicates and little sense of what was current.", "N=4"],
     ["04", "Stale MCP servers", "MCP servers dropped when Cursor was not updated, then reported a false admin-rights error.", "N=4"],
@@ -240,12 +244,12 @@ function OnboardingFriction() {
           AUTONOMOUS USER RESEARCH · N=6 participants
         </span>
         <span className="text-xl sm:text-2xl font-medium text-foreground">
-          Sessions pointed to setup more than capability
+          Usability testing of the ContentNext onboarding experience
         </span>
         <span className="mt-2 block text-sm text-muted-foreground">
-          I planned, conducted and synthesised this research independently. Six moderated sessions, focused on the
+          I planned, conducted, and synthesised this research independently. Six moderated sessions, focused on the
           Cursor toolkit, with ContentNext GPT as a lighter path, plus the documentation around both. Findings went
-          onto a Miro board, then into the recommendations below. The AWS app had already been retired.
+          onto a Miro board, then into the recommendations below.
         </span>
       </figcaption>
       <ImagePlaceholder
@@ -276,7 +280,7 @@ function OnboardingFriction() {
 
 function OnboardingRecommendations() {
   const actions = [
-    ["01", "Be honest about setup", "Tell people to connect to VPN first, and that SSO retries sit outside the team. Give clearer help for personal access tokens, cloning, Terminal and Git."],
+    ["01", "Be honest about setup", "Tell people to connect to VPN first, and that SSO retries sit outside the team. Give clearer help for personal access tokens, cloning, Terminal, and Git."],
     ["02", "Surface docs at the point of need", "The videos already exist; they were buried. Put them in the toolkit path, and tidy duplicate wiki pages so people can tell what is current."],
     ["03", "Explain how MCP servers work", "Knowledge files and MCP servers only help if people know to check them. Name that Cursor must be kept updated or those MCP servers drop."],
     ["04", "Finish retiring the old app", "The AWS URL still resolved with no notice, which caused tool confusion. Redirect it, and always share the exact GPT or docs link."],
@@ -314,11 +318,11 @@ function OnboardingRecommendations() {
 
 function QualityRubric() {
   const levels = [
-    ["1", "Unusable", "Breaks the content so badly it cannot ship."],
-    ["2", "Fails hard rules", "Breaks an explicit rule in Weave, Autodesk's design system, and is capped here."],
-    ["3", "Needs rework", "Usable, but still needs content-design intervention."],
-    ["4", "Publish-ready", "No hard-rule breaks; minor edits only."],
-    ["5", "Ships as-is", "Publish-ready without content-design rework."],
+    ["1", "Unusable", "The content cannot be used due to poor quality. It needs a full rewrite."],
+    ["2", "Significant rework needed", "Usable intent, but multiple compliance or clarity issues."],
+    ["3", "Acceptable, with edits", "Sound content, but needs structural or style edits to comply."],
+    ["4", "Strong, near publish-ready", "Clear and compliant; only light polish required."],
+    ["5", "Publish-ready", "Meets Weave and editorial standards as written. No edits needed."],
   ]
 
   return (
@@ -438,16 +442,16 @@ function HardGateDiagram() {
 function ProcessArcs() {
   const arcs = [
     {
-      status: "GO OR NO-GO?",
-      title: "Hosted AWS app",
+      status: "Go or no-go?",
+      title: "AWS-hosted app",
       detail:
-        "The first surface was a hosted toolkit for drafting Fusion UI content against Weave. A Custom GPT already existed as a lighter alternative, so the live question was whether the app was worth keeping. Guided input fields were tested against free text to inform that final call.",
+        "The first surface was a toolkit app for drafting Fusion UI content. The Cursor model already existed for writing help documentation, but Enterprise ChatGPT was emerging as a lightweight alternative. The questions were whether the app was worth keeping, and what its unique selling point was.",
     },
     {
-      status: "SHIPPED",
+      status: "Establishing the product",
       title: "GPT, Cursor, and DesignOps",
       detail:
-        "ContentNext ran through a Custom GPT and a Cursor toolkit with MCP servers. Onboarding research on those surfaces came later.",
+        "I built a GPT as part of an experiment, but it ended up being the new lightweight tool that replaced the app. ContentNext now runs through a Custom GPT and a Cursor toolkit with MCP servers. Autonomous user research on people's onboarding experiences with these surfaces came later.",
     },
   ]
 
@@ -458,7 +462,7 @@ function ProcessArcs() {
           TWO ARCS
         </span>
         <span className="text-xl sm:text-2xl font-medium text-foreground">
-          Experimentation, then DesignOps
+          From experimentation to a usable product
         </span>
       </figcaption>
       <div className="grid border-y border-black/10 dark:border-white/10 md:grid-cols-2">
@@ -694,40 +698,13 @@ export default function ContentNextCaseStudyPage() {
 
                 <AnimateOnScroll animation="fade-up" delay={200}>
                   <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg leading-relaxed text-muted-foreground">
-                    ContentNext is an AI-native initiative for Autodesk Fusion, a CAD/CAM product sold as SaaS. ContentNext helps internal teams write in-product UI content that follows Autodesk’s Weave design system.
+                    ContentNext is an AI-native DesignOps initiative for Autodesk Fusion, a CAD/CAM product sold as SaaS. ContentNext helps internal teams write in-product UI content that follows Autodesk's Weave design system.
                   </p>
                 </AnimateOnScroll>
 
                 <AnimateOnScroll animation="fade-up" delay={300}>
                   <div className="mb-12">
                     <SystemWorkflow />
-                  </div>
-                </AnimateOnScroll>
-
-                <AnimateOnScroll animation="fade-up" delay={350}>
-                  <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg leading-relaxed text-muted-foreground">
-                  I built the GPT and shaped the Cursor toolkit’s prompt architecture and knowledge base. I also created the onboarding materials and output-scoring system.
-                  </p>
-                </AnimateOnScroll>
-
-                <AnimateOnScroll animation="fade-up" delay={400}>
-                  <div className="mt-8 mb-8">
-                    <dl className="mb-8 grid gap-5 border-y border-border py-5 sm:grid-cols-2">
-                      <div>
-                        <dt className="font-mono text-xs tracking-widest-fui text-fui-dim">DURATION</dt>
-                        <dd className="mt-2 text-sm text-muted-foreground">10 months+</dd>
-                      </div>
-                      <div>
-                        <dt className="font-mono text-xs tracking-widest-fui text-fui-dim">COLLABORATORS</dt>
-                        <dd className="mt-2 text-sm text-muted-foreground">CXD reviewers, content leads, and leadership</dd>
-                      </div>
-                    </dl>
-                  </div>
-                </AnimateOnScroll>
-
-                <AnimateOnScroll animation="fade-up" delay={500}>
-                  <div className="mt-12 mb-12">
-                    <MetricsDashboard />
                   </div>
                 </AnimateOnScroll>
               </section>
@@ -740,18 +717,21 @@ export default function ContentNextCaseStudyPage() {
                 </AnimateOnScroll>
 
                 <AnimateOnScroll animation="fade-up" delay={200}>
-                  <div className="mb-8 max-w-3xl space-y-4 text-sm sm:text-base md:text-lg leading-relaxed text-muted-foreground">
-                    <p>
-                      As a user, I need to independently write in-product UI content that follows Weave guidelines, sometimes late into the build cycle.
-                    </p>
-                    <p>
-                      There were not enough content designers to support every team, and hiring more was not an option. The business had set out that AI should be able to close that gap.
-                    </p>
-                  </div>
+                  <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg leading-relaxed text-muted-foreground">
+                    There were not enough content designers to support every team, and hiring more was not an option. The business had set out that AI should be able to close that gap.
+                  </p>
                 </AnimateOnScroll>
 
                 <AnimateOnScroll animation="fade-up" delay={350}>
                   <div className="mt-8 mb-12">
+                    <aside className="mb-8 max-w-4xl border-l-2 border-fui-primary py-1 pl-5 sm:pl-7" aria-label="User need">
+                      <p className="mb-2 font-mono text-xs tracking-widest-fui uppercase text-fui-dim">
+                        User need
+                      </p>
+                      <p className="text-lg leading-relaxed text-foreground">
+                        As a user, I need to independently write in-product UI content that follows Weave guidelines, sometimes late into the build cycle.
+                      </p>
+                    </aside>
                     <figure>
                       <figcaption className="sr-only">ContentNext content-design delivery bottleneck</figcaption>
                       <ol className="grid border-y border-black/10 dark:border-white/10 md:grid-cols-4">
@@ -805,9 +785,7 @@ export default function ContentNextCaseStudyPage() {
                       Arc 1 · Experimentation on the AWS toolkit app
                     </h3>
                     <p className="mb-6 max-w-3xl text-sm sm:text-base text-muted-foreground">
-                      The first ContentNext surface was a hosted AWS app for drafting in-product UI content. It was still
-                      a live option while ContentNext GPT existed as a lighter alternative. Guided fields were a late
-                      change: a go or no-go test of whether the app could hold its own.
+                      The first ContentNext surface was a hosted AWS app for drafting in-product UI content.
                     </p>
                     <VideoPlaceholder
                       label="AWS toolkit before guided input"
@@ -831,6 +809,12 @@ export default function ContentNextCaseStudyPage() {
                       src="/contentnext/app_prototype.mp4"
                       caption="Walkthrough of the AWS toolkit: chat and guided input on the same backend."
                     />
+                    <ImagePlaceholder
+                      label="Prompt comparison sheet"
+                      src="/contentnext/testing_sheet.png"
+                      alt="Excel sheet comparing output quality from 40 prompts tested on the AWS toolkit and ContentNext GPT"
+                      caption="I led a comparison of 40 prompts on the AWS toolkit and ContentNext GPT, scoring output quality for publishability."
+                    />
                     <ol className="mt-10 border-y border-black/10 dark:border-white/10">
                       <li className="grid gap-4 py-8 md:grid-cols-[5rem_minmax(0,1fr)] md:gap-8">
                         <span className="font-mono text-sm tracking-widest-fui text-fui-primary" aria-hidden="true">
@@ -839,8 +823,8 @@ export default function ContentNextCaseStudyPage() {
                         <div>
                           <h4 className="text-xl font-medium text-foreground mb-3">Establishing the baseline</h4>
                           <p className="max-w-3xl text-muted-foreground text-sm sm:text-base">
-                            Encoded rules from Weave, Autodesk's design system, into a modular prompt architecture, then
-                            built a 1-to-5 rubric so output could be scored the same way before and after.
+                            I encoded rules from Weave, Autodesk's design system, into a modular prompt architecture. Then I
+                            built a 1-to-5 rubric so outputs could be scored and compared the same way.
                           </p>
                         </div>
                       </li>
@@ -851,9 +835,9 @@ export default function ContentNextCaseStudyPage() {
                         <div>
                           <h4 className="text-xl font-medium text-foreground mb-3">Comparing input methods</h4>
                           <p className="max-w-3xl text-muted-foreground text-sm sm:text-base">
-                            On the AWS toolkit app, held the backend and prompts constant, then compared guided fields
+                            On the AWS toolkit app, I held the backend and prompts constant, then compared guided fields
                             with free text. The question was whether the change would alter quality enough to justify
-                            keeping the app. That experiment belongs to this retired app, not to the later Cursor toolkit.
+                            keeping the app. I also compared those outputs with the ContentNext GPT.
                           </p>
                         </div>
                       </li>
@@ -865,7 +849,7 @@ export default function ContentNextCaseStudyPage() {
                           <h4 className="text-xl font-medium text-foreground mb-3">Retiring the AWS app</h4>
                           <p className="max-w-3xl text-muted-foreground text-sm sm:text-base">
                             Guided fields produced more readable content than free text. They also asked more of the
-                            user. Hosting, maintenance, and specialist skills still sat above the ContentNext GPT, which
+                            user. Hosting, maintenance, and specialist skills still cost more than the ContentNext GPT, which
                             reached a similarly low reading level without that overhead. That comparison was the rationale
                             for sunsetting the app, which I shared with content leads and leadership.
                           </p>
@@ -911,7 +895,7 @@ export default function ContentNextCaseStudyPage() {
                         <div>
                           <h4 className="text-xl font-medium text-foreground mb-3">Running it as DesignOps</h4>
                           <p className="max-w-3xl text-muted-foreground text-sm sm:text-base">
-                            Set up a monthly operating model: adoption tracking, a productivity survey, quality review,
+                            I set up a monthly operating model: adoption tracking, a productivity survey, quality review,
                             and a dashboard refresh, plus the documentation and supporting materials around the tools.
                             The point was to share a practice other people could run, not to leave the system dependent
                             on its author.
@@ -925,7 +909,7 @@ export default function ContentNextCaseStudyPage() {
                         <div>
                           <h4 className="text-xl font-medium text-foreground mb-3">Testing onboarding</h4>
                           <p className="max-w-3xl text-muted-foreground text-sm sm:text-base">
-                            Months after the AWS toolkit was retired, I planned, conducted and synthesised autonomous
+                            Months after the AWS toolkit was retired, I planned, conducted, and synthesised autonomous
                             user research with six experience designers and content designers. The sessions focused on
                             the Cursor toolkit, with ContentNext GPT as a lighter path, plus the documentation around
                             both. Sentiment was optimistic; setup friction was high. Findings are directional.
@@ -935,6 +919,44 @@ export default function ContentNextCaseStudyPage() {
                     </ol>
                     <OnboardingFriction />
                     <OnboardingRecommendations />
+                  </div>
+                </AnimateOnScroll>
+              </section>
+
+              <section id="solution" className="py-8 sm:py-12" aria-labelledby="solution-heading">
+                <AnimateOnScroll animation="bounce-up">
+                  <h2 id="solution-heading" className="mb-6 sm:mb-8 text-2xl sm:text-3xl md:text-4xl font-display">
+                    Solution
+                  </h2>
+                </AnimateOnScroll>
+
+                <AnimateOnScroll animation="fade-up" delay={200}>
+                  <div className="mb-8 max-w-3xl space-y-4 text-sm sm:text-base md:text-lg leading-relaxed text-muted-foreground">
+                    <p>
+                      ContentNext is in production. Teams have used it to publish UI content into Autodesk Fusion itself
+                      and onto the Fusion Help website, not only into internal drafts. The Custom GPT and Cursor toolkit
+                      are the two live surfaces.
+                    </p>
+                    <p>
+                      I built the GPT and shaped the Cursor toolkit's prompt architecture and knowledge base. I also created the onboarding materials and output-scoring system.
+                    </p>
+                  </div>
+                </AnimateOnScroll>
+
+                <AnimateOnScroll animation="fade-up" delay={350}>
+                  <div className="mt-8 mb-12">
+                    <DeliveryRouteDiagram />
+                    <VideoPlaceholder
+                      label="ContentNext GPT"
+                      src="/contentnext/gpt_test.mp4"
+                      caption="A short walkthrough of example prompts showing how the GPT works. Markdown and JSON files handle conversations; external connections supply extra context."
+                    />
+                    <ImagePlaceholder
+                      label="Published in Fusion"
+                      src="/contentnext/gpt_and_published_copy.png"
+                      alt="Real example of ContentNext-generated content published in Autodesk Fusion"
+                      caption="Real example of ContentNext-generated content used in Fusion."
+                    />
                   </div>
                 </AnimateOnScroll>
               </section>
@@ -949,15 +971,14 @@ export default function ContentNextCaseStudyPage() {
                 <AnimateOnScroll animation="fade-up" delay={200}>
                   <div className="mb-8 max-w-3xl space-y-4 text-sm sm:text-base md:text-lg leading-relaxed text-muted-foreground">
                     <p>
-                      There was no reliable “before” number for Fusion UI content, so I built a way to create one. The
-                      rubric scores 1 to 5 against rules in Weave, Autodesk's design system. Publish-ready without
-                      content-design rework is defined as breaking no hard Weave rule and scoring 4 or 5.
+                      There was no reliable "before" number for Fusion UI content, so I built a way to create one. The
+                      rubric scores 1 to 5 against rules in Weave, Autodesk's design system.
                     </p>
-                    <p>
+                    {/* <p>
                       Product documentation was excluded from the headline score because templates and gated checks give
                       it a structurally higher baseline. Including it would have made the starting point look stronger
                       than the UI-content work actually was.
-                    </p>
+                    </p> */}
                   </div>
                 </AnimateOnScroll>
 
@@ -972,35 +993,10 @@ export default function ContentNextCaseStudyPage() {
                       alt="Miro board of ContentNext metrics dashboard drafts, from paper sketches to high-fidelity mockups of the adoption, productivity, and quality pillars"
                       caption="Early drafts of the three-pillar metrics dashboard."
                     />
+                    <div className="mt-10">
+                      <MetricsDashboard />
+                    </div>
                     <OperatingModel />
-                  </div>
-                </AnimateOnScroll>
-              </section>
-
-              <section id="solution" className="py-8 sm:py-12" aria-labelledby="solution-heading">
-                <AnimateOnScroll animation="bounce-up">
-                  <h2 id="solution-heading" className="mb-6 sm:mb-8 text-2xl sm:text-3xl md:text-4xl font-display">
-                    Solution
-                  </h2>
-                </AnimateOnScroll>
-
-                <AnimateOnScroll animation="fade-up" delay={200}>
-                  <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
-                    ContentNext is in production. Teams have used it to publish UI content into Autodesk Fusion itself
-                    and onto the Fusion Help website, not only into internal drafts. The Custom GPT and Cursor toolkit
-                    are the two live surfaces.
-                  </p>
-                </AnimateOnScroll>
-
-                <AnimateOnScroll animation="fade-up" delay={350}>
-                  <div className="mt-8 mb-12">
-                    <DeliveryRouteDiagram />
-                    <ImagePlaceholder
-                      label="Published in Fusion"
-                      src="/contentnext/gpt_and_published_copy.png"
-                      alt="Real example of ContentNext-generated content published in Autodesk Fusion"
-                      caption="Real example of ContentNext-generated content used in Fusion."
-                    />
                   </div>
                 </AnimateOnScroll>
               </section>
@@ -1015,7 +1011,7 @@ export default function ContentNextCaseStudyPage() {
                 <AnimateOnScroll animation="fade-up" delay={200}>
                   <p className="mb-8 max-w-3xl text-sm sm:text-base md:text-lg text-muted-foreground">
                     Quality moved from 1.9 to 3.8 on a like-for-like rubric, twenty-nine workstreams are using the
-                    system, and respondents report faster content creation. 
+                    system, and respondents report faster content creation.
                   </p>
                 </AnimateOnScroll>
 
@@ -1024,10 +1020,10 @@ export default function ContentNextCaseStudyPage() {
                     <div className="mb-4 grid gap-4 sm:grid-cols-2 md:grid-cols-3" role="group" aria-label="Headline outcome metrics">
                       <CaseStudyMetric label="Quality" value="3.8/5" note="Up from 1.9 / 5, same strict rubric" trend="up" compact />
                       <CaseStudyMetric label="Adoption" value="29/51" note="Workstreams engaged" trend="up" compact />
-                      <CaseStudyMetric label="Productivity" value="100%" note="Faster creation, n=4, directional" compact />
+                      <CaseStudyMetric label="Productivity" value="100%" note="n=5" compact />
                     </div>
                     <div className="grid gap-4 sm:grid-cols-2" role="group" aria-label="Supporting outcome metrics">
-                      <CaseStudyMetric label="Readability grade drop" value="-4.67" note="achieved by my prompt architecture and knowledge (.md, .json) files" compact />
+                      <CaseStudyMetric label="Readability grade drop" value="-4.67" note="From the prompt architecture and Markdown/JSON knowledge files" compact />
                       <CaseStudyMetric label="Production overhead" value="0" note="Additional AWS hosting and DevOps costs" compact />
                     </div>
                   </div>
@@ -1070,8 +1066,8 @@ export default function ContentNextCaseStudyPage() {
                       and a shared rubric) than on swapping AI models.
                     </p>
                     <p>
-                    Onboarding research later showed that setup friction
-                    could still block people even when sample quality had improved.
+                      Onboarding research later showed that setup friction
+                      could still block people even when sample quality had improved.
                     </p>
                   </div>
                 </AnimateOnScroll>
