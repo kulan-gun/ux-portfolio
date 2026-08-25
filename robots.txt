@@ -1,0 +1,4 @@
+# Allow crawlers to fetch case study HTML so they can honour the noindex tag.
+# Blocking these paths in robots.txt would hide the tag and can keep old URLs in search.
+User-agent: *
+Allow: /
