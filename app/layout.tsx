@@ -5,7 +5,7 @@ const themeInitScript = `
 (function(){
   try {
     var k='operative-theme';
-    var t=window.matchMedia && window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark';
+    var t='dark';
     if (typeof localStorage!='undefined') { var s=localStorage.getItem(k); if (s==='light'||s==='dark') t=s; }
     var el=document.documentElement;
     if (el) { el.classList.remove('light','dark'); el.classList.add(t); }
@@ -27,7 +27,7 @@ export default function RootLayout({
   children: React.ReactNode
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" className="dark" suppressHydrationWarning>
       <head>
         <script dangerouslySetInnerHTML={{ __html: themeInitScript }} />
         <link rel="icon" href="/favicon.png" type="image/png" />

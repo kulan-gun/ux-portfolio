@@ -1,11 +1,14 @@
 import type { Metadata } from "next"
 import type { ReactNode } from "react"
+import CaseStudyGate from "@/components/case-study-gate"
+import { caseStudyRobots } from "@/lib/case-study-robots"
+import { gatedPages } from "@/lib/page-access"
 
 export const metadata: Metadata = {
   title: "ContentNext case study",
-  description: "An AI-native system for Autodesk Fusion UI content, with a measured quality change from 1.9 to 3.8 out of 5.",
+  robots: caseStudyRobots,
 }
 
 export default function ContentNextLayout({ children }: { children: ReactNode }) {
-  return children
+  return <CaseStudyGate page={gatedPages.contentnext}>{children}</CaseStudyGate>
 }

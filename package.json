@@ -6,7 +6,8 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "deploy": "next build && gh-pages -d out -b gh-pages"
+    "deploy": "next build && gh-pages -d out -b gh-pages",
+    "hash-page-password": "node scripts/hash-page-password.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "^3.9.1",
